@@ -57,5 +57,13 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
 - BBNJ-relevant UNCLOS provisions (esp. Part XV, Arts 287/298) and the two prior implementing agreements
   are in scope (doc 05) and queued.
 
-## G-4 — PrepCom / COP1 outputs pending *(open, will grow)*
-- The live layer. Monitored via `monitoring/sources.json`; ingest final versions as adopted.
+## G-4 — PrepCom / COP1 outputs *(mapped 2026-07-04; ingest awaits byte-exact PDFs)*
+- **Mapped.** Full inventory in `docs/source-coverage.md` (G-4 section): the adopted PrepCom Report,
+  five GA resolutions/decisions (A/RES/77/321, 78/272, 79/271, 80/107; dec. 78/560), the A/AC.296/2026
+  draft decisions, host-country offers, and the CHM draft study.
+- **Blocked on capture, not sourcing.** un.org PDFs truncate via the fetch tool and GA resolutions are
+  binary PDFs in the UN ODS system — so the finalized instruments need byte-exact download
+  (`capture/prepcom/EXPECTED-PDFS.md`), then ingest as their own records (document_type `resolution`
+  / `prepcom_document`). Drafts stay in `queue/candidates.md` until adopted.
+- **Live layer:** COP1 (11–22 January 2027) will produce the first binding COP decisions. A scheduled
+  monthly watch + `monitoring/sources.json` track it; ingest as adopted.
