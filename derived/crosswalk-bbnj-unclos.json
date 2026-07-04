@@ -1,0 +1,84 @@
+{
+  "_derived": true,
+  "_disclaimer": "Derived, unofficial, model-generated cross-reference index — NOT the authoritative source text and not legal advice. It maps explicit references in the BBNJ Agreement to provisions of UNCLOS as ingested in this corpus. Confirm against the cited authoritative texts for anything operative.",
+  "generated": "2026-07-04",
+  "tagging_method": "curated",
+  "review_status": "unreviewed",
+  "source_instruments": {
+    "bbnj-agreement": {
+      "corpus_id": "un/bbnj-agreement-2023",
+      "version_id": "2023-06-19",
+      "text_sha256": "sha256:1c52fc00b3bff4c79ac63f88cccb0ff9dab898dcf77e240107521d3fee047123"
+    },
+    "unclos": {
+      "corpus_id": "un/unclos-1982",
+      "version_id": "1982-12-10",
+      "text_sha256": "sha256:6acf4db7f40178469792c3994f83ff5e20085039ec7c73cc3685971572a20a31"
+    }
+  },
+  "crosswalk": [
+    {
+      "bbnj": "Article 1",
+      "bbnj_note": "Defines 'Convention' as UNCLOS of 10 December 1982",
+      "unclos": "(whole convention)",
+      "unclos_title": "United Nations Convention on the Law of the Sea",
+      "relation": "definition"
+    },
+    {
+      "bbnj": "Article 1",
+      "bbnj_note": "'Areas beyond national jurisdiction' = the high seas and the Area",
+      "unclos": "Part VII; Part XI",
+      "unclos_title": "HIGH SEAS; THE AREA",
+      "relation": "scope: ABNJ = high seas (Part VII) + the Area (Part XI)"
+    },
+    {
+      "bbnj": "Article 2",
+      "bbnj_note": "Objective: effective implementation of the relevant provisions of the Convention",
+      "unclos": "(whole convention)",
+      "unclos_title": "United Nations Convention on the Law of the Sea",
+      "relation": "implements"
+    },
+    {
+      "bbnj": "Article 5",
+      "bbnj_note": "Relationship between this Agreement and the Convention",
+      "unclos": "(whole convention)",
+      "unclos_title": "United Nations Convention on the Law of the Sea",
+      "relation": "to be interpreted and applied in the context of and consistently with UNCLOS"
+    },
+    {
+      "bbnj": "Article 60",
+      "bbnj_note": "Disputes settled per the Convention's Part XV",
+      "unclos": "Part XV",
+      "unclos_title": "SETTLEMENT OF DISPUTES",
+      "relation": "applies"
+    },
+    {
+      "bbnj": "Article 60",
+      "bbnj_note": "Part XV and Annexes V, VI, VII, VIII 'deemed to be replicated' for non-UNCLOS parties",
+      "unclos": "Annex V; Annex VI; Annex VII; Annex VIII",
+      "unclos_title": "CONCILIATION; STATUTE OF ITLOS; ARBITRATION; SPECIAL ARBITRATION",
+      "relation": "replicates"
+    },
+    {
+      "bbnj": "Article 60",
+      "bbnj_note": "Procedure chosen under article 287 of the Convention applies",
+      "unclos": "Article 287",
+      "unclos_title": "Choice of procedure",
+      "relation": "applies"
+    },
+    {
+      "bbnj": "Article 60",
+      "bbnj_note": "Declarations under article 298 of the Convention apply",
+      "unclos": "Article 298",
+      "unclos_title": "Optional exceptions to applicability of section 2",
+      "relation": "applies"
+    },
+    {
+      "bbnj": "Article 60",
+      "bbnj_note": "Default forum for non-UNCLOS parties without a declaration",
+      "unclos": "Annex VII",
+      "unclos_title": "ARBITRATION",
+      "relation": "default forum"
+    }
+  ]
+}

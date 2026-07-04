@@ -41,6 +41,10 @@ GAPS.md          the gap register — recorded, not hidden
 - **Derived layer:** deterministic structure parse (79 units: preamble + 76 articles + 2 annexes)
   + keyword concept tags across 15 neutral concepts (unreviewed).
 
+## Derived cross-references
+
+`derived/crosswalk-bbnj-unclos.md` — a model-generated, unofficial crosswalk resolving the BBNJ Agreement's references to "the Convention" to the actual UNCLOS provisions in this corpus (e.g. BBNJ Art. 60 → UNCLOS Part XV, Arts 287/298, Annexes V–VIII). Traceable to both texts' content hashes; confirm against the authoritative texts for anything operative.
+
 ## Reproduce
 ```
 pip install -r scripts/requirements.txt
