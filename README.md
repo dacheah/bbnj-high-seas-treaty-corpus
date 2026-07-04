@@ -9,6 +9,10 @@ Built **provenance-first**: every authoritative text carries its source, retriev
 citation, authentic languages, an authoritative-status flag and a SHA-256 content hash; every
 change is a new dated version; nothing generated is ever presented as authoritative.
 
+## Browsable site
+
+A static, provenance-beside-text site is generated into `site/` and **auto-deployed to GitHub Pages** (`.github/workflows/pages.yml`): https://dacheah.github.io/bbnj-high-seas-treaty-corpus/ — browsable site (auto-deployed on every push once Pages is enabled).
+
 ## Layout
 ```
 authoritative/   LAYER 1 — official source texts (authentic language) + full provenance
