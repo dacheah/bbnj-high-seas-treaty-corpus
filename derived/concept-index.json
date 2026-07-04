@@ -21,6 +21,12 @@
   "index": {
     "scope_and_definitions": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 8 States Parties"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -79,6 +85,18 @@
         "short_title": "BBNJ Agreement (Français)",
         "version_id": "2023-06-19",
         "unit": "Article 70"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 1 Use of terms and scope"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 42 Reservations and exceptions No reservations or exceptions may be made to this Agreement."
       },
       {
         "corpus_id": "un/prepcom/report-2026-3",
@@ -161,6 +179,18 @@
     ],
     "general_principles_and_approaches": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "preamble/chapeau"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -183,6 +213,48 @@
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
         "unit": "Article 63"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 3 Application"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 5 General principles In order to conserve and manage straddling fish stocks and highly migratory fish stocks, coastal States and States fishing on the high seas shall, in giving effect to their duty to cooperate in accordance with the Convention:"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 6 Application of the precautionary approach"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 44 Relation to other agreements"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 1 General principles"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 2 Principles of data collection, compilation and exchange The following general principles should be considered in defining the parameters for collection, compilation and exchange of data from fishing operations for straddling fish stocks and highly migratory fish stocks:"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "ANNEX II GUIDELINES FOR THE APPLICATION OF PRECAUTIONARY REFERENCE POINTS IN CONSERVATION AND MANAGEMENT OF STRADDLING FISH STOCKS AND HIGHLY MIGRATORY FISH STOCKS"
       },
       {
         "corpus_id": "un/prepcom/report-2026-3",
@@ -597,6 +669,12 @@
         "unit": "Article 16"
       },
       {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 26 Special assistance in the implementation of this Agreement"
+      },
+      {
         "corpus_id": "un/prepcom/report-2026-3",
         "short_title": "PrepCom Report (3rd session, 2026)",
         "version_id": "2026-04-02",
@@ -819,6 +897,12 @@
     ],
     "capacity_building_and_technology_transfer": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -865,6 +949,18 @@
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
         "unit": "ANNEX II"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 25 Forms of cooperation with developing States"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 1 General principles"
       },
       {
         "corpus_id": "un/ga-resolution/A-RES-78-272",
@@ -1030,6 +1126,12 @@
       }
     ],
     "institutional_arrangements": [
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
       {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
@@ -1419,6 +1521,18 @@
     ],
     "financial_resources_and_mechanism": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "preamble/chapeau"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -1477,6 +1591,18 @@
         "short_title": "BBNJ Agreement (Français)",
         "version_id": "2023-06-19",
         "unit": "Article 52"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 11 New members or participants In determining the nature and extent of participatory rights for new members of a subregional or regional fisheries management organization, or for new participants in a subregional or regional fisheries management arrangement, States shall take into account, inter alia:"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 26 Special assistance in the implementation of this Agreement"
       },
       {
         "corpus_id": "un/ga-decision/78-560",
@@ -1667,6 +1793,12 @@
     ],
     "implementation_and_compliance": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -1707,6 +1839,48 @@
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
         "unit": "Article 55"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 16 Areas of high seas surrounded entirely by an area under the national jurisdiction of a single State"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 18 Duties of the flag State"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 19 Compliance and enforcement by the flag State"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 20 International cooperation in enforcement"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 21 Subregional and regional cooperation in enforcement"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 22 Basic procedures for boarding and inspection pursuant to article 21"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 25 Forms of cooperation with developing States"
       },
       {
         "corpus_id": "un/prepcom/report-2026-3",
@@ -1855,6 +2029,18 @@
     ],
     "dispute_settlement": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "preamble/chapeau"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -1919,6 +2105,60 @@
         "short_title": "BBNJ Agreement (Français)",
         "version_id": "2023-06-19",
         "unit": "Article 60"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 7 Compatibility of conservation and management measures"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 10 Functions of subregional and regional fisheries management organizations and arrangements In fulfilling their obligation to cooperate through subregional or regional fisheries management organizations or arrangements, States shall:"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 26 Special assistance in the implementation of this Agreement"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 27 Obligation to settle disputes by peaceful means States have the obligation to settle their disputes by negotiation, inquiry, mediation, conciliation, arbitration, judicial settlement, resort to regional agencies or arrangements, or other peaceful means of their own choice. /... English Page 27"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 28 Prevention of disputes States shall cooperate in order to prevent disputes. To this end, States shall agree on efficient and expeditious decision-making procedures within subregional and regional fisheries management organizations and arrangements and shall strengthen existing decision-making procedures as necessary."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 29 Disputes of a technical nature Where a dispute concerns a matter of a technical nature, the States concerned may refer the dispute to an ad hoc expert panel established by them. The panel shall confer with the States concerned and shall endeavour to resolve the dispute expeditiously without recourse to binding procedures for the settlement of disputes."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 30 Procedures for the settlement of disputes"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 31 Provisional measures"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 32 Limitations on applicability of procedures for the settlement of disputes"
       },
       {
         "corpus_id": "un/prepcom/report-2026-3",
@@ -2727,6 +2967,24 @@
         "unit": "Artículo 60"
       },
       {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 4 Relationship between this Agreement and the Convention Nothing in this Agreement shall prejudice the rights, jurisdiction and duties of States under the Convention. This Agreement shall be interpreted and applied in the context of and in a manner consistent with the Convention. /... English Page 5"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 7 Compatibility of conservation and management measures"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 18 Duties of the flag State"
+      },
+      {
         "corpus_id": "un/prepcom/report-2026-3",
         "short_title": "PrepCom Report (3rd session, 2026)",
         "version_id": "2026-04-02",
@@ -2799,6 +3057,24 @@
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
         "unit": "Article 63"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 3 Application"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 7 Compatibility of conservation and management measures"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 23 Measures taken by a port State"
       },
       {
         "corpus_id": "un/ga-resolution/A-RES-78-272",
@@ -3013,6 +3289,54 @@
     ],
     "final_provisions": [
       {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "preamble/chapeau"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 3 Signature This Agreement shall remain open for signature at United Nations Headquarters by the States and entities referred to in article 305, paragraph 1 (a), (c), (d), (e) and (f), of the Convention for 12 months from the date of its adoption."
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 4 Consent to be bound"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 5 Simplified procedure"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 6 Entry into force"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 7 Provisional application"
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 9 Depositary The Secretary-General of the United Nations shall be the depositary of this Agreement."
+      },
+      {
+        "corpus_id": "un/agreement-partxi-1994",
+        "short_title": "1994 Part XI Agreement",
+        "version_id": "1994-07-28",
+        "unit": "Article 10 Authentic texts The original of this Agreement, of which the Arabic, Chinese, English, French, Russian and Spanish texts are equally authentic, shall be deposited with the Secretary-General of the United Nations. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. DONE AT NEW YORK, this ... day of July, one thousand nine hundred and ninety-four. Annex SECTION 1. COSTS TO STATES PARTIES AND INSTITUTIONAL ARRANGEMENTS"
+      },
+      {
         "corpus_id": "un/bbnj-agreement-2023",
         "short_title": "BBNJ Agreement",
         "version_id": "2023-06-19",
@@ -3137,6 +3461,90 @@
         "short_title": "BBNJ Agreement (Français)",
         "version_id": "2023-06-19",
         "unit": "Article 72"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 36 Review conference"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 37 Signature This Agreement shall be open for signature by all States and the other entities referred to in article 1, paragraph 2(b), and shall remain open for signature at United Nations Headquarters for twelve months from the fourth of December 1995."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 38 Ratification This Agreement is subject to ratification by States and the other entities referred to in article 1, paragraph 2(b). The instruments of ratification shall be deposited with the Secretary-General of the United Nations."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 39 Accession This Agreement shall remain open for accession by States and the other entities referred to in article 1, paragraph 2(b). The instruments of accession shall be deposited with the Secretary-General of the United Nations."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 40 Entry into force"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 41 Provisional application"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 42 Reservations and exceptions No reservations or exceptions may be made to this Agreement."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 44 Relation to other agreements"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 45 Amendment"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 46 Denunciation"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 47 Participation by international organizations"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 48 Annexes"
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 49 Depositary The Secretary-General of the United Nations shall be the depositary of this Agreement and any amendments or revisions thereto."
+      },
+      {
+        "corpus_id": "un/fish-stocks-agreement-1995",
+        "short_title": "1995 Fish Stocks Agreement",
+        "version_id": "1995-08-04",
+        "unit": "Article 50 Authentic texts The Arabic, Chinese, English, French, Russian and Spanish texts of this Agreement are equally authentic. IN WITNESS WHEREOF, the undersigned Plenipotentiaries, being duly authorized thereto, have signed this Agreement. /... English Page 35 OPENED FOR SIGNATURE at New York, this fourth day of December, one thousand nine hundred and ninety-five, in a single original, in the Arabic, Chinese, English, French, Russian and Spanish languages. /... English Page 36"
       },
       {
         "corpus_id": "un/ga-decision/78-560",

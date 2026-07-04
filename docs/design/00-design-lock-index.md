@@ -33,3 +33,4 @@ BBNJ-specific sources, languages and scope, per the corpus opportunity brief.
 - **JC-2026-07-03-c (separate corpora).** BBNJ and the deep-seabed-mining (ISA) regime are kept
   as **separate** corpora despite both sitting under UNCLOS/ABNJ. Cross-reference; do not merge.
 - **JC-2026-07-04-d (UNCLOS scope).** Ingest the complete UNCLOS text, not a BBNJ-relevant excerpt (see doc 05).
+- **JC-2026-07-04-e (implementing agreements).** Ingest the 1994 Part XI and 1995 Fish Stocks agreements (see doc 05).

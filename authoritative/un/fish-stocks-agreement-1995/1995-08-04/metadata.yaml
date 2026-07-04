@@ -1,0 +1,47 @@
+corpus_id: un/fish-stocks-agreement-1995
+version_id: '1995-08-04'
+title: Agreement for the Implementation of the Provisions of the United Nations Convention on the Law
+  of the Sea of 10 December 1982 relating to the Conservation and Management of Straddling Fish Stocks
+  and Highly Migratory Fish Stocks
+short_title: 1995 Fish Stocks Agreement
+jurisdiction: international
+document_type: implementing_agreement
+official_citation: A/CONF.164/37 (4 August 1995)
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '1995-08-04'
+entry_into_force_date: '2001-12-11'
+source_url: https://docs.un.org/en/A/CONF.164/37
+source_publisher: United Nations General Assembly (UN Official Document System)
+source_is_official: true
+retrieval_date: '2026-07-04'
+retrieved_by: Cowork; maintainer-supplied byte-exact official UN PDF (ODS)
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:1bee9fee22afaf6ccbf3b1fb3a622f9b6e481431ab17f4b7e9797d122dc56e44
+original_sha256: sha256:c415c796e8433aefed3193eb3489af1e298d2a87bd32f1d9447dc29b7e7b612c
+text_sha256: sha256:1bee9fee22afaf6ccbf3b1fb3a622f9b6e481431ab17f4b7e9797d122dc56e44
+text_fidelity: extracted_unverified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-07-04'
+  source_url: https://docs.un.org/en/A/CONF.164/37
+  original_sha256: sha256:c415c796e8433aefed3193eb3489af1e298d2a87bd32f1d9447dc29b7e7b612c
+  note: Maintainer-supplied byte-exact official UN ODS PDF.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/unclos-1982
+- un/bbnj-agreement-2023
+provenance_note: 'The second UNCLOS implementing agreement — conservation and management of straddling
+  and highly migratory fish stocks. Authentic English text from the byte-exact official ODS PDF (A/CONF.164/37):
+  Preamble, Parts I–XIII (Articles 1–50), Annexes I–II. pdftotext -raw + clean_ia.py. Ingested per JC-2026-07-04-e.
+  text_fidelity=extracted_unverified.'

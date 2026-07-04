@@ -1,0 +1,47 @@
+corpus_id: un/agreement-partxi-1994
+version_id: '1994-07-28'
+title: Agreement relating to the Implementation of Part XI of the United Nations Convention on the Law
+  of the Sea of 10 December 1982
+short_title: 1994 Part XI Agreement
+jurisdiction: international
+document_type: implementing_agreement
+official_citation: A/RES/48/263, annex (28 July 1994)
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '1994-07-28'
+entry_into_force_date: '1996-07-28'
+source_url: https://docs.un.org/en/A/RES/48/263
+source_publisher: United Nations General Assembly (UN Official Document System)
+source_is_official: true
+retrieval_date: '2026-07-04'
+retrieved_by: Cowork; maintainer-supplied byte-exact official UN PDF (ODS)
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:1d3effb7221ef4b5b9b8cd310aaee42bf15e789559f3be1649abb3ad2451b350
+original_sha256: sha256:3961b5e9170d929221e91d71b11821d8a9f552fd0b9c73fa24353d5e0bde5de7
+text_sha256: sha256:1d3effb7221ef4b5b9b8cd310aaee42bf15e789559f3be1649abb3ad2451b350
+text_fidelity: extracted_unverified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-07-04'
+  source_url: https://docs.un.org/en/A/RES/48/263
+  original_sha256: sha256:3961b5e9170d929221e91d71b11821d8a9f552fd0b9c73fa24353d5e0bde5de7
+  note: Maintainer-supplied byte-exact official UN ODS PDF.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/unclos-1982
+- un/bbnj-agreement-2023
+provenance_note: 'The first UNCLOS implementing agreement — modifies the Part XI (deep-seabed / the Area)
+  regime; ''interpreted and applied together with Part XI as a single instrument'' (Art. 2). Authentic
+  English text from the byte-exact official ODS PDF of A/RES/48/263 (the adopting resolution followed
+  by the Agreement as its annex: Preamble, Articles 1–10, and an Annex of nine sections). pdftotext -raw
+  + clean_ia.py. Ingested per JC-2026-07-04-e. text_fidelity=extracted_unverified.'

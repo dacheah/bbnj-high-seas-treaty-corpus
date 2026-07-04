@@ -61,7 +61,11 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   BBNJ-relevant provisions (Part XV; Arts 287/298; high-seas/Area regimes) are surfaced in the derived layer.
 - **Residual (low priority):** the source's 1982 typesetting leaves space-drop extraction artifacts
   (e.g. 'newregime') → a verbatim audit is queued (as with G-1b). The other five UN languages are not yet captured.
-- **Queued:** the 1994 Part XI Implementing Agreement and the 1995 Fish Stocks Agreement (`queue/candidates.md`).
+- **1994 & 1995 implementing agreements — INGESTED 2026-07-04** (JC-2026-07-04-e): the 1994 Part XI
+  Agreement (`un/agreement-partxi-1994`, A/RES/48/263 annex) and the 1995 Fish Stocks Agreement
+  (`un/fish-stocks-agreement-1995`, A/CONF.164/37) — byte-exact ODS PDFs, English, `extracted_unverified`.
+  The parent framework is now complete: UNCLOS + all three of its implementing agreements (Part XI,
+  Fish Stocks, BBNJ). English-only + a verbatim audit remain low-priority follow-ups.
 
 
 ## G-4 — PrepCom / COP1 outputs *(PrepCom layer ingested 2026-07-04; COP1 pending)*

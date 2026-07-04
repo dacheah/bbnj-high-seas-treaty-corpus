@@ -40,3 +40,14 @@ high-seas and Area regimes; shared definitions) are surfaced instead in the **de
 
 **Still out of scope (queued):** the 1994 Part XI Implementing Agreement and the 1995 Fish Stocks
 Agreement remain in `queue/candidates.md` for a later, deliberate pass.
+
+---
+
+## Dated decision — JC-2026-07-04-e (prior UNCLOS implementing agreements: in scope)
+
+Doc 05 originally listed the 1994 Part XI Agreement and 1995 Fish Stocks Agreement as
+context/cross-reference and queued them. Decision (2026-07-04): ingest both as authoritative
+records (`document_type: implementing_agreement`). Reason: BBNJ is the **third** implementing
+agreement under UNCLOS; holding the first two completes the parent-framework layer and makes
+UNCLOS's implementing-agreement architecture self-contained. Captured from the official DOALOS
+HTML texts (extracted_unverified; byte-exact PDF upgrade is a queued follow-up).

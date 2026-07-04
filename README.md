@@ -36,6 +36,7 @@ GAPS.md          the gap register — recorded, not hidden
     fonts (fr headings repaired; ru decoded) and spot-verified (full audit = GAPS G-2b).
   - **Chinese** (`ocr_unverified`) — recovered by OCR (rapidocr/PP-OCR) of the byte-exact PDF; complete.
   - **Arabic** (`ocr_unverified`) — recovered by OCR (PyMuPDF render + EasyOCR) of the byte-exact PDF; complete.
+- **UNCLOS implementing agreements:** the **1994 Part XI Agreement** (`un/agreement-partxi-1994`) and the **1995 Fish Stocks Agreement** (`un/fish-stocks-agreement-1995`) — so the corpus holds UNCLOS and all three of its implementing agreements (Part XI, Fish Stocks, and BBNJ). English, `extracted_unverified`.
 - **The parent convention (G-3):** the complete **UNCLOS (1982)** — Preamble + Articles 1–320 + Annexes I–IX (`un/unclos-1982`, `convention`, English, `extracted_unverified`) — so BBNJ's cross-references (Part XV dispute settlement, Arts 287/298, the high-seas/Area regimes) resolve in-house.
 - **The founding instruments & implementation layer (G-4):** the five General Assembly
   resolutions/decision that govern the BBNJ process (A/RES/77/321, 78/272 — which establishes the
