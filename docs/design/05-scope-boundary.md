@@ -21,3 +21,22 @@ is doubtful.
 - Commentary, policy and advocacy that is not law (reference-only, derived layer).
 
 **Borderline items** go to `queue/candidates.md` for a recorded decision — not straight into the corpus.
+
+---
+
+## Dated decision — JC-2026-07-04-d (UNCLOS: full convention, not excerpts)
+
+**Change to this frozen document.** Doc 05 originally scoped UNCLOS as "the provisions directly
+relevant to BBNJ." Decision (2026-07-04): ingest the **complete authentic text of UNCLOS (1982)** —
+all 320 articles and 9 annexes — as a single authoritative record (`un/unclos-1982`,
+`document_type: convention`), rather than a curated excerpt.
+
+**Reason.** A provenance-first corpus should store complete authentic instruments, not editorially
+selected subsets: an excerpt embeds a "which provisions are relevant?" judgment into the
+authoritative layer and stores a partial text. Completeness is neutral and verifiable; the
+BBNJ-relevant provisions (Part XV dispute settlement replicated by BBNJ Art. 60; Arts 287/298; the
+high-seas and Area regimes; shared definitions) are surfaced instead in the **derived** layer
+(concept tags + cross-reference index), where selection is labelled and reversible.
+
+**Still out of scope (queued):** the 1994 Part XI Implementing Agreement and the 1995 Fish Stocks
+Agreement remain in `queue/candidates.md` for a later, deliberate pass.

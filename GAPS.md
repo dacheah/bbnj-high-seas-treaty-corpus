@@ -53,9 +53,16 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   byte-exact PDF stays authoritative). A full verbatim OCR audit is a low-priority residual.
 
 
-## G-3 — UNCLOS + implementing agreements not yet ingested *(open)*
-- BBNJ-relevant UNCLOS provisions (esp. Part XV, Arts 287/298) and the two prior implementing agreements
-  are in scope (doc 05) and queued.
+## G-3 — UNCLOS (parent convention) *(UNCLOS ingested 2026-07-04; agreements queued)*
+- **Ingested:** the COMPLETE UNCLOS (1982) — `un/unclos-1982`, `document_type: convention`, Preamble +
+  Parts I–XVII (Articles 1–320) + Annexes I–IX (and the Final Act annexes in the official PDF), English,
+  byte-exact PDF, `extracted_unverified`. Per design decision JC-2026-07-04-d (full text, not an
+  excerpt). The BBNJ records' `related_documents: un/unclos-1982` cross-reference now resolves; the
+  BBNJ-relevant provisions (Part XV; Arts 287/298; high-seas/Area regimes) are surfaced in the derived layer.
+- **Residual (low priority):** the source's 1982 typesetting leaves space-drop extraction artifacts
+  (e.g. 'newregime') → a verbatim audit is queued (as with G-1b). The other five UN languages are not yet captured.
+- **Queued:** the 1994 Part XI Implementing Agreement and the 1995 Fish Stocks Agreement (`queue/candidates.md`).
+
 
 ## G-4 — PrepCom / COP1 outputs *(PrepCom layer ingested 2026-07-04; COP1 pending)*
 - **Ingested (6 new records, English, `extracted_unverified` — byte-exact PDFs):** the adopted

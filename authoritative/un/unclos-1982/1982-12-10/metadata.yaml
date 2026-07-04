@@ -1,0 +1,49 @@
+corpus_id: un/unclos-1982
+version_id: '1982-12-10'
+title: United Nations Convention on the Law of the Sea
+short_title: UNCLOS
+jurisdiction: international
+document_type: convention
+official_citation: United Nations, Treaty Series, vol. 1833, No. 31363 (of 10 December 1982)
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '1982-12-10'
+entry_into_force_date: '1994-11-16'
+source_url: https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf
+source_publisher: United Nations — Division for Ocean Affairs and the Law of the Sea (DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-04'
+retrieved_by: Cowork; maintainer-supplied byte-exact official DOALOS PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:6acf4db7f40178469792c3994f83ff5e20085039ec7c73cc3685971572a20a31
+original_sha256: sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336
+text_sha256: sha256:6acf4db7f40178469792c3994f83ff5e20085039ec7c73cc3685971572a20a31
+text_fidelity: extracted_unverified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-07-04'
+  source_url: https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf
+  original_sha256: sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336
+  note: Maintainer-supplied byte-exact official DOALOS PDF (unclos_e.pdf).
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'The complete authentic English text of UNCLOS (1982) — the parent convention that the
+  BBNJ Agreement implements — from the byte-exact official DOALOS PDF (original.pdf). Covers the Preamble,
+  Parts I–XVII (Articles 1–320) and Annexes I–IX, plus the three Final Act annexes/resolutions carried
+  in the official publication. Extracted with pdftotext -raw and normalised (capture/unclos/clean_unclos.py:
+  table-of-contents removal, dot-leader/page-number stripping, reflow). text_fidelity=extracted_unverified:
+  the source''s dense 1982 typesetting leaves residual space-drop artifacts (e.g. ''newregime''); a verbatim
+  audit is a queued follow-up. Ingested in full per design decision JC-2026-07-04-d; the BBNJ-relevant
+  provisions (Part XV; Arts 287/298; the high-seas and Area regimes) are surfaced in the derived layer.
+  Authentic in the six UN languages (English ingested).'
