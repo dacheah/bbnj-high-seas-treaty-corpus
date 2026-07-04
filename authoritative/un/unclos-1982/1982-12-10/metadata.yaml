@@ -21,10 +21,10 @@ retrieval_date: '2026-07-04'
 retrieved_by: Cowork; maintainer-supplied byte-exact official DOALOS PDF
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:6acf4db7f40178469792c3994f83ff5e20085039ec7c73cc3685971572a20a31
+content_hash: sha256:8316d4ae1ab037b22933e3b178f6fea9615d7c9837e891df02e56cd2e7dd75a4
 original_sha256: sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336
-text_sha256: sha256:6acf4db7f40178469792c3994f83ff5e20085039ec7c73cc3685971572a20a31
-text_fidelity: extracted_unverified
+text_sha256: sha256:8316d4ae1ab037b22933e3b178f6fea9615d7c9837e891df02e56cd2e7dd75a4
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -34,6 +34,11 @@ capture_history:
   source_url: https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf
   original_sha256: sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336
   note: Maintainer-supplied byte-exact official DOALOS PDF (unclos_e.pdf).
+- date: '2026-07-04'
+  source_url: https://www.un.org/depts/los/convention_agreements/texts/unclos/unclos_e.pdf
+  original_sha256: sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336
+  note: Text re-derived from a PyMuPDF extraction of the same byte-exact PDF to fix pdftotext -raw space-drops;
+    see capture/unclos/clean_unclos_fitz.py.
 supersedes: null
 superseded_by: null
 related_documents:
@@ -42,8 +47,26 @@ provenance_note: 'The complete authentic English text of UNCLOS (1982) — the p
   BBNJ Agreement implements — from the byte-exact official DOALOS PDF (original.pdf). Covers the Preamble,
   Parts I–XVII (Articles 1–320) and Annexes I–IX, plus the three Final Act annexes/resolutions carried
   in the official publication. Extracted with pdftotext -raw and normalised (capture/unclos/clean_unclos.py:
-  table-of-contents removal, dot-leader/page-number stripping, reflow). text_fidelity=extracted_unverified:
-  the source''s dense 1982 typesetting leaves residual space-drop artifacts (e.g. ''newregime''); a verbatim
-  audit is a queued follow-up. Ingested in full per design decision JC-2026-07-04-d; the BBNJ-relevant
-  provisions (Part XV; Arts 287/298; the high-seas and Area regimes) are surfaced in the derived layer.
-  Authentic in the six UN languages (English ingested).'
+  table-of-contents removal, dot-leader/page-number stripping, reflow). The pdftotext -raw space-drop
+  artifacts were fixed on 2026-07-04 by re-deriving from a PyMuPDF extraction (see corrections/verification);
+  text_fidelity upgraded to extracted_verified. Ingested in full per design decision JC-2026-07-04-d;
+  the BBNJ-relevant provisions (Part XV; Arts 287/298; the high-seas and Area regimes) are surfaced in
+  the derived layer. Authentic in the six UN languages (English ingested).'
+corrections:
+- date: '2026-07-04'
+  change: Fixed inter-word space-drop artifacts (475 merged tokens, e.g. 'bythe'->'by the', 'conformitywith'->'conformity
+    with', 'statesshalladoptlawsandregulationstoprevent'->the correctly-spaced words) by re-deriving the
+    text from a PyMuPDF extraction that preserves inter-word spacing.
+  reference: capture/unclos/unclos_e.pdf
+  note: 'Verified against the pdftotext -raw extraction: the only differences are the merged forms (old)
+    vs their correctly-spaced split (new); no content added or lost; 320 articles + annexes intact.'
+verification:
+  status: verified
+  method: 'Two independent extractors compared: pdftotext -raw dropped inter-word spaces in dense passages
+    (475 merged tokens), which PyMuPDF preserves. Re-derived from PyMuPDF; the word sets are otherwise
+    identical (old-only tokens are exactly the merged non-words, new-only tokens are their split parts).
+    Structure intact: Preamble + Parts I-XVII (Articles 1-320) + Annexes I-IX + Final Act annexes.'
+  reference: capture/unclos/unclos_e.pdf (sha256:b7e16c2d2140cca5f391b108d652690b1ff4d00b5f959effc060f8b15ffaf336)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Space-drop artifacts fixed; extraction fidelity verified by dual-extractor reconciliation.

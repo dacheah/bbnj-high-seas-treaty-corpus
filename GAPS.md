@@ -3,17 +3,15 @@
 # Fidelity status (updated 2026-07-04)
 
 `text_fidelity` across the 15 authoritative records:
-- **extracted_verified (9):** BBNJ Agreement (English, Spanish); GA resolutions 77/321, 78/272,
-  79/271, 80/107; decision 78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
+- **extracted_verified (10):** UNCLOS (1982); BBNJ Agreement (English, Spanish); GA resolutions
+  77/321, 78/272, 79/271, 80/107; decision 78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
   Method for the last seven: two independent extractors (pdftotext -raw + PyMuPDF) agree word-for-word
   on the PDF text layer, the stored text adds no words and drops only bibliographic noise, and a
   rendered-page spot-check confirms a clean digital text layer.
-- **Still extracted_unverified (4):**
+- **Still extracted_unverified (3):**
   - **BBNJ French & Russian** — recovered from non-Unicode display fonts (headings/decode); need a
     per-language audit against page images, not a dual-extractor check (both tools yield the same
     font output). (G-2b)
-  - **UNCLOS** — genuine artifact: the 1982 typesetting drops some inter-word spaces ('newregime');
-    needs a *fix*, not just verification (queued).
   - **PrepCom Report** — the report cleaner dropped ~8 standalone `A/AC.296/.../CRP` document symbols
     from an in-text reference list; re-clean preserving those symbols, then re-verify.
 - **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR; verifying needs visual line-by-line
@@ -78,8 +76,8 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   byte-exact PDF, `extracted_unverified`. Per design decision JC-2026-07-04-d (full text, not an
   excerpt). The BBNJ records' `related_documents: un/unclos-1982` cross-reference now resolves; the
   BBNJ-relevant provisions (Part XV; Arts 287/298; high-seas/Area regimes) are surfaced in the derived layer.
-- **Residual (low priority):** the source's 1982 typesetting leaves space-drop extraction artifacts
-  (e.g. 'newregime') → a verbatim audit is queued (as with G-1b). The other five UN languages are not yet captured.
+- **Fixed 2026-07-04:** the pdftotext space-drop artifacts were repaired by re-deriving from a PyMuPDF
+  extraction (dual-extractor reconciliation) → `extracted_verified`. The other five UN languages are not yet captured.
 - **1994 & 1995 implementing agreements — INGESTED 2026-07-04** (JC-2026-07-04-e): the 1994 Part XI
   Agreement (`un/agreement-partxi-1994`, A/RES/48/263 annex) and the 1995 Fish Stocks Agreement
   (`un/fish-stocks-agreement-1995`, A/CONF.164/37) — byte-exact ODS PDFs, English, `extracted_unverified`.
