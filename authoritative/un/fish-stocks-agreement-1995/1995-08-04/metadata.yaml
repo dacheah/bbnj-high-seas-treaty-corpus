@@ -26,7 +26,7 @@ original_filename: original.pdf
 content_hash: sha256:1bee9fee22afaf6ccbf3b1fb3a622f9b6e481431ab17f4b7e9797d122dc56e44
 original_sha256: sha256:c415c796e8433aefed3193eb3489af1e298d2a87bd32f1d9447dc29b7e7b612c
 text_sha256: sha256:1bee9fee22afaf6ccbf3b1fb3a622f9b6e481431ab17f4b7e9797d122dc56e44
-text_fidelity: extracted_unverified
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -45,3 +45,14 @@ provenance_note: 'The second UNCLOS implementing agreement — conservation and 
   and highly migratory fish stocks. Authentic English text from the byte-exact official ODS PDF (A/CONF.164/37):
   Preamble, Parts I–XIII (Articles 1–50), Annexes I–II. pdftotext -raw + clean_ia.py. Ingested per JC-2026-07-04-e.
   text_fidelity=extracted_unverified.'
+verification:
+  status: verified
+  method: Dual independent extractors (pdftotext -raw and PyMuPDF) agree word-for-word on the PDF text
+    layer, confirming faithful extraction with no tool-specific artifacts. The stored text is that extraction
+    with running headers, page numbers and masthead removed and reflowed (capture cleaner) — adding no
+    words (verified) and dropping only bibliographic noise. A rendered-page spot-check confirms the clean
+    digital text layer matches the rendering.
+  reference: byte-exact official UN PDF (A/CONF.164/37 (1995 Fish Stocks Agreement)); sha256:c415c796e8433aefed3193eb3489af1e298d2a87bd32f1d9447dc29b7e7b612c
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Verbatim-verified (extraction fidelity) via dual-extractor agreement + visual spot-check.

@@ -25,7 +25,7 @@ original_filename: original.pdf
 content_hash: sha256:1d3effb7221ef4b5b9b8cd310aaee42bf15e789559f3be1649abb3ad2451b350
 original_sha256: sha256:3961b5e9170d929221e91d71b11821d8a9f552fd0b9c73fa24353d5e0bde5de7
 text_sha256: sha256:1d3effb7221ef4b5b9b8cd310aaee42bf15e789559f3be1649abb3ad2451b350
-text_fidelity: extracted_unverified
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -45,3 +45,14 @@ provenance_note: 'The first UNCLOS implementing agreement — modifies the Part 
   English text from the byte-exact official ODS PDF of A/RES/48/263 (the adopting resolution followed
   by the Agreement as its annex: Preamble, Articles 1–10, and an Annex of nine sections). pdftotext -raw
   + clean_ia.py. Ingested per JC-2026-07-04-e. text_fidelity=extracted_unverified.'
+verification:
+  status: verified
+  method: Dual independent extractors (pdftotext -raw and PyMuPDF) agree word-for-word on the PDF text
+    layer (a single trivial token differs), confirming faithful extraction with no tool-specific artifacts.
+    The stored text is that extraction with running headers, page numbers and masthead removed and reflowed
+    (capture cleaner) — adding no words (verified) and dropping only bibliographic noise. A rendered-page
+    spot-check confirms the clean digital text layer matches the rendering.
+  reference: byte-exact official UN PDF (A/RES/48/263 (1994 Part XI Agreement)); sha256:3961b5e9170d929221e91d71b11821d8a9f552fd0b9c73fa24353d5e0bde5de7
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Verbatim-verified (extraction fidelity) via dual-extractor agreement + visual spot-check.

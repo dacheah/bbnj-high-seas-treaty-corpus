@@ -25,7 +25,7 @@ original_filename: original.pdf
 content_hash: sha256:b0e2584e1458b305207e02dd679ca214995357dde7f084b908a3d45b704d0a08
 original_sha256: sha256:643e914c7aaabdceecc4ba76509820881fd4e8c70994d43c45c37d4945bb7203
 text_sha256: sha256:b0e2584e1458b305207e02dd679ca214995357dde7f084b908a3d45b704d0a08
-text_fidelity: extracted_unverified
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -43,3 +43,14 @@ provenance_note: Authentic English text of General Assembly decision 78/560, cap
   document A/78/L.102 (Australia and Belize; reissued 7 Aug 2024) as adopted by consensus on 13 August
   2024. Byte-exact official UN PDF (ODS), pdftotext -raw + clean_un.py. It sets the PrepCom session dates.
   text_fidelity=extracted_unverified.
+verification:
+  status: verified
+  method: Dual independent extractors (pdftotext -raw and PyMuPDF) agree word-for-word on the PDF text
+    layer, confirming faithful extraction with no tool-specific artifacts. The stored text is that extraction
+    with running headers, page numbers and masthead removed and reflowed (capture cleaner) — adding no
+    words (verified) and dropping only bibliographic noise. A rendered-page spot-check confirms the clean
+    digital text layer matches the rendering.
+  reference: byte-exact official UN PDF (A/78/L.102 (decision 78/560)); sha256:643e914c7aaabdceecc4ba76509820881fd4e8c70994d43c45c37d4945bb7203
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Verbatim-verified (extraction fidelity) via dual-extractor agreement + visual spot-check.

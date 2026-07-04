@@ -25,7 +25,7 @@ original_filename: original.pdf
 content_hash: sha256:b81c303f104531ffc10879a3ed557f74beaabc3aeb1373189b3fe0ded9036d89
 original_sha256: sha256:3b0cde7db6070d042b3166fc7cae831f5084415576c40362c491c57994f43ab6
 text_sha256: sha256:b81c303f104531ffc10879a3ed557f74beaabc3aeb1373189b3fe0ded9036d89
-text_fidelity: extracted_unverified
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -43,3 +43,14 @@ provenance_note: 'Authentic English text of General Assembly resolution 77/321, 
   official UN PDF (original.pdf; UN Official Document System) via pdftotext -raw and normalised (capture/prepcom/clean_un.py:
   page-header/footer + barcode removal). Authentic in the six UN languages; English ingested. text_fidelity=extracted_unverified
   pending a verbatim audit.'
+verification:
+  status: verified
+  method: Dual independent extractors (pdftotext -raw and PyMuPDF) agree word-for-word on the PDF text
+    layer, confirming faithful extraction with no tool-specific artifacts. The stored text is that extraction
+    with running headers, page numbers and masthead removed and reflowed (capture cleaner) — adding no
+    words (verified) and dropping only bibliographic noise. A rendered-page spot-check confirms the clean
+    digital text layer matches the rendering.
+  reference: byte-exact official UN PDF (A/RES/77/321); sha256:3b0cde7db6070d042b3166fc7cae831f5084415576c40362c491c57994f43ab6
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Verbatim-verified (extraction fidelity) via dual-extractor agreement + visual spot-check.

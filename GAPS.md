@@ -1,5 +1,24 @@
 # Gap register (BBNJ) — recorded, not hidden
 
+# Fidelity status (updated 2026-07-04)
+
+`text_fidelity` across the 15 authoritative records:
+- **extracted_verified (9):** BBNJ Agreement (English, Spanish); GA resolutions 77/321, 78/272,
+  79/271, 80/107; decision 78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
+  Method for the last seven: two independent extractors (pdftotext -raw + PyMuPDF) agree word-for-word
+  on the PDF text layer, the stored text adds no words and drops only bibliographic noise, and a
+  rendered-page spot-check confirms a clean digital text layer.
+- **Still extracted_unverified (4):**
+  - **BBNJ French & Russian** — recovered from non-Unicode display fonts (headings/decode); need a
+    per-language audit against page images, not a dual-extractor check (both tools yield the same
+    font output). (G-2b)
+  - **UNCLOS** — genuine artifact: the 1982 typesetting drops some inter-word spaces ('newregime');
+    needs a *fix*, not just verification (queued).
+  - **PrepCom Report** — the report cleaner dropped ~8 standalone `A/AC.296/.../CRP` document symbols
+    from an in-text reference list; re-clean preserving those symbols, then re-verify.
+- **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR; verifying needs visual line-by-line
+  against the PDF).
+
 Provenance principle: gaps are first-class facts. Each is tracked here until closed.
 
 ## G-1 — Agreement English text complete *(CLOSED 2026-07-03)*
