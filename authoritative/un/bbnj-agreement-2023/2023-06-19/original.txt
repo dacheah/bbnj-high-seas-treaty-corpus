@@ -1,0 +1,6 @@
+SUPERSEDED — not the authoritative artifact.
+
+The byte-exact captured artifact is now `original.pdf` (the official UN English PDF).
+This file previously held the earlier *partial* fetch-text capture (Preamble–Article 73).
+That raw fetch is preserved at capture/raw-webfetch-english.txt and in Git history.
+See metadata.yaml -> capture_history / corrections / verification.

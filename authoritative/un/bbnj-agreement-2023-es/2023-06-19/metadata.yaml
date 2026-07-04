@@ -1,0 +1,46 @@
+corpus_id: un/bbnj-agreement-2023-es
+version_id: '2023-06-19'
+title: Acuerdo en el marco de la Convención de las Naciones Unidas sobre el Derecho del Mar relativo a
+  la conservación y el uso sostenible de la diversidad biológica marina de las zonas situadas fuera de
+  la jurisdicción nacional
+short_title: BBNJ Agreement (Español)
+jurisdiction: international
+document_type: treaty
+official_citation: A/CONF.232/2023/4; UN Treaty Collection, Chapter XXI.10
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2023-06-19'
+entry_into_force_date: '2026-01-17'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Spanish.pdf
+source_publisher: United Nations — BBNJ Agreement website (OLA/DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-03'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:57b4b89f5cd522f062d57850f60dda5fd7c0d99a68791ae8b09e13e26a322097
+original_sha256: sha256:10a275c9a60cc1751981b4555199ada29190e945a65ff0e087cdccf31e7b1197
+text_sha256: sha256:57b4b89f5cd522f062d57850f60dda5fd7c0d99a68791ae8b09e13e26a322097
+text_fidelity: extracted_verified
+language: es
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations material; official UN document, freely reproducible with attribution, no warranty.
+capture_history:
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Spanish.pdf
+  original_sha256: sha256:10a275c9a60cc1751981b4555199ada29190e945a65ff0e087cdccf31e7b1197
+  note: Maintainer-supplied byte-exact official UN Spanish PDF.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic Spanish text extracted from the byte-exact official UN PDF (original.pdf)
+  via pdftotext -raw and normalised (capture/clean_lang.py). Complete: Preámbulo + Partes I–XII + Artículos
+  1–76 + Anexos I–II. Spot-verified against the official PDF page images. One of six equally authentic
+  languages (Art. 76).'

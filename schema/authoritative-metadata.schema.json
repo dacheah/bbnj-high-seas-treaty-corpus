@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://provenance-corpus/schema/authoritative-metadata.schema.json",
+  "title": "Authoritative document metadata",
+  "description": "Provenance record for a single authoritative document version. See docs/design/01-provenance-schema.md. Every required field must be populated before a document enters the authoritative layer. Verification refinement (2026-07-02): optional 'verification' (object) and 'corrections' (array) fields record fidelity verification and documented text corrections; the text and its hashes remain the source of truth and Git preserves every prior state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "corpus_id",
+    "version_id",
+    "title",
+    "jurisdiction",
+    "document_type",
+    "official_citation",
+    "authentic_languages",
+    "source_url",
+    "source_publisher",
+    "source_is_official",
+    "retrieval_date",
+    "retrieved_by",
+    "original_format",
+    "original_filename",
+    "content_hash",
+    "original_sha256",
+    "language",
+    "authoritative_status",
+    "license",
+    "capture_history",
+    "provenance_note"
+  ],
+  "properties": {
+    "corpus_id": {
+      "type": "string",
+      "description": "Stable internal identifier, e.g. un/treaty/ost-1967"
+    },
+    "version_id": {
+      "type": "string",
+      "description": "Version identifier, usually a date, e.g. 1967-01-27"
+    },
+    "title": {
+      "type": "string",
+      "description": "Official title, verbatim"
+    },
+    "short_title": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "international/UN or ISO 3166-1 alpha-3"
+    },
+    "document_type": {
+      "type": "string",
+      "description": "Free-form document type for your domain (e.g. statute, regulation, directive, guidance, standard). Used to group instruments on the generated site."
+    },
+    "official_citation": {
+      "type": "string"
+    },
+    "authentic_languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "ISO 639 codes of all languages in which the instrument is authentic"
+    },
+    "adoption_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date or null (with reason in provenance_note)"
+    },
+    "entry_into_force_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "effective_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_publisher": {
+      "type": "string"
+    },
+    "source_is_official": {
+      "type": "boolean"
+    },
+    "retrieval_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "retrieved_by": {
+      "type": "string"
+    },
+    "original_format": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "html",
+        "docx",
+        "txt",
+        "other"
+      ]
+    },
+    "original_filename": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:"
+    },
+    "original_sha256": {
+      "type": "string",
+      "pattern": "^sha256:"
+    },
+    "text_sha256": {
+      "type": "string",
+      "pattern": "^sha256:",
+      "description": "Required when a text.txt exists"
+    },
+    "text_fidelity": {
+      "type": "string",
+      "enum": [
+        "verbatim_transcription",
+        "extracted_verified",
+        "extracted_unverified",
+        "ocr_unverified",
+        "not_applicable"
+      ],
+      "description": "Required when a text.txt exists"
+    },
+    "language": {
+      "type": "string",
+      "description": "ISO 639 code of the stored text.txt"
+    },
+    "authoritative_status": {
+      "type": "string",
+      "enum": [
+        "authentic_text",
+        "official_consolidation",
+        "certified_copy",
+        "authoritative_missing"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "description": "Terms governing the SOURCE text, e.g. UN-materials-terms, public-domain-gov"
+    },
+    "rights_note": {
+      "type": "string"
+    },
+    "capture_history": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Append-only list of retrieval events",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "source_url",
+          "original_sha256"
+        ],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "original_sha256": {
+            "type": "string",
+            "pattern": "^sha256:"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "superseded_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "related_documents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "verified_by": {
+          "type": "string"
+        },
+        "verified_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "date",
+          "change"
+        ],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "change": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "If authoritative_status is authoritative_missing there is no stored text, so text_sha256/text_fidelity are not required; otherwise they are.",
+      "if": {
+        "properties": {
+          "authoritative_status": {
+            "const": "authoritative_missing"
+          }
+        }
+      },
+      "then": {},
+      "else": {
+        "required": [
+          "text_sha256",
+          "text_fidelity",
+          "language"
+        ]
+      }
+    }
+  ]
+}

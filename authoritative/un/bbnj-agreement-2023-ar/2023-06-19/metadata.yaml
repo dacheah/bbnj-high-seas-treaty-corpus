@@ -1,0 +1,61 @@
+corpus_id: un/bbnj-agreement-2023-ar
+version_id: '2023-06-19'
+title: اتفاق مبرم في إطار اتفاقية الأمم المتحدة لقانون البحار بشأن حفظ التنوع البيولوجي البحري في المناطق
+  الواقعة خارج حدود الولاية الوطنية واستخدامه على نحو مستدام
+short_title: BBNJ Agreement (العربية)
+jurisdiction: international
+document_type: treaty
+official_citation: A/CONF.232/2023/4; UN Treaty Collection, Chapter XXI.10
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2023-06-19'
+entry_into_force_date: '2026-01-17'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Arabic.pdf
+source_publisher: United Nations — BBNJ Agreement website (OLA/DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-03'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:29526e136f73d4bc2f65e6759684faec1295b5f1cdccd45fe8c63ea7f31bad06
+original_sha256: sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb
+text_sha256: sha256:29526e136f73d4bc2f65e6759684faec1295b5f1cdccd45fe8c63ea7f31bad06
+text_fidelity: ocr_unverified
+language: ar
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations material; official UN document, freely reproducible with attribution, no warranty.
+capture_history:
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Arabic.pdf
+  original_sha256: sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb
+  note: Maintainer-supplied byte-exact official UN Arabic PDF.
+- date: '2026-07-04'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Arabic.pdf
+  original_sha256: sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb
+  note: OCR of the byte-exact PDF (EasyOCR ['ar'], pages rendered at 300 dpi via PyMuPDF) to recover machine-readable
+    text; see capture/render_ocr_ar.py + clean_ar.py.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic Arabic text recovered by OCR of the byte-exact official UN PDF (original.pdf),
+  because the PDF''s embedded fonts carry no usable Unicode map (pdftotext/PyMuPDF yield ~30% wrong glyphs
+  + RTL reordering). OCR via EasyOCR [''ar''] on 300-dpi PyMuPDF renders, assembled and normalised (capture/render_ocr_ar.py,
+  clean_ar.py). Complete coverage: title, الديباجة (preamble), المادة ١–٧٦ (Articles 1–76), المرفق الأول/الثاني
+  (Annexes I–II). text_fidelity=ocr_unverified: OCR carries residual errors (e.g. ف→9, الجزء→الجزع, stray
+  punctuation); the byte-exact PDF remains authoritative. One of six equally authentic languages (Art.
+  76).'
+verification:
+  status: ocr_spotchecked
+  method: 'OCR output spot-checked against the official PDF (title, الديباجة, Article 1 definitions, article
+    count). Structure: 76 article headers, 2 annexes.'
+  reference: capture/Text of the Agreement in Arabic.pdf (sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb)
+  verified_by: maintainer + Cowork
+  verified_date: '2026-07-04'
+  note: ocr_unverified — not a full verbatim audit; residual OCR errors expected.

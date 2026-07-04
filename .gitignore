@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+# OCR / audit page renders and temp images (large, regenerable from the PDFs)
+capture/pages/
+capture/pages_zh/
+capture/pages_ar/
+capture/_ar_page.png
+capture/*.png

@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {"name": "UN BBNJ — Text of the Agreement", "url": "https://www.un.org/bbnjagreement/en/bbnj-agreement/text-bbnj-agreement", "last_sha256": null, "note": "Authentic-language PDFs of the Agreement (6 UN languages)."},
+    {"name": "UN Treaty Collection — XXI.10 status", "url": "https://treaties.un.org/PAGES/ViewDetails.aspx?chapter=21&clang=_en&mtdsg_no=XXI-10", "last_sha256": null, "note": "Signatures, ratifications, declarations, depositary notifications."},
+    {"name": "UN BBNJ — GA resolutions and decisions", "url": "https://www.un.org/bbnjagreement/en/bbnj-agreement/general-assembly-resolutions-and-decisions", "last_sha256": null, "note": "UNGA res. 78/272 (PrepCom) and related."},
+    {"name": "UN BBNJ — Preparatory Commission (first session docs)", "url": "https://www.un.org/bbnjagreement/en/meetings/preparatory-commission/documents/first-session", "last_sha256": null, "note": "PrepCom working documents and reports."},
+    {"name": "UN BBNJ — Preparatory Commission (third session docs)", "url": "https://www.un.org/bbnjagreement/en/third-session-23-march-2-april-2026", "last_sha256": null, "note": "Live layer through COP1."},
+    {"name": "UN BBNJ — Notifications", "url": "https://www.un.org/bbnjagreement/en/notifications", "last_sha256": null, "note": "Information-sharing / clearing-house related notifications."}
+  ]
+}

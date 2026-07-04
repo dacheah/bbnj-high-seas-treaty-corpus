@@ -1,0 +1,47 @@
+corpus_id: un/bbnj-agreement-2023-ru
+version_id: '2023-06-19'
+title: Соглашение на базе Конвенции Организации Объединенных Наций по морскому праву о сохранении и устойчивом
+  использовании морского биологического разнообразия в районах за пределами действия национальной юрисдикции
+short_title: BBNJ Agreement (Русский)
+jurisdiction: international
+document_type: treaty
+official_citation: A/CONF.232/2023/4; UN Treaty Collection, Chapter XXI.10
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2023-06-19'
+entry_into_force_date: '2026-01-17'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Russian.pdf
+source_publisher: United Nations — BBNJ Agreement website (OLA/DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-03'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
+original_sha256: sha256:dcdc8b6b7a65590fb660ebf7892fba6662db2855db4e73ca106245bc29b0e0ce
+text_sha256: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
+text_fidelity: extracted_unverified
+language: ru
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations material; official UN document, freely reproducible with attribution, no warranty.
+capture_history:
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Russian.pdf
+  original_sha256: sha256:dcdc8b6b7a65590fb660ebf7892fba6662db2855db4e73ca106245bc29b0e0ce
+  note: Maintainer-supplied byte-exact official UN Russian PDF.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic Russian text from the byte-exact official UN PDF (original.pdf). The embedded
+  font maps Cyrillic and punctuation to non-Unicode code points; recovered via a deterministic decode
+  (Cyrillic offset +0x1D6 plus digit/punctuation/guillemet map) documented in capture/clean_lang.py, then
+  normalised. Title and a sample page spot-verified against the official PDF images; text_fidelity=extracted_unverified
+  pending a full verbatim audit (GAPS G-2b). Complete: Преамбула + Части I–XII + Статьи 1–76 + Приложения
+  I–II.'

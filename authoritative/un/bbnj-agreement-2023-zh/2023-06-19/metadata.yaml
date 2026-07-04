@@ -1,0 +1,61 @@
+corpus_id: un/bbnj-agreement-2023-zh
+version_id: '2023-06-19'
+title: Agreement under the United Nations Convention on the Law of the Sea on the conservation and sustainable
+  use of marine biological diversity of areas beyond national jurisdiction
+short_title: BBNJ Agreement (中文)
+jurisdiction: international
+document_type: treaty
+official_citation: A/CONF.232/2023/4; UN Treaty Collection, Chapter XXI.10
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2023-06-19'
+entry_into_force_date: '2026-01-17'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Chinese.pdf
+source_publisher: United Nations — BBNJ Agreement website (OLA/DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-03'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:630b9c59ada7fa4e9c7c254afa9b47653979f3204f57f7d8b2e89f5355793177
+original_sha256: sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9
+text_sha256: sha256:630b9c59ada7fa4e9c7c254afa9b47653979f3204f57f7d8b2e89f5355793177
+text_fidelity: ocr_unverified
+language: zh
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations material; official UN document, freely reproducible with attribution, no warranty.
+capture_history:
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Chinese.pdf
+  original_sha256: sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9
+  note: Maintainer-supplied byte-exact official UN Chinese PDF.
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20Chinese.pdf
+  original_sha256: sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9
+  note: OCR of the byte-exact PDF (rapidocr / PP-OCR, pages rendered at 200 dpi) to recover machine-readable
+    text; see capture/clean_zh.py.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic Chinese text recovered by OCR of the byte-exact official UN PDF (original.pdf),
+  because the PDF''s CID-keyed fonts carry no Unicode map (pdftotext/PyMuPDF yield mojibake). OCR via
+  rapidocr (PP-OCR) on 200-dpi page renders, assembled and normalised (capture/clean_zh.py). Complete
+  coverage: title, 序言 (preamble), 第一–十二部分 (Parts I–XII), 第一–七十六条 (Articles 1–76), 附件一/二 (Annexes I–II).
+  text_fidelity=ocr_unverified: OCR carries residual errors (e.g. 一/二 confusions and occasional line-order
+  glitches in dense definition lists); the byte-exact PDF remains authoritative. Full verbatim audit pending
+  (GAPS G-2c-audit). One of six equally authentic languages (Art. 76).'
+verification:
+  status: ocr_spotchecked
+  method: 'OCR output spot-checked against the official PDF page images (title, preamble, Part I / Article
+    1 area). Structure present: 12 parts, ~76 article headers, 2 annexes.'
+  reference: capture/Text of the Agreement in Chinese.pdf (sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-03'
+  note: ocr_unverified — not a full verbatim audit; residual OCR errors expected.

@@ -1,0 +1,47 @@
+corpus_id: un/bbnj-agreement-2023-fr
+version_id: '2023-06-19'
+title: Accord se rapportant à la Convention des Nations Unies sur le droit de la mer et portant sur la
+  conservation et l’utilisation durable de la diversité biologique marine des zones ne relevant pas de
+  la juridiction nationale
+short_title: BBNJ Agreement (Français)
+jurisdiction: international
+document_type: treaty
+official_citation: A/CONF.232/2023/4; UN Treaty Collection, Chapter XXI.10
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2023-06-19'
+entry_into_force_date: '2026-01-17'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20French.pdf
+source_publisher: United Nations — BBNJ Agreement website (OLA/DOALOS)
+source_is_official: true
+retrieval_date: '2026-07-03'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:7119d21faf86200ddb5967b79191b81845ac67794f8de707ec873f9470f066fc
+original_sha256: sha256:8d3a180172aa2be826f668d0573f10ebdc6abbd44f20ac05bb1fb4804a49db53
+text_sha256: sha256:7119d21faf86200ddb5967b79191b81845ac67794f8de707ec873f9470f066fc
+text_fidelity: extracted_unverified
+language: fr
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations material; official UN document, freely reproducible with attribution, no warranty.
+capture_history:
+- date: '2026-07-03'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2024-08/Text%20of%20the%20Agreement%20in%20French.pdf
+  original_sha256: sha256:8d3a180172aa2be826f668d0573f10ebdc6abbd44f20ac05bb1fb4804a49db53
+  note: Maintainer-supplied byte-exact official UN French PDF.
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic French text from the byte-exact official UN PDF (original.pdf). Body extracted
+  faithfully (pdftotext -raw); the PDF''s display font for the title and headings uses non-Unicode glyph
+  substitutions, so heading/title lines were repaired against the official French headings (capture/clean_lang.py).
+  text_fidelity=extracted_unverified pending a full title verbatim audit (GAPS G-2b). Complete: Préambule
+  + Parties I–XII + Articles 1–76 + Annexes I–II.'

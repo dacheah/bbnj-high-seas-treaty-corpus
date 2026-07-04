@@ -1,0 +1,12 @@
+{
+  "name": "BBNJ / High Seas Treaty Corpus",
+  "tagline": "A neutral, authoritative, machine-readable record of the law of marine biodiversity beyond national jurisdiction — built provenance-first. Every text carries its source, retrieval date, official citation, authentic languages, an authoritative-status flag and a content hash; every change is a new dated version. Source texts are official UN documents; structure and concept tags are derived, unofficial and clearly labelled.",
+  "groups": [
+    ["treaty", "Core instrument"],
+    ["implementing_agreement", "UNCLOS implementing agreements"],
+    ["convention", "Parent convention"],
+    ["prepcom_document", "Preparatory Commission"],
+    ["cop_decision", "Conference of the Parties"],
+    ["national_legislation", "National / regional implementing measures"]
+  ]
+}
