@@ -21,10 +21,10 @@ retrieval_date: '2026-07-04'
 retrieved_by: Cowork; maintainer-supplied byte-exact official UN PDF (ODS)
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:7f38e90f1137a0c1685a454b01714fc6ef49464aaabe5b9a35e36bc93d4aa035
+content_hash: sha256:68e4943575a6a29c243b9229a290f655a0f1d4de774bb3a1746b769f8b7811e5
 original_sha256: sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93
-text_sha256: sha256:7f38e90f1137a0c1685a454b01714fc6ef49464aaabe5b9a35e36bc93d4aa035
-text_fidelity: extracted_unverified
+text_sha256: sha256:68e4943575a6a29c243b9229a290f655a0f1d4de774bb3a1746b769f8b7811e5
+text_fidelity: extracted_verified
 language: en
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -34,6 +34,11 @@ capture_history:
   source_url: https://www.un.org/bbnjagreement/sites/default/files/2026-05/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf
   original_sha256: sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93
   note: Maintainer-supplied byte-exact official UN PDF (ODS / un.org).
+- date: '2026-07-04'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2026-05/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf
+  original_sha256: sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93
+  note: Re-cleaned (capture/prepcom/clean_report.py) to keep in-text document symbols and strip N/80 page
+    markers; one space-drop fixed.
 supersedes: null
 superseded_by: null
 related_documents:
@@ -43,3 +48,21 @@ provenance_note: Report of the Preparatory Commission adopted at its third sessi
   — the final edited/translated version will supersede this as a new dated version. Byte-exact official
   UN PDF; pdftotext -raw + normalisation. text_fidelity=extracted_unverified. The draft decisions it contains
   (A/AC.296/2026/*) are queued, not ingested, until COP1 adopts them.
+corrections:
+- date: '2026-07-04'
+  change: 'Re-clean fixes: (1) restored ~9 in-text document symbols (A/AC.296/.../CRP and INF entries)
+    that the first pass wrongly stripped as noise; (2) removed the residual ''N/80'' running page markers;
+    (3) fixed one inter-word space-drop (''India22''->''India 22'').'
+  reference: capture/prepcom/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf
+  note: 'Verified: word set now matches the pdftotext -raw extraction with only bibliographic noise removed
+    and no words added.'
+verification:
+  status: verified
+  method: Dual independent extractors (pdftotext -raw and PyMuPDF) agree on the PDF text layer (after
+    fixing one space-drop); the stored text adds no words versus the extraction and drops only true noise
+    (ADVANCE banner, date stamps, N/80 page markers, doc numbers). The in-text list of Commission documents
+    (A/AC.296/...) is preserved.
+  reference: advance-unedited PDF (sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-04'
+  note: Advance, unedited version — the final edited version will supersede this as a new dated version.
