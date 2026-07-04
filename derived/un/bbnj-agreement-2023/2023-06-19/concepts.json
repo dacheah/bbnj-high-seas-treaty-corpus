@@ -20,7 +20,7 @@
     "rights_interests_and_knowledge",
     "final_provisions"
   ],
-  "tagging_method": "rule_based",
+  "tagging_method": "curated",
   "document_concepts": [
     "area_based_management_tools",
     "benefit_sharing",
@@ -44,20 +44,13 @@
       "concepts": [
         "scope_and_definitions",
         "general_principles_and_approaches",
-        "marine_genetic_resources",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "rights_interests_and_knowledge"
       ]
     },
     {
       "unit": "Article 1",
       "concepts": [
-        "scope_and_definitions",
-        "marine_genetic_resources",
-        "area_based_management_tools",
-        "environmental_impact_assessment"
+        "scope_and_definitions"
       ]
     },
     {
@@ -81,302 +74,217 @@
     {
       "unit": "Article 5",
       "concepts": [
-        "relationship_with_other_instruments"
+        "relationship_with_other_instruments",
+        "scope_and_definitions"
       ]
     },
     {
       "unit": "Article 6",
       "concepts": [
-        "institutional_arrangements",
-        "dispute_settlement",
+        "scope_and_definitions",
         "rights_interests_and_knowledge"
       ]
     },
     {
       "unit": "Article 7",
       "concepts": [
-        "general_principles_and_approaches",
-        "benefit_sharing",
-        "rights_interests_and_knowledge"
+        "general_principles_and_approaches"
       ]
     },
     {
       "unit": "Article 8",
       "concepts": [
         "general_principles_and_approaches",
-        "marine_genetic_resources",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
         "relationship_with_other_instruments"
       ]
     },
     {
       "unit": "Article 9",
       "concepts": [
-        "general_principles_and_approaches",
         "marine_genetic_resources",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
-        "financial_resources_and_mechanism",
-        "rights_interests_and_knowledge"
+        "benefit_sharing"
       ]
     },
     {
       "unit": "Article 10",
       "concepts": [
         "marine_genetic_resources",
-        "final_provisions"
+        "scope_and_definitions"
       ]
     },
     {
       "unit": "Article 11",
       "concepts": [
-        "marine_genetic_resources",
-        "clearing_house_mechanism",
-        "rights_interests_and_knowledge"
+        "marine_genetic_resources"
       ]
     },
     {
       "unit": "Article 12",
       "concepts": [
         "marine_genetic_resources",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
-        "clearing_house_mechanism",
-        "financial_resources_and_mechanism",
-        "implementation_and_compliance"
+        "clearing_house_mechanism"
       ]
     },
     {
       "unit": "Article 13",
       "concepts": [
         "marine_genetic_resources",
-        "clearing_house_mechanism",
         "rights_interests_and_knowledge"
       ]
     },
     {
       "unit": "Article 14",
       "concepts": [
-        "general_principles_and_approaches",
-        "marine_genetic_resources",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
-        "financial_resources_and_mechanism",
-        "implementation_and_compliance",
-        "final_provisions"
+        "benefit_sharing"
       ]
     },
     {
       "unit": "Article 15",
       "concepts": [
-        "general_principles_and_approaches",
-        "marine_genetic_resources",
         "benefit_sharing",
-        "institutional_arrangements",
-        "clearing_house_mechanism",
-        "financial_resources_and_mechanism",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 16",
       "concepts": [
-        "marine_genetic_resources",
         "benefit_sharing",
-        "area_based_management_tools",
-        "institutional_arrangements",
-        "clearing_house_mechanism"
+        "marine_genetic_resources"
       ]
     },
     {
       "unit": "Article 17",
       "concepts": [
-        "general_principles_and_approaches",
-        "area_based_management_tools",
-        "capacity_building_and_technology_transfer",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "area_based_management_tools"
       ]
     },
     {
       "unit": "Article 18",
       "concepts": [
         "area_based_management_tools",
-        "institutional_arrangements",
-        "dispute_settlement",
         "rights_interests_and_knowledge"
       ]
     },
     {
       "unit": "Article 19",
       "concepts": [
-        "general_principles_and_approaches",
-        "area_based_management_tools",
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "area_based_management_tools"
       ]
     },
     {
       "unit": "Article 20",
       "concepts": [
+        "area_based_management_tools",
         "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 21",
       "concepts": [
-        "institutional_arrangements",
-        "financial_resources_and_mechanism",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "area_based_management_tools"
       ]
     },
     {
       "unit": "Article 22",
       "concepts": [
-        "area_based_management_tools",
-        "institutional_arrangements",
-        "financial_resources_and_mechanism",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "area_based_management_tools"
       ]
     },
     {
       "unit": "Article 23",
       "concepts": [
-        "general_principles_and_approaches",
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "final_provisions"
+        "area_based_management_tools",
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 24",
       "concepts": [
-        "general_principles_and_approaches",
-        "area_based_management_tools",
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "area_based_management_tools"
       ]
     },
     {
       "unit": "Article 25",
       "concepts": [
         "area_based_management_tools",
-        "institutional_arrangements",
-        "relationship_with_other_instruments"
+        "implementation_and_compliance"
       ]
     },
     {
       "unit": "Article 26",
       "concepts": [
-        "general_principles_and_approaches",
         "area_based_management_tools",
-        "environmental_impact_assessment",
-        "institutional_arrangements",
-        "implementation_and_compliance",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "implementation_and_compliance"
       ]
     },
     {
       "unit": "Article 27",
       "concepts": [
-        "environmental_impact_assessment",
-        "capacity_building_and_technology_transfer",
-        "rights_interests_and_knowledge"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 28",
       "concepts": [
-        "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 29",
       "concepts": [
         "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism",
         "relationship_with_other_instruments"
       ]
     },
     {
       "unit": "Article 30",
       "concepts": [
-        "general_principles_and_approaches",
         "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 31",
       "concepts": [
-        "general_principles_and_approaches",
-        "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism",
-        "rights_interests_and_knowledge"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 32",
       "concepts": [
         "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "clearing_house_mechanism"
       ]
     },
     {
       "unit": "Article 33",
       "concepts": [
-        "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 34",
       "concepts": [
         "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 35",
       "concepts": [
-        "general_principles_and_approaches",
-        "rights_interests_and_knowledge"
+        "environmental_impact_assessment",
+        "implementation_and_compliance"
       ]
     },
     {
       "unit": "Article 36",
       "concepts": [
-        "institutional_arrangements",
-        "clearing_house_mechanism"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 37",
       "concepts": [
-        "general_principles_and_approaches",
-        "environmental_impact_assessment",
-        "institutional_arrangements",
-        "clearing_house_mechanism",
-        "rights_interests_and_knowledge"
+        "environmental_impact_assessment"
       ]
     },
     {
@@ -389,132 +297,88 @@
     {
       "unit": "Article 39",
       "concepts": [
-        "environmental_impact_assessment",
-        "capacity_building_and_technology_transfer",
-        "institutional_arrangements"
+        "environmental_impact_assessment"
       ]
     },
     {
       "unit": "Article 40",
       "concepts": [
-        "general_principles_and_approaches",
-        "marine_genetic_resources",
-        "benefit_sharing",
-        "area_based_management_tools",
-        "environmental_impact_assessment",
-        "capacity_building_and_technology_transfer",
-        "rights_interests_and_knowledge"
+        "capacity_building_and_technology_transfer"
       ]
     },
     {
       "unit": "Article 41",
       "concepts": [
-        "capacity_building_and_technology_transfer",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "capacity_building_and_technology_transfer"
       ]
     },
     {
       "unit": "Article 42",
       "concepts": [
-        "capacity_building_and_technology_transfer",
-        "clearing_house_mechanism",
-        "relationship_with_other_instruments"
+        "capacity_building_and_technology_transfer"
       ]
     },
     {
       "unit": "Article 43",
       "concepts": [
-        "general_principles_and_approaches",
         "capacity_building_and_technology_transfer"
       ]
     },
     {
       "unit": "Article 44",
       "concepts": [
-        "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
-        "rights_interests_and_knowledge"
+        "capacity_building_and_technology_transfer"
       ]
     },
     {
       "unit": "Article 45",
       "concepts": [
         "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
-        "financial_resources_and_mechanism"
+        "implementation_and_compliance"
       ]
     },
     {
       "unit": "Article 46",
       "concepts": [
-        "general_principles_and_approaches",
         "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
-        "rights_interests_and_knowledge"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 47",
       "concepts": [
-        "institutional_arrangements",
-        "financial_resources_and_mechanism",
-        "dispute_settlement",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 48",
       "concepts": [
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 49",
       "concepts": [
-        "general_principles_and_approaches",
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 50",
       "concepts": [
-        "institutional_arrangements",
-        "relationship_with_other_instruments",
-        "final_provisions"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 51",
       "concepts": [
-        "marine_genetic_resources",
-        "area_based_management_tools",
-        "environmental_impact_assessment",
-        "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
         "clearing_house_mechanism",
-        "financial_resources_and_mechanism",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge"
+        "institutional_arrangements"
       ]
     },
     {
       "unit": "Article 52",
       "concepts": [
-        "scope_and_definitions",
-        "general_principles_and_approaches",
-        "benefit_sharing",
-        "capacity_building_and_technology_transfer",
-        "institutional_arrangements",
-        "financial_resources_and_mechanism",
-        "implementation_and_compliance",
-        "rights_interests_and_knowledge"
+        "financial_resources_and_mechanism"
       ]
     },
     {
@@ -526,18 +390,14 @@
     {
       "unit": "Article 54",
       "concepts": [
-        "institutional_arrangements",
         "implementation_and_compliance"
       ]
     },
     {
       "unit": "Article 55",
       "concepts": [
-        "general_principles_and_approaches",
-        "institutional_arrangements",
         "implementation_and_compliance",
-        "dispute_settlement",
-        "relationship_with_other_instruments"
+        "institutional_arrangements"
       ]
     },
     {
@@ -568,9 +428,7 @@
       "unit": "Article 60",
       "concepts": [
         "dispute_settlement",
-        "relationship_with_other_instruments",
-        "rights_interests_and_knowledge",
-        "final_provisions"
+        "relationship_with_other_instruments"
       ]
     },
     {
@@ -580,9 +438,23 @@
       ]
     },
     {
+      "unit": "Article 62",
+      "concepts": [
+        "relationship_with_other_instruments"
+      ]
+    },
+    {
+      "unit": "Article 63",
+      "concepts": [
+        "general_principles_and_approaches",
+        "rights_interests_and_knowledge"
+      ]
+    },
+    {
       "unit": "Article 64",
       "concepts": [
-        "final_provisions"
+        "final_provisions",
+        "institutional_arrangements"
       ]
     },
     {
@@ -618,14 +490,18 @@
     {
       "unit": "Article 70",
       "concepts": [
-        "scope_and_definitions",
+        "final_provisions"
+      ]
+    },
+    {
+      "unit": "Article 71",
+      "concepts": [
         "final_provisions"
       ]
     },
     {
       "unit": "Article 72",
       "concepts": [
-        "institutional_arrangements",
         "final_provisions"
       ]
     },
@@ -638,7 +514,6 @@
     {
       "unit": "Article 74",
       "concepts": [
-        "institutional_arrangements",
         "final_provisions"
       ]
     },
@@ -655,13 +530,15 @@
       ]
     },
     {
+      "unit": "ANNEX I",
+      "concepts": [
+        "area_based_management_tools"
+      ]
+    },
+    {
       "unit": "ANNEX II",
       "concepts": [
-        "marine_genetic_resources",
-        "area_based_management_tools",
-        "environmental_impact_assessment",
-        "capacity_building_and_technology_transfer",
-        "rights_interests_and_knowledge"
+        "capacity_building_and_technology_transfer"
       ]
     }
   ]

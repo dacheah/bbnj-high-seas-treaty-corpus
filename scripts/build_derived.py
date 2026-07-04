@@ -110,7 +110,7 @@ for root, _, files in os.walk(AUTH):
        "confidence_note": f"Deterministic parse into {len(units)} {utype} unit(s).", "disclaimer": DISCLAIMER},
       {"derived_id": f"{cid}/{ver}/concepts", "derived_type": "concept_tags", "artifact_file": "concepts.json",
        "source_corpus_id": cid, "source_version_id": ver, "source_text_sha256": src_hash,
-       "generation_method": method, "generator": gen, "generation_date": TODAY,
+       "generation_method": ("model" if method == "curated" else method), "generator": gen, "generation_date": TODAY,
        "review_status": "unreviewed", "reviewed_by": None, "license": "CC-BY-4.0",
        "confidence_note": cnote, "disclaimer": DISCLAIMER},
     ]
