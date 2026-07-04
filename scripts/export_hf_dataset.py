@@ -86,10 +86,10 @@ def card(docs, provs, repo_id):
     today = datetime.date.today().isoformat()
     fm = []
     fm.append("---")
-    fm.append("pretty_name: MY CORPUS")
+    fm.append("pretty_name: BBNJ / High Seas Treaty Corpus")
     fm.append("license: other")
     fm.append("license_name: mixed-provenance")
-    fm.append("license_link: https://github.com/OWNER/REPO/blob/main/docs/design/04-licensing-policy.md")
+    fm.append("license_link: https://github.com/dacheah/bbnj-high-seas-treaty-corpus/blob/main/docs/design/04-licensing-policy.md")
     fm.append("language:")
     for l in langs: fm.append("- " + l)
     fm.append("tags:")
@@ -116,14 +116,16 @@ def card(docs, provs, repo_id):
                    + " | " + str(d.get("adoption_date") or "") + " | `" + str(d.get("text_fidelity")) + "` |")
 
     b = []
-    b.append("# MY CORPUS")
+    b.append("# BBNJ / High Seas Treaty Corpus")
     b.append("")
-    b.append("A neutral, **provenance-first**, machine-readable record of international and national space law. "
-             "Every record carries its official source, retrieval date, citation, language, an authoritative-status "
-             "flag, and a SHA-256 content hash; texts are verified against official sources.")
+    b.append("A neutral, **provenance-first**, machine-readable record of the **2023 BBNJ Agreement** (the "
+             "\"High Seas Treaty\", in force 17 January 2026) in **all six authentic UN languages**, and its "
+             "implementing framework. Every record carries its official source, retrieval date, citation, authentic "
+             "language, an authoritative-status flag, a SHA-256 content hash, and an honest per-language fidelity flag "
+             "(`extracted_verified` \u2192 `extracted_unverified` \u2192 `ocr_unverified`).")
     b.append("")
-    b.append("- **Source of truth / build history:** https://github.com/OWNER/REPO")
-    b.append("- **Human-browsable site:** https://OWNER.github.io/REPO/")
+    b.append("- **Source of truth / build history:** https://github.com/dacheah/bbnj-high-seas-treaty-corpus")
+    b.append("- **Human-browsable site:** https://dacheah.github.io/bbnj-high-seas-treaty-corpus/ (enable GitHub Pages)")
     b.append("- **" + str(len(docs)) + "** instruments (" + str(verified) + " verified against official sources) · **"
              + str(len(provs)) + "** provisions · **" + str(n_tags) + "** neutral concept tags")
     b.append("")
@@ -159,7 +161,7 @@ def card(docs, provs, repo_id):
     b.append("**Mixed, and recorded per record.** The compilation, structure, and concept tags (the derived layer) "
              "are **CC BY 4.0**. **Source texts are not relicensed** — each keeps its own terms (e.g. UN-materials "
              "terms; public-domain government works), recorded in every row's `license` / `rights_note`. See the "
-             "[licensing policy](https://github.com/OWNER/REPO/blob/main/docs/design/04-licensing-policy.md).")
+             "[licensing policy](https://github.com/dacheah/bbnj-high-seas-treaty-corpus/blob/main/docs/design/04-licensing-policy.md).")
     b.append("")
     b.append("## Disclaimer")
     b.append("")
@@ -171,7 +173,7 @@ def card(docs, provs, repo_id):
     b.append("## Citation")
     b.append("")
     b.append("```")
-    b.append("MY CORPUS (AUTHOR NAME). https://github.com/OWNER/REPO")
+    b.append("BBNJ / High Seas Treaty Corpus (Dan Cheah, @dacheah). https://github.com/dacheah/bbnj-high-seas-treaty-corpus")
     b.append("```")
     b.append("")
     b.append("_Dataset generated from the repository by `scripts/export_hf_dataset.py` on " + today + " — do not edit by hand._")
@@ -180,7 +182,7 @@ def card(docs, provs, repo_id):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(REPO, "hf-dataset"))
-    ap.add_argument("--repo-id", default="OWNER/REPO")
+    ap.add_argument("--repo-id", default="dacheah/bbnj-high-seas-treaty-corpus")
     ap.add_argument("--push", metavar="REPO_ID", help="upload to this HF dataset repo (needs huggingface_hub + login)")
     args = ap.parse_args()
 
@@ -195,7 +197,9 @@ def main():
 
     if args.push:
         from huggingface_hub import HfApi
-        HfApi().upload_folder(folder_path=args.out, repo_id=args.push, repo_type="dataset")
+        api = HfApi()
+        api.create_repo(repo_id=args.push, repo_type="dataset", exist_ok=True)  # no-op if it exists
+        api.upload_folder(folder_path=args.out, repo_id=args.push, repo_type="dataset")
         print("Pushed to https://huggingface.co/datasets/%s" % args.push)
 
 if __name__ == "__main__":
