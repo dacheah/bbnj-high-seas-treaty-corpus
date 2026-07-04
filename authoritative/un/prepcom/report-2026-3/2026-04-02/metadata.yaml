@@ -1,0 +1,45 @@
+corpus_id: un/prepcom/report-2026-3
+version_id: '2026-04-02'
+title: Report of the Preparatory Commission for the Entry into Force of the BBNJ Agreement and the Convening
+  of the First Meeting of the Conference of the Parties — Third session (23 March – 2 April 2026)
+short_title: PrepCom Report (3rd session, 2026)
+jurisdiction: international
+document_type: prepcom_document
+official_citation: Report of the Preparatory Commission, third session (advance, unedited, 4 May 2026)
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2026-04-02'
+source_url: https://www.un.org/bbnjagreement/sites/default/files/2026-05/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf
+source_publisher: United Nations General Assembly (UN Official Document System)
+source_is_official: true
+retrieval_date: '2026-07-04'
+retrieved_by: Cowork; maintainer-supplied byte-exact official UN PDF (ODS)
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:7f38e90f1137a0c1685a454b01714fc6ef49464aaabe5b9a35e36bc93d4aa035
+original_sha256: sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93
+text_sha256: sha256:7f38e90f1137a0c1685a454b01714fc6ef49464aaabe5b9a35e36bc93d4aa035
+text_fidelity: extracted_unverified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-07-04'
+  source_url: https://www.un.org/bbnjagreement/sites/default/files/2026-05/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf
+  original_sha256: sha256:3e2a4743e818ae9f55c2368f32454805e34940c1813824e098826478ff82fc93
+  note: Maintainer-supplied byte-exact official UN PDF (ODS / un.org).
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: Report of the Preparatory Commission adopted at its third session on 2 April 2026, forwarding
+  recommendations and draft decisions to COP1 (11–22 January 2027). ADVANCE, UNEDITED VERSION (4 May 2026)
+  — the final edited/translated version will supersede this as a new dated version. Byte-exact official
+  UN PDF; pdftotext -raw + normalisation. text_fidelity=extracted_unverified. The draft decisions it contains
+  (A/AC.296/2026/*) are queued, not ingested, until COP1 adopts them.

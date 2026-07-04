@@ -32,6 +32,11 @@ GAPS.md          the gap register — recorded, not hidden
     fonts (fr headings repaired; ru decoded) and spot-verified (full audit = GAPS G-2b).
   - **Chinese** (`ocr_unverified`) — recovered by OCR (rapidocr/PP-OCR) of the byte-exact PDF; complete.
   - **Arabic** (`ocr_unverified`) — recovered by OCR (PyMuPDF render + EasyOCR) of the byte-exact PDF; complete.
+- **The founding instruments & implementation layer (G-4):** the five General Assembly
+  resolutions/decision that govern the BBNJ process (A/RES/77/321, 78/272 — which establishes the
+  Preparatory Commission — 79/271, 80/107; decision 78/560) and the **adopted PrepCom Report**
+  (3rd session, 2026, advance-unedited). English, `extracted_unverified`, byte-exact PDFs. COP1
+  (Jan 2027) decisions are pending — tracked by a scheduled watch.
 - **Derived layer:** deterministic structure parse (79 units: preamble + 76 articles + 2 annexes)
   + keyword concept tags across 15 neutral concepts (unreviewed).
 

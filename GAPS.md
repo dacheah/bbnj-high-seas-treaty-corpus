@@ -57,13 +57,18 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
 - BBNJ-relevant UNCLOS provisions (esp. Part XV, Arts 287/298) and the two prior implementing agreements
   are in scope (doc 05) and queued.
 
-## G-4 — PrepCom / COP1 outputs *(mapped 2026-07-04; ingest awaits byte-exact PDFs)*
-- **Mapped.** Full inventory in `docs/source-coverage.md` (G-4 section): the adopted PrepCom Report,
-  five GA resolutions/decisions (A/RES/77/321, 78/272, 79/271, 80/107; dec. 78/560), the A/AC.296/2026
-  draft decisions, host-country offers, and the CHM draft study.
-- **Blocked on capture, not sourcing.** un.org PDFs truncate via the fetch tool and GA resolutions are
-  binary PDFs in the UN ODS system — so the finalized instruments need byte-exact download
-  (`capture/prepcom/EXPECTED-PDFS.md`), then ingest as their own records (document_type `resolution`
-  / `prepcom_document`). Drafts stay in `queue/candidates.md` until adopted.
-- **Live layer:** COP1 (11–22 January 2027) will produce the first binding COP decisions. A scheduled
-  monthly watch + `monitoring/sources.json` track it; ingest as adopted.
+## G-4 — PrepCom / COP1 outputs *(PrepCom layer ingested 2026-07-04; COP1 pending)*
+- **Ingested (6 new records, English, `extracted_unverified` — byte-exact PDFs):** the adopted
+  **Report of the Preparatory Commission** (3rd session, advance-unedited) and the five GA
+  resolutions/decision that govern the process — A/RES/77/321, **78/272** (establishes the PrepCom),
+  79/271, 80/107, and decision 78/560 (A/78/L.102). Document types `resolution` / `decision` /
+  `prepcom_document`.
+- **Queued (drafts, NOT law yet):** A/AC.296/2026/1–8 aids/draft decisions, host-country secretariat
+  offers, and the CHM draft study — see `queue/candidates.md`; ingest the COP1-**adopted** versions.
+- **Live layer — still pending:** COP1 (11–22 January 2027) will produce the first binding COP
+  decisions. The monthly scheduled watch (`bbnj-cop1-watch`) + `monitoring/sources.json` track it;
+  the final **edited** PrepCom Report (with an official symbol, in six languages) will supersede the
+  advance-unedited version as a new dated version.
+- **Residual:** the 6 new records are `extracted_unverified` (clean digital PDFs, spot-checked) and
+  English-only for now — a verbatim audit and the other five UN languages are low-priority follow-ups.
+

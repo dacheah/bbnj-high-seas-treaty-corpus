@@ -1,0 +1,45 @@
+corpus_id: un/ga-resolution/A-RES-80-107
+version_id: '2025-12-09'
+title: 'General Assembly resolution 80/107: Agreement under the United Nations Convention on the Law of
+  the Sea on the conservation and sustainable use of marine biological diversity of areas beyond national
+  jurisdiction'
+short_title: GA Res. 80/107
+jurisdiction: international
+document_type: resolution
+official_citation: A/RES/80/107
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2025-12-09'
+source_url: https://docs.un.org/en/A/RES/80/107
+source_publisher: United Nations General Assembly (UN Official Document System)
+source_is_official: true
+retrieval_date: '2026-07-04'
+retrieved_by: Cowork; maintainer-supplied byte-exact official UN PDF (ODS)
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:b720bc9186cb73478336c3b5a4a05f44be5fe25f785443b1734b6e1922a19699
+original_sha256: sha256:9f753eb61047fc8cbdfc9c53601a422de3bbd88fa2418c04f85e26d8f3727074
+text_sha256: sha256:b720bc9186cb73478336c3b5a4a05f44be5fe25f785443b1734b6e1922a19699
+text_fidelity: extracted_unverified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-07-04'
+  source_url: https://docs.un.org/en/A/RES/80/107
+  original_sha256: sha256:9f753eb61047fc8cbdfc9c53601a422de3bbd88fa2418c04f85e26d8f3727074
+  note: Maintainer-supplied byte-exact official UN PDF (ODS / un.org).
+supersedes: null
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+provenance_note: 'Authentic English text of General Assembly resolution 80/107, extracted from the byte-exact
+  official UN PDF (original.pdf; UN Official Document System) via pdftotext -raw and normalised (capture/prepcom/clean_un.py:
+  page-header/footer + barcode removal). Authentic in the six UN languages; English ingested. text_fidelity=extracted_unverified
+  pending a verbatim audit.'
