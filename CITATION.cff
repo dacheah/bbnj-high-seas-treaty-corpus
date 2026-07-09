@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this corpus, please cite it as below."
+title: "BBNJ / High Seas Treaty Corpus"
+abstract: "A neutral, provenance-first, machine-readable corpus of the 2023 BBNJ Agreement (the High Seas Treaty) and its UNCLOS framework, with per-text official source, retrieval date, citation, and SHA-256 content hash."
+type: dataset
+authors:
+  - family-names: Cheah
+    given-names: Daniel
+license: CC-BY-4.0
+repository-code: "https://github.com/dacheah/bbnj-high-seas-treaty-corpus"
+keywords:
+  - law of the sea
+  - UNCLOS
+  - BBNJ
+  - high seas treaty
+  - provenance
+  - machine-readable law
+  - open data
