@@ -1,5 +1,7 @@
 # BBNJ / High Seas Treaty Corpus
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21279773.svg)](https://doi.org/10.5281/zenodo.21279773)
+
 A neutral, authoritative, machine-readable record of the law governing the **conservation and
 sustainable use of marine biological diversity of areas beyond national jurisdiction** — the
 2023 **BBNJ Agreement** (the "High Seas Treaty"), which **entered into force on 17 January 2026**,
