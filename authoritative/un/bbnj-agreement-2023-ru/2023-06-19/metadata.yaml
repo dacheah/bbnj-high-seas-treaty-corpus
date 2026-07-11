@@ -22,10 +22,10 @@ retrieval_date: '2026-07-03'
 retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
+content_hash: sha256:9585aa369c0b3dd2511a09cd34a9b1fcf18c314462cd51ae2144a5aa08926f74
 original_sha256: sha256:dcdc8b6b7a65590fb660ebf7892fba6662db2855db4e73ca106245bc29b0e0ce
-text_sha256: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
-text_fidelity: extracted_unverified
+text_sha256: sha256:9585aa369c0b3dd2511a09cd34a9b1fcf18c314462cd51ae2144a5aa08926f74
+text_fidelity: extracted_verified
 language: ru
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -41,7 +41,35 @@ related_documents:
 - un/bbnj-agreement-2023
 provenance_note: 'Authentic Russian text from the byte-exact official UN PDF (original.pdf). The embedded
   font maps Cyrillic and punctuation to non-Unicode code points; recovered via a deterministic decode
-  (Cyrillic offset +0x1D6 plus digit/punctuation/guillemet map) documented in capture/clean_lang.py, then
-  normalised. Title and a sample page spot-verified against the official PDF images; text_fidelity=extracted_unverified
-  pending a full verbatim audit (GAPS G-2b). Complete: Преамбула + Части I–XII + Статьи 1–76 + Приложения
-  I–II.'
+  (Cyrillic offset +0x1D6 plus a digit/punctuation/guillemet map) implemented in scripts/pipelines.py
+  (clean_lang "ru"), then normalised. Verified 2026-07-11 (see verification): a full-text substitution-residue
+  scan is clean, the structure is complete, and rendered official-PDF pages were visually confirmed; two
+  residual italic-font runs and the leaked page-number footers were repaired at the reproducible pipeline
+  source (see corrections). Complete: Preamble (PREAMBLE) + Parts I-XII + Articles 1-76 + Annexes I-II.'
+verification:
+  status: verified
+  method: 'Deterministic-decode verification (2026-07-11); both PDF extractors emit the same non-Unicode
+    font codes, so no independent second extractor is possible. (1) Full-text scan for display-font
+    substitution residue: zero unexpected characters and zero non-legit Latin tokens remain. (2) Completeness:
+    Articles 1-76 present with no gaps, 12 Parts, both Annexes I-II, canonical Russian legal phrasing coherent.
+    (3) Visual confirmation against rendered official-PDF pages (title p.1; Art. 13 with the defined identifier
+    "BBNJ" p.13; Arts 75-76 authenticity clause p.71). The +0x1D6 offset is a global deterministic map, so
+    per-location error is not a failure mode once the residue scan is clean.'
+  reference: original.pdf (sha256:dcdc8b6b7a65590fb660ebf7892fba6662db2855db4e73ca106245bc29b0e0ce)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-11'
+  note: No independent OCR oracle for Cyrillic in this environment; verification rests on decode determinism,
+    an exhaustive residue scan, and page-image visual checks. Reproducible byte-exact via scripts/pipelines.py.
+corrections:
+- date: '2026-07-11'
+  change: 'Repaired two italic-font runs the +0x1D6 decode could not reach (Latin-shift italics): the defined
+    term "Sbor in situ" (had decoded to "LQ VLWX", x3) and the identifier "BBNJ" in curly double quotes (the
+    quote glyphs had decoded to superscript-3 and acute, x7). Both confirmed against the official PDF pages.'
+  reference: original.pdf
+  note: Applied deterministically in scripts/pipelines.py (_RU_FIXES); text re-derived and re-hashed.
+- date: '2026-07-11'
+  change: 'Removed 75 inline page-number footers: the form-feed byte (0x0c) had been mapped to an opening
+    parenthesis rather than a line break, so each page number survived reflow. It is now mapped to a newline
+    and dropped by the existing page-number remover; no such pattern occurs in the body, so removal is lossless.'
+  reference: original.pdf
+  note: Closes the Russian portion of GAPS.md G-2b; text_fidelity upgraded extracted_unverified -> extracted_verified.

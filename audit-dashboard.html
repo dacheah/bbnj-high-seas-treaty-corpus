@@ -77,21 +77,21 @@
 const DATA = {
   title: "BBNJ / High Seas Treaty Corpus — Audit",
   version: "working build",
-  asOf: "4 Jul 2026",
+  asOf: "11 Jul 2026",
   allGreen: false,
-  bannerNote: "Validation and reproducibility gates pass — all 13 text-layer records re-derive byte-exact from their originals — and 11 of 15 texts are fidelity-verified. French/Russian and Chinese/Arabic fidelity remain open, tracked in GAPS.md.",
+  bannerNote: "Validation and reproducibility gates pass — all 13 text-layer records re-derive byte-exact from their originals — and 13 of 15 texts are now fidelity-verified. French & Russian were verified on 11 Jul 2026 (Russian after repairing two italic-font runs and its leaked page markers); Chinese & Arabic remain OCR, with completeness verified. Tracked in GAPS.md.",
   kpis: [
     {v:"15",     l:"Authoritative instruments", n:"UNCLOS + BBNJ framework"},
-    {v:"11 / 15",l:"Fidelity verified",         n:"of 15 text-bearing records", status:"good"},
+    {v:"13 / 15",l:"Fidelity verified",         n:"of 15 text-bearing records", status:"good"},
     {v:"13 / 13", l:"Byte-exact re-derivation",   n:"text-layer records (extract.py)", status:"good"},
     {v:"900",    l:"Structured provisions",      n:"derived layer"},
     {chip:"PASS", chipKind:"good", l:"Validation gate", n:"schema · hashes · two-layer wall"},
     {chip:"REPRODUCIBLE", chipKind:"good", l:"Derived layer", n:"byte-identical rebuild"}
   ],
   verification: {
-    fidelity: {ratio:"11 / 15", note:"Verified with byte-exact official PDFs by reconciling two independent extractors (pdftotext -raw + PyMuPDF) word-for-word, plus rendered-page spot-checks; the English text passed a full verbatim audit. The four unverified are honestly flagged, not failures: French & Russian (recovered from non-Unicode display fonts) and Chinese & Arabic (OCR)."},
+    fidelity: {ratio:"13 / 15", note:"Verified against byte-exact official PDFs. Text-layer records reconcile two independent extractors (pdftotext -raw + PyMuPDF) word-for-word plus rendered-page spot-checks. French & Russian use a non-Unicode display/decoded font (no independent second extractor), so on 11 Jul 2026 they were verified by a full-text substitution-residue scan + completeness + page-image checks — Russian after repairing two italic-font runs and 75 leaked page markers at the reproducible source. The two still-unverified are OCR and honestly flagged: Chinese & Arabic, whose completeness is verified but whose per-character accuracy is not (no independent second OCR engine offline)."},
     reproduction: {ratio:"13 / 13", note:"scripts/extract.py re-derives each text from its stored original.pdf by committed code (pipelines.py) and checks the SHA-256; all 13 text-layer records reproduce byte-exact — now a CI gate. The two OCR records (Chinese, Arabic) use a separate render+OCR pipeline and sit outside this text-layer gate."},
-    reproductionNote: "No byte-exact extraction pipeline (an extract.py) re-derives the stored text from its original PDF by committed code — texts were captured via documented per-document cleaners and OCR. The corpus does verify integrity (every stored file matches its recorded SHA-256) and reproduces its derived layer byte-identically; a reproducible extraction pipeline is a tracked enhancement."
+    reproductionNote: ""
   },
   provenance: [
     ["Validation gate (schema · hashes · wall)", "PASS ✓", "good"],
@@ -133,11 +133,12 @@ const DATA = {
     {t:"PrepCom Report re-cleaned + verified", d:"restored dropped document symbols, stripped page markers, fixed one space-drop."},
     {t:"Curated concept layer + BBNJ↔UNCLOS crosswalk", d:"flagship tagged at provision level; the treaty's cross-references resolved to UNCLOS."},
     {t:"Published + self-maintaining", d:"GitHub (CI integrity gate), Hugging Face dataset, Pages site, monthly COP1 watch."},
-    {t:"Reproducibility established", d:"extract.py + pipelines.py re-derive all 13 text-layer texts byte-exact from their originals; wired into CI."}
+    {t:"Reproducibility established", d:"extract.py + pipelines.py re-derive all 13 text-layer texts byte-exact from their originals; wired into CI."},
+    {t:"French & Russian fidelity verified (11 Jul 2026)", d:"full-text residue scan + completeness + page-image checks; Russian: repaired two italic-font runs (the in-situ defined term and the BBNJ identifier) and 75 leaked page markers at the reproducible source, re-derived and re-hashed — extract.py still 13/13. Both upgraded to extracted_verified."},
+    {t:"Chinese & Arabic completeness verified (11 Jul 2026)", d:"all parts/articles/annexes present, plus page-image spot-checks; still ocr_unverified (no independent second OCR engine offline). A concrete Arabic OCR defect is recorded in the record."}
   ],
   open: [
-    {t:"[gap] French & Russian texts unverified", d:"extracted_unverified — recovered from non-Unicode fonts; need a per-language audit against page images."},
-    {t:"[gap] Chinese & Arabic texts are OCR", d:"ocr_unverified — need visual line-by-line verification against the PDFs."},
+    {t:"[gap] Chinese & Arabic texts are OCR", d:"ocr_unverified — completeness verified 11 Jul 2026, but per-character accuracy is not; a full verbatim upgrade needs a second independent OCR engine (none offline) or a human proofread."},
     {t:"[enhancement] Concept tagging curated on flagship only", d:"extend curation to other instruments / a UNCLOS-appropriate vocabulary."},
     {t:"[pending] COP1 decisions (Jan 2027) + non-English secondary instruments", d:"tracked by the monthly source watch; ingest as adopted."},
     {t:"[enhancement] Source monitor not yet baselined", d:"configured (6 sources, monthly Action); first run pending."}

@@ -52,10 +52,18 @@ provenance_note: 'Authentic Arabic text recovered by OCR of the byte-exact offic
   punctuation); the byte-exact PDF remains authoritative. One of six equally authentic languages (Art.
   76).'
 verification:
-  status: ocr_spotchecked
-  method: 'OCR output spot-checked against the official PDF (title, الديباجة, Article 1 definitions, article
-    count). Structure: 76 article headers, 2 annexes.'
+  status: completeness_verified
+  method: 'Extends the 2026-07-04 spot-check with a full completeness pass (2026-07-11). Completeness verified
+    from the stored text: preamble (الديباجة), 76 article-heading lines (المادة 1 .. المادة 76), both Annexes
+    (المرفق الأول / المرفق الثاني), and the authenticity clause; a rendered title page and a body page (UN p.8:
+    Art. 8, Part II heading, Art. 9) were read directly and confirm the source. Residual OCR defects were found
+    and are recorded rather than hidden - e.g. the Article 4 heading lost its numeral and split a word (stored
+    "المادة الاستثناء ات" vs source "المادة 4 الاستثناءات"), plus RTL list-marker and punctuation artifacts.
+    Full verbatim accuracy is NOT established: the text is OCR (EasyOCR, run off-environment), no Arabic-capable
+    second OCR engine is available here (tesseract carries only eng/osd), and concrete OCR errors remain.
+    text_fidelity remains ocr_unverified; the byte-exact original.pdf stays authoritative.'
   reference: capture/Text of the Agreement in Arabic.pdf (sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb)
-  verified_by: maintainer + Cowork
-  verified_date: '2026-07-04'
-  note: ocr_unverified — not a full verbatim audit; residual OCR errors expected.
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-11'
+  note: 'Structure/completeness verified and specific OCR errors documented (e.g. the Art. 4 heading).
+    Upgrading needs a second independent Arabic OCR for reconciliation or a full human proofread.'

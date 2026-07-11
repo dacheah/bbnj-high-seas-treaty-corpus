@@ -74,12 +74,15 @@ _FR_FIXES=[("%onne foi","Bonne foi"),("=one d’application","Zone d’applicati
   ("zone, \\ compris","zone, y compris"),("zone, < compris","zone, y compris"),
   ("par zone, \\ compris","par zone, y compris"),("accqs","accès"),("Accqs","Accès"),
   ("Rqglement","Règlement"),("rqglement","règlement"),("Critqres","Critères")]
+# Russian: two italic-font runs the +0x1D6 decode cannot reach (Latin-shift italics).
+# Confirmed against the official PDF page images (in-situ defined term; "BBNJ" identifier).
+_RU_FIXES=[("LQ VLWX","in situ"),("\u00b3BBNJ\u00b4","\u201cBBNJ\u201d")]
 
 def clean_lang(lang, raw):
     raw=raw.replace("\r\n","\n").replace("\r","\n")
     if lang=="ru":
         _DIG={0x13+i:str(i) for i in range(10)}
-        _PUN={0x03:" ",0x0f:",",0x10:"-",0x11:".",0x1d:":",0x1e:";",0x0c:"(",0x00A9:"«",0x00AA:"»"}
+        _PUN={0x03:" ",0x0f:",",0x10:"-",0x11:".",0x1d:":",0x1e:";",0x0c:"\n",0x00A9:"«",0x00AA:"»"}
         def _dec(s):
             o=[]
             for ch in s:
@@ -148,6 +151,8 @@ def clean_lang(lang, raw):
     text="\n\n".join(out)+"\n"
     if lang=="fr":
         for a,b in _FR_FIXES: text=text.replace(a,b)
+    if lang=="ru":
+        for a,b in _RU_FIXES: text=text.replace(a,b)
     return text
 
 def clean_un(raw, symbol):

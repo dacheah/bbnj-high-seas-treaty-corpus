@@ -26,7 +26,7 @@ original_filename: original.pdf
 content_hash: sha256:7119d21faf86200ddb5967b79191b81845ac67794f8de707ec873f9470f066fc
 original_sha256: sha256:8d3a180172aa2be826f668d0573f10ebdc6abbd44f20ac05bb1fb4804a49db53
 text_sha256: sha256:7119d21faf86200ddb5967b79191b81845ac67794f8de707ec873f9470f066fc
-text_fidelity: extracted_unverified
+text_fidelity: extracted_verified
 language: fr
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -41,7 +41,24 @@ superseded_by: null
 related_documents:
 - un/bbnj-agreement-2023
 provenance_note: 'Authentic French text from the byte-exact official UN PDF (original.pdf). Body extracted
-  faithfully (pdftotext -raw); the PDF''s display font for the title and headings uses non-Unicode glyph
-  substitutions, so heading/title lines were repaired against the official French headings (capture/clean_lang.py).
-  text_fidelity=extracted_unverified pending a full title verbatim audit (GAPS G-2b). Complete: Préambule
-  + Parties I–XII + Articles 1–76 + Annexes I–II.'
+  faithfully (pdftotext -raw); the display font used for the title and headings encodes some letters as
+  non-Unicode glyphs, so those runs were repaired against the official French headings (scripts/pipelines.py,
+  _FR_FIXES plus the heading map). Verified 2026-07-11 (see verification): a full-text scan finds zero residual
+  display-font glyphs, the non-ASCII inventory is clean French, the structure is complete, and an independent
+  OCR reconciliation over a 10-page sample matches the stored text. Complete: Preamble + Parts I-XII +
+  Articles 1-76 + Annexes I-II.'
+verification:
+  status: verified
+  method: 'Verification 2026-07-11. (1) Full-text substitution-residue scan across the entire text: zero
+    stray display-font glyphs (no percent, asterisk, equals, plus, digit-in-word, or e-grave-as-q artifacts)
+    and a clean all-French non-ASCII inventory. (2) Completeness: Article premier plus Articles 2-76 = 76
+    articles, 12 Parties, both Annexes. (3) Independent second oracle: rendered the PDF at 300 dpi and ran
+    rapidocr over a 10-page stratified sample (pages 0,3,8,20,35,42,50,60,68 and the title); de-accented
+    token agreement 97-100 percent, every residual mismatch explained as an OCR word-join or o-e ligature,
+    including positive confirmation of the display-font "PARTIE II" heading. Body text was already
+    dual-extractor agreed (pdftotext -raw vs PyMuPDF).'
+  reference: original.pdf (sha256:8d3a180172aa2be826f668d0573f10ebdc6abbd44f20ac05bb1fb4804a49db53)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-07-11'
+  note: The display font renders correct letterforms under wrong code points, so OCR of the rendered glyphs
+    is a valid independent check of the decode. Reproducible byte-exact via scripts/pipelines.py (clean_lang "fr").

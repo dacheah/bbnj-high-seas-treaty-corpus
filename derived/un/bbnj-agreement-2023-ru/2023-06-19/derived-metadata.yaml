@@ -3,7 +3,7 @@
   artifact_file: structure.json
   source_corpus_id: un/bbnj-agreement-2023-ru
   source_version_id: '2023-06-19'
-  source_text_sha256: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
+  source_text_sha256: sha256:9585aa369c0b3dd2511a09cd34a9b1fcf18c314462cd51ae2144a5aa08926f74
   generation_method: rule_based
   generator: build_derived.py (structure)
   generation_date: '2026-07-11'
@@ -19,7 +19,7 @@
   artifact_file: concepts.json
   source_corpus_id: un/bbnj-agreement-2023-ru
   source_version_id: '2023-06-19'
-  source_text_sha256: sha256:0e711b23056c27c21165c524537c32a330a328a0fc119af1a38f3f800fcbf3e3
+  source_text_sha256: sha256:9585aa369c0b3dd2511a09cd34a9b1fcf18c314462cd51ae2144a5aa08926f74
   generation_method: rule_based
   generator: build_derived.py (keyword fallback)
   generation_date: '2026-07-11'

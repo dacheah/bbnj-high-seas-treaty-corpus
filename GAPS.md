@@ -1,24 +1,27 @@
 # Gap register (BBNJ) — recorded, not hidden
 
-# Fidelity status (updated 2026-07-04)
+# Fidelity status (updated 2026-07-11)
 
 `text_fidelity` across the 15 authoritative records:
-- **extracted_verified (11):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
-  (English, Spanish); GA resolutions 77/321, 78/272, 79/271, 80/107; decision 78/560; the 1994 Part XI
-  Agreement; the 1995 Fish Stocks Agreement.
-  Method for the last seven: two independent extractors (pdftotext -raw + PyMuPDF) agree word-for-word
-  on the PDF text layer, the stored text adds no words and drops only bibliographic noise, and a
-  rendered-page spot-check confirms a clean digital text layer.
-- **Still extracted_unverified (2):**
-  - **BBNJ French & Russian** — recovered from non-Unicode display fonts (headings/decode); need a
-    per-language audit against page images, not a dual-extractor check (both tools yield the same
-    font output). (G-2b)
-- **Reproducibility (2026-07-04):** `scripts/extract.py` re-derives every text from its stored
+- **extracted_verified (13):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
+  (English, Spanish, **French**, **Russian**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
+  78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
+  Method (text-layer records with a clean digital text layer): two independent extractors (pdftotext
+  -raw + PyMuPDF) agree word-for-word, the stored text adds no words and drops only bibliographic
+  noise, and a rendered-page spot-check confirms a clean text layer. **French & Russian** use a
+  non-Unicode display/decoded font, so no independent second extractor exists; they were verified on
+  **2026-07-11** by a full-text substitution-residue scan (zero residue) + completeness check +
+  page-image visual confirmation, and for French an independent rapidocr reconciliation over a 10-page
+  sample also matched. See G-2b.
+- **extracted_unverified (0).**
+- **Reproducibility (2026-07-11):** `scripts/extract.py` re-derives every text from its stored
   `original.pdf` by committed code (`scripts/pipelines.py`) and checks the SHA-256 — **13/13
   text-layer records reproduce byte-exact**, now a CI gate. The 2 OCR records (zh, ar) use a
   separate render+OCR pipeline and are excluded from the byte-exact text-layer gate.
-- **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR; verifying needs visual line-by-line
-  against the PDF).
+- **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR). **Completeness re-verified 2026-07-11**
+  (all parts/articles/annexes present) and spot-checked against page images, but full per-character
+  verbatim accuracy is **not** established — no independent second OCR engine is available offline, so
+  the byte-exact PDF stays authoritative. `verification.status: completeness_verified`. See G-2c.
 
 Provenance principle: gaps are first-class facts. Each is tracked here until closed.
 
@@ -53,10 +56,21 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
 - **Chinese** (`-zh`) & **Arabic** (`-ar`): byte-exact PDFs captured, but a faithful text is not
   machine-extractable in this environment → `authoritative_missing` (see G-2c).
 
-## G-2b — Full verbatim audit of the French & Russian texts *(open, low priority)*
-- fr headings and the ru decode were spot-verified against page images, not audited line by line.
-  A full audit (and, for fr, confirming no residual display-font substitutions in article titles)
-  would upgrade both to `extracted_verified`.
+## G-2b — Full verbatim audit of the French & Russian texts *(CLOSED 2026-07-11)*
+- **French — CLOSED.** Full-text scan for display-font substitution residue is clean (zero stray glyphs
+  across ~164k chars; a clean all-French non-ASCII inventory), structure complete (Article premier +
+  Arts 2–76 = 76, 12 Parties, 2 Annexes), and an independent rapidocr reconciliation over a 10-page
+  stratified sample matched the stored text — every residual diff an OCR word-join or o-e ligature,
+  including positive confirmation of the display-font "PARTIE II" heading. **`text_fidelity` →
+  `extracted_verified`** (`verification{}` recorded).
+- **Russian — CLOSED.** Verification surfaced two residual italic-font runs the +0x1D6 decode could not
+  reach — the defined term «Сбор in situ» (had decoded to `LQ VLWX`, ×3) and the identifier "BBNJ" in
+  curly quotes (quote glyphs had decoded to `³ ´`, ×7) — plus 75 leaked page-number footers (the
+  form-feed byte had been mapped to `(` instead of a line break). All were **repaired at the reproducible
+  pipeline source** (`scripts/pipelines.py`, `_RU_FIXES` + form-feed fix); the text was re-derived and
+  re-hashed and `extract.py` still reproduces **13/13** byte-exact. Confirmed against page images (title,
+  Art. 13 defined term, Arts 75–76 authenticity clause). **`text_fidelity` → `extracted_verified`**
+  (dated `corrections[]` + `verification{}` recorded).
 
 ## G-2c — Chinese & Arabic clean-text extraction *(CLOSED — both OCR'd)*
 - **Chinese — CLOSED 2026-07-03.** OCR'd the byte-exact PDF with rapidocr / PP-OCR (models bundled
@@ -71,6 +85,13 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   `un/bbnj-agreement-2023-ar` is now `authentic_text`, `text_fidelity: ocr_unverified` (complete:
   title + الديباجة + المادة ١–٧٦ + المرفق الأول/الثاني; residual OCR errors expected — the
   byte-exact PDF stays authoritative). A full verbatim OCR audit is a low-priority residual.
+- **Completeness re-verified 2026-07-11 (both).** Programmatic enumeration confirms full structure
+  (zh: 序言 + 第一–十二部分 + 第一–七十六条 + 附件一/二; ar: الديباجة + 76 article headings + المرفق الأول/الثاني +
+  authenticity clause), with page-image spot-checks (zh: title + a dense body page, 9/9 phrases verbatim;
+  ar: title + a body page). A concrete Arabic OCR defect — the Art. 4 heading lost its numeral — is
+  recorded in the record's `verification{}`. Both stay `ocr_unverified` (`verification.status:
+  completeness_verified`); a full verbatim upgrade needs a second independent OCR engine (none offline)
+  or a human proofread.
 
 
 ## G-3 — UNCLOS (parent convention) *(UNCLOS ingested 2026-07-04; agreements queued)*

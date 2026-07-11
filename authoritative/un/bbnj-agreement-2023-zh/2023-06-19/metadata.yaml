@@ -52,10 +52,18 @@ provenance_note: 'Authentic Chinese text recovered by OCR of the byte-exact offi
   glitches in dense definition lists); the byte-exact PDF remains authoritative. Full verbatim audit pending
   (GAPS G-2c-audit). One of six equally authentic languages (Art. 76).'
 verification:
-  status: ocr_spotchecked
-  method: 'OCR output spot-checked against the official PDF page images (title, preamble, Part I / Article
-    1 area). Structure present: 12 parts, ~76 article headers, 2 annexes.'
+  status: completeness_verified
+  method: 'Extends the 2026-07-03 spot-check with a full completeness pass (2026-07-11). Completeness verified
+    programmatically from the stored text: preamble (序言), Parts 1-12 (第一部分..第十二部分), Articles 1-76
+    (第一条..第七十六条) all present with no gaps, both Annexes (附件一/附件二), and the Article 76 authenticity
+    clause. Spot accuracy: two rendered official-PDF pages read directly and compared to the stored OCR -
+    the title/cover page and a dense body page (UN p.8: Art. 11(4)-(7) and Art. 12) where 9/9 distinctive
+    phrases matched verbatim. Full verbatim accuracy is NOT established: the text is OCR (rapidocr / PP-OCR),
+    no independent second OCR engine or Chinese-capable checker is available here (tesseract carries only
+    eng/osd), and only a sample of pages was read. text_fidelity remains ocr_unverified; the byte-exact
+    original.pdf stays authoritative.'
   reference: capture/Text of the Agreement in Chinese.pdf (sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9)
   verified_by: Cowork (provenance-corpus-builder)
-  verified_date: '2026-07-03'
-  note: ocr_unverified — not a full verbatim audit; residual OCR errors expected.
+  verified_date: '2026-07-11'
+  note: 'Structure/completeness verified; per-character OCR accuracy sampled only. Upgrading to extracted_verified
+    needs a second independent OCR pass for reconciliation or a full page-by-page human proofread.'
