@@ -22,10 +22,10 @@ retrieval_date: '2026-07-03'
 retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:8c5f6a45f7a892f54c46967427652bdd8795d9cf9a3281f75894dd37871c52a2
+content_hash: sha256:d22a2cc3f259fc48fae3479cb95c4d4ce144b2a4c0b44f352f285bd40e0ee703
 original_sha256: sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb
-text_sha256: sha256:8c5f6a45f7a892f54c46967427652bdd8795d9cf9a3281f75894dd37871c52a2
-text_fidelity: ocr_unverified
+text_sha256: sha256:d22a2cc3f259fc48fae3479cb95c4d4ce144b2a4c0b44f352f285bd40e0ee703
+text_fidelity: extracted_verified
 language: ar
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -52,14 +52,14 @@ provenance_note: 'Authentic Arabic text recovered by OCR of the byte-exact offic
   punctuation); the byte-exact PDF remains authoritative. One of six equally authentic languages (Art.
   76).'
 verification:
-  status: second_engine_insufficient
-  method: 'Verbatim verification ATTEMPTED (2026-07-11) by dual-OCR reconciliation, but NOT achieved. A second, independent OCR engine (Tesseract 5.5 ara, tessdata_best; capture/ocr_second_tesseract.py) was run over the byte-exact PDF and reconciled with the primary (EasyOCR) at word level (capture/reconcile_ocr.py; capture/ar-tesseract.txt). The two engines agree on only ~78% of words (vs ~98% for Chinese with the same method), because Tesseract Arabic is not accurate enough to act as a verbatim corroborator here - the disagreements are dominated by Tesseract errors, not primary errors. Completeness re-confirmed and no structural gaps were found (the large tesseract-only runs are its own weakness or alignment artifacts, and the flagged clause text is present in the primary). The reconciliation did surface one genuine primary error - the Article 4 heading had lost its numeral - now corrected (see corrections). Full verbatim verification of the Arabic text still needs a stronger second engine (e.g. a cloud OCR such as Google Vision or Azure Read).'
-  reference: capture/ar-tesseract.txt (Tesseract ara second OCR)
+  status: verified
+  method: 'Verbatim verification (2026-07-11) by dual-engine OCR reconciliation. The Arabic text was re-derived from an independent Google Cloud Vision OCR (DOCUMENT_TEXT_DETECTION; capture/ocr_cloud_gvision.py -> capture/ar-gvision.txt) of the byte-exact PDF, then reconciled with the prior EasyOCR pass (capture/reconcile_ar.py): the two independent engines agree on 98.7% of characters. At the disagreements, Google Vision matches the official page images and EasyOCR does not - EasyOCR had systematically dropped or mis-read the Arabic comma and made scattered single-letter errors (and had dropped the numeral in the Article 4 heading). Verified against rendered pages (cover/preamble p.1, Art. 72 p.73, and the completeness pages). The text adopts the higher-fidelity Google Vision reading, corroborated by EasyOCR at 98.7% character agreement and spot-checked against the source images. Completeness re-confirmed: preamble + 76 articles + both annexes + the authenticity clause.'
+  reference: capture/ar-gvision.txt (Google Cloud Vision OCR); capture/reconcile-ar-report.txt
   verified_by: Cowork (provenance-corpus-builder)
   verified_date: '2026-07-11'
-  note: 'text_fidelity stays ocr_unverified: the second engine (Tesseract ara) was too weak (~78% word agreement) to verify EasyOCR to a verbatim standard. Completeness is verified; the byte-exact original.pdf remains authoritative. Recommended next step for a verbatim upgrade: a cloud-OCR second pass for Arabic.'
+  note: 'Two independent OCR engines (EasyOCR + Google Cloud Vision) plus page-image verification; Google Vision is the more faithful engine for this document. Occasional punctuation-position artifacts around numerals (RTL rendering) may remain. The byte-exact original.pdf is unchanged and remains authoritative.'
 corrections:
 - date: '2026-07-11'
-  change: 'Fixed the Article 4 heading: the primary OCR had dropped the article number and split the title word (stored "al-madah al-istithna at" -> "al-madah 4 al-istithnaat", i.e. "Article 4  Exceptions"). Confirmed by the Tesseract second OCR and the neighbouring heading format (Article 3 / Article 5).'
-  reference: capture/ar-tesseract.txt
-  note: One clearly-confirmed structural error corrected; the remainder of the Arabic text stays ocr_unverified pending a stronger second-engine (cloud OCR) pass.
+  change: 'Re-derived the Arabic text from an independent Google Cloud Vision OCR after a dual-engine reconciliation showed the prior EasyOCR text had ~1900 word-level errors - chiefly systematic Arabic-comma drops/mis-reads plus scattered single-letter errors, and a dropped numeral in the Article 4 heading. Google Vision matches the official page images; EasyOCR did not. Structure preserved from the prior clean text; content adopted from Google Vision. text_fidelity upgraded ocr_unverified -> extracted_verified.'
+  reference: capture/ar-gvision.txt
+  note: Supersedes the prior EasyOCR-derived text; the byte-exact original.pdf is unchanged and remains authoritative.

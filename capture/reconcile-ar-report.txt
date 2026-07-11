@@ -1,0 +1,5715 @@
+# Arabic reconciliation: primary(EasyOCR) vs ar-gvision.txt
+# word-agreement=84.65%  regions=1904  pages=[1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]
+
+[p1] replace
+    primary  : الديباجه
+    secondary: الامم المتحده 2023 اتفاق مبرم في اطار اتفاقيه الامم المتحده لقانون البحار بشان حفظ التنوع البيولوجي البحري في المناطق الواقعه خارج حدود الولايه الوطنيه واستخدامه علي نحو مستدام
+[p3] replace
+    primary  : الاتفاق ;
+    secondary: الاتفاق، الديباجه
+[p3] insert
+    primary  : 
+    secondary: /
+[p3] replace
+    primary  : 1982
+    secondary: 1982،
+[p3] replace
+    primary  : عليها
+    secondary: عليها،
+[p3] replace
+    primary  : 9 الاتفاقيه
+    secondary: الاتفاقيه،
+[p3] replace
+    primary  : تسم
+    secondary: تسلم
+[p3] replace
+    primary  : التصديء
+    secondary: التصدي ،
+[p3] replace
+    primary  : للمحيطات
+    secondary: للمحيطات،
+[p3] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p3] replace
+    primary  : المحيطات
+    secondary: المحيطات،
+[p3] replace
+    primary  : المحيطات والتلوث .
+    secondary: المحيطات، والتلوث،
+[p3] replace
+    primary  : المستدام
+    secondary: المستدام،
+[p3] replace
+    primary  : ثدرك
+    secondary: تدرك
+[p3] replace
+    primary  : مستدام (
+    secondary: مستدام،
+[p3] replace
+    primary  : كافه
+    secondary: كافه،
+[p3] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p3] replace
+    primary  : ساحليه
+    secondary: ساحليه،
+[p3] replace
+    primary  : تسم
+    secondary: تسلم
+[p3] replace
+    primary  : مستدام ,
+    secondary: مستدام،
+[p4] replace
+    primary  : الاصليه .
+    secondary: الاصليه،
+[p4] replace
+    primary  : الاصليه او
+    secondary: الاصليه، او،
+[p4] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p4] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p4] replace
+    primary  : يلغيها
+    secondary: يلغيها،
+[p4] replace
+    primary  : الاتفاقيه
+    secondary: الاتفاقيه،
+[p4] replace
+    primary  : عمليا
+    secondary: عمليا،
+[p4] replace
+    primary  : اوقد
+    secondary: او قد
+[p4] replace
+    primary  : _9ي
+    secondary: في
+[p4] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p4] replace
+    primary  : للاتفاقيه
+    secondary: للاتفاقيه،
+[p4] replace
+    primary  : فيان
+    secondary: في ان
+[p4] replace
+    primary  : والمقبله
+    secondary: ،والمقبله
+[p4] replace
+    primary  : والاعتنا اء
+    secondary: والاعتناء
+[p4] replace
+    primary  : مسؤول
+    secondary: مسؤول،
+[p4] replace
+    primary  : للمحيطات .
+    secondary: للمحيطات،
+[p4] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p4] replace
+    primary  : واستخدامها
+    secondary: واستخدامها،
+[p4] replace
+    primary  : استخدامها
+    secondary: استخدامها،
+[p4] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p4] replace
+    primary  : السياسي
+    secondary: السياسي،
+[p4] replace
+    primary  : المعاهدات
+    secondary: المعاهدات،
+[p4] replace
+    primary  : مسؤوله
+    secondary: مسؤوله،
+[p4] replace
+    primary  : الاتفاقيه
+    secondary: الاتفاقيه،
+[p4] replace
+    primary  : وصونها
+    secondary: وصونها،
+[p4] replace
+    primary  : الدولي
+    secondary: الدولي، -2-
+[p5] replace
+    primary  : المستدامه
+    secondary: المستدامه،
+[p5] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p5] replace
+    primary  : يلي : الجزع
+    secondary: يلي: الجزء
+[p5] insert
+    primary  : 
+    secondary: -
+[p5] replace
+    primary  : اداه
+    secondary: "اداه
+[p5] replace
+    primary  : اداه (
+    secondary: اداه،
+[p5] replace
+    primary  : المحميه.
+    secondary: المحميه،
+[p5] replace
+    primary  : جغرافيا.
+    secondary: جغرافيا،
+[p5] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 2 - 3
+[p5] replace
+    primary  : المناطق
+    secondary: "المناطق
+[p5] replace
+    primary  : والمنطقه . 3
+    secondary: والمنطقه.
+[p5] replace
+    primary  : التكنولوجيا
+    secondary: "التكنولوجيا
+[p5] replace
+    primary  : مشتقاتهاء
+    secondary: مشتقاتها ،
+[p5] delete
+    primary  : _
+    secondary: 
+[p5] replace
+    primary  : الجمع
+    secondary: "الجمع
+[p5] replace
+    primary  : الطبيعي
+    secondary: الطبيعي،
+[p5] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p5] replace
+    primary  : الوطنيه . 5
+    secondary: الوطنيه. - 4 -5
+[p5] replace
+    primary  : الاتفاقيه
+    secondary: "الاتفاقيه
+[p5] replace
+    primary  : الاول |
+    secondary: الاول/
+[p5] replace
+    primary  : .1982 0
+    secondary: 1982. - 6
+[p5] replace
+    primary  : الاثار
+    secondary: "الاثار
+[p5] delete
+    primary  : ،
+    secondary: 
+[p5] replace
+    primary  : الانشطه
+    secondary: الانشطه،
+[p5] replace
+    primary  : معقوله
+    secondary: معقوله، - 3-
+[p6] replace
+    primary  : الزمن
+    secondary: الزمن،
+[p6] replace
+    primary  : اثار .
+    secondary: اثار. -
+[p6] replace
+    primary  : " تقييم
+    secondary: "تقييم
+[p6] replace
+    primary  : البيئي
+    secondary: البيئي“
+[p6] replace
+    primary  : 9ي
+    secondary: في
+[p6] replace
+    primary  : القرارات .
+    secondary: القرارات. -
+[p6] replace
+    primary  : البحريه «
+    secondary: البحريه"
+[p6] replace
+    primary  : اوذات
+    secondary: او ذات
+[p6] replace
+    primary  : محتمله .
+    secondary: محتمله. -
+[p6] replace
+    primary  : المنطقه
+    secondary: "المنطقه
+[p6] replace
+    primary  : المحميه
+    secondary: المحميه“
+[p6] replace
+    primary  : تتيحء
+    secondary: تتيح،
+[p6] replace
+    primary  : مناسباء
+    secondary: مناسبا،
+[p6] replace
+    primary  : بالحفظ .
+    secondary: بالحفظ. -
+[p6] insert
+    primary  : 
+    secondary: ،
+[p6] replace
+    primary  : التكنولوجيا البحريه
+    secondary: "التكنولوجيا البحريه،
+[p6] delete
+    primary  : _
+    secondary: 
+[p6] insert
+    primary  : 
+    secondary: ،
+[p6] replace
+    primary  : فيشكل
+    secondary: في شكل
+[p6] replace
+    primary  : بها ; والادله
+    secondary: بها؛ والادله،
+[p6] replace
+    primary  : التوجيهيه والمعايير
+    secondary: التوجيهيه، والمعايير،
+[p6] replace
+    primary  : المرجعيه;
+    secondary: المرجعيه؛
+[p6] replace
+    primary  : والمنهجيات ;
+    secondary: والمنهجيات؛
+[p6] replace
+    primary  : المختبرات ;
+    secondary: المختبرات؛
+[p6] replace
+    primary  : الحاسوبيه
+    secondary: الحاسوبيه،
+[p6] replace
+    primary  : ;
+    secondary: ؛
+[p6] replace
+    primary  : الصله;
+    secondary: الصله؛
+[p6] replace
+    primary  : الفنيهء
+    secondary: الفنيه
+[p6] replace
+    primary  : والقانونيه
+    secondary: والقانونيه،
+[p6] replace
+    primary  : مستدام
+    secondary: مستدام. - -
+[p6] insert
+    primary  : 
+    secondary: 66
+[p6] replace
+    primary  : الطرف ٠
+    secondary: ”الطرف
+[p6] replace
+    primary  : اليها .
+    secondary: اليها.
+[p6] insert
+    primary  : 
+    secondary: -
+[p6] replace
+    primary  : منظمه
+    secondary: "منظمه
+[p6] replace
+    primary  : الاقتصادي ` (
+    secondary: الاقتصادي“
+[p6] replace
+    primary  : الواجب
+    secondary: الواجب،
+[p6] replace
+    primary  : الداخليه
+    secondary: الداخليه،
+[p6] replace
+    primary  : اليه
+    secondary: اليه. - 4 - -
+[p7] replace
+    primary  : " الاستخدام
+    secondary: "الاستخدام
+[p7] delete
+    primary  : `
+    secondary: 
+[p7] replace
+    primary  : الطويل ،
+    secondary: الطويل،
+[p7] replace
+    primary  : والمقبله . 14
+    secondary: والمقبله. -
+[p7] replace
+    primary  : استخدام
+    secondary: "استخدام
+[p7] delete
+    primary  : ٠
+    secondary: 
+[p7] replace
+    primary  : و او
+    secondary: و/او
+[p7] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p7] replace
+    primary  : الاحيائيه
+    secondary: الاحيائيه،
+[p7] replace
+    primary  : اعلاه .
+    secondary: اعلاه.
+[p7] replace
+    primary  : هوضمان
+    secondary: هو ضمان
+[p7] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p7] replace
+    primary  : البعيد
+    secondary: البعيد،
+[p7] replace
+    primary  : الدوليين .
+    secondary: الدوليين.
+[p7] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه.
+[p7] replace
+    primary  : اوطائره
+    secondary: او طائره
+[p7] replace
+    primary  : اوسفينه
+    secondary: او سفينه
+[p7] replace
+    primary  : البحري . وباستثنا ٦
+    secondary: البحري. وباستثناء
+[p7] replace
+    primary  : الثاني
+    secondary: الثاني،
+[p7] replace
+    primary  : طرف
+    secondary: طرف،
+[p7] replace
+    primary  : يشغلهاء
+    secondary: يشغلها ،
+[p7] replace
+    primary  : يتماشي
+    secondary: يتماشي،
+[p7] replace
+    primary  : والعملي ء
+    secondary: والعملي،
+[p7] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -5-
+[p8] insert
+    primary  : 
+    secondary: - 1
+[p8] replace
+    primary  : معها.
+    secondary: معها .
+[p8] replace
+    primary  : الاتفاقيه
+    secondary: الاتفاقيه، بما ائيه وواجباتها بموجب الاتفاقيه،
+[p8] replace
+    primary  : وراءها
+    secondary: وراءها. -
+[p8] replace
+    primary  : والهيئات .
+    secondary: والهيئات. -
+[p8] replace
+    primary  : الصكوك .
+    secondary: الصكوك.
+[p8] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p8] replace
+    primary  : الفرعيه
+    secondary: الفرعيه،
+[p8] replace
+    primary  : اساسه
+    secondary: اساسه،
+[p8] replace
+    primary  : اونفي
+    secondary: او نفي
+[p8] replace
+    primary  : الولايه
+    secondary: الولايه،
+[p8] replace
+    primary  : بها .
+    secondary: بها.
+[p8] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p8] replace
+    primary  : والنهج :
+    secondary: والنهج: (ا)
+[p8] replace
+    primary  : الملوث ; اب (
+    secondary: الملوث؛ -6- (ب)
+[p9] replace
+    primary  : الاتفاقيه; )ج(
+    secondary: الاتفاقيه؛ (ج)
+[p9] replace
+    primary  : البحريء
+    secondary: البحري،
+[p9] replace
+    primary  : اد(
+    secondary: ؛ (د)
+[p9] delete
+    primary  : 9
+    secondary: 
+[p9] replace
+    primary  : للمنافع )ه (
+    secondary: للمنافع؛ (ه)
+[p9] replace
+    primary  : التحوطي
+    secondary: التحوطي،
+[p9] replace
+    primary  : الاقتضاء او (
+    secondary: الاقتضاء؛ (و)
+[p9] replace
+    primary  : الايكولوجي ; از (
+    secondary: الايكولوجي؛ (ز)
+[p9] replace
+    primary  : المحيطات ; )ح(
+    secondary: المحيطات؛ (ح)
+[p9] replace
+    primary  : الصمودء
+    secondary: الصمود ،
+[p9] replace
+    primary  : المحيطات
+    secondary: المحيطات،
+[p9] replace
+    primary  : ويستعيدها
+    secondary: ويستعيدها،
+[p9] replace
+    primary  : المناخ ; اط (
+    secondary: المناخ؛ (ط)
+[p9] replace
+    primary  : المتاحه ; )ي (
+    secondary: المتاحه؛ (ي)
+[p9] replace
+    primary  : المحليه.
+    secondary: المحليه،
+[p9] replace
+    primary  : توافرت ; ( اك (
+    secondary: توافرت؛ (ك)
+[p9] replace
+    primary  : لالتزاماته
+    secondary: لالتزاماته،
+[p9] replace
+    primary  : ينطبق
+    secondary: ينطبق،
+[p9] replace
+    primary  : او
+    secondary: ،او ،
+[p9] insert
+    primary  : 
+    secondary: ،
+[p9] replace
+    primary  : مستدام ال(
+    secondary: مستدام؛ (ل)
+[p9] replace
+    primary  : الاخطارء
+    secondary: الاخطار ،
+[p9] replace
+    primary  : مباشر
+    secondary: مباشر،
+[p9] replace
+    primary  : اسي
+    secondary: الي
+[p9] insert
+    primary  : 
+    secondary: ،
+[p9] replace
+    primary  : عليه; ام (
+    secondary: عليه؛ (م)
+[p9] replace
+    primary  : ; ان (
+    secondary: ؛ -7- (ن)
+[p10] replace
+    primary  : الساحليه
+    secondary: الساحليه.
+[p10] insert
+    primary  : 
+    secondary: -
+[p10] insert
+    primary  : 
+    secondary: مع
+[p10] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p10] insert
+    primary  : 
+    secondary: 6
+[p10] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p10] replace
+    primary  : اودون
+    secondary: او دون
+[p10] replace
+    primary  : الاخري .
+    secondary: الاخري. -
+[p10] replace
+    primary  : الاتفاق . الجزع
+    secondary: الاتفاق. الجزء
+[p10] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p10] replace
+    primary  : هيكما يني :
+    secondary: هي كما يلي: (ا)
+[p10] replace
+    primary  : حدول
+    secondary: حدود
+[p10] replace
+    primary  : مستدام ; اب (
+    secondary: مستدام؛ - 8 - (ب)
+[p11] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p11] replace
+    primary  : الناميهء
+    secondary: الناميه،
+[p11] replace
+    primary  : الوطنيه ; )ج(
+    secondary: الوطنيه؛ (ج)
+[p11] replace
+    primary  : التكنولوجي ,
+    secondary: التكنولوجي،
+[p11] replace
+    primary  : الاتفاق ; )د(
+    secondary: الاتفاق؛ -1 (د)
+[p11] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p11] delete
+    primary  : 1
+    secondary: 
+[p11] replace
+    primary  : المعني .
+    secondary: المعني.
+[p11] replace
+    primary  : النفاذ مالم
+    secondary: النفاذ، ما لم
+[p11] replace
+    primary  : مايلي :
+    secondary: ما يلي: (ا)
+[p11] replace
+    primary  : الاسماك ;
+    secondary: الاسماك؛
+[p11] replace
+    primary  : اب (
+    secondary: (ب)
+[p11] replace
+    primary  : باستثنا ٦
+    secondary: باستثناء
+[p11] replace
+    primary  : الجزء .
+    secondary: الجزء. -9-
+[p12] replace
+    primary  : تجاريه .
+    secondary: تجاريه.
+[p12] replace
+    primary  : للطرف .
+    secondary: للطرف. -1
+[p12] delete
+    primary  : م
+    secondary: 
+[p12] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p12] replace
+    primary  : الجغرافي والاشخساص
+    secondary: الجغرافي، والاشخاص
+[p12] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p12] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p12] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه. -
+[p12] replace
+    primary  : الوطنيهء
+    secondary: الوطنيه،
+[p12] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p12] replace
+    primary  : للاتفاقيه .
+    secondary: للاتفاقيه.
+[p12] replace
+    primary  : الغايه
+    secondary: الغايه،
+[p12] replace
+    primary  : التعاون حسب الاقتضاء بمافي
+    secondary: التعاون، حس الاقتضاء، بما في
+[p12] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p12] replace
+    primary  : 9ي
+    secondary: في
+[p12] replace
+    primary  : مواردها
+    secondary: مواردها. -10- -
+[p13] replace
+    primary  : كافه
+    secondary: كافه،
+[p13] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p13] replace
+    primary  : خاص .
+    secondary: خاص. -
+[p13] replace
+    primary  : حصرا .
+    secondary: حصرا.
+[p13] insert
+    primary  : 
+    secondary: - 1
+[p13] replace
+    primary  : الجزء
+    secondary: الجزء. -
+[p13] replace
+    primary  : ذلك : ا(
+    secondary: ذلك: (ا)
+[p13] replace
+    primary  : الجمع
+    secondary: الجمع،
+[p13] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p13] replace
+    primary  : ابرامج
+    secondary: (برامج)
+[p13] replace
+    primary  : منه)ا ( : ؛ اب(
+    secondary: منه (ا)؛ (ب)
+[p13] replace
+    primary  : جمعها
+    secondary: جمعها،
+[p13] replace
+    primary  : معروفه
+    secondary: معروفه،
+[p13] replace
+    primary  : البحريه ; )ج(
+    secondary: البحريه؛ (ج)
+[p13] replace
+    primary  : الجمع ; اد (
+    secondary: الجمع؛ (د)
+[p13] replace
+    primary  : الجمع
+    secondary: الجمع،
+[p13] replace
+    primary  : واو
+    secondary: و/او
+[p13] replace
+    primary  : المستخدمه; )ه (
+    secondary: المستخدمه؛ (ه)
+[p13] replace
+    primary  : المقترحه ; او (
+    secondary: المقترحه؛ - 11- (و)
+[p14] replace
+    primary  : وازالتها
+    secondary: وازالتها،
+[p14] replace
+    primary  : از
+    secondary: ؛ (ز)
+[p14] replace
+    primary  : ااسماء (
+    secondary: (اسماء)
+[p14] replace
+    primary  : االمؤسسات
+    secondary: (المؤسسات
+[p14] replace
+    primary  : المشروع; اح(
+    secondary: المشروع؛ (ح)
+[p14] replace
+    primary  : الدول ولاسيما
+    secondary: الدول، ولا سيما
+[p14] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p14] replace
+    primary  : اويكون
+    secondary: او يكون
+[p14] replace
+    primary  : به; اط
+    secondary: به؛ (ط)
+[p14] replace
+    primary  : وتطلبها
+    secondary: وتطلبها،
+[p14] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p14] replace
+    primary  : اوان
+    secondary: او ان
+[p14] replace
+    primary  : فيه; )ي (
+    secondary: فيه؛ (ي)
+[p14] replace
+    primary  : والمسؤوله
+    secondary: والمسؤوله،
+[p14] replace
+    primary  : الحاليه .
+    secondary: الحاليه. -
+[p14] replace
+    primary  : اعلاه
+    secondary: اعلاه،
+[p14] replace
+    primary  : الوطنيه . _
+    secondary: الوطنيه. - 4
+[p14] replace
+    primary  : المزمع،
+    secondary: المزمع ،
+[p14] replace
+    primary  : المحذثه
+    secondary: المحدثه
+[p14] replace
+    primary  : الطبيعي ;
+    secondary: الطبيعي،
+[p14] replace
+    primary  : عمليا
+    secondary: عمليا. -
+[p14] replace
+    primary  : التاليه
+    secondary: التاليه،
+[p14] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p14] replace
+    primary  : متاحه
+    secondary: متاحه،
+[p14] replace
+    primary  : لاتتجاوز
+    secondary: لا تتجاوز
+[p14] replace
+    primary  : الطبيعي :
+    secondary: الطبيعي: (ا)
+[p14] replace
+    primary  : البحريه ; اب(
+    secondary: البحريه؛ (ب)
+[p14] replace
+    primary  : فيه; )ج(
+    secondary: فيه؛ - 12 - (ج)
+[p15] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p15] replace
+    primary  : وعمقه
+    secondary: وعمقه،
+[p15] replace
+    primary  : المتاح; اد
+    secondary: المتاح؛ - 6 (د)
+[p15] replace
+    primary  : )2( ني اعلاه 6
+    secondary: (2) ي، اعلاه.
+[p15] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p15] insert
+    primary  : 
+    secondary: . - 7
+[p15] replace
+    primary  : المستودعات
+    secondary: المستودعات،
+[p15] replace
+    primary  : عمليا
+    secondary: عمليا،
+[p15] replace
+    primary  : القضائيه . مرهكل سنتين
+    secondary: القضائيه، مره كل سنتين،
+[p15] replace
+    primary  : بهاء
+    secondary: بها،
+[p15] insert
+    primary  : 
+    secondary: -
+[p15] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه،
+[p15] insert
+    primary  : 
+    secondary: ،
+[p15] replace
+    primary  : لاستعمال
+    secondary: لاستعمال،
+[p15] insert
+    primary  : 
+    secondary: ،
+[p15] replace
+    primary  : ولايتها
+    secondary: ولايتها،
+[p15] replace
+    primary  : التاليه
+    secondary: التاليه،
+[p15] replace
+    primary  : الموحده اذاكانت
+    secondary: الموحده، اذا كانت
+[p15] delete
+    primary  : ،
+    secondary: 
+[p15] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p15] replace
+    primary  : متاحه :
+    secondary: متاحه: (ا)
+[p15] replace
+    primary  : الممنوحه. اذاكانت
+    secondary: الممنوحه، اذا كانت
+[p15] replace
+    primary  : الممكن
+    secondary: الممكن،
+[p15] replace
+    primary  : ; اب (
+    secondary: ؛ (ب)
+[p15] replace
+    primary  : المعلومات متيكانت متاحه
+    secondary: المعلومات، متي كانت متاحه،
+[p15] replace
+    primary  : التيكانت
+    secondary: التي كانت
+[p15] replace
+    primary  : الاستخدام ; ؛ )ج(
+    secondary: الاستخدام؛ (ج)
+[p15] replace
+    primary  : الاستخدام ; اد
+    secondary: الاستخدام؛ - 13 - (د)
+[p16] replace
+    primary  : ; )ه (
+    secondary: ؛ (ه)
+[p16] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p16] replace
+    primary  : وجدت
+    secondary: وجدت،
+[p16] replace
+    primary  : اضافيء
+    secondary: اضافي،
+[p16] replace
+    primary  : تسويقها ,
+    secondary: تسويقها. .
+[p16] insert
+    primary  : 
+    secondary: في
+[p16] delete
+    primary  : (
+    secondary: 
+[p16] replace
+    primary  : سياساتيه
+    secondary: سياساتيه،
+[p16] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p16] replace
+    primary  : المعلومات .
+    secondary: المعلومات.
+[p16] insert
+    primary  : 
+    secondary: -1
+[p16] delete
+    primary  : 1
+    secondary: 
+[p16] replace
+    primary  : (
+    secondary: ،
+[p16] replace
+    primary  : مستدام
+    secondary: مستدام. -
+[p16] replace
+    primary  : يليء
+    secondary: يلي،
+[p16] delete
+    primary  : _
+    secondary: 
+[p16] replace
+    primary  : )ا(
+    secondary: : (ا)
+[p16] replace
+    primary  : العينات
+    secondary: العينات،
+[p16] replace
+    primary  : الحاليه; اب (
+    secondary: الحاليه؛ (ب)
+[p16] replace
+    primary  : الحاليه; )ج(
+    secondary: الحاليه؛ - 14- (ج)
+[p17] replace
+    primary  : )?.٥ء .
+    secondary: (FAIR)،
+[p17] replace
+    primary  : ; )د
+    secondary: ؛ (د)
+[p17] replace
+    primary  : المقدمه
+    secondary: المقدمه،
+[p17] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p17] replace
+    primary  : العموم ; )ه (
+    secondary: العموم؛ (ه)
+[p17] replace
+    primary  : الاتفاق ; او (
+    secondary: الاتفاق؛ (و)
+[p17] replace
+    primary  : القدرات
+    secondary: القدرات،
+[p17] replace
+    primary  : الشراكه
+    secondary: الشراكه،
+[p17] replace
+    primary  : البحوث ،
+    secondary: البحوث،
+[p17] replace
+    primary  : المكرسه
+    secondary: المكرسه،
+[p17] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p17] replace
+    primary  : ; از
+    secondary: ؛ (ز)
+[p17] replace
+    primary  : والعلميء
+    secondary: والعلمي،
+[p17] replace
+    primary  : العلميه; )ح(
+    secondary: العلميه؛ (ح)
+[p17] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p17] replace
+    primary  : 9 تقاسم
+    secondary: وتقاسم
+[p17] replace
+    primary  : 15
+    secondary: 15. -
+[p17] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p17] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p17] replace
+    primary  : لولايتها ،
+    secondary: لولايتها،
+[p17] replace
+    primary  : للعموم ,
+    secondary: للعموم،
+[p17] replace
+    primary  : دولياء
+    secondary: دوليا،
+[p17] replace
+    primary  : الاستخدام
+    secondary: الاستخدام،
+[p17] replace
+    primary  : توافرها ،
+    secondary: توافرها،
+[p17] replace
+    primary  : الحاليه .
+    secondary: الحاليه. -
+[p17] replace
+    primary  : معقوله
+    secondary: معقوله،
+[p17] replace
+    primary  : يلي :
+    secondary: يلي: - 15 - (ا)
+[p18] replace
+    primary  : البحريه ; اب (
+    secondary: البحريه؛ (ب)
+[p18] replace
+    primary  : المعلومات ; )ج(
+    secondary: المعلومات؛ (ج)
+[p18] replace
+    primary  : البحريه ; )د(
+    secondary: البحريه؛ (د)
+[p18] replace
+    primary  : الاتفاق ;
+    secondary: الاتفاق؛
+[p18] replace
+    primary  : اليسر ،
+    secondary: اليسر،
+[p18] replace
+    primary  : وتفضيلي .
+    secondary: وتفضيلي. -
+[p18] replace
+    primary  : الوطنيهء
+    secondary: الوطنيه،
+[p18] replace
+    primary  : التسويق
+    secondary: التسويق،
+[p18] replace
+    primary  : ومنصف عبل
+    secondary: ومنصف، عبر
+[p18] replace
+    primary  : مستدام .
+    secondary: مستدام. - 6
+[p18] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p18] replace
+    primary  : 52.
+    secondary: 52
+[p18] replace
+    primary  : )ه(
+    secondary: (ه)
+[p18] replace
+    primary  : 47.
+    secondary: .47.
+[p18] replace
+    primary  : ادناه
+    secondary: ادناه. - 7
+[p18] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p18] replace
+    primary  : 15
+    secondary: 15.
+[p18] replace
+    primary  : الاراء
+    secondary: الاراء،
+[p18] delete
+    primary  : .
+    secondary: 
+[p18] replace
+    primary  : 52.
+    secondary: 52
+[p18] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p18] replace
+    primary  : المرحليه ; اب (
+    secondary: المرحليه؛ - 16 -
+[p19] replace
+    primary  : المنتجات
+    secondary: المنتجات،
+[p19] insert
+    primary  : 
+    secondary: (ب)
+[p19] replace
+    primary  : المنتجات ; )ج(
+    secondary: المنتجات؛ (ج)
+[p19] replace
+    primary  : دوري
+    secondary: ،دوري،
+[p19] replace
+    primary  : الطرف ; اد
+    secondary: الطرف؛ (د)
+[p19] delete
+    primary  : 9
+    secondary: 
+[p19] replace
+    primary  : منافعها .
+    secondary: منافعها. -
+[p19] insert
+    primary  : 
+    secondary: ،
+[p19] replace
+    primary  : الطرائق (
+    secondary: الطرائق،
+[p19] delete
+    primary  : .
+    secondary: 
+[p19] delete
+    primary  : في
+    secondary: 
+[p19] replace
+    primary  : النفاذ
+    secondary: النفاذ. -
+[p19] replace
+    primary  : اعلاه ،
+    secondary: اعلاه،
+[p19] replace
+    primary  : منافعها ،
+    secondary: منافعها،
+[p19] replace
+    primary  : المنافع .
+    secondary: المنافع. - -
+[p19] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p19] insert
+    primary  : 
+    secondary: ،
+[p19] replace
+    primary  : 9 =تقييم
+    secondary: وتقييم
+[p19] replace
+    primary  : سنتين .
+    secondary: سنتين.
+[p19] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p19] replace
+    primary  : السنو يه
+    secondary: السنويه
+[p19] replace
+    primary  : اعلاه
+    secondary: اعلاه. - -
+[p19] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p19] replace
+    primary  : الضروريه
+    secondary: الضروريه،
+[p19] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p19] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه. - 17- -1
+[p20] replace
+    primary  : 9 و تقاسم منافعها وتعمل
+    secondary: وتقاسم منافعها. وتعمل،
+[p20] replace
+    primary  : ,
+    secondary: ،
+[p20] replace
+    primary  : المنافع
+    secondary: المنافع،
+[p20] replace
+    primary  : 14
+    secondary: ،14،
+[p20] replace
+    primary  : الشفافيه
+    secondary: الشفافيه،
+[p20] replace
+    primary  : السواء
+    secondary: السواء. -
+[p20] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p20] replace
+    primary  : العادل
+    secondary: العادل،
+[p20] replace
+    primary  : اللجنه
+    secondary: اللجنه،
+[p20] replace
+    primary  : الساحليه .
+    secondary: الساحليه.
+[p20] replace
+    primary  : عملها .
+    secondary: عملها. -
+[p20] replace
+    primary  : تقدم
+    secondary: تقديم
+[p20] replace
+    primary  : الجزء
+    secondary: الجزء،
+[p20] replace
+    primary  : مايلي :
+    secondary: ما يلي: (ا)
+[p20] replace
+    primary  : الجزء ; اب (
+    secondary: الجزء؛ (ب)
+[p20] replace
+    primary  : ; )ج(
+    secondary: ؛ (ج)
+[p20] replace
+    primary  : اد
+    secondary: (د)
+[p20] replace
+    primary  : المعلومات ; اه
+    secondary: المعلومات؛ (ه)
+[p20] replace
+    primary  : 52; او(
+    secondary: 52؛ (و)
+[p20] replace
+    primary  : 9 تقاسم
+    secondary: وتقاسم
+[p20] replace
+    primary  : تعالجها
+    secondary: تعالجها. - 18- -
+[p21] replace
+    primary  : 9 = تقاسم منافعها
+    secondary: وتقاسم ،منافعها
+[p21] replace
+    primary  : المعلومات ، ماهو
+    secondary: المعلومات، ما هو
+[p21] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p21] replace
+    primary  : يلي :
+    secondary: يلي: -5 (ا)
+[p21] replace
+    primary  : تقاسم منافعها : اب (
+    secondary: وتقاسم منافعها؛ (ب)
+[p21] replace
+    primary  : الوطنيه ; )ج(
+    secondary: الوطنيه؛ (ج)
+[p21] replace
+    primary  : الاطراف . 5
+    secondary: الاطراف.
+[p21] delete
+    primary  : 9
+    secondary: 
+[p21] replace
+    primary  : ولايتها
+    secondary: ولايتها،
+[p21] replace
+    primary  : المنافع ،
+    secondary: المنافع،
+[p21] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p21] replace
+    primary  : والمنهجيات
+    secondary: والمنهجيات،
+[p21] replace
+    primary  : البيانات
+    secondary: البيانات،
+[p21] replace
+    primary  : المستفاده
+    secondary: المستفاده. -
+[p21] delete
+    primary  : 9
+    secondary: 
+[p21] replace
+    primary  : اعلاه .
+    secondary: اعلاه. -1
+[p21] replace
+    primary  : المعلومات
+    secondary: المعلومات،
+[p21] insert
+    primary  : 
+    secondary: ،
+[p21] replace
+    primary  : 9 تقاسم منافعها
+    secondary: وتقاسم منافعها. -
+[p21] replace
+    primary  : منها
+    secondary: منها،
+[p21] replace
+    primary  : الجزء
+    secondary: الجزء. - 19 - -
+[p22] delete
+    primary  : 9
+    secondary: 
+[p22] replace
+    primary  : للاطراف
+    secondary: للاطراف،
+[p22] replace
+    primary  : تعليقاتها .
+    secondary: تعليقاتها.
+[p22] replace
+    primary  : التقرير ،
+    secondary: التقرير،
+[p22] replace
+    primary  : الاطراف .
+    secondary: الاطراف.
+[p22] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p22] replace
+    primary  : منافعها
+    secondary: ،منافعها،
+[p22] replace
+    primary  : التو جيهيه
+    secondary: التوجيهيه
+[p22] replace
+    primary  : الماده
+    secondary: الماده،
+[p22] replace
+    primary  : للاطراف الجزع
+    secondary: للاطراف. الجزء
+[p22] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p22] insert
+    primary  : 
+    secondary: اهداف هذا الجزء هي كما يلي:
+[p22] replace
+    primary  : اهداف هذا الجزء هيكما يلي :
+    secondary: (ا)
+[p22] replace
+    primary  : مستدام ,
+    secondary: مستدام،
+[p22] replace
+    primary  : المناطق .
+    secondary: المناطق،
+[p22] replace
+    primary  : جيدا ؛ اب(
+    secondary: جيدا؛ (ب)
+[p22] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p22] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p22] replace
+    primary  : الدول
+    secondary: الدول،
+[p22] replace
+    primary  : الصله
+    secondary: الصله،
+[p22] replace
+    primary  : الصله; )ج(
+    secondary: الصله؛ (ج)
+[p22] replace
+    primary  : وصيانتهما .
+    secondary: وصيانتهما،
+[p22] replace
+    primary  : الاجهاد
+    secondary: الاجهاد،
+[p22] replace
+    primary  : البحري; )د
+    secondary: البحري؛ - 20 - (د)
+[p23] replace
+    primary  : الاقتصاديه
+    secondary: - الاقتصاديه،
+[p23] replace
+    primary  : الثقافيه ; )ه (
+    secondary: الثقافيه؛ (ه)
+[p23] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p23] replace
+    primary  : نموا
+    secondary: ،نموا
+[p23] replace
+    primary  : الساحليه .
+    secondary: الساحليه،
+[p23] replace
+    primary  : جغرافياء
+    secondary: جغرافيا،
+[p23] replace
+    primary  : الساحليه
+    secondary: الساحليه،
+[p23] replace
+    primary  : الارخبيليه
+    secondary: الارخبيليه،
+[p23] replace
+    primary  : الدخل
+    secondary: الدخل،
+[p23] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p23] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p23] replace
+    primary  : وانفاذها ,
+    secondary: وانفاذها.
+[p23] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p23] replace
+    primary  : المحميه .
+    secondary: المحميه،
+[p23] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p23] replace
+    primary  : اونفي
+    secondary: او نفي
+[p23] replace
+    primary  : الولايه
+    secondary: الولايه،
+[p23] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p23] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p23] replace
+    primary  : تفسسر
+    secondary: تفسر
+[p23] replace
+    primary  : الولايه .
+    secondary: الولايه. - 1
+[p23] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p23] replace
+    primary  : مجتمعه
+    secondary: مجتمعه،
+[p23] replace
+    primary  : مقترحاتها
+    secondary: مقترحاتها،
+[p23] replace
+    primary  : الجزء
+    secondary: الجزء،
+[p23] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p23] replace
+    primary  : المحميه .
+    secondary: المحميه. -
+[p23] replace
+    primary  : 9 تتشاور
+    secondary: وتتشاور ،
+[p23] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p23] replace
+    primary  : المصلحه
+    secondary: المصلحه،
+[p23] replace
+    primary  : والقطاعيه
+    secondary: والقطاعيه،
+[p23] insert
+    primary  : 
+    secondary: - 21 -
+[p24] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p24] replace
+    primary  : المقترحات
+    secondary: المقترحات،
+[p24] insert
+    primary  : 
+    secondary: في
+[p24] replace
+    primary  : الجزء
+    secondary: الجزء. -
+[p24] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p24] replace
+    primary  : متوافره ،
+    secondary: متوافره،
+[p24] delete
+    primary  : -
+    secondary: 
+[p24] replace
+    primary  : الايكولوجي .
+    secondary: الايكولوجي. - 4.
+[p24] replace
+    primary  : التاليه :
+    secondary: التاليه: (ا)
+[p24] replace
+    primary  : الاول ; اب(
+    secondary: الاول؛ (ب)
+[p24] replace
+    primary  : الاول
+    secondary: الاول،
+[p24] replace
+    primary  : ادناه ،
+    secondary: ادناه،
+[p24] replace
+    primary  : المنطقه; )ج(
+    secondary: المنطقه؛ (ج)
+[p24] replace
+    primary  : المنطقهء
+    secondary: المنطقه،
+[p24] replace
+    primary  : واثرها .
+    secondary: واثرها،
+[p24] replace
+    primary  : وجد )د
+    secondary: وجد؛ (د)
+[p24] replace
+    primary  : البيوا ولوجي ف
+    secondary: البيولوجي في
+[p24] replace
+    primary  : تحديدها ; )ه (
+    secondary: تحديدها؛ (ه)
+[p24] replace
+    primary  : المستدام
+    secondary: المستدام،
+[p24] replace
+    primary  : )و( مثسروع
+    secondary: ؛ (و) مشروع
+[p24] replace
+    primary  : المقترحه
+    secondary: المقترحه،
+[p24] replace
+    primary  : المحدده ; از(
+    secondary: المحدده؛ (ز)
+[p24] replace
+    primary  : )ح(
+    secondary: ؛ (ح)
+[p24] replace
+    primary  : الدول
+    secondary: الدول،
+[p24] replace
+    primary  : واو
+    secondary: و/او
+[p24] replace
+    primary  : الصله; اط (
+    secondary: الصله؛ - 22- (ط)
+[p25] replace
+    primary  : المناطق بمافي
+    secondary: المناطق، بما في
+[p25] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p25] replace
+    primary  : الصله; )ي (
+    secondary: الصله؛ (ي)
+[p25] replace
+    primary  : الصله
+    secondary: الصله،
+[p25] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p25] replace
+    primary  : توافرت . 5
+    secondary: توافرت. -5
+[p25] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p25] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p25] delete
+    primary  : حسب
+    secondary: 
+[p25] replace
+    primary  : ويعتمده 0
+    secondary: ويعتمده. - 6
+[p25] replace
+    primary  : والتقنيهء
+    secondary: والتقنيه،
+[p25] replace
+    primary  : الضروره
+    secondary: الضروره،
+[p25] replace
+    primary  : المقترحات
+    secondary: المقترحات،
+[p25] replace
+    primary  : اعلاه
+    secondary: اعلاه،
+[p25] replace
+    primary  : )ب ( اعلاه ،
+    secondary: (ب) اعلاه،
+[p25] replace
+    primary  : ويعتمد ها
+    secondary: ويعتمدها.
+[p25] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p25] replace
+    primary  : له.
+    secondary: له
+[p25] insert
+    primary  : 
+    secondary: ،
+[p25] replace
+    primary  : الاول .
+    secondary: الاول.
+[p25] replace
+    primary  : المقترح .
+    secondary: المقترح.
+[p25] replace
+    primary  : الامانه بعدان
+    secondary: الامانه، بعد ان
+[p25] replace
+    primary  : والتقنيه .
+    secondary: والتقنيه.
+[p25] insert
+    primary  : 
+    secondary: - 23- - 1
+[p26] delete
+    primary  : 1
+    secondary: 
+[p26] delete
+    primary  : _
+    secondary: 
+[p26] replace
+    primary  : المصلحه
+    secondary: المصلحه،
+[p26] replace
+    primary  : والقطاعيه
+    secondary: والقطاعيه،
+[p26] replace
+    primary  : المحليه .
+    secondary: المحليه. -
+[p26] replace
+    primary  : التالي : ا(
+    secondary: التالي: (ا)
+[p26] replace
+    primary  : الدول
+    secondary: الدول،
+[p26] insert
+    primary  : 
+    secondary: ،
+[p26] replace
+    primary  : يلي : ،1
+    secondary: يلي: 1
+[p26] replace
+    primary  : الجغرافي ;
+    secondary: الجغرافي؛
+[p26] replace
+    primary  : صله ؛ 3`
+    secondary: صله؛ 3
+[p26] delete
+    primary  : _
+    secondary: 
+[p26] replace
+    primary  : اوذات
+    secondary: او ذات
+[p26] replace
+    primary  : الوطنيه ; 4'
+    secondary: الوطنيه؛ 4
+[p26] replace
+    primary  : الوطنيه ; ،5
+    secondary: الوطنيه؛ 5
+[p26] replace
+    primary  : صله ؛ اب(
+    secondary: صله؛ (ب)
+[p26] delete
+    primary  : _
+    secondary: 
+[p26] replace
+    primary  : يلي : ،1
+    secondary: يلي: 1
+[p26] replace
+    primary  : المقترح ;
+    secondary: المقترح؛
+[p26] replace
+    primary  : صله ؛ `3`
+    secondary: صله؛ 3
+[p26] replace
+    primary  : اوفي
+    secondary: او في
+[p26] replace
+    primary  : لها ; ،4
+    secondary: لها؛ - 24- 4
+[p27] replace
+    primary  : للتدا ابير
+    secondary: للتدابير
+[p27] replace
+    primary  : المحذده المقترح
+    secondary: المحدده في المقترح،
+[p27] replace
+    primary  : الهيئه ; ،5
+    secondary: الهيئه؛ 5
+[p27] replace
+    primary  : الهيئه; `6
+    secondary: الهيئه؛ 6
+[p27] replace
+    primary  : صله ; )ج(
+    secondary: صله؛ (ج)
+[p27] replace
+    primary  : صله
+    secondary: صله،
+[p27] delete
+    primary  : _
+    secondary: 
+[p27] replace
+    primary  : يلي :
+    secondary: يلي:
+[p27] replace
+    primary  : المقترح ;
+    secondary: المقترح؛
+[p27] replace
+    primary  : صله ; `3`
+    secondary: صله؛ 3
+[p27] replace
+    primary  : المحليه ; `4
+    secondary: المحليه؛ 4
+[p27] replace
+    primary  : صله .
+    secondary: صله. - 3 - 4
+[p27] replace
+    primary  : اعلاه . 4
+    secondary: اعلاه.
+[p27] replace
+    primary  : للدول
+    secondary: للدول،
+[p27] replace
+    primary  : يلي : ا(
+    secondary: يلي: (ا)
+[p27] replace
+    primary  : الدول
+    secondary: الدول،
+[p27] replace
+    primary  : مسبقا اب (
+    secondary: مسبقا؛ (ب)
+[p27] replace
+    primary  : 9 تقديم
+    secondary: وتقديم
+[p27] replace
+    primary  : لذلك 5
+    secondary: لذلك. -5
+[p27] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p27] replace
+    primary  : المقترح .
+    secondary: المقترح. - 25- - 6 - 7
+[p28] replace
+    primary  : زمنيا 7
+    secondary: زمنيا.
+[p28] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p28] replace
+    primary  : الاطراف .
+    secondary: الاطراف. -
+[p28] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p28] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p28] replace
+    primary  : والتقييمء
+    secondary: والتقييم،
+[p28] replace
+    primary  : مدتهاء
+    secondary: مدتها،
+[p28] replace
+    primary  : ويعتمدها
+    secondary: ويعتمدها،
+[p28] replace
+    primary  : الناميه .
+    secondary: الناميه. - 1
+[p28] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p28] replace
+    primary  : 1
+    secondary: 6
+[p28] replace
+    primary  : يليء
+    secondary: يلي
+[p28] replace
+    primary  : الاداره ،
+    secondary: الاداره، مع
+[p28] replace
+    primary  : التشساور
+    secondary: التشاور
+[p28] replace
+    primary  : الجزع
+    secondary: الجزء،
+[p28] replace
+    primary  : )ا(
+    secondary: (ا)
+[p28] replace
+    primary  : المناطق (
+    secondary: المناطق،
+[p28] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p28] replace
+    primary  : اب (
+    secondary: ؛ (ب)
+[p28] replace
+    primary  : التد =ابير
+    secondary: التدابير
+[p28] replace
+    primary  : الصله
+    secondary: الصله،
+[p28] replace
+    primary  : والهيئات ; )ج(
+    secondary: والهيئات؛ (ج)
+[p28] replace
+    primary  : له،
+    secondary: له
+[p28] replace
+    primary  : اودون
+    secondary: او دون
+[p28] replace
+    primary  : اخري ,
+    secondary: اخري،
+[p28] replace
+    primary  : لتث
+    secondary: لتش
+[p28] replace
+    primary  : والهيئات
+    secondary: والهيئات،
+[p28] replace
+    primary  : ولايته
+    secondary: ولايته. -
+[p28] replace
+    primary  : يقوضها .
+    secondary: يقوضها. -26- -
+[p29] insert
+    primary  : 
+    secondary: مع
+[p29] replace
+    primary  : الصله
+    secondary: الصله،
+[p29] replace
+    primary  : بينها
+    secondary: بينها،
+[p29] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p29] replace
+    primary  : المحميه.
+    secondary: المحميه،
+[p29] replace
+    primary  : الهيئات 4
+    secondary: الهيئات. - 4.
+[p29] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p29] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p29] replace
+    primary  : اعلاهء
+    secondary: اعلاه،
+[p29] replace
+    primary  : يقررء
+    secondary: يقرر ،
+[p29] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p29] replace
+    primary  : عي
+    secondary: علي
+[p29] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p29] replace
+    primary  : اودون
+    secondary: او دون
+[p29] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p29] replace
+    primary  : بذلك 5 لايكون
+    secondary: بذلك. -5 لا يكون
+[p29] replace
+    primary  : يعتمد ها
+    secondary: يعتمدها
+[p29] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p29] replace
+    primary  : للاتفاقيه .
+    secondary: للاتفاقيه.
+[p29] replace
+    primary  : اويمكن
+    secondary: او يمكن
+[p29] replace
+    primary  : ء
+    secondary: ،
+[p29] replace
+    primary  : للاتفاقيه.
+    secondary: للاتفاقيه،
+[p29] replace
+    primary  : الغايه
+    secondary: الغايه،
+[p29] replace
+    primary  : الجزع 0
+    secondary: الجزء. - 6
+[p29] replace
+    primary  : الجزءء
+    secondary: الجزء،
+[p29] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p29] replace
+    primary  : لاحق
+    secondary: لاحق،
+[p29] replace
+    primary  : جزئيا
+    secondary: جزئيا،
+[p29] replace
+    primary  : ساحليه
+    secondary: ساحليه،
+[p29] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p29] replace
+    primary  : اجتما عه التالي
+    secondary: اجتماعه التالي،
+[p29] replace
+    primary  : المناطق ( بمافي
+    secondary: المناطق، بما في
+[p29] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p29] replace
+    primary  : اذاكان
+    secondary: اذا كان
+[p29] replace
+    primary  : يلغيها
+    secondary: يلغيها،
+[p29] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء. - 27- - 7
+[p30] replace
+    primary  : اودون
+    secondary: او دون
+[p30] replace
+    primary  : المناطق ,
+    secondary: المناطق،
+[p30] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p30] replace
+    primary  : التدا ابير
+    secondary: التدابير
+[p30] replace
+    primary  : الهيئه
+    secondary: الهيئه،
+[p30] replace
+    primary  : جزئيا
+    secondary: جزئيا،
+[p30] insert
+    primary  : 
+    secondary: ،
+[p30] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p30] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p30] replace
+    primary  : الصله
+    secondary: الصله،
+[p30] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء.
+[p30] insert
+    primary  : 
+    secondary: -1 - 2
+[p30] insert
+    primary  : 
+    secondary: ،
+[p30] delete
+    primary  : 2
+    secondary: 
+[p30] replace
+    primary  : الاراءء
+    secondary: الاراء،
+[p30] replace
+    primary  : والمصوتين
+    secondary: والمصوتين،
+[p30] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p30] replace
+    primary  : والمصوتين . انكل
+    secondary: والمصوتين، ان كل
+[p30] replace
+    primary  : استنفد
+    secondary: استنفد. -
+[p30] replace
+    primary  : الاطراف .
+    secondary: الاطراف. -
+[p30] replace
+    primary  : طرف
+    secondary: طرف،
+[p30] replace
+    primary  : الاعتراض
+    secondary: الاعتراض،
+[p30] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p30] insert
+    primary  : 
+    secondary: ،
+[p30] replace
+    primary  : الطرف .
+    secondary: الطرف.
+[p30] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p30] replace
+    primary  : الاعتراض . - 5
+    secondary: الاعتراض. -5
+[p30] replace
+    primary  : خطياء
+    secondary: خطيا،
+[p30] replace
+    primary  : اعتراضه
+    secondary: اعتراضه،
+[p30] replace
+    primary  : .
+    secondary: ،
+[p30] replace
+    primary  : التاليه :
+    secondary: التاليه: -28- (ا)
+[p31] replace
+    primary  : اومع
+    secondary: او مع
+[p31] replace
+    primary  : للاتفاقيه ; اب (
+    secondary: للاتفاقيه؛ او فعلا؛ (ب)
+[p31] replace
+    primary  : او فعلا ؛ )ج(
+    secondary: (ج)
+[p31] replace
+    primary  : بذلك 0
+    secondary: بذلك. - 6
+[p31] replace
+    primary  : عمليا
+    secondary: عمليا،
+[p31] replace
+    primary  : عليه
+    secondary: عليه،
+[p31] replace
+    primary  : مالم
+    secondary: ما لم
+[p31] replace
+    primary  : للاتفاقيه .
+    secondary: للاتفاقيه. -
+[p31] replace
+    primary  : بموجا ب
+    secondary: بموجب
+[p31] replace
+    primary  : اعلاه ،
+    secondary: اعلاه،
+[p31] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p31] replace
+    primary  : اعلاه ،
+    secondary: اعلاه،
+[p31] insert
+    primary  : 
+    secondary: -
+[p31] replace
+    primary  : ضروريا
+    secondary: ضروريا،
+[p31] replace
+    primary  : النفاذء
+    secondary: النفاذ،
+[p31] replace
+    primary  : الامانه .
+    secondary: الامانه.
+[p31] replace
+    primary  : الاولي .
+    secondary: الاولي. -
+[p31] replace
+    primary  : اعلاهء
+    secondary: اعلاه،
+[p31] replace
+    primary  : تلقائيا
+    secondary: تلقائيا،
+[p31] insert
+    primary  : 
+    secondary: ثم
+[p31] replace
+    primary  : تلقائيا .
+    secondary: تلقائيا.
+[p31] replace
+    primary  : يوما .
+    secondary: يوما. - -
+[p31] replace
+    primary  : بمقتضي
+    secondary: بمقتض
+[p31] insert
+    primary  : 
+    secondary: ،
+[p31] replace
+    primary  : عليهاء
+    secondary: عليها،
+[p31] replace
+    primary  : الصله
+    secondary: الصله. - 29-
+[p32] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p32] insert
+    primary  : 
+    secondary: -
+[p32] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p32] replace
+    primary  : طارئ
+    secondary: طارئ،
+[p32] insert
+    primary  : 
+    secondary: ،
+[p32] replace
+    primary  : اوكارثه
+    secondary: او كارثه
+[p32] replace
+    primary  : اولا
+    secondary: او لا
+[p32] replace
+    primary  : البيوا ولوجي
+    secondary: البيولوجي
+[p32] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p32] replace
+    primary  : ٧
+    secondary: لا
+[p32] replace
+    primary  : فيه
+    secondary: فيه. -
+[p32] replace
+    primary  : ا
+    secondary: لا
+[p32] replace
+    primary  : تعذرت
+    secondary: تعذرت،
+[p32] replace
+    primary  : التشساور
+    secondary: التشاور
+[p32] replace
+    primary  : اودون
+    secondary: او دون
+[p32] replace
+    primary  : صلهء
+    secondary: صله،
+[p32] replace
+    primary  : اواطار
+    secondary: او اطار
+[p32] replace
+    primary  : اودون
+    secondary: او دون
+[p32] replace
+    primary  : صله
+    secondary: صله. -
+[p32] replace
+    primary  : التد ابير
+    secondary: التدابير
+[p32] replace
+    primary  : المتاحه
+    secondary: المتاحه،
+[p32] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p32] replace
+    primary  : توافرت
+    secondary: توافرت،
+[p32] replace
+    primary  : ,
+    secondary: .
+[p32] replace
+    primary  : اوان
+    secondary: او ان
+[p32] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p32] replace
+    primary  : اعتمادها
+    secondary: اعتمادها.
+[p32] replace
+    primary  : التدابير
+    secondary: التدابير،
+[p32] replace
+    primary  : النفاذء
+    secondary: النفاذ،
+[p32] replace
+    primary  : المناطق .
+    secondary: المناطق،
+[p32] replace
+    primary  : بتدا ابير
+    secondary: بتدابير
+[p32] replace
+    primary  : اودون
+    secondary: او دون
+[p32] replace
+    primary  : صله
+    secondary: صله،
+[p32] replace
+    primary  : التد ابير 5
+    secondary: التدابير. -5
+[p32] replace
+    primary  : والتقنيهء
+    secondary: والتقنيه،
+[p32] insert
+    primary  : 
+    secondary: ،
+[p32] replace
+    primary  : الطارئه
+    secondary: الطارئه،
+[p32] replace
+    primary  : التشساور
+    secondary: التشاور ،
+[p32] replace
+    primary  : ويعتمده -ها
+    secondary: ويعتمدها
+[p32] replace
+    primary  : ممكنه .
+    secondary: ممكنه.
+[p32] replace
+    primary  : وشفافه .
+    secondary: وشفافه. - 30-
+[p33] insert
+    primary  : 
+    secondary: - 1
+[p33] replace
+    primary  : اوسيطرتها
+    secondary: او سيطرتها
+[p33] delete
+    primary  : في
+    secondary: 
+[p33] replace
+    primary  : الجزء
+    secondary: الجزء. -
+[p33] replace
+    primary  : يتخذء
+    secondary: يتخذ،
+[p33] insert
+    primary  : 
+    secondary: ،
+[p33] replace
+    primary  : سيطرته
+    secondary: سيطرته،
+[p33] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p33] replace
+    primary  : نمواء
+    secondary: نموا
+[p33] insert
+    primary  : 
+    secondary: . -
+[p33] insert
+    primary  : 
+    secondary: هي اعضاء فيها،
+[p33] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p33] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p33] delete
+    primary  : (
+    secondary: 
+[p33] delete
+    primary  : هي اعضاء فيها
+    secondary: 
+[p33] replace
+    primary  : بموجاب
+    secondary: بموجب
+[p33] replace
+    primary  : الجزع . 5 تشجدع
+    secondary: الجزء. -5 تشجع
+[p33] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p33] replace
+    primary  : اوسفن
+    secondary: او سفن
+[p33] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p33] replace
+    primary  : المحميه اولها
+    secondary: المحميه، او لها
+[p33] replace
+    primary  : المنطقهء
+    secondary: المنطقه،
+[p33] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p33] replace
+    primary  : الجزء 0
+    secondary: الجزء. - 6
+[p33] insert
+    primary  : 
+    secondary: ،
+[p33] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p33] replace
+    primary  : مستدام ,
+    secondary: مستدام،
+[p33] replace
+    primary  : الصله
+    secondary: الصله،
+[p33] replace
+    primary  : الهيئات
+    secondary: الهيئات. - 31- -1
+[p34] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p34] replace
+    primary  : مجتمعه
+    secondary: مجتمعه،
+[p34] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p34] replace
+    primary  : المحميه والتدا ابير
+    secondary: المحميه، والتدابير
+[p34] replace
+    primary  : بها .
+    secondary: بها.
+[p34] insert
+    primary  : 
+    secondary: ،
+[p34] replace
+    primary  : ادناه
+    secondary: ادناه،
+[p34] replace
+    primary  : التوالي .
+    secondary: التوالي. -
+[p34] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p34] replace
+    primary  : الجزء
+    secondary: الجزء. -
+[p34] replace
+    primary  : المناطق ,
+    secondary: المناطق،
+[p34] insert
+    primary  : 
+    secondary: ،
+[p34] replace
+    primary  : التد =ابير
+    secondary: التدابير
+[p34] replace
+    primary  : بهاء
+    secondary: بها،
+[p34] replace
+    primary  : التوالي . في
+    secondary: التوالي. - 4
+[p34] replace
+    primary  : اعلاه تقدم
+    secondary: ،اعلاه ، تقيم
+[p34] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p34] replace
+    primary  : الجزء ،
+    secondary: الجزء،
+[p34] replace
+    primary  : التدا ابير
+    secondary: التدابير
+[p34] replace
+    primary  : اهدافها
+    secondary: اهدافها،
+[p34] replace
+    primary  : الاطراف . 5
+    secondary: الاطراف. -5
+[p34] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p34] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p34] insert
+    primary  : 
+    secondary: ،
+[p34] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p34] replace
+    primary  : المتاحه
+    secondary: المتاحه،
+[p34] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p34] replace
+    primary  : توافرت
+    secondary: توافرت،
+[p34] replace
+    primary  : الايكولوجي . الجزع
+    secondary: الايكولوجي. - 32- الجزء
+[p35] insert
+    primary  : 
+    secondary: اهداف هذا الجزء هي كما يلي:
+[p35] replace
+    primary  : كما يلي : اهداف هذا الجزء
+    secondary: (ا)
+[p35] replace
+    primary  : الاطراف ; اب (
+    secondary: الاطراف؛ (ب)
+[p35] replace
+    primary  : ضساره
+    secondary: ضاره
+[p35] replace
+    primary  : عليها )ج(
+    secondary: عليها؛ (ج)
+[p35] replace
+    primary  : 9ي
+    secondary: في
+[p35] replace
+    primary  : الوطنيه ; )د(
+    secondary: الوطنيه؛ (د)
+[p35] replace
+    primary  : استراتيجيه ; )ه (
+    secondary: استراتيجيه؛ (ه)
+[p35] replace
+    primary  : 9ي
+    secondary: في
+[p35] replace
+    primary  : الوطنيه ; )و (
+    secondary: الوطنيه؛ (و)
+[p35] replace
+    primary  : الاطراف . ولاسيما
+    secondary: الاطراف، ولا سيما
+[p35] replace
+    primary  : الناميهء
+    secondary: الناميه،
+[p35] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 33 - - 1
+[p36] replace
+    primary  : سيطرتهاء
+    secondary: سيطرتها،
+[p36] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p36] replace
+    primary  : بها
+    secondary: بها. -
+[p36] replace
+    primary  : اوسيطره
+    secondary: او سيطره
+[p36] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p36] replace
+    primary  : للطرف .
+    secondary: للطرف.
+[p36] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p36] replace
+    primary  : المعلومات
+    secondary: المعلومات،
+[p36] replace
+    primary  : اثنا ٦
+    secondary: اثناء
+[p36] replace
+    primary  : الوطنيه ; اب (
+    secondary: الوطنيه؛ (ب)
+[p36] replace
+    primary  : الوطنيه ; )ج(
+    secondary: الوطنيه؛ (ج)
+[p36] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p36] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p36] replace
+    primary  : اعلاه ،
+    secondary: (ا) اعلاه،
+[p36] replace
+    primary  : _ المزمع .
+    secondary: المزمع. - 34- العلاقه - 1
+[p37] delete
+    primary  : العلاقه
+    secondary: 
+[p37] delete
+    primary  : 1
+    secondary: 
+[p37] replace
+    primary  : وااو
+    secondary: و/او
+[p37] replace
+    primary  : التو جيهيه
+    secondary: التوجيهيه
+[p37] replace
+    primary  : فيها
+    secondary: فيها. -
+[p37] insert
+    primary  : 
+    secondary: -
+[p37] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p37] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p37] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p37] replace
+    primary  : الصله 4
+    secondary: الصله. - 4.
+[p37] replace
+    primary  : المزمع :
+    secondary: المزمع: (ا)
+[p37] replace
+    primary  : اوفئه
+    secondary: او فئه
+[p37] replace
+    primary  : اومن
+    secondary: او من
+[p37] replace
+    primary  : اودون
+    secondary: او دون
+[p37] replace
+    primary  : صله ; اب ( ان :
+    secondary: صله؛ (ب) ان:
+[p37] replace
+    primary  : الجزء
+    secondary: الجزء،
+[p37] insert
+    primary  : 
+    secondary: ؛
+[p37] replace
+    primary  : 2`
+    secondary: '2' 2
+[p37] replace
+    primary  : الصله
+    secondary: الصه
+[p37] replace
+    primary  : اودون
+    secondary: او دون
+[p37] insert
+    primary  : 
+    secondary: - 35 - - 5
+[p38] delete
+    primary  : 5
+    secondary: 
+[p38] delete
+    primary  : بموجب
+    secondary: 
+[p38] replace
+    primary  : اومن
+    secondary: او من
+[p38] replace
+    primary  : اودون
+    secondary: او دون
+[p38] replace
+    primary  : صلهء
+    secondary: صله،
+[p38] replace
+    primary  : المعلومات .
+    secondary: المعلومات. بموجب -
+[p38] replace
+    primary  : مالم
+    secondary: ما لم
+[p38] replace
+    primary  : )ب ( 1
+    secondary: (ب) '1‘
+[p38] replace
+    primary  : اومن
+    secondary: او من
+[p38] replace
+    primary  : صله
+    secondary: صله،
+[p38] replace
+    primary  : المعلومات .
+    secondary: المعلومات. - 1
+[p38] replace
+    primary  : جيدا
+    secondary: جيدا،
+[p38] replace
+    primary  : 31،
+    secondary: 31 ،
+[p38] replace
+    primary  : ادناه 9
+    secondary: ادناه، و: (ا)
+[p38] replace
+    primary  : فيها ،
+    secondary: فيها،
+[p38] replace
+    primary  : يلي : (
+    secondary: يلي:
+[p38] replace
+    primary  : المزمع
+    secondary: المزمع،
+[p38] replace
+    primary  : منه وموقعه ومدته . وكثافته 2'
+    secondary: منه، وموقعه، ومدته، وكثافته؛ 2
+[p38] replace
+    primary  : المحتمله
+    secondary: المحتمله،
+[p38] replace
+    primary  : التراكميه
+    secondary: التراكميه،
+[p38] replace
+    primary  : المزمع ,
+    secondary: المزمع،
+[p38] replace
+    primary  : الاقتضاء اب (
+    secondary: الاقتضاء؛ (ب)
+[p38] replace
+    primary  : وضساره فيها
+    secondary: وضاره فيها،
+[p38] replace
+    primary  : الجزء ,
+    secondary: الجزء. - 36- -
+[p39] replace
+    primary  : اذاكانت
+    secondary: اذا كانت
+[p39] insert
+    primary  : 
+    secondary: في
+[p39] replace
+    primary  : اوسيطرتها
+    secondary: او سيطرتها
+[p39] replace
+    primary  : اعلاه : ا(
+    secondary: اعلاه: (ا)
+[p39] replace
+    primary  : بواسطتها اب (
+    secondary: بواسطتها؛ (ب)
+[p39] replace
+    primary  : النشاط ; )ج(
+    secondary: النشاط؛ (ج)
+[p39] replace
+    primary  : النشاط ; اد
+    secondary: النشاط؛ (د)
+[p39] replace
+    primary  : ابما
+    secondary: (بما
+[p39] replace
+    primary  : البيولوجيه ; )ه (
+    secondary: البيولوجيه)؛ (ه)
+[p39] replace
+    primary  : للنشاط
+    secondary: للنشاط،
+[p39] replace
+    primary  : الوطنيه; او (
+    secondary: الوطنيه؛ - 1 (و)
+[p39] replace
+    primary  : جيد از(
+    secondary: جيد؛ (ز)
+[p39] replace
+    primary  : صله .
+    secondary: صله.
+[p39] replace
+    primary  : التاليه :
+    secondary: التاليه: (ا)
+[p39] insert
+    primary  : 
+    secondary: -
+[p39] replace
+    primary  : اوسيطرتها
+    secondary: او سيطرتها
+[p39] delete
+    primary  : :
+    secondary: 
+[p39] replace
+    primary  : سيطرته
+    secondary: سيطرته،
+[p39] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p39] replace
+    primary  : )ا(
+    secondary: (ا)
+[p39] replace
+    primary  : 30،
+    secondary: 30 ،
+[p39] replace
+    primary  : الاتفاق :
+    secondary: الاتفاق؛ -37-
+[p40] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p40] insert
+    primary  : 
+    secondary: ،
+[p40] replace
+    primary  : )ا(
+    secondary: (ا)
+[p40] replace
+    primary  : نشره ; 3`
+    secondary: نشره؛ 3
+[p40] replace
+    primary  : بشانه
+    secondary: بشانه،
+[p40] replace
+    primary  : استنتاجه ; 4` عذد
+    secondary: استنتاجه؛ '4' عند
+[p40] replace
+    primary  : )ا( 2 اعلاه يجاب
+    secondary: (ا) 2‘ اعلاه، يجب
+[p40] replace
+    primary  : المتاحه
+    secondary: المتاحه،
+[p40] replace
+    primary  : بالموض وع
+    secondary: بالموضوع،
+[p40] replace
+    primary  : توافرت .
+    secondary: توافرت،
+[p40] replace
+    primary  : الاساس
+    secondary: الاساس،
+[p40] replace
+    primary  : تقدم ,
+    secondary: تقدم،
+[p40] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p40] replace
+    primary  : المسجله
+    secondary: المسجله،
+[p40] replace
+    primary  : ،5
+    secondary: 5
+[p40] replace
+    primary  : ا
+    secondary: (ا)
+[p40] replace
+    primary  : والتقنيه ; 63
+    secondary: والتقنيه؛ 6
+[p40] replace
+    primary  : للعموم ,
+    secondary: للعموم،
+[p40] replace
+    primary  : المعلومات ; اب (
+    secondary: المعلومات؛ (ب)
+[p40] insert
+    primary  : 
+    secondary: -
+[p40] replace
+    primary  : بها
+    secondary: بها،
+[p40] replace
+    primary  : الانسان
+    secondary: الانسان،
+[p40] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p40] replace
+    primary  : وجدت .
+    secondary: وجدت،
+[p40] replace
+    primary  : الجزء .
+    secondary: الجزء.
+[p40] replace
+    primary  : المتاحه
+    secondary: المتاحه،
+[p40] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p40] replace
+    primary  : توافرت ; )ج(
+    secondary: توافرت؛ - 38 - (ج)
+[p41] insert
+    primary  : 
+    secondary: -
+[p41] replace
+    primary  : وتقييمها
+    secondary: وتقييمها،
+[p41] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p41] replace
+    primary  : المتاحهء
+    secondary: المتاحه،
+[p41] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p41] replace
+    primary  : توافرت ; اد
+    secondary: توافرت؛ - (د)
+[p41] replace
+    primary  : المحتمه
+    secondary: المحتمله
+[p41] replace
+    primary  : مايلي :
+    secondary: ما يلي:
+[p41] replace
+    primary  : فح
+    secondary: في
+[p41] replace
+    primary  : الكبيره .
+    secondary: الكبيره.
+[p41] replace
+    primary  : سيطرتها ;
+    secondary: سيطرتها؛
+[p41] replace
+    primary  : البيئيه
+    secondary: البيئيه،
+[p41] replace
+    primary  : الاقتضاء اه (
+    secondary: الاقتضاء؛ (ه)
+[p41] replace
+    primary  : 32: او (
+    secondary: 32؛ (و)
+[p41] delete
+    primary  : 2
+    secondary: 
+[p41] replace
+    primary  : البيئي
+    secondary: البيئي،
+[p41] replace
+    primary  : سيطرتها .
+    secondary: سيطرتها. - 2 -
+[p41] replace
+    primary  : والتقنيه .
+    secondary: والتقنيه.
+[p41] replace
+    primary  : النشاط
+    secondary: النشاط.
+[p41] replace
+    primary  : نفسه
+    secondary: نفسه.
+[p41] insert
+    primary  : 
+    secondary: . - 1
+[p41] delete
+    primary  : 1
+    secondary: 
+[p41] replace
+    primary  : المزمع ،
+    secondary: المزمع،
+[p41] replace
+    primary  : النشرمن
+    secondary: النشر من
+[p41] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p41] insert
+    primary  : 
+    secondary: - 39 -
+[p42] replace
+    primary  : زمنيء
+    secondary: زمني،
+[p42] replace
+    primary  : ماهو
+    secondary: ما هو
+[p42] replace
+    primary  : عمليا
+    secondary: عمليا،
+[p42] replace
+    primary  : الدول ،
+    secondary: الدول،
+[p42] replace
+    primary  : تضرراء
+    secondary: تضررا ،
+[p42] replace
+    primary  : البيئي .
+    secondary: البيئي.
+[p42] replace
+    primary  : المشاركه
+    secondary: المشاركه،
+[p42] replace
+    primary  : التعليقات
+    secondary: التعليقات،
+[p42] replace
+    primary  : البيئي
+    secondary: البيئي،
+[p42] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p42] replace
+    primary  : )ب (
+    secondary: (ب)
+[p42] replace
+    primary  : 33.
+    secondary: 33،
+[p42] replace
+    primary  : لا٠
+    secondary: لا. -
+[p42] replace
+    primary  : البحريه وتشمل :
+    secondary: البحريه، وتشمل: (ا)
+[p42] replace
+    primary  : النشاط; اب (
+    secondary: النشاط؛ (ب)
+[p42] replace
+    primary  : بشريهء
+    secondary: بشريه،
+[p42] replace
+    primary  : الاقتصاديه
+    secondary: الاقتصاديه،
+[p42] insert
+    primary  : 
+    secondary: -
+[p42] insert
+    primary  : 
+    secondary: ،
+[p42] replace
+    primary  : الصله
+    secondary: الصله،
+[p42] replace
+    primary  : المدنيء
+    secondary: المدني،
+[p42] replace
+    primary  : الاكاديميه والعموم . 4
+    secondary: الاكاديميه، والعموم. - 4.
+[p42] delete
+    primary  : ,
+    secondary: 
+[p42] replace
+    primary  : 48، شساملين
+    secondary: ،48 شاملين
+[p42] replace
+    primary  : المناسب
+    secondary: المناسب،
+[p42] replace
+    primary  : الناميه . 5
+    secondary: الناميه. -5
+[p42] replace
+    primary  : التشاور
+    secondary: التشاور،
+[p42] replace
+    primary  : المتاخمه
+    secondary: المتاخمه،
+[p42] replace
+    primary  : تضرراء
+    secondary: تضررا ،
+[p42] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p42] replace
+    primary  : خطيه
+    secondary: خطيه،
+[p42] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p42] replace
+    primary  : التحديل
+    secondary: التحديد،
+[p42] insert
+    primary  : 
+    secondary: - 40 -
+[p43] replace
+    primary  : معالجتها
+    secondary: معالجتها. -
+[p43] replace
+    primary  : للدول
+    secondary: للدول،
+[p43] replace
+    primary  : بمايلي :
+    secondary: بما يلي: (ا)
+[p43] replace
+    primary  : المحيطه
+    secondary: المحيطه،
+[p43] replace
+    primary  : اليها; اب (
+    secondary: اليها؛ (ب)
+[p43] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p43] replace
+    primary  : النشحاط
+    secondary: النشاط
+[p43] replace
+    primary  : لذلك
+    secondary: لذلك. -
+[p43] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p43] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p43] replace
+    primary  : الملكيه .
+    secondary: الملكيه.
+[p43] replace
+    primary  : قدتم حجبها .
+    secondary: قد تم حجبها. -1
+[p43] delete
+    primary  : 1
+    secondary: 
+[p43] replace
+    primary  : الجزء
+    secondary: الجزء. -
+[p43] replace
+    primary  : البيئيء
+    secondary: البيئي ،
+[p43] replace
+    primary  : ادني
+    secondary: ادني،
+[p43] delete
+    primary  : :
+    secondary: 
+[p43] replace
+    primary  : المزمع
+    secondary: المزمع،
+[p43] replace
+    primary  : موقعه
+    secondary: موقعه،
+[p43] replace
+    primary  : النطاق
+    secondary: النطاق،
+[p43] replace
+    primary  : ووصحفا
+    secondary: ، ووصفا
+[p43] replace
+    primary  : المحتمله
+    secondary: المحتمله،
+[p43] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p43] replace
+    primary  : ;
+    secondary: ؛
+[p43] replace
+    primary  : ;
+    secondary: ؛
+[p43] replace
+    primary  : العام ;
+    secondary: العام؛ - 41 -
+[p44] replace
+    primary  : ;
+    secondary: ؛
+[p44] replace
+    primary  : المتابعه
+    secondary: المتابعه،
+[p44] replace
+    primary  : البيئيه ;
+    secondary: البيئيه؛
+[p44] replace
+    primary  : تقني .
+    secondary: تقني. -
+[p44] replace
+    primary  : وتقييمه
+    secondary: وتقييمه. - 4
+[p44] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p44] replace
+    primary  : المناسب
+    secondary: المناسب،
+[p44] replace
+    primary  : البيئي .
+    secondary: البيئي.
+[p44] replace
+    primary  : والتقنيه . 5
+    secondary: والتقنيه. -5
+[p44] replace
+    primary  : البيئيء
+    secondary: البيئي،
+[p44] replace
+    primary  : المعلومات .
+    secondary: المعلومات.
+[p44] replace
+    primary  : المعلومات . 0
+    secondary: المعلومات.
+[p44] replace
+    primary  : النهائيه
+    secondary: النهائيه،
+[p44] replace
+    primary  : الممارسسات
+    secondary: الممارسات
+[p44] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p44] replace
+    primary  : توجيهيه.
+    secondary: توجيهيه،
+[p44] replace
+    primary  : الممارسات
+    secondary: الممارسات. - 6 -
+[p44] replace
+    primary  : 9
+    secondary: في
+[p44] replace
+    primary  : اذاكانت
+    secondary: اذا كانت
+[p44] replace
+    primary  : البيئي
+    secondary: البيئي،
+[p44] replace
+    primary  : 31،
+    secondary: 31 ،
+[p44] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p44] replace
+    primary  : توجيهيه
+    secondary: توجيهيه،
+[p44] replace
+    primary  : الممارسات
+    secondary: الممارسات. -1
+[p44] delete
+    primary  : 1
+    secondary: 
+[p44] replace
+    primary  : تنفيذه .
+    secondary: تنفيذه. -
+[p44] replace
+    primary  : الكامل
+    secondary: الكامل،
+[p44] replace
+    primary  : .
+    secondary: ،
+[p44] delete
+    primary  : .
+    secondary: 
+[p44] replace
+    primary  : مالا
+    secondary: ما لا
+[p44] replace
+    primary  : الطرف
+    secondary: الطرف،
+[p44] replace
+    primary  : الاداره
+    secondary: الاداره،
+[p44] insert
+    primary  : 
+    secondary: . - 42-
+[p45] replace
+    primary  : البحريه .
+    secondary: البحريه. -
+[p45] replace
+    primary  : المعلومات 4
+    secondary: المعلومات. - 4.
+[p45] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p45] replace
+    primary  : اذاكان
+    secondary: اذا كان
+[p45] replace
+    primary  : رصل
+    secondary: رصد
+[p45] replace
+    primary  : المراقبه
+    secondary: المراقبه،
+[p45] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p45] replace
+    primary  : متوافره
+    secondary: متوافره،
+[p45] replace
+    primary  : الناء جمه
+    secondary: الناجمه
+[p45] replace
+    primary  : اوتشارك
+    secondary: او تشارك
+[p45] replace
+    primary  : اويكون
+    secondary: او يكون
+[p45] replace
+    primary  : خاصه يرصدكل
+    secondary: خاصه، يرصد كل
+[p45] replace
+    primary  : سيطرتها ،
+    secondary: سيطرتها،
+[p45] insert
+    primary  : 
+    secondary: - 1
+[p45] insert
+    primary  : 
+    secondary: 6
+[p45] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p45] insert
+    primary  : 
+    secondary: -
+[p45] replace
+    primary  : للعموم عبل
+    secondary: للعموم، عبر
+[p45] replace
+    primary  : تقيمها
+    secondary: تقيمها. - 43 - -
+[p46] insert
+    primary  : 
+    secondary: المنطبقه
+[p46] insert
+    primary  : 
+    secondary: ،
+[p46] delete
+    primary  : المنطبقه
+    secondary: 
+[p46] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p46] replace
+    primary  : بها
+    secondary: بها،
+[p46] replace
+    primary  : الممارسات
+    secondary: الممارسات. -1
+[p46] replace
+    primary  : 35.
+    secondary: 35 -
+[p46] replace
+    primary  : الذيله
+    secondary: الذي له
+[p46] replace
+    primary  : اوسيطره
+    secondary: او سيطره
+[p46] replace
+    primary  : البيئي
+    secondary: البيئي،
+[p46] replace
+    primary  : اوشدتهاء اوانها
+    secondary: او شدتها ، او انها
+[p46] replace
+    primary  : النشاط
+    secondary: النشاط،
+[p46] replace
+    primary  : والعموم ء
+    secondary: والعموم،
+[p46] replace
+    primary  : 9
+    secondary: و: (ا)
+[p46] replace
+    primary  : واو ادارتها
+    secondary: و/او ادارتها،
+[p46] replace
+    primary  : واو
+    secondary: و / او
+[p46] replace
+    primary  : النشاط
+    secondary: النشاط،
+[p46] replace
+    primary  : الاقتضاء 9 اب (
+    secondary: الاقتضاء؛ و (ب)
+[p46] replace
+    primary  : المناسب
+    secondary: المناسب،
+[p46] delete
+    primary  : بموجب
+    secondary: 
+[p46] replace
+    primary  : )ا(
+    secondary: (ا)
+[p46] insert
+    primary  : 
+    secondary: -
+[p46] insert
+    primary  : 
+    secondary: بموجب
+[p46] replace
+    primary  : 36
+    secondary: 36،
+[p46] replace
+    primary  : ضساره كبيره ،
+    secondary: ضاره كبيره،
+[p46] replace
+    primary  : اوانها
+    secondary: او انها
+[p46] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p46] replace
+    primary  : المعني .
+    secondary: المعني. -
+[p46] insert
+    primary  : 
+    secondary: (ا)
+[p46] replace
+    primary  : للطرف
+    secondary: للطرف،
+[p46] replace
+    primary  : المتاحه
+    secondary: المتاحه،
+[p46] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p46] replace
+    primary  : توافرت
+    secondary: توافرت،
+[p46] replace
+    primary  : شواغله
+    secondary: شواغله،
+[p46] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p46] insert
+    primary  : 
+    secondary: - 44 -
+[p47] replace
+    primary  : البيئيء
+    secondary: البيئي،
+[p47] replace
+    primary  : اوشدتها
+    secondary: او شدتها،
+[p47] replace
+    primary  : اب (
+    secondary: (ب)
+[p47] replace
+    primary  : ; )ج(
+    secondary: ؛ (ج)
+[p47] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p47] insert
+    primary  : 
+    secondary: في
+[p47] replace
+    primary  : المتاحهء
+    secondary: المتاحه،
+[p47] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p47] replace
+    primary  : توافرت
+    secondary: توافرت،
+[p47] replace
+    primary  : بالنشاط
+    secondary: بالنشاط،
+[p47] replace
+    primary  : اوانها
+    secondary: او انها
+[p47] replace
+    primary  : بهء
+    secondary: به،
+[p47] replace
+    primary  : لهاء
+    secondary: لها،
+[p47] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p47] replace
+    primary  : بالنشاط; )د(
+    secondary: بالنشاط؛ (د)
+[p47] replace
+    primary  : والتقنيه .
+    secondary: والتقنيه،
+[p47] replace
+    primary  : المعلومات ; )ه (
+    secondary: المعلومات؛ (ه)
+[p47] replace
+    primary  : تقدمها ,
+    secondary: تقدمها. -
+[p47] replace
+    primary  : الدول
+    secondary: الدول،
+[p47] replace
+    primary  : المتاخمه
+    secondary: المتاخمه،
+[p47] replace
+    primary  : تاثرا .
+    secondary: تاثرا،
+[p47] insert
+    primary  : 
+    secondary: ،
+[p47] replace
+    primary  : المعلومات
+    secondary: المعلومات،
+[p47] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p47] replace
+    primary  : في
+    secondary: - 6
+[p47] replace
+    primary  : العمليات .
+    secondary: العمليات.
+[p47] replace
+    primary  : وغيرها ء مايلي :
+    secondary: وغيرها، ما يلي: (ا)
+[p47] replace
+    primary  : اب (
+    secondary: (ب)
+[p47] replace
+    primary  : بالقرارات
+    secondary: بالقرارات،
+[p47] replace
+    primary  : للقرار
+    secondary: للقرار،
+[p47] insert
+    primary  : 
+    secondary: - 45 - -1
+[p48] replace
+    primary  : وااو
+    secondary: و/او
+[p48] delete
+    primary  : 1
+    secondary: 
+[p48] replace
+    primary  : ويعتمد ها
+    secondary: ويعتمدها
+[p48] replace
+    primary  : مايلي : ا(
+    secondary: ما يلي: (ا)
+[p48] replace
+    primary  : اذاكانت
+    secondary: اذا كانت
+[p48] insert
+    primary  : 
+    secondary: تم
+[p48] replace
+    primary  : المزمعه
+    secondary: المزمعه،
+[p48] replace
+    primary  : الماده ; اب (
+    secondary: الماده؛ (ب)
+[p48] replace
+    primary  : البيئي ; اج
+    secondary: البيئي؛ (ج)
+[p48] replace
+    primary  : _9ي
+    secondary: في
+[p48] replace
+    primary  : البيئي ; اد
+    secondary: البيئي؛ (د)
+[p48] replace
+    primary  : 32
+    secondary: ،32 ،
+[p48] replace
+    primary  : الملكيه ; )ه (
+    secondary: الملكيه؛ (ه)
+[p48] insert
+    primary  : 
+    secondary: في
+[p48] replace
+    primary  : 33
+    secondary: ،33،
+[p48] replace
+    primary  : الممارسات ; )و (
+    secondary: الممارسات؛ (و)
+[p48] replace
+    primary  : الممارسات ; از(
+    secondary: الممارسات؛ - 2 (ز)
+[p48] replace
+    primary  : استراتيجيه . 2
+    secondary: استراتيجيه.
+[p48] insert
+    primary  : 
+    secondary: ،
+[p48] replace
+    primary  : يلي :
+    secondary: يلي: - 46 - (ا)
+[p49] replace
+    primary  : اولا
+    secondary: او لا
+[p49] replace
+    primary  : البيئيء
+    secondary: البيئي،
+[p49] replace
+    primary  : الانشطه
+    secondary: الانشطه،
+[p49] replace
+    primary  : دوريا ; اب(
+    secondary: دوريا؛ (ب)
+[p49] replace
+    primary  : خاصا
+    secondary: خاصا. - 3
+[p49] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p49] replace
+    primary  : 74
+    secondary: 74. - 1
+[p49] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p49] replace
+    primary  : اخري
+    secondary: اخري،
+[p49] replace
+    primary  : سيطرتها
+    secondary: سيطرتها،
+[p49] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p49] replace
+    primary  : البرامج ,
+    secondary: البرامج،
+[p49] replace
+    primary  : البدائل
+    secondary: البدائل،
+[p49] replace
+    primary  : البحريه .
+    secondary: البحريه. -
+[p49] delete
+    primary  : _
+    secondary: 
+[p49] replace
+    primary  : المستقبل
+    secondary: المستقبل،
+[p49] replace
+    primary  : البحوث .
+    secondary: البحوث. -
+[p49] insert
+    primary  : 
+    secondary: ،
+[p49] replace
+    primary  : اعلاه ،
+    secondary: اعلاه،
+[p49] replace
+    primary  : توافرها . 4
+    secondary: توافرها.
+[p49] replace
+    primary  : الماده الجزع
+    secondary: الماده. - 4. -47- الجزء
+[p50] delete
+    primary  : الماده 40 الاهداف
+    secondary: 
+[p50] replace
+    primary  : يلي :
+    secondary: يلي: الماده 40 الاهداف (ا)
+[p50] replace
+    primary  : الاطراف ولاسيما
+    secondary: الاطراف، ولا سيما
+[p50] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p50] replace
+    primary  : اهدافه ; اب(
+    secondary: اهدافه؛ (ب)
+[p50] replace
+    primary  : ي
+    secondary: في
+[p50] replace
+    primary  : الاتفاق ; )ج(
+    secondary: الاتفاق؛ (ج)
+[p50] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p50] replace
+    primary  : بالبحوث للاطراف ،
+    secondary: بالبحوث، للاطراف،
+[p50] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p50] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p50] replace
+    primary  : اليها اد(
+    secondary: اليها؛ (د)
+[p50] delete
+    primary  : ,
+    secondary: 
+[p50] replace
+    primary  : مستدام (
+    secondary: مستدام،
+[p50] replace
+    primary  : ; )ه (
+    secondary: ؛ (ه)
+[p50] replace
+    primary  : تحديدا
+    secondary: تحديدا،
+[p50] replace
+    primary  : الناميهء
+    secondary: الناميه،
+[p50] replace
+    primary  : الدخل
+    secondary: الدخل،
+[p50] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p50] replace
+    primary  : يلي :
+    secondary: يلي:
+[p50] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p50] replace
+    primary  : المنافع
+    secondary: المنافع،
+[p50] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p50] replace
+    primary  : المحميه
+    secondary: المحميه،
+[p50] replace
+    primary  : 3`
+    secondary: - 48 - - 1 3
+[p51] delete
+    primary  : 1
+    secondary: 
+[p51] replace
+    primary  : اومن
+    secondary: او من
+[p51] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p51] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p51] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p51] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p51] replace
+    primary  : الاشكال
+    secondary: الاشكال،
+[p51] insert
+    primary  : 
+    secondary: ،
+[p51] replace
+    primary  : التقليديه
+    secondary: التقليديه،
+[p51] replace
+    primary  : الصله
+    secondary: الصله. -
+[p51] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p51] insert
+    primary  : 
+    secondary: ،
+[p51] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p51] replace
+    primary  : الدخل .
+    secondary: الدخل.
+[p51] replace
+    primary  : مرهقه .
+    secondary: مرهقه. -1
+[p51] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p51] replace
+    primary  : قدراتها
+    secondary: قدراتها،
+[p51] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p51] replace
+    primary  : البحريهء
+    secondary: البحريه،
+[p51] replace
+    primary  : منها
+    secondary: منها،
+[p51] replace
+    primary  : نمواء
+    secondary: نموا ،
+[p51] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 49 - -
+[p52] insert
+    primary  : 
+    secondary: 6
+[p52] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p52] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p52] replace
+    primary  : الاخري
+    secondary: الاخري،
+[p52] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه. -
+[p52] replace
+    primary  : القائمه.
+    secondary: القائمه،
+[p52] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p52] replace
+    primary  : ء
+    secondary: ،
+[p52] replace
+    primary  : المستفادهء
+    secondary: المستفاده،
+[p52] replace
+    primary  : الصله.
+    secondary: الصله
+[p52] replace
+    primary  : الحسبان
+    secondary: الحسبان،
+[p52] replace
+    primary  : الامكان
+    secondary: الامكان،
+[p52] replace
+    primary  : والنتائج . 4
+    secondary: والنتائج. - 4.
+[p52] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p52] replace
+    primary  : نمواء
+    secondary: نموا،
+[p52] replace
+    primary  : اقليمي .
+    secondary: اقليمي.
+[p52] replace
+    primary  : اوان
+    secondary: او ان
+[p52] replace
+    primary  : المعلومات .
+    secondary: المعلومات. - 1
+[p52] insert
+    primary  : 
+    secondary: في
+[p52] replace
+    primary  : بالكامل .
+    secondary: بالكامل.
+[p52] replace
+    primary  : مؤاتاه
+    secondary: مؤاتاه،
+[p52] replace
+    primary  : وتفضيليه
+    secondary: وتفضيليه،
+[p52] insert
+    primary  : 
+    secondary: ،
+[p52] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p52] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p52] replace
+    primary  : نمواء
+    secondary: نموا،
+[p52] replace
+    primary  : والمؤسسات
+    secondary: والمؤسسات. - 50 - -
+[p53] replace
+    primary  : التكنوا لوجيات
+    secondary: التكنولوجيات
+[p53] replace
+    primary  : المشروعه
+    secondary: المشروعه،
+[p53] delete
+    primary  : _
+    secondary: 
+[p53] replace
+    primary  : الاتفاق . 5
+    secondary: الاتفاق. -5
+[p53] replace
+    primary  : وتكون
+    secondary: وتكون،
+[p53] replace
+    primary  : ممكن
+    secondary: ممكن،
+[p53] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p53] insert
+    primary  : 
+    secondary: - 1
+[p53] replace
+    primary  : 1 يجوز
+    secondary: يجوز،
+[p53] replace
+    primary  : 40،
+    secondary: 40
+[p53] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p53] replace
+    primary  : حصر
+    secondary: حصر،
+[p53] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p53] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p53] replace
+    primary  : الصله; اب (
+    secondary: الصله؛ (ب)
+[p53] replace
+    primary  : والوعيء
+    secondary: والوعي،
+[p53] replace
+    primary  : نشرهماء
+    secondary: نشرهما،
+[p53] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p53] replace
+    primary  : وعذد الاقتضاء
+    secondary: وعند الاقتضاء،
+[p53] replace
+    primary  : المحليه ; )ج(
+    secondary: المحليه؛ (ج)
+[p53] replace
+    primary  : الصله
+    secondary: الصله،
+[p53] replace
+    primary  : ; اد
+    secondary: ؛ (د)
+[p53] replace
+    primary  : الوطنيه ; )ه (
+    secondary: الوطنيه؛ (ه)
+[p53] replace
+    primary  : التبادلات
+    secondary: التبادلات،
+[p53] replace
+    primary  : البحريه ; ؛ )و (
+    secondary: البحريه؛ - 51 - (و)
+[p54] replace
+    primary  : از(
+    secondary: ؛ (ز)
+[p54] replace
+    primary  : )ح(
+    secondary: ؛ (ح)
+[p54] replace
+    primary  : بفعاليه .
+    secondary: بفعاليه.
+[p54] replace
+    primary  : 9
+    secondary: في
+[p54] replace
+    primary  : الماده
+    secondary: الماده. -
+[p54] replace
+    primary  : دورياء
+    secondary: دوريا،
+[p54] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p54] replace
+    primary  : البحريهء
+    secondary: البحريه،
+[p54] replace
+    primary  : الثاني
+    secondary: الثاني،
+[p54] replace
+    primary  : بشانها
+    secondary: بشانها،
+[p54] replace
+    primary  : معها
+    secondary: معها. - 1
+[p54] delete
+    primary  : 1 تخضع
+    secondary: 
+[p54] insert
+    primary  : 
+    secondary: تخضع
+[p54] insert
+    primary  : 
+    secondary: -
+[p54] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p54] replace
+    primary  : مايلي :
+    secondary: ما يلي: (ا)
+[p54] replace
+    primary  : نموا
+    secondary: ،نموا
+[p54] replace
+    primary  : اب (
+    secondary: (ب)
+[p54] replace
+    primary  : دعم فضلاعن
+    secondary: دعم، فضلا عن
+[p54] replace
+    primary  : الاتفاق ; )ج(
+    secondary: الاتفاق؛ - 52 - (ج)
+[p55] replace
+    primary  : وحشد ها
+    secondary: وحشدها
+[p55] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p55] replace
+    primary  : للاحتياجات ; اد
+    secondary: للاحتياجات؛ (د)
+[p55] replace
+    primary  : مؤشسرات
+    secondary: مؤشرات
+[p55] replace
+    primary  : النتائجء
+    secondary: النتائج،
+[p55] replace
+    primary  : فعاليتها
+    secondary: فعاليتها،
+[p55] replace
+    primary  : والتحديات ; )ه (
+    secondary: والتحديات؛ (ه)
+[p55] replace
+    primary  : المتابعهء
+    secondary: المتابعه،
+[p55] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p55] replace
+    primary  : نمواء
+    secondary: نموا
+[p55] replace
+    primary  : اهدافه
+    secondary: اهدافه. -
+[p55] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p55] replace
+    primary  : البحريهء
+    secondary: البحريه،
+[p55] replace
+    primary  : تقذم
+    secondary: تقدم
+[p55] replace
+    primary  : البحريه .
+    secondary: البحريه.
+[p55] delete
+    primary  : ،
+    secondary: 
+[p55] delete
+    primary  : ,
+    secondary: 
+[p55] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p55] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p55] replace
+    primary  : مبسطه وغير مرهقه .
+    secondary: مبس مرهقه،
+[p55] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p55] replace
+    primary  : الزمنيه .
+    secondary: الزمنيه. - 1 - 2
+[p55] replace
+    primary  : 2
+    secondary: طه وغير
+[p55] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p55] replace
+    primary  : العادل
+    secondary: العادل،
+[p55] insert
+    primary  : 
+    secondary: -53
+[p56] delete
+    primary  : 3
+    secondary: 
+[p56] replace
+    primary  : بشانها . الجزع
+    secondary: بشانها. الجزء
+[p56] insert
+    primary  : 
+    secondary: - 3 -1 - 2 ينشا
+[p56] delete
+    primary  : ينشا
+    secondary: 
+[p56] replace
+    primary  : للاطراف . 2
+    secondary: للاطراف.
+[p56] replace
+    primary  : الامين |ه العام ه
+    secondary: الامينه العامه
+[p56] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p56] replace
+    primary  : عي
+    secondary: علي
+[p56] replace
+    primary  : اخري
+    secondary: اخري،
+[p56] replace
+    primary  : الداخلي .
+    secondary: الداخلي. -
+[p56] insert
+    primary  : 
+    secondary: - 4.
+[p56] replace
+    primary  : اوفي
+    secondary: او في
+[p56] replace
+    primary  : المتحده 4
+    secondary: المتحده.
+[p56] replace
+    primary  : الفرعيه
+    secondary: الفرعيه،
+[p56] replace
+    primary  : فرعيه
+    secondary: فرعيه،
+[p56] replace
+    primary  : الداخلي
+    secondary: الداخلي،
+[p56] replace
+    primary  : مستدام 5
+    secondary: مستدام. -5
+[p56] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p56] replace
+    primary  : الاراء
+    secondary: الاراء،
+[p56] replace
+    primary  : والمصوته
+    secondary: والمصوته،
+[p56] replace
+    primary  : والمصوته . 0
+    secondary: والمصوته. - 54 - - 6
+[p57] replace
+    primary  : والتقييم (
+    secondary: والتقييم،
+[p57] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p57] replace
+    primary  : الاتفاق ; ؛ اب(
+    secondary: الاتفاق؛ (ب)
+[p57] replace
+    primary  : الاتفاق ; )ج( القيام ,
+    secondary: الاتفاق؛ (ج) القيام،
+[p57] replace
+    primary  : المناسبه
+    secondary: المناسبه،
+[p57] insert
+    primary  : 
+    secondary: مع
+[p57] replace
+    primary  : الصله
+    secondary: الصه
+[p57] replace
+    primary  : بينهاء
+    secondary: بينها
+[p57] replace
+    primary  : مستدام اد
+    secondary: مستدام؛ (د)
+[p57] replace
+    primary  : الاتفاق ; اه (
+    secondary: الاتفاق؛ (ه)
+[p57] replace
+    primary  : الاراء
+    secondary: الاراء،
+[p57] replace
+    primary  : يحددها ; او(
+    secondary: يحددها؛ (و)
+[p57] replace
+    primary  : اوقد
+    secondary: او قد
+[p57] replace
+    primary  : تنفيذه
+    secondary: تنفيذه. -
+[p57] insert
+    primary  : 
+    secondary: تستدعي
+[p57] replace
+    primary  : اودون
+    secondary: او دون
+[p57] replace
+    primary  : اخري اوبشان
+    secondary: اخري، او بشان
+[p57] delete
+    primary  : تستد عي
+    secondary: 
+[p57] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه.
+[p57] replace
+    primary  : بشانها.
+    secondary: بشانها
+[p57] replace
+    primary  : الاستعجال .
+    secondary: الاستعجال.
+[p57] insert
+    primary  : 
+    secondary: . ذلك
+[p57] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p57] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p57] delete
+    primary  : ذلك
+    secondary: 
+[p57] insert
+    primary  : 
+    secondary: ،
+[p57] replace
+    primary  : وفعاليتها
+    secondary: وفعاليتها،
+[p57] insert
+    primary  : 
+    secondary: - 55 -
+[p58] replace
+    primary  : مستدام
+    secondary: مستدام. -1
+[p58] delete
+    primary  : 1
+    secondary: 
+[p58] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -
+[p58] replace
+    primary  : مالم
+    secondary: ما لم
+[p58] replace
+    primary  : خلافف ذلك .
+    secondary: خلاف ذلك.
+[p58] replace
+    primary  : به .
+    secondary: به. -
+[p58] replace
+    primary  : الاتفاق (
+    secondary: الاتفاق،
+[p58] replace
+    primary  : العموم ,
+    secondary: العموم،
+[p58] replace
+    primary  : الصله
+    secondary: الصله،
+[p58] replace
+    primary  : صلهء
+    secondary: صله،
+[p58] replace
+    primary  : المدنيء
+    secondary: المدني،
+[p58] replace
+    primary  : المصلحهء
+    secondary: المصلحه ،
+[p58] replace
+    primary  : اولئك
+    secondary: اولئك،
+[p58] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p58] replace
+    primary  : الاتفاق . _
+    secondary: الاتفاق. - 4
+[p58] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p58] replace
+    primary  : الصله
+    secondary: الصله،
+[p58] replace
+    primary  : صله
+    secondary: صله،
+[p58] insert
+    primary  : 
+    secondary: ،
+[p58] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p58] replace
+    primary  : المشاركه
+    secondary: المشاركه،
+[p58] replace
+    primary  : مراقبين
+    secondary: مراقبين،
+[p58] replace
+    primary  : الفرعيه .
+    secondary: الفرعيه.
+[p58] replace
+    primary  : المشاركه
+    secondary: المشاركه،
+[p58] insert
+    primary  : 
+    secondary: .
+[p58] replace
+    primary  : الصله
+    secondary: الصله. - 56 - - 1
+[p59] replace
+    primary  : وتقنيه .
+    secondary: وتقنيه. -
+[p59] replace
+    primary  : للاتفاق
+    secondary: للاتفاق،
+[p59] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p59] replace
+    primary  : مناسبه
+    secondary: مناسبه،
+[p59] replace
+    primary  : التخصصات
+    secondary: التخصصات،
+[p59] replace
+    primary  : المحليه
+    secondary: المحليه،
+[p59] replace
+    primary  : العادل .
+    secondary: العادل.
+[p59] replace
+    primary  : والتقنيه
+    secondary: والتقنيه،
+[p59] replace
+    primary  : الاول . 3
+    secondary: الاول.
+[p59] replace
+    primary  : الصله
+    secondary: الصله،
+[p59] replace
+    primary  : الصله
+    secondary: الصله،
+[p59] replace
+    primary  : اخرين ,
+    secondary: ،اخرين،
+[p59] replace
+    primary  : الاقتضاء 4
+    secondary: الاقتضاء. - 3 - 4.
+[p59] replace
+    primary  : والتقنيهء
+    secondary: والتقنيه،
+[p59] replace
+    primary  : منه
+    secondary: منه،
+[p59] replace
+    primary  : اعلاهء
+    secondary: اعلاه
+[p59] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p59] replace
+    primary  : الاطراف ،
+    secondary: الاطراف،
+[p59] replace
+    primary  : اعمالها .
+    secondary: اعمالها. - 1
+[p59] delete
+    primary  : م
+    secondary: 
+[p59] replace
+    primary  : 9ي
+    secondary: في
+[p59] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p59] replace
+    primary  : مقرها .
+    secondary: مقرها. -
+[p59] replace
+    primary  : ء
+    secondary: ،
+[p59] insert
+    primary  : 
+    secondary: /
+[p59] replace
+    primary  : الامين اه العام ه
+    secondary: الامينه العامه
+[p59] replace
+    primary  : المتحده ،
+    secondary: المتحده،
+[p59] replace
+    primary  : المتحده ,
+    secondary: المتحده،
+[p59] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 57 - -
+[p60] replace
+    primary  : مقر .
+    secondary: مقر.
+[p60] replace
+    primary  : مهامها .
+    secondary: مهامها. - 4
+[p60] replace
+    primary  : بمايلي :
+    secondary: بما يلي: (ا)
+[p60] replace
+    primary  : الاتفاق ; اب(
+    secondary: الاتفاق؛ (ب)
+[p60] delete
+    primary  : بموجب هذا
+    secondary: 
+[p60] replace
+    primary  : اوقد
+    secondary: او قد
+[p60] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p60] replace
+    primary  : الاجتماعات ; )ج(
+    secondary: الاجتماعات؛ هذا بموجب (ج)
+[p60] replace
+    primary  : حينهاء
+    secondary: حينها،
+[p60] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p60] replace
+    primary  : الصله
+    secondary: الصله،
+[p60] replace
+    primary  : الصله; )د
+    secondary: الصله؛ (د)
+[p60] replace
+    primary  : والتنسيق
+    secondary: والتنسيق،
+[p60] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p60] replace
+    primary  : الاخري ,
+    secondary: الاخري،
+[p60] replace
+    primary  : الخصوص
+    secondary: الخصوص،
+[p60] replace
+    primary  : الغرض
+    secondary: الغرض،
+[p60] replace
+    primary  : لمهامها
+    secondary: لمهامها،
+[p60] replace
+    primary  : الاطراف ; اه
+    secondary: الاطراف؛ (ه)
+[p60] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p60] replace
+    primary  : الاطراف ; او (
+    secondary: الاطراف؛ (و)
+[p60] replace
+    primary  : ماقد
+    secondary: ما قد
+[p60] replace
+    primary  : الاطراف اوما
+    secondary: الاطراف، او ما
+[p60] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - - 1 - 2 تنشا
+[p60] delete
+    primary  : تنشا
+    secondary: 
+[p60] replace
+    primary  : المعلومات . 2
+    secondary: المعلومات.
+[p60] replace
+    primary  : المعلومات . - 3
+    secondary: المعلومات. -58-
+[p61] replace
+    primary  : يلي :
+    secondary: يلي: - 3 (ا)
+[p61] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p61] replace
+    primary  : وتعميمها
+    secondary: وتعميمها،
+[p61] replace
+    primary  : يلي :
+    secondary: يلي:
+[p61] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p61] replace
+    primary  : الاتفاق
+    secondary: الاتفاق؛
+[p61] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p61] replace
+    primary  : المحميه; `3`
+    secondary: المحميه؛ 3
+[p61] replace
+    primary  : البيئي; 4'
+    secondary: البيئي؛ 4
+[p61] replace
+    primary  : بذلك
+    secondary: بذلك،
+[p61] replace
+    primary  : المعلو =مات والبيانات
+    secondary: المعلومات والبيانات،
+[p61] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p61] replace
+    primary  : التمويل ; اب (
+    secondary: التمويل؛ (ب)
+[p61] replace
+    primary  : بمافي
+    secondary: بما في
+[p61] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p61] replace
+    primary  : الصله; )ج(
+    secondary: الصله؛ (ج)
+[p61] replace
+    primary  : عليكل
+    secondary: علي كل
+[p61] replace
+    primary  : والقطاعيء
+    secondary: والقطاعي،
+[p61] replace
+    primary  : البيانات
+    secondary: البيانات،
+[p61] replace
+    primary  : المحليه والقيام
+    secondary: المحليه، والقيام،
+[p61] replace
+    primary  : امكن
+    secondary: امكن،
+[p61] replace
+    primary  : للعموم ; اد( العمل
+    secondary: للعموم؛ (د) العمل،
+[p61] replace
+    primary  : العالميه
+    secondary: العالميه،
+[p61] replace
+    primary  : الاقليميه
+    secondary: الاقليميه،
+[p61] replace
+    primary  : ذلك ؛ )ه
+    secondary: ذلك؛ - 59 - (ه)
+[p62] replace
+    primary  : الشفافيه
+    secondary: الشفافيه،
+[p62] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p62] replace
+    primary  : المصلحه; )و (
+    secondary: المصلحه؛ (و)
+[p62] replace
+    primary  : الدوليين بمافي
+    secondary: الدوليين، بما في
+[p62] replace
+    primary  : والتقني ;
+    secondary: والتقني؛ (ز)
+[p62] replace
+    primary  : اوما
+    secondary: او ما
+[p62] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p62] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p62] replace
+    primary  : الصله
+    secondary: الصله،
+[p62] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p62] insert
+    primary  : 
+    secondary: ،
+[p62] replace
+    primary  : الدوليه
+    secondary: الدوليه،
+[p62] replace
+    primary  : المتحده
+    secondary: المتحده. -
+[p62] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p62] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p62] replace
+    primary  : ومعهاء
+    secondary: ومعها،
+[p62] replace
+    primary  : الدول . 0
+    secondary: الدول. - 6
+[p62] replace
+    primary  : التطبيق . الجزع
+    secondary: التطبيق. - 60 - الجزء
+[p63] insert
+    primary  : 
+    secondary: - 1
+[p63] delete
+    primary  : 1
+    secondary: 
+[p63] replace
+    primary  : مافي
+    secondary: ما في
+[p63] replace
+    primary  : الوطنيه .
+    secondary: الوطنيه. - 2 - 3 ،
+[p63] replace
+    primary  : الاطراف . 3
+    secondary: الاطراف.
+[p63] replace
+    primary  : الاتفاق . وتسا عد
+    secondary: الاتفاق. وتساعد
+[p63] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p63] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p63] replace
+    primary  : مستدام
+    secondary: مستدام. - 4.
+[p63] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p63] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p63] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p63] replace
+    primary  : الاتفاق : اب (
+    secondary: الاتفاق؛ (ب)
+[p63] replace
+    primary  : التاليه :
+    secondary: التاليه:
+[p63] replace
+    primary  : 3`
+    secondary: 3
+[p63] replace
+    primary  : مستدام )ج(
+    secondary: مستدام؛ -61- -5 (ج)
+[p64] replace
+    primary  : العالميه . 5
+    secondary: العالميه.
+[p64] insert
+    primary  : 
+    secondary: ،
+[p64] replace
+    primary  : الماليه
+    secondary: الماليه،
+[p64] replace
+    primary  : مستدامء
+    secondary: تدام،
+[p64] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p64] insert
+    primary  : 
+    secondary: -
+[p64] replace
+    primary  : الص ندوق
+    secondary: الصندوق
+[p64] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p64] replace
+    primary  : مشساريع
+    secondary: مشاريع
+[p64] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p64] replace
+    primary  : مشساريع
+    secondary: مشاريع
+[p64] replace
+    primary  : واس تخدامه
+    secondary: واستخدامه
+[p64] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p64] replace
+    primary  : وبرامجء
+    secondary: وبرامج،
+[p64] replace
+    primary  : البحريه ; اب (
+    secondary: البحريه؛ (ب)
+[p64] replace
+    primary  : الاتفاق ; )ج(
+    secondary: الاتفاق؛ (ج)
+[p64] replace
+    primary  : التقليديه ; )د
+    secondary: التقليديه؛ (د)
+[p64] replace
+    primary  : عليكل
+    secondary: علي كل
+[p64] replace
+    primary  : الاقليمي ; )ه (
+    secondary: الاقليمي؛ (ه)
+[p64] replace
+    primary  : الاطراف . 7
+    secondary: الاطراف.
+[p64] replace
+    primary  : الازدواجيه
+    secondary: الازدواجيه،
+[p64] replace
+    primary  : والاتساق
+    secondary: والاتساق،
+[p64] insert
+    primary  : 
+    secondary: - 7 -
+[p64] replace
+    primary  : والدولي
+    secondary: والدولي،
+[p64] replace
+    primary  : يشمل
+    secondary: يشمل،
+[p64] insert
+    primary  : 
+    secondary: ،
+[p64] replace
+    primary  : الدول .
+    secondary: الدول،
+[p64] replace
+    primary  : الدوليه
+    secondary: الدوليه،
+[p64] replace
+    primary  : واقليميه
+    secondary: واقليميه،
+[p64] replace
+    primary  : المانحه
+    secondary: المانحه،
+[p64] replace
+    primary  : الدوليه
+    secondary: الدوليه،
+[p64] replace
+    primary  : الحكوميه .
+    secondary: الحكوميه،
+[p64] replace
+    primary  : والاعتباريين
+    secondary: والاعتباريين،
+[p64] replace
+    primary  : والخاص .
+    secondary: والخاص. -62- -
+[p65] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p65] replace
+    primary  : الاقتضاء وتوجيهه ،
+    secondary: الاقتضاء، وتوجيهه،
+[p65] replace
+    primary  : امامه .
+    secondary: امامه.
+[p65] replace
+    primary  : واستخدامها .
+    secondary: واستخدامها.
+[p65] insert
+    primary  : 
+    secondary: -
+[p65] insert
+    primary  : 
+    secondary: في
+[p65] replace
+    primary  : الاطراف .
+    secondary: الاطراف. - -
+[p65] replace
+    primary  : مستدام
+    secondary: مستدام،
+[p65] replace
+    primary  : للص ندوق
+    secondary: للصندوق
+[p65] insert
+    primary  : 
+    secondary: ،
+[p65] replace
+    primary  : يراعيء
+    secondary: يراعي،
+[p65] delete
+    primary  : _
+    secondary: 
+[p65] insert
+    primary  : 
+    secondary: ،
+[p65] replace
+    primary  : المؤسسيه
+    secondary: يه
+[p65] insert
+    primary  : 
+    secondary: المؤس
+[p65] insert
+    primary  : 
+    secondary: -
+[p65] replace
+    primary  : العادل
+    secondary: العادل،
+[p65] replace
+    primary  : المساعده
+    secondary: المساعده،
+[p65] replace
+    primary  : الدخل
+    secondary: الدخل،
+[p65] replace
+    primary  : والموافقه
+    secondary: والموافقه،
+[p65] insert
+    primary  : 
+    secondary: -
+[p65] replace
+    primary  : ضوع
+    secondary: ضوء
+[p65] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p65] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p65] replace
+    primary  : الناميه
+    secondary: الناميه،
+[p65] insert
+    primary  : 
+    secondary: ،
+[p65] replace
+    primary  : مستدام .
+    secondary: مستدام. - 63 -
+[p66] insert
+    primary  : 
+    secondary: -
+[p66] replace
+    primary  : المناسبه
+    secondary: المناسبه،
+[p66] replace
+    primary  : العادل .
+    secondary: العادل.
+[p66] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p66] replace
+    primary  : المادهء
+    secondary: الماده،
+[p66] replace
+    primary  : اللجنه
+    secondary: اللجنه،
+[p66] replace
+    primary  : _ امور
+    secondary: امور،
+[p66] replace
+    primary  : يلي :
+    secondary: يلي: (ا)
+[p66] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p66] replace
+    primary  : الناميه ; اب (
+    secondary: الناميه؛ (ب)
+[p66] replace
+    primary  : المناسب ; )ج(
+    secondary: المناسب؛ (ج)
+[p66] replace
+    primary  : والمخصصات ;
+    secondary: والمخصصات؛ (د)
+[p66] replace
+    primary  : للاموال .
+    secondary: للاموال.
+[p66] insert
+    primary  : 
+    secondary: -
+[p66] replace
+    primary  : المناسبه .
+    secondary: المناسبه. - -
+[p66] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p66] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p66] replace
+    primary  : عليهاء
+    secondary: عليها ،
+[p66] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p66] replace
+    primary  : الناميه . الجزع
+    secondary: الناميه. الجزء
+[p66] replace
+    primary  : اوسياساتيه
+    secondary: او سياساتيه،
+[p66] replace
+    primary  : الاقتضاء
+    secondary: الاقتضاء،
+[p66] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 64 -
+[p67] replace
+    primary  : يرصدكل
+    secondary: يرصد كل
+[p67] replace
+    primary  : ويقوم
+    secondary: ويقوم،
+[p67] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. - 1
+[p67] replace
+    primary  : له.
+    secondary: له
+[p67] replace
+    primary  : بطبيعتها .
+    secondary: بطبيعتها،
+[p67] replace
+    primary  : و غير
+    secondary: وغير
+[p67] replace
+    primary  : عقابيه .
+    secondary: عقابيه. -
+[p67] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p67] replace
+    primary  : العادل .
+    secondary: العادل. -
+[p67] replace
+    primary  : الاول .
+    secondary: الاول.
+[p67] replace
+    primary  : والعام
+    secondary: والعام،
+[p67] replace
+    primary  : اخري
+    secondary: اخري،
+[p67] replace
+    primary  : وتوصيات
+    secondary: وتوصيات،
+[p67] replace
+    primary  : طرف
+    secondary: طرف،
+[p67] replace
+    primary  : الاطراف . 4
+    secondary: الاطراف. - 4. مع
+[p67] replace
+    primary  : عملها
+    secondary: عملها،
+[p67] insert
+    primary  : 
+    secondary: ،
+[p67] replace
+    primary  : الصله
+    secondary: الصله،
+[p67] replace
+    primary  : الاقتضاء الجزع
+    secondary: الاقتضاء. -65- الجزء
+[p68] replace
+    primary  : المنازعات
+    secondary: المنازعات.
+[p68] replace
+    primary  : القضائيه اومن
+    secondary: القضائيه، او من
+[p68] replace
+    primary  : الاقليميه
+    secondary: الاقليميه،
+[p68] replace
+    primary  : تختارها .
+    secondary: تختارها.
+[p68] replace
+    primary  : الجزع
+    secondary: الجزء
+[p68] replace
+    primary  : ايمن
+    secondary: اي من
+[p68] replace
+    primary  : اختيارها .
+    secondary: اختيارها.
+[p68] replace
+    primary  : تقني ,
+    secondary: تقني،
+[p68] delete
+    primary  : .
+    secondary: 
+[p68] replace
+    primary  : المعنيه
+    secondary: المعنيه،
+[p68] replace
+    primary  : السرعه
+    secondary: السرعه،
+[p68] replace
+    primary  : اللجوع
+    secondary: اللجوء
+[p68] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق. -66- -1
+[p69] insert
+    primary  : 
+    secondary: -
+[p69] replace
+    primary  : ف الاتفاقيه .
+    secondary: في الاتفاقيه.
+[p69] replace
+    primary  : تنشافي
+    secondary: تنشا في
+[p69] replace
+    primary  : الجزء مالم
+    secondary: الجزء، ما لم
+[p69] replace
+    primary  : قبل
+    secondary: قبل،
+[p69] replace
+    primary  : اوفي
+    secondary: او في
+[p69] replace
+    primary  : ذلك ،
+    secondary: ذلك،
+[p69] replace
+    primary  : الجزع
+    secondary: الجزء. -
+[p69] replace
+    primary  : تنشافي
+    secondary: تنشا في
+[p69] replace
+    primary  : الجزء مالم
+    secondary: الجزء، ما لم
+[p69] replace
+    primary  : ادلي ,
+    secondary: ادلي،
+[p69] replace
+    primary  : اوفي
+    secondary: او في
+[p69] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p69] delete
+    primary  : تنشا
+    secondary: 
+[p69] replace
+    primary  : الجزء , عذد 5
+    secondary: الجزء. تنشا -5
+[p69] replace
+    primary  : اعلاهء
+    secondary: اعلاه
+[p69] replace
+    primary  : الاتفاقيه
+    secondary: الاتفاقيه، عند
+[p69] replace
+    primary  : اليه اوفي
+    secondary: اليه، او في
+[p69] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p69] replace
+    primary  : فيان
+    secondary: في ان
+[p69] replace
+    primary  : .
+    secondary: ،
+[p69] replace
+    primary  : خطيء
+    secondary: خطي،
+[p69] replace
+    primary  : الوديع
+    secondary: الوديع،
+[p69] replace
+    primary  : : )ا(
+    secondary: (ا)
+[p69] replace
+    primary  : البحار ; اب (
+    secondary: البحار؛ (ب)
+[p69] replace
+    primary  : الدوليه ; اج
+    secondary: الدوليه؛ -67 - (ج)
+[p70] replace
+    primary  : السابع ; اد
+    secondary: السابع؛ (د)
+[p70] replace
+    primary  : 9
+    secondary: في
+[p70] replace
+    primary  : ,
+    secondary: . -
+[p70] replace
+    primary  : )ج(
+    secondary: (ج)
+[p70] replace
+    primary  : واذاكانت
+    secondary: واذا كانت
+[p70] replace
+    primary  : الاجراء مالم
+    secondary: الاجراء، ما لم
+[p70] replace
+    primary  : ذلك
+    secondary: ذلك.
+[p70] replace
+    primary  : المنازعه
+    secondary: المنازعه،
+[p70] replace
+    primary  : الاتفاقيه مالم
+    secondary: الاتفاقيه، ما لم
+[p70] replace
+    primary  : ذلك .
+    secondary: ذلك.
+[p70] replace
+    primary  : اعلاه .
+    secondary: اعلاه. -
+[p70] replace
+    primary  : الاتفاقيه عذد
+    secondary: الاتفاقيه، عند
+[p70] replace
+    primary  : اليهء اوفي
+    secondary: اليه، او في
+[p70] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p70] insert
+    primary  : 
+    secondary: ،
+[p70] replace
+    primary  : .
+    secondary: -
+[p70] replace
+    primary  : فيصك
+    secondary: في صك
+[p70] replace
+    primary  : صله
+    secondary: صله،
+[p70] replace
+    primary  : اودون
+    secondary: او دون
+[p70] replace
+    primary  : صله
+    secondary: صله،
+[p70] insert
+    primary  : 
+    secondary: -
+[p70] replace
+    primary  : القضسائي
+    secondary: القضائي
+[p70] replace
+    primary  : قضسائيه
+    secondary: قضائيه
+[p70] replace
+    primary  : وطنيه
+    secondary: وطنيه،
+[p70] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p70] replace
+    primary  : الاتفاقيه
+    secondary: الاتفاقيه. - 68- - -
+[p71] replace
+    primary  : للشك
+    secondary: للشك،
+[p71] replace
+    primary  : اونفي
+    secondary: او نفي
+[p71] replace
+    primary  : بحريه
+    secondary: بحريه،
+[p71] replace
+    primary  : بها .
+    secondary: بها.
+[p71] replace
+    primary  : الجزء
+    secondary: الجزء،
+[p71] replace
+    primary  : 9
+    secondary: في
+[p71] replace
+    primary  : عملي . الجزع
+    secondary: عملي. الجزء
+[p71] replace
+    primary  : فيه
+    secondary: فيه،
+[p71] insert
+    primary  : 
+    secondary: احكامه.
+[p71] replace
+    primary  : احكامه الجزع
+    secondary: الجزء
+[p71] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p71] replace
+    primary  : لايكون
+    secondary: لا يكون
+[p71] replace
+    primary  : الحق . الجزع
+    secondary: الحق. - 69 - الجزء
+[p72] insert
+    primary  : 
+    secondary: -1
+[p72] insert
+    primary  : 
+    secondary: في
+[p72] replace
+    primary  : ادناه .
+    secondary: ادناه. -
+[p72] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p72] replace
+    primary  : اختصاصهاء
+    secondary: اختصاصها،
+[p72] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p72] replace
+    primary  : التصويت
+    secondary: التصويت،
+[p72] replace
+    primary  : صحيح .
+    secondary: صحيح.
+[p72] insert
+    primary  : 
+    secondary: التوقيع
+[p72] insert
+    primary  : 
+    secondary: /
+[p72] replace
+    primary  : 2023.
+    secondary: 2023 ،
+[p72] replace
+    primary  : اسبتمبر
+    secondary: / سبتمبر
+[p72] replace
+    primary  : الاقليمي .
+    secondary: الاقليمي.
+[p72] replace
+    primary  : الامين ه العام ه
+    secondary: الامينه العامه
+[p72] replace
+    primary  : المتحده التوقيع
+    secondary: المتحده. - 70 -
+[p73] insert
+    primary  : 
+    secondary: - 1
+[p73] replace
+    primary  : فيهء
+    secondary: فيه
+[p73] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p73] replace
+    primary  : ماكانت
+    secondary: ما كانت
+[p73] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p73] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p73] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p73] replace
+    primary  : الاقليميء
+    secondary: الاقليمي،
+[p73] insert
+    primary  : 
+    secondary: ،
+[p73] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p73] replace
+    primary  : الوديع
+    secondary: الوديع،
+[p73] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p73] replace
+    primary  : اختصاصها .
+    secondary: اختصاصها. - 1
+[p73] replace
+    primary  : الانضمام .
+    secondary: الانضمام. -
+[p73] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p73] replace
+    primary  : اليكل
+    secondary: الي كل
+[p73] insert
+    primary  : 
+    secondary: ،
+[p73] replace
+    primary  : اعلاه .
+    secondary: اعلاه. - 71- -
+[p74] insert
+    primary  : 
+    secondary: الاقتص المنظمه.
+[p74] replace
+    primary  : 9
+    secondary: و
+[p74] replace
+    primary  : الاقتصادي
+    secondary: ادي
+[p74] delete
+    primary  : المنظمه .
+    secondary: 
+[p74] insert
+    primary  : 
+    secondary: -1
+[p74] replace
+    primary  : مؤقته
+    secondary: مؤقته،
+[p74] replace
+    primary  : الانضمام.
+    secondary: الانضمام .
+[p74] replace
+    primary  : الاخطار .
+    secondary: الاخطار. -
+[p74] replace
+    primary  : اوتلك المنظمه
+    secondary: او تلك المنظمه،
+[p74] replace
+    primary  : له .
+    secondary: له.
+[p74] replace
+    primary  : احكامه مالم
+    secondary: احكامه، ما لم
+[p74] replace
+    primary  : بموجاب
+    secondary: بموجب
+[p74] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p74] replace
+    primary  : الاقليميء
+    secondary: الاقليمي،
+[p74] replace
+    primary  : اليه
+    secondary: اليه،
+[p74] replace
+    primary  : ء
+    secondary: ،
+[p74] replace
+    primary  : اخري ,
+    secondary: اخري،
+[p74] insert
+    primary  : 
+    secondary: - 72-
+[p75] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p75] replace
+    primary  : الاقليمي .
+    secondary: الاقليمي. -1
+[p75] insert
+    primary  : 
+    secondary: ،
+[p75] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p75] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p75] replace
+    primary  : الاطراف .
+    secondary: الاطراف.
+[p75] replace
+    primary  : لايقل
+    secondary: لا يقل
+[p75] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p75] replace
+    primary  : الرساله
+    secondary: الرساله،
+[p75] replace
+    primary  : الاطراف .
+    secondary: الاطراف. -
+[p75] replace
+    primary  : تصدق
+    secondary: تصق
+[p75] replace
+    primary  : تقبله
+    secondary: تقبله.
+[p75] insert
+    primary  : 
+    secondary: يودع ، .
+[p75] replace
+    primary  : تقبلهاء
+    secondary: تقبلها،
+[p75] replace
+    primary  : التعديل . ويبدا,
+    secondary: ..التعديل ويبدا
+[p75] replace
+    primary  : ذلك
+    secondary: ذلك،
+[p75] delete
+    primary  : يودع
+    secondary: 
+[p75] replace
+    primary  : له . 4
+    secondary: له.
+[p75] replace
+    primary  : التعديل
+    secondary: التعديل،
+[p75] replace
+    primary  : عدل
+    secondary: عدد
+[p75] replace
+    primary  : الماده 5
+    secondary: الماده.
+[p75] insert
+    primary  : 
+    secondary: - 4 -5 - 6
+[p75] replace
+    primary  : اعلاه
+    secondary: اعلاه،
+[p75] replace
+    primary  : مالم
+    secondary: ، ما لم
+[p75] replace
+    primary  : ذلك :
+    secondary: ذلك: (ا)
+[p75] replace
+    primary  : التعديلات ; اب(
+    secondary: التعديلات؛ - 73 - - 1 (ب)
+[p76] replace
+    primary  : التعديل .
+    secondary: التعديل.
+[p76] delete
+    primary  : 1
+    secondary: 
+[p76] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p76] replace
+    primary  : الامين ه العام ه
+    secondary: الامينه العامه
+[p76] replace
+    primary  : المتحده
+    secondary: المتحده،
+[p76] replace
+    primary  : الانسحاب .
+    secondary: الانسحاب.
+[p76] replace
+    primary  : بعدسنه
+    secondary: بعد سنه
+[p76] replace
+    primary  : الاخطار مالم
+    secondary: الاخطار، ما لم
+[p76] replace
+    primary  : لاحقا
+    secondary: لاحقا.
+[p76] replace
+    primary  : الانسحاب
+    secondary: الانسحاب،
+[p76] replace
+    primary  : الاحوال
+    secondary: الاحوال،
+[p76] replace
+    primary  : الاتفاق .
+    secondary: الاتفاق.
+[p76] insert
+    primary  : 
+    secondary: - 1
+[p76] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p76] replace
+    primary  : صراحه .
+    secondary: صراحه. -
+[p76] replace
+    primary  : نفاذه
+    secondary: نفاذه. -
+[p76] replace
+    primary  : الاطراف .
+    secondary: الاطراف.
+[p76] replace
+    primary  : المرفقات .
+    secondary: المرفقات.
+[p76] replace
+    primary  : الاتفاق : ا(
+    secondary: الاتفاق: (ا)
+[p76] replace
+    primary  : الاقل .
+    secondary: الاقل.
+[p76] replace
+    primary  : الامانه
+    secondary: الامانه،
+[p76] replace
+    primary  : المقترح
+    secondary: المقترح،
+[p76] replace
+    primary  : الاطراف .
+    secondary: الاطراف.
+[p76] replace
+    primary  : الصله
+    secondary: الصله،
+[p76] replace
+    primary  : الاجتماع; اب (
+    secondary: الاجتماع؛ - 74 - (ب)
+[p77] replace
+    primary  : الاطراف
+    secondary: الاطراف،
+[p77] replace
+    primary  : ادناه
+    secondary: ادناه. -
+[p77] replace
+    primary  : اب( اعلاه
+    secondary: (ب) اعلاه،
+[p77] replace
+    primary  : التعديل
+    secondary: التعديل،
+[p77] replace
+    primary  : الوديع .
+    secondary: الوديع.
+[p77] replace
+    primary  : الوديع
+    secondary: الوديع،
+[p77] replace
+    primary  : الاعتراض .
+    secondary: الاعتراض.
+[p77] insert
+    primary  : 
+    secondary: الوديع
+[p77] replace
+    primary  : الامين ه العام ه
+    secondary: الامينه العامه
+[p77] replace
+    primary  : عليه
+    secondary: عليه.
+[p77] replace
+    primary  : الحجيه . الوديع
+    secondary: الحجيه. - 75 - (ا) التفرد ؛ (ب) الندره ؛
+[p78] replace
+    primary  : ا( التفرد ؛ اب ( الندره ; )ج(
+    secondary: (ج)
+[p78] replace
+    primary  : الانواع ; اد(
+    secondary: الانواع؛ (د)
+[p78] replace
+    primary  : فيها )ه (
+    secondary: فيها؛ (ه)
+[p78] replace
+    primary  : المتناقصه; او (
+    secondary: المتناقصه؛ (و)
+[p78] replace
+    primary  : للتضرر
+    secondary: للتضرر،
+[p78] replace
+    primary  : المحيطات ; از( الهشاشه ; )ح( الحساسيه ; اط (
+    secondary: المحيطات؛ (ز) الهشاشه؛ (ح) الحساسيه؛ (ط)
+[p78] replace
+    primary  : البيولوجيه ; )ي (
+    secondary: البيولوجيه؛ (ي)
+[p78] replace
+    primary  : التمثيلي ; اك ( الاعتماديه ; ال(
+    secondary: التمثيلي؛ (ك) الاعتماديه؛ (ل)
+[p78] replace
+    primary  : الطبيعيه ; ام (
+    secondary: الطبيعيه؛ (م)
+[p78] replace
+    primary  : الايكولوجي ; ان (
+    secondary: الايكولوجي؛ (ن)
+[p78] replace
+    primary  : فيها ; ؛ اس (
+    secondary: فيها؛ (س)
+[p78] replace
+    primary  : والاجتماعيه ; )ع(
+    secondary: والاجتماعيه؛ (ع)
+[p78] replace
+    primary  : الثقافيه ; اف (
+    secondary: الثقافيه؛ (ف)
+[p78] replace
+    primary  : ; اص (
+    secondary: ؛ (ص)
+[p78] replace
+    primary  : الصمود اق (
+    secondary: الصمود؛ (ق)
+[p78] replace
+    primary  : والصلاحيه ; ار (
+    secondary: والصلاحيه؛ (ر)
+[p78] replace
+    primary  : اش (
+    secondary: ؛ (ش)
+[p78] replace
+    primary  : ات (
+    secondary: ؛ (ت)
+[p78] replace
+    primary  : والاداره .
+    secondary: والاداره. - 76 -
+[p79] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p79] replace
+    primary  : علي :
+    secondary: عليه: (ا)
+[p79] replace
+    primary  : استعماله
+    secondary: استعماله،
+[p79] replace
+    primary  : ذلك :
+    secondary: ذلك:
+[p79] replace
+    primary  : والتكنولوجيه ; 2`
+    secondary: والتكنولوجيه؛ 2
+[p79] replace
+    primary  : مستدام 3`
+    secondary: مستدام؛ 3
+[p79] replace
+    primary  : اب (
+    secondary: ؛ (ب)
+[p79] replace
+    primary  : والتوعيه
+    secondary: والتوعيه،
+[p79] replace
+    primary  : بالاتي :
+    secondary: بالاتي:
+[p79] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p79] replace
+    primary  : الصله;
+    secondary: الصله؛
+[p79] replace
+    primary  : الوطنيه ; 3`
+    secondary: الوطنيه؛ 3
+[p79] replace
+    primary  : الصلهء
+    secondary: الصله،
+[p79] replace
+    primary  : المعارف ;
+    secondary: المعارف؛
+[p79] replace
+    primary  : المحيطات
+    secondary: المحيطات،
+[p79] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p79] replace
+    primary  : المحيطات
+    secondary: المحيطات،
+[p79] replace
+    primary  : المحيطات ; 5`
+    secondary: المحيطات؛ - 77- 5
+[p80] replace
+    primary  : المناطق
+    secondary: المناطق،
+[p80] replace
+    primary  : المحميه ; ،6
+    secondary: المحميه؛ 6
+[p80] replace
+    primary  : البيئي ; )ج(
+    secondary: البيئي؛ (ج)
+[p80] replace
+    primary  : الصله
+    secondary: الصله،
+[p80] replace
+    primary  : المعدات
+    secondary: المعدات،
+[p80] replace
+    primary  : المثال : ،1
+    secondary: المثال: 1
+[p80] replace
+    primary  : اللازمه; 2`
+    secondary: اللازمه؛ 2
+[p80] replace
+    primary  : التكنولوجيا
+    secondary: التكنولوجيا،
+[p80] replace
+    primary  : ا لاخذ
+    secondary: (لاخذ
+[p80] replace
+    primary  : مثلا :
+    secondary: مثلا)؛
+[p80] replace
+    primary  : اقتنا ٦
+    secondary: اقتناء
+[p80] replace
+    primary  : البيانات
+    secondary: البيانات،
+[p80] replace
+    primary  : الوطنيه والتدا ابير
+    secondary: الوطنيه، والتدابير
+[p80] replace
+    primary  : المناطق ,
+    secondary: المناطق،
+[p80] replace
+    primary  : المحميه.
+    secondary: المحميه،
+[p80] replace
+    primary  : البيئي; اد
+    secondary: البيئي؛ (د)
+[p80] replace
+    primary  : الوطنيه
+    secondary: الوطنيه،
+[p80] replace
+    primary  : ذلك :
+    secondary: ذلك:
+[p80] replace
+    primary  : القانونيه ;
+    secondary: القانونيه؛
+[p80] replace
+    primary  : انفاذها
+    secondary: انفاذها،
+[p80] replace
+    primary  : عليكل
+    secondary: علي كل
+[p80] replace
+    primary  : اودون الاقليمي ; `3`
+    secondary: او دون الاقليمي؛ 3
+[p80] replace
+    primary  : الاتفاق
+    secondary: الاتفاق،
+[p80] replace
+    primary  : برصد
+    secondary: برص د
+[p80] replace
+    primary  : بها ; ،4
+    secondary: بها؛ 4
+[p80] replace
+    primary  : كفاءه ،
+    secondary: كفاءه،
+[p80] replace
+    primary  : ،5
+    secondary: ؛ - 78- 5
+[p81] replace
+    primary  : الصله ; 0
+    secondary: الصله؛ 6
+[p81] replace
+    primary  : والاقليميه
+    secondary: والاقليميه،
+[p81] replace
+    primary  : للبيانات ; 7'
+    secondary: للبيانات؛ 7
+[p81] replace
+    primary  : اقليميه ; ،8
+    secondary: اقليميه؛ 8
+[p81] replace
+    primary  : المهارات ; `9
+    secondary: المهارات؛ 9
+[p81] replace
+    primary  : المؤ وسسات الاقليميه
+    secondary: المؤسسات الاقليميه،
+[p81] replace
+    primary  : الاسماك ; اه (
+    secondary: الاسماك؛ (ه)
+[p81] replace
+    primary  : التبادلات .
+    secondary: التبادلات،
+[p81] replace
+    primary  : التقني
+    secondary: التقني،
+[p81] replace
+    primary  : والتدريب
+    secondary: والتدريب،
+[p81] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p81] replace
+    primary  : مثلا
+    secondary: مثلا:
+[p81] replace
+    primary  : البحريه
+    secondary: البحريه،
+[p81] replace
+    primary  : العلمي
+    secondary: العلمي،
+[p81] replace
+    primary  : الناميه;
+    secondary: الناميه؛
+[p81] replace
+    primary  : التاليه :
+    secondary: التاليه: ا -
+[p81] replace
+    primary  : والتطبيقيه
+    secondary: والتطبيقيه،
+[p81] replace
+    primary  : والبحثيه ; التكنولوجيا
+    secondary: والبحثيه؛ ب – التكنولوجيا،
+[p81] replace
+    primary  : والبحثيه ;
+    secondary: والبحثيه؛
+[p81] insert
+    primary  : 
+    secondary: -
+[p81] replace
+    primary  : والحوكمه ;
+    secondary: والحوكمه؛ -
+[p81] replace
+    primary  : ; ل 3`
+    secondary: ؛ - 79 - 3
+[p82] replace
+    primary  : الخبراء
+    secondary: الخبراء،
+[p82] replace
+    primary  : التقليديه ; ،4
+    secondary: التقليديه؛ 4
+[p82] replace
+    primary  : التقنيه
+    secondary: التقنيه،
+[p82] replace
+    primary  : طريق :
+    secondary: طريق: ا .
+[p82] replace
+    primary  : المحدده ; ب
+    secondary: المحدده؛ J.
+[p82] replace
+    primary  : 9ي
+    secondary: في
+[p82] replace
+    primary  : والتقني ء ا
+    secondary: والتقني، لا
+[p82] replace
+    primary  : البيئي ; ،5
+    secondary: البيئي؛ 5
+[p82] replace
+    primary  : المدربه; او(
+    secondary: المدربه؛ (و)
+[p82] replace
+    primary  : التو زجيهيه
+    secondary: التوجيهيه
+[p82] replace
+    primary  : وتقاسمهاء
+    secondary: وتقاسمها،
+[p82] replace
+    primary  : مايلي :
+    secondary: ما يلي:
+[p82] replace
+    primary  : المعايير
+    secondary: المعايير،
+[p82] replace
+    primary  : المرجعيه ;
+    secondary: المرجعيه؛
+[p82] replace
+    primary  : التكنولوجيه ; 3`
+    secondary: التكنولوجيه؛ 3
+[p82] replace
+    primary  : البيئي
+    secondary: البيئي،
+[p82] replace
+    primary  : الممارسات ; از(
+    secondary: الممارسات؛ (ز)
+[p82] replace
+    primary  : والتطوير
+    secondary: والتطوير،
+[p82] replace
+    primary  : الاحيائيه .
+    secondary: الاحيائيه. - 80 -

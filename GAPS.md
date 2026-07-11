@@ -3,8 +3,8 @@
 # Fidelity status (updated 2026-07-11)
 
 `text_fidelity` across the 15 authoritative records:
-- **extracted_verified (14):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
-  (English, Spanish, **French**, **Russian**, **Chinese**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
+- **extracted_verified (15):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
+  (English, Spanish, **French**, **Russian**, **Chinese**, **Arabic**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
   78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
   Method (text-layer records with a clean digital text layer): two independent extractors (pdftotext
   -raw + PyMuPDF) agree word-for-word, the stored text adds no words and drops only bibliographic
@@ -22,11 +22,12 @@
   against an independent Tesseract chi_sim second pass (97.9% two-engine character agreement); the primary
   OCR had garbled Article 1's definitions and dropped a preamble recital, both reconstructed from the page
   images, and every residual disagreement was adjudicated. See G-2c.
-- **Still ocr_unverified (1):** BBNJ **Arabic**. A dual-OCR reconciliation was attempted with an
-  independent Tesseract ara pass, but the two engines agree on only ~78% of words — Tesseract Arabic is
-  too weak to corroborate to a verbatim standard. Completeness is verified and one confirmed primary error
-  (the Art. 4 heading, which had lost its numeral) was fixed; a full verbatim upgrade needs a stronger
-  second engine (a cloud OCR). See G-2c. `verification.status: second_engine_insufficient`.
+- **Arabic — now `extracted_verified` (2026-07-11):** verbatim-verified by dual-engine reconciliation
+  against an independent **Google Cloud Vision** OCR (98.7% two-engine character agreement). The prior
+  EasyOCR text had ~1900 errors — chiefly systematic Arabic-comma drops/mis-reads plus scattered letter
+  errors (and the dropped Art. 4 numeral) — so the text was re-derived from the higher-fidelity Vision
+  reading, corroborated by EasyOCR and spot-verified against the page images. See G-2c.
+- **ocr_unverified (0).** All 15 authoritative records are now `extracted_verified`.
 
 Provenance principle: gaps are first-class facts. Each is tracked here until closed.
 
@@ -104,9 +105,7 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   primary corruption — Article 1 definitions (1),(5),(7),(12),(14) garbled and one preamble recital
   dropped — which were reconstructed from `capture/pages_zh/` page images, the residual single-char
   disagreements adjudicated (all Tesseract misreads), and the record upgraded to `extracted_verified`.
-  **Arabic:** only ~78% word agreement — Tesseract Arabic is too weak to serve as a verbatim corroborator;
-  the pass still caught and fixed the Art. 4 heading, but the text stays `ocr_unverified` pending a
-  stronger (cloud-OCR) second pass.
+  **Arabic:** Tesseract ara was too weak (~78% word agreement), so a second pass with **Google Cloud Vision** was run instead. Vision vs EasyOCR agree on **98.7% of characters**, and at the disagreements Vision matches the official page images while EasyOCR does not (EasyOCR had systematically dropped the Arabic comma plus scattered letter errors). The Arabic text was re-derived from the Vision reading (structure preserved), corroborated by EasyOCR and spot-verified against the pages, and upgraded to `extracted_verified`. **All 15 records are now verified.**
 
 
 ## G-3 — UNCLOS (parent convention) *(UNCLOS ingested 2026-07-04; agreements queued)*

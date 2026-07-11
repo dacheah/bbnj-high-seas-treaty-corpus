@@ -1,0 +1,13 @@
+{
+  "engine": "google-cloud-vision DOCUMENT_TEXT_DETECTION",
+  "dpi": 300,
+  "jobs": [
+    {
+      "lang": "ar",
+      "pdf": "un/bbnj-agreement-2023-ar/2023-06-19/original.pdf",
+      "pdf_sha256": "sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb",
+      "pages": 83,
+      "combined": "capture/ar-gvision.txt"
+    }
+  ]
+}
