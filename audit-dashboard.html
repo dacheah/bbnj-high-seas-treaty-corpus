@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BBNJ / High Seas Treaty Corpus — Audit</title>
+<style>
+  :root{
+    --surface:#fcfcfb; --page:#f9f9f7; --primary:#0b0b0b; --secondary:#52514e;
+    --muted:#898781; --grid:#e1e0d9; --baseline:#c3c2b7; --border:rgba(11,11,11,.10);
+    --good:#0ca30c; --good-ink:#006300; --warn:#c98500;
+    --blue:#2a78d6; --amber:#eda100; --cur:#256abf; --kw:#86b6ef; --untag:#e1e0d9;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --surface:#1a1a19; --page:#0d0d0d; --primary:#fff; --secondary:#c3c2b7;
+    --muted:#898781; --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,.10);
+    --good:#0ca30c; --good-ink:#0ca30c; --warn:#eda100;
+    --blue:#3987e5; --amber:#eda100; --cur:#3987e5; --kw:#256abf; --untag:#2c2c2a;
+  }}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--primary);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;
+    -webkit-font-smoothing:antialiased;padding:32px 20px 56px}
+  .wrap{max-width:1060px;margin:0 auto}
+  header{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 16px;margin-bottom:4px}
+  h1{font-size:23px;margin:0;font-weight:650;letter-spacing:-.01em}
+  .sub{color:var(--secondary);font-size:14px}
+  .banner{display:flex;align-items:center;gap:10px;margin:18px 0 26px;padding:12px 16px;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px}
+  .dot{width:10px;height:10px;border-radius:50%;flex:none}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+    margin:34px 0 12px;font-weight:650}
+  h2 .plain{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400}
+  .grid{display:grid;gap:12px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 16px}
+  .tile .v{font-size:30px;font-weight:660;letter-spacing:-.02em;line-height:1.05}
+  .tile .l{font-size:12.5px;color:var(--secondary);margin-top:5px}
+  .tile .n{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .ok{color:var(--good-ink)}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;
+    padding:2px 8px;border-radius:999px;border:1px solid var(--border)}
+  .chip.good{color:var(--good-ink)} .chip.warn{color:var(--warn)}
+  .cols2{grid-template-columns:1fr 1fr}
+  .cols3{grid-template-columns:1.4fr 1fr}
+  @media(max-width:720px){.cols2,.cols3{grid-template-columns:1fr}}
+  .bar{display:flex;height:26px;border-radius:6px;overflow:hidden;gap:2px;margin:10px 0 6px}
+  .seg{display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;
+    color:#fff;min-width:26px;border-radius:4px;white-space:nowrap;overflow:hidden;padding:0 6px}
+  .seg.light-ink{color:var(--primary)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--secondary);margin-top:2px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:3px;flex:none}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid)}
+  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  tr:last-child td{border-bottom:none}
+  .jflex{display:flex;align-items:center;gap:8px}
+  .jbar{height:8px;border-radius:4px;background:var(--blue);flex:none}
+  b.h{font-size:14px}
+  ul.items{list-style:none;padding:0;margin:6px 0 0}
+  ul.items li{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid var(--grid);font-size:13.5px}
+  ul.items li:last-child{border-bottom:none}
+  .mk{flex:none;font-weight:700}.mk.done{color:var(--good-ink)}.mk.open{color:var(--warn)}
+  .items .d{color:var(--secondary);font-size:12.5px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+    background:color-mix(in srgb,var(--muted) 14%,transparent);padding:1px 5px;border-radius:4px}
+  footer{margin-top:34px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 16px}
+  footer a{color:var(--secondary)}
+  .fine{font-size:11.5px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap" id="root"></div>
+<script>
+const DATA = {
+  title: "BBNJ / High Seas Treaty Corpus — Audit",
+  version: "working build",
+  asOf: "4 Jul 2026",
+  allGreen: false,
+  bannerNote: "Validation and reproducibility gates pass — all 13 text-layer records re-derive byte-exact from their originals — and 11 of 15 texts are fidelity-verified. French/Russian and Chinese/Arabic fidelity remain open, tracked in GAPS.md.",
+  kpis: [
+    {v:"15",     l:"Authoritative instruments", n:"UNCLOS + BBNJ framework"},
+    {v:"11 / 15",l:"Fidelity verified",         n:"of 15 text-bearing records", status:"good"},
+    {v:"13 / 13", l:"Byte-exact re-derivation",   n:"text-layer records (extract.py)", status:"good"},
+    {v:"900",    l:"Structured provisions",      n:"derived layer"},
+    {chip:"PASS", chipKind:"good", l:"Validation gate", n:"schema · hashes · two-layer wall"},
+    {chip:"REPRODUCIBLE", chipKind:"good", l:"Derived layer", n:"byte-identical rebuild"}
+  ],
+  verification: {
+    fidelity: {ratio:"11 / 15", note:"Verified with byte-exact official PDFs by reconciling two independent extractors (pdftotext -raw + PyMuPDF) word-for-word, plus rendered-page spot-checks; the English text passed a full verbatim audit. The four unverified are honestly flagged, not failures: French & Russian (recovered from non-Unicode display fonts) and Chinese & Arabic (OCR)."},
+    reproduction: {ratio:"13 / 13", note:"scripts/extract.py re-derives each text from its stored original.pdf by committed code (pipelines.py) and checks the SHA-256; all 13 text-layer records reproduce byte-exact — now a CI gate. The two OCR records (Chinese, Arabic) use a separate render+OCR pipeline and sit outside this text-layer gate."},
+    reproductionNote: "No byte-exact extraction pipeline (an extract.py) re-derives the stored text from its original PDF by committed code — texts were captured via documented per-document cleaners and OCR. The corpus does verify integrity (every stored file matches its recorded SHA-256) and reproduces its derived layer byte-identically; a reproducible extraction pipeline is a tracked enhancement."
+  },
+  provenance: [
+    ["Validation gate (schema · hashes · wall)", "PASS ✓", "good"],
+    ["Derived layer rebuild", "byte-identical ✓", "good"],
+    ["Two-layer wall (authoritative ↔ derived)", "enforced ✓", "good"],
+    ["Text-extraction reproducibility", "13/13 byte-exact ✓", "good"],
+    ["Authoritative layer", "append-only"],
+    ["Repository model", "single public repo"]
+  ],
+  statusMix: [ ["authentic_text", 15] ],
+  branches: [
+    ["treaty — BBNJ ×6 languages", 6], ["resolution", 4], ["implementing_agreement", 2],
+    ["convention — UNCLOS", 1], ["decision", 1], ["prepcom_document", 1]
+  ],
+  monitor: {
+    heading: "Source monitor — 6 watched",
+    segments: [ {label:"6 server-rendered", value:6, hue:"var(--blue)"} ],
+    legend: [ {sw:"var(--blue)", text:"Auto (server-rendered UN pages)"} ],
+    note: "All six are server-rendered UN pages a stdlib fetch can read, checked monthly by a GitHub Action. Not yet baselined — the first run establishes the comparison hashes."
+  },
+  tagging: {
+    heading: "Concept tagging",
+    headingPlain: "— quality dial, not a pass/fail gate",
+    segments: [
+      {label:"Curated 8.7%",  value:78,  hue:"var(--cur)"},
+      {label:"Keyword 39.6%", value:356, hue:"var(--kw)"},
+      {label:"Untagged 51.8%",value:466, hue:"var(--untag)", lightInk:true}
+    ],
+    legend: [
+      {sw:"var(--cur)",   text:"Curated · 78 (flagship BBNJ)"},
+      {sw:"var(--kw)",    text:"Keyword fallback · 356"},
+      {sw:"var(--untag)", text:"Untagged · 466", ring:true}
+    ],
+    note: "Curated = the flagship BBNJ Agreement (English), tagged provision-by-provision against the neutral vocabulary. Keyword = automatic fallback on the other instruments. Untagged (largely intentional) = mostly UNCLOS articles outside the BBNJ-specific vocabulary, plus non-English / OCR texts awaiting per-language tagging."
+  },
+  resolved: [
+    {t:"Corpus assembled — 15 instruments", d:"UNCLOS + its three implementing agreements (incl. BBNJ ×6 languages) + founding GA resolutions/decision + the 2026 PrepCom report."},
+    {t:"UNCLOS space-drops fixed", d:"475 merged tokens repaired via dual-extractor reconciliation; upgraded to extracted_verified."},
+    {t:"PrepCom Report re-cleaned + verified", d:"restored dropped document symbols, stripped page markers, fixed one space-drop."},
+    {t:"Curated concept layer + BBNJ↔UNCLOS crosswalk", d:"flagship tagged at provision level; the treaty's cross-references resolved to UNCLOS."},
+    {t:"Published + self-maintaining", d:"GitHub (CI integrity gate), Hugging Face dataset, Pages site, monthly COP1 watch."},
+    {t:"Reproducibility established", d:"extract.py + pipelines.py re-derive all 13 text-layer texts byte-exact from their originals; wired into CI."}
+  ],
+  open: [
+    {t:"[gap] French & Russian texts unverified", d:"extracted_unverified — recovered from non-Unicode fonts; need a per-language audit against page images."},
+    {t:"[gap] Chinese & Arabic texts are OCR", d:"ocr_unverified — need visual line-by-line verification against the PDFs."},
+    {t:"[enhancement] Concept tagging curated on flagship only", d:"extend curation to other instruments / a UNCLOS-appropriate vocabulary."},
+    {t:"[pending] COP1 decisions (Jan 2027) + non-English secondary instruments", d:"tracked by the monthly source watch; ingest as adopted."},
+    {t:"[enhancement] Source monitor not yet baselined", d:"configured (6 sources, monthly Action); first run pending."}
+  ],
+  links: [
+    {label:"GitHub", href:"https://github.com/dacheah/bbnj-high-seas-treaty-corpus"},
+    {label:"Hugging Face", href:"https://huggingface.co/datasets/dacheah/bbnj-high-seas-treaty-corpus"},
+    {label:"Browsable site", href:"https://dacheah.github.io/bbnj-high-seas-treaty-corpus/"}
+  ],
+  footNote: "A reference record — not legal advice. Verification covers the corpus's own provenance guarantees (faithful capture of the official source), not the correctness of any source text. Measured from the corpus's own tools and metadata on 4 Jul 2026."
+};
+
+const el=(h)=>{const t=document.createElement("template");t.innerHTML=h.trim();return t.content.firstChild;};
+const esc=(s)=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+function bar(segs){
+  const total=segs.reduce((a,s)=>a+(s.value||0),0)||1;
+  return `<div class="bar" role="img">`+segs.map(s=>
+    `<div class="seg${s.lightInk?" light-ink":""}" style="flex:${s.value};background:${s.hue}" title="${esc(s.label)}">${esc(s.label)}</div>`).join("")+`</div>`;
+}
+function legend(items){
+  return `<div class="legend">`+items.map(i=>
+    `<span><span class="sw" style="background:${i.sw}${i.ring?";border:1px solid var(--border)":""}"></span>${esc(i.text)}</span>`).join("")+`</div>`;
+}
+const D=DATA, out=[];
+out.push(`<header><h1>${esc(D.title)}</h1><span class="sub">${esc(D.version)} · as at ${esc(D.asOf)}</span></header>`);
+out.push(`<div class="banner"><span class="dot" style="background:${D.allGreen?"var(--good)":"var(--warn)"};box-shadow:0 0 0 4px color-mix(in srgb,${D.allGreen?"var(--good)":"var(--warn)"} 22%,transparent)"></span>
+  <div><b>${D.allGreen?"All green.":"Green, with tracked open items."}</b> <span class="sub">${esc(D.bannerNote)}</span></div></div>`);
+
+out.push(`<div class="grid kpis">`+D.kpis.map(k=>{
+  const v=k.chip?`<span class="chip ${k.chipKind||""}">✓ ${esc(k.chip)}</span>`:`<span class="${k.status==="good"?"ok":""}">${esc(k.v)}</span>`;
+  return `<div class="card tile"><div class="v">${v}</div><div class="l">${esc(k.l)}</div><div class="n">${esc(k.n||"")}</div></div>`;
+}).join("")+`</div>`);
+
+if(D.verification){
+  const vc=(o,label,fallbackNote)=>o
+    ?`<div class="card"><div class="jflex" style="justify-content:space-between"><b class="h">${label}</b><span class="chip good">✓ ${esc(o.ratio)}</span></div><p class="sub" style="margin:8px 0 0">${esc(o.note)}</p></div>`
+    :`<div class="card"><div class="jflex" style="justify-content:space-between"><b class="h">${label}</b><span class="chip warn">○ not established</span></div><p class="sub" style="margin:8px 0 0">${esc(fallbackNote||"")}</p></div>`;
+  out.push(`<h2>Verification <span class="plain">— two independent axes, kept separate</span></h2><div class="grid cols2">${vc(D.verification.fidelity,"Fidelity — faithful to source")}${vc(D.verification.reproduction,"Reproducibility — byte-exact re-derivation",D.verification.reproductionNote)}</div>`);
+}
+
+out.push(`<h2>Provenance &amp; integrity</h2><div class="grid cols2"><div class="card"><table>`+
+  D.provenance.map(r=>`<tr><td>${esc(r[0])}</td><td class="n ${r[2]==="good"?"ok":""}">${r[1].indexOf("…")>-1?`<code>${esc(r[1])}</code>`:esc(r[1])}</td></tr>`).join("")+
+  `</table></div><div class="card"><b class="h">Authoritative status mix</b><table style="margin-top:8px">`+
+  D.statusMix.map(r=>`<tr><td>${esc(r[0])}</td><td class="n">${r[1]}</td></tr>`).join("")+`</table></div></div>`);
+
+const jmax=Math.max(...D.branches.map(b=>b[1]),1);
+out.push(`<h2>Coverage &amp; monitoring</h2><div class="grid cols3"><div class="card"><b class="h">Instrument families</b>
+  <table style="margin-top:8px"><thead><tr><th>Family</th><th class="n">Records</th></tr></thead><tbody>`+
+  D.branches.map(b=>`<tr><td><div class="jflex"><span class="jbar" style="width:${Math.round(b[1]/jmax*54)+6}px"></span>${esc(b[0])}</div></td><td class="n">${b[1]}</td></tr>`).join("")+
+  `</tbody></table></div><div class="card"><b class="h">${esc(D.monitor.heading)}</b>${bar(D.monitor.segments)}${legend(D.monitor.legend)}<p class="fine">${esc(D.monitor.note)}</p></div></div>`);
+
+out.push(`<h2>${esc(D.tagging.heading)} <span class="plain">${esc(D.tagging.headingPlain||"")}</span></h2>
+  <div class="card">${bar(D.tagging.segments)}${legend(D.tagging.legend)}<p class="fine">${esc(D.tagging.note)}</p></div>`);
+
+const list=(arr,kind)=>`<ul class="items">`+arr.map(i=>`<li><span class="mk ${kind}">${kind==="done"?"✓":"○"}</span><span><b>${esc(i.t)}</b> <span class="d">${esc(i.d)}</span></span></li>`).join("")+`</ul>`;
+out.push(`<h2>Punch-list</h2><div class="grid cols2"><div class="card"><b class="h">Resolved</b>${list(D.resolved,"done")}</div><div class="card"><b class="h">Open items — gaps &amp; enhancements</b>${list(D.open,"open")}</div></div>`);
+
+out.push(`<footer><span>Generated ${esc(D.asOf)} — measured from the corpus's own tools</span>`+D.links.map(l=>`<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("")+`</footer><p class="fine">${esc(D.footNote)}</p>`);
+
+document.getElementById("root").innerHTML=out.join("");
+</script>
+</body>
+</html>

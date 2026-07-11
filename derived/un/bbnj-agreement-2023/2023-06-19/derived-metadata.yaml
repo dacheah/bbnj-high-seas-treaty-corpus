@@ -6,7 +6,7 @@
   source_text_sha256: sha256:1c52fc00b3bff4c79ac63f88cccb0ff9dab898dcf77e240107521d3fee047123
   generation_method: rule_based
   generator: build_derived.py (structure)
-  generation_date: '2026-07-04'
+  generation_date: '2026-07-11'
   review_status: unreviewed
   reviewed_by: null
   license: CC-BY-4.0
@@ -22,7 +22,7 @@
   source_text_sha256: sha256:1c52fc00b3bff4c79ac63f88cccb0ff9dab898dcf77e240107521d3fee047123
   generation_method: model
   generator: corpus-toolkit build_derived
-  generation_date: '2026-07-04'
+  generation_date: '2026-07-11'
   review_status: unreviewed
   reviewed_by: null
   license: CC-BY-4.0

@@ -56,6 +56,7 @@ GAPS.md          the gap register — recorded, not hidden
 ```
 pip install -r scripts/requirements.txt
 python3 scripts/validate_corpus.py     # integrity gate — must be green
+python3 scripts/extract.py             # reproducibility gate — text re-derives byte-exact from original.pdf
 python3 scripts/build_derived.py        # regenerate the derived layer
 python3 scripts/build_site.py           # regenerate site/
 ```

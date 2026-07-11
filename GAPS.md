@@ -13,6 +13,10 @@
   - **BBNJ French & Russian** — recovered from non-Unicode display fonts (headings/decode); need a
     per-language audit against page images, not a dual-extractor check (both tools yield the same
     font output). (G-2b)
+- **Reproducibility (2026-07-04):** `scripts/extract.py` re-derives every text from its stored
+  `original.pdf` by committed code (`scripts/pipelines.py`) and checks the SHA-256 — **13/13
+  text-layer records reproduce byte-exact**, now a CI gate. The 2 OCR records (zh, ar) use a
+  separate render+OCR pipeline and are excluded from the byte-exact text-layer gate.
 - **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR; verifying needs visual line-by-line
   against the PDF).
 

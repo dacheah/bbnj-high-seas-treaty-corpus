@@ -8,4 +8,6 @@ jobs:
       - uses: actions/setup-python@v6
         with: { python-version: "3.11" }
       - run: pip install -r scripts/requirements.txt
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils   # pdftotext for extract.py
       - run: python3 scripts/validate_corpus.py   # integrity gate: schema, hashes, two-layer wall
+      - run: python3 scripts/extract.py           # reproducibility gate: text re-derives byte-exact from original.pdf
