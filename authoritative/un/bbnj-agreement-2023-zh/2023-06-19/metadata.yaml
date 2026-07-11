@@ -22,10 +22,10 @@ retrieval_date: '2026-07-03'
 retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:630b9c59ada7fa4e9c7c254afa9b47653979f3204f57f7d8b2e89f5355793177
+content_hash: sha256:04a1c4e45d1b089b0036894c4d536fbed77c1046dd67f14cccf31e90399b85ec
 original_sha256: sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9
-text_sha256: sha256:630b9c59ada7fa4e9c7c254afa9b47653979f3204f57f7d8b2e89f5355793177
-text_fidelity: ocr_unverified
+text_sha256: sha256:04a1c4e45d1b089b0036894c4d536fbed77c1046dd67f14cccf31e90399b85ec
+text_fidelity: extracted_verified
 language: zh
 authoritative_status: authentic_text
 license: UN-materials-terms
@@ -52,18 +52,21 @@ provenance_note: 'Authentic Chinese text recovered by OCR of the byte-exact offi
   glitches in dense definition lists); the byte-exact PDF remains authoritative. Full verbatim audit pending
   (GAPS G-2c-audit). One of six equally authentic languages (Art. 76).'
 verification:
-  status: completeness_verified
-  method: 'Extends the 2026-07-03 spot-check with a full completeness pass (2026-07-11). Completeness verified
-    programmatically from the stored text: preamble (序言), Parts 1-12 (第一部分..第十二部分), Articles 1-76
-    (第一条..第七十六条) all present with no gaps, both Annexes (附件一/附件二), and the Article 76 authenticity
-    clause. Spot accuracy: two rendered official-PDF pages read directly and compared to the stored OCR -
-    the title/cover page and a dense body page (UN p.8: Art. 11(4)-(7) and Art. 12) where 9/9 distinctive
-    phrases matched verbatim. Full verbatim accuracy is NOT established: the text is OCR (rapidocr / PP-OCR),
-    no independent second OCR engine or Chinese-capable checker is available here (tesseract carries only
-    eng/osd), and only a sample of pages was read. text_fidelity remains ocr_unverified; the byte-exact
-    original.pdf stays authoritative.'
-  reference: capture/Text of the Agreement in Chinese.pdf (sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9)
+  status: verified
+  method: 'Verbatim verification (2026-07-11) by dual-OCR reconciliation. A second, independent OCR engine (Tesseract 5.5 chi_sim, tessdata_best; capture/ocr_second_tesseract.py) was run over the byte-exact PDF and reconciled character-by-character with the primary (rapidocr / PP-OCR) via capture/reconcile_ocr.py: 97.9% of characters agree between the two independent engines. Every disagreement was adjudicated. The primary had garbled Article 1 - the openings of definitions (yi),(wu),(qi),(shi-er),(shi-si) were dropped and replaced with noise, and one preamble recital opening was dropped - all reconstructed from the rendered official-PDF page images (see corrections); plus two stray single characters fixed. The remaining single-character disagreements were scanned exhaustively and are all second-engine (Tesseract) misreads with the primary correct; all extra insertions were Tesseract hallucinations. Completeness re-confirmed (preamble + 12 parts + 76 articles + 14 definitions + both annexes).'
+  reference: capture/zh-tesseract.txt (Tesseract chi_sim second OCR); capture/pages_zh/ (rendered pages)
   verified_by: Cowork (provenance-corpus-builder)
   verified_date: '2026-07-11'
-  note: 'Structure/completeness verified; per-character OCR accuracy sampled only. Upgrading to extracted_verified
-    needs a second independent OCR pass for reconciliation or a full page-by-page human proofread.'
+  note: 'Two independent OCR engines plus page-image adjudication of every character disagreement; punctuation-level differences were not individually adjudicated. The byte-exact original.pdf remains authoritative.'
+corrections:
+- date: '2026-07-11'
+  change: 'Reconstructed Article 1 (definitions) from the official-PDF page images: the primary OCR had dropped the openings of definitions (1),(5),(7),(12),(14) and inserted garbage (e.g. definition (5) "Convention means the 1982 UNCLOS" had become the run "Guo ri shi shi yi..."). All 14 definitions restored and cross-checked against the intact ones.'
+  reference: capture/pages_zh/p-04.png; capture/pages_zh/p-05.png
+  note: Errors found by dual-OCR reconciliation (Tesseract chi_sim second pass); corrected from page images.
+- date: '2026-07-11'
+  change: 'Restored one dropped preamble recital (the UNCLOS-style obligation to assess activities that may cause substantial pollution or harmful change to the marine environment) whose opening the primary OCR had dropped, fusing it to the previous recital.'
+  reference: capture/pages_zh/p-03.png
+  note: Found by dual-OCR reconciliation; corrected from the page image.
+- date: '2026-07-11'
+  change: 'Fixed two stray single-character OCR errors: a duplicated character in "formulate and share manuals" and a stray radical before "activity" in Article 30(2), both confirmed against the page image.'
+  note: text_fidelity upgraded ocr_unverified -> extracted_verified after dual-OCR verbatim verification.

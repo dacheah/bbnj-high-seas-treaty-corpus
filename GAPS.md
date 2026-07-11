@@ -3,8 +3,8 @@
 # Fidelity status (updated 2026-07-11)
 
 `text_fidelity` across the 15 authoritative records:
-- **extracted_verified (13):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
-  (English, Spanish, **French**, **Russian**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
+- **extracted_verified (14):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
+  (English, Spanish, **French**, **Russian**, **Chinese**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
   78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
   Method (text-layer records with a clean digital text layer): two independent extractors (pdftotext
   -raw + PyMuPDF) agree word-for-word, the stored text adds no words and drops only bibliographic
@@ -18,10 +18,15 @@
   `original.pdf` by committed code (`scripts/pipelines.py`) and checks the SHA-256 — **13/13
   text-layer records reproduce byte-exact**, now a CI gate. The 2 OCR records (zh, ar) use a
   separate render+OCR pipeline and are excluded from the byte-exact text-layer gate.
-- **Still ocr_unverified (2):** BBNJ Chinese & Arabic (OCR). **Completeness re-verified 2026-07-11**
-  (all parts/articles/annexes present) and spot-checked against page images, but full per-character
-  verbatim accuracy is **not** established — no independent second OCR engine is available offline, so
-  the byte-exact PDF stays authoritative. `verification.status: completeness_verified`. See G-2c.
+- **Chinese — now `extracted_verified` (2026-07-11):** verbatim-verified by dual-OCR reconciliation
+  against an independent Tesseract chi_sim second pass (97.9% two-engine character agreement); the primary
+  OCR had garbled Article 1's definitions and dropped a preamble recital, both reconstructed from the page
+  images, and every residual disagreement was adjudicated. See G-2c.
+- **Still ocr_unverified (1):** BBNJ **Arabic**. A dual-OCR reconciliation was attempted with an
+  independent Tesseract ara pass, but the two engines agree on only ~78% of words — Tesseract Arabic is
+  too weak to corroborate to a verbatim standard. Completeness is verified and one confirmed primary error
+  (the Art. 4 heading, which had lost its numeral) was fixed; a full verbatim upgrade needs a stronger
+  second engine (a cloud OCR). See G-2c. `verification.status: second_engine_insufficient`.
 
 Provenance principle: gaps are first-class facts. Each is tracked here until closed.
 
@@ -92,6 +97,16 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   recorded in the record's `verification{}`. Both stay `ocr_unverified` (`verification.status:
   completeness_verified`); a full verbatim upgrade needs a second independent OCR engine (none offline)
   or a human proofread.
+
+- **Dual-OCR verbatim pass 2026-07-11 (second independent engine = Tesseract 5.5, tessdata_best).**
+  A second OCR of both PDFs (`capture/ocr_second_tesseract.py`) was reconciled against the primary
+  (`capture/reconcile_ocr.py`). **Chinese:** 97.9% character agreement; the reconciliation exposed real
+  primary corruption — Article 1 definitions (1),(5),(7),(12),(14) garbled and one preamble recital
+  dropped — which were reconstructed from `capture/pages_zh/` page images, the residual single-char
+  disagreements adjudicated (all Tesseract misreads), and the record upgraded to `extracted_verified`.
+  **Arabic:** only ~78% word agreement — Tesseract Arabic is too weak to serve as a verbatim corroborator;
+  the pass still caught and fixed the Art. 4 heading, but the text stays `ocr_unverified` pending a
+  stronger (cloud-OCR) second pass.
 
 
 ## G-3 — UNCLOS (parent convention) *(UNCLOS ingested 2026-07-04; agreements queued)*

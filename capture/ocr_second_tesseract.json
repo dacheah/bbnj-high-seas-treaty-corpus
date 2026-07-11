@@ -1,0 +1,26 @@
+{
+  "tesseract_version": "5.5.0.20241111",
+  "dpi": 300,
+  "psm": "6",
+  "oem": "1",
+  "jobs": [
+    {
+      "lang": "zh",
+      "tess_lang": "chi_sim",
+      "pdf": "un/bbnj-agreement-2023-zh/2023-06-19/original.pdf",
+      "pdf_sha256": "sha256:62f22a05260c239ce762b24d60aee481997fe4d0644d83da555a16384d65a6e9",
+      "pages": 60,
+      "per_page_dir": "capture/pages_zh_tess",
+      "combined": "capture/zh-tesseract.txt"
+    },
+    {
+      "lang": "ar",
+      "tess_lang": "ara",
+      "pdf": "un/bbnj-agreement-2023-ar/2023-06-19/original.pdf",
+      "pdf_sha256": "sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb",
+      "pages": 83,
+      "per_page_dir": "capture/pages_ar_tess",
+      "combined": "capture/ar-tesseract.txt"
+    }
+  ]
+}

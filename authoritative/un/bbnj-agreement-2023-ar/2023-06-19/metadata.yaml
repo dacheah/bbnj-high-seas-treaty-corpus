@@ -22,9 +22,9 @@ retrieval_date: '2026-07-03'
 retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF
 original_format: pdf
 original_filename: original.pdf
-content_hash: sha256:29526e136f73d4bc2f65e6759684faec1295b5f1cdccd45fe8c63ea7f31bad06
+content_hash: sha256:8c5f6a45f7a892f54c46967427652bdd8795d9cf9a3281f75894dd37871c52a2
 original_sha256: sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb
-text_sha256: sha256:29526e136f73d4bc2f65e6759684faec1295b5f1cdccd45fe8c63ea7f31bad06
+text_sha256: sha256:8c5f6a45f7a892f54c46967427652bdd8795d9cf9a3281f75894dd37871c52a2
 text_fidelity: ocr_unverified
 language: ar
 authoritative_status: authentic_text
@@ -52,18 +52,14 @@ provenance_note: 'Authentic Arabic text recovered by OCR of the byte-exact offic
   punctuation); the byte-exact PDF remains authoritative. One of six equally authentic languages (Art.
   76).'
 verification:
-  status: completeness_verified
-  method: 'Extends the 2026-07-04 spot-check with a full completeness pass (2026-07-11). Completeness verified
-    from the stored text: preamble (الديباجة), 76 article-heading lines (المادة 1 .. المادة 76), both Annexes
-    (المرفق الأول / المرفق الثاني), and the authenticity clause; a rendered title page and a body page (UN p.8:
-    Art. 8, Part II heading, Art. 9) were read directly and confirm the source. Residual OCR defects were found
-    and are recorded rather than hidden - e.g. the Article 4 heading lost its numeral and split a word (stored
-    "المادة الاستثناء ات" vs source "المادة 4 الاستثناءات"), plus RTL list-marker and punctuation artifacts.
-    Full verbatim accuracy is NOT established: the text is OCR (EasyOCR, run off-environment), no Arabic-capable
-    second OCR engine is available here (tesseract carries only eng/osd), and concrete OCR errors remain.
-    text_fidelity remains ocr_unverified; the byte-exact original.pdf stays authoritative.'
-  reference: capture/Text of the Agreement in Arabic.pdf (sha256:cf0a53063d901c7b5c8d2716b837b7ff282a47f7dbe734a77bc782619e42eebb)
+  status: second_engine_insufficient
+  method: 'Verbatim verification ATTEMPTED (2026-07-11) by dual-OCR reconciliation, but NOT achieved. A second, independent OCR engine (Tesseract 5.5 ara, tessdata_best; capture/ocr_second_tesseract.py) was run over the byte-exact PDF and reconciled with the primary (EasyOCR) at word level (capture/reconcile_ocr.py; capture/ar-tesseract.txt). The two engines agree on only ~78% of words (vs ~98% for Chinese with the same method), because Tesseract Arabic is not accurate enough to act as a verbatim corroborator here - the disagreements are dominated by Tesseract errors, not primary errors. Completeness re-confirmed and no structural gaps were found (the large tesseract-only runs are its own weakness or alignment artifacts, and the flagged clause text is present in the primary). The reconciliation did surface one genuine primary error - the Article 4 heading had lost its numeral - now corrected (see corrections). Full verbatim verification of the Arabic text still needs a stronger second engine (e.g. a cloud OCR such as Google Vision or Azure Read).'
+  reference: capture/ar-tesseract.txt (Tesseract ara second OCR)
   verified_by: Cowork (provenance-corpus-builder)
   verified_date: '2026-07-11'
-  note: 'Structure/completeness verified and specific OCR errors documented (e.g. the Art. 4 heading).
-    Upgrading needs a second independent Arabic OCR for reconciliation or a full human proofread.'
+  note: 'text_fidelity stays ocr_unverified: the second engine (Tesseract ara) was too weak (~78% word agreement) to verify EasyOCR to a verbatim standard. Completeness is verified; the byte-exact original.pdf remains authoritative. Recommended next step for a verbatim upgrade: a cloud-OCR second pass for Arabic.'
+corrections:
+- date: '2026-07-11'
+  change: 'Fixed the Article 4 heading: the primary OCR had dropped the article number and split the title word (stored "al-madah al-istithna at" -> "al-madah 4 al-istithnaat", i.e. "Article 4  Exceptions"). Confirmed by the Tesseract second OCR and the neighbouring heading format (Article 3 / Article 5).'
+  reference: capture/ar-tesseract.txt
+  note: One clearly-confirmed structural error corrected; the remainder of the Arabic text stays ocr_unverified pending a stronger second-engine (cloud OCR) pass.

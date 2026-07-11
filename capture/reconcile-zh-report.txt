@@ -1,0 +1,1462 @@
+# Reconciliation report: zh  (primary stored OCR  vs  Tesseract second OCR)
+# agreement=97.94%  regions=486  pages=[1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+# Each row: [page] TAG  primary=<...>  tesseract=<...>  -- adjudicate against the page render.
+
+[p1] insert
+    primary  : ''
+    tesseract: '《联合国海洋法公约》下国家管辖范围以外区域海洋生物多样性的养护和可持续利用协定四联合国2023年'
+[p3] replace
+    primary  : '塑'
+    tesseract: '凶'
+[p3] insert
+    primary  : ''
+    tesseract: '和'
+[p4] replace
+    primary  : '《'
+    tesseract: '人'
+[p4] replace
+    primary  : '缔'
+    tesseract: '弹'
+[p4] replace
+    primary  : ':'
+    tesseract: ';'
+[p4] insert
+    primary  : ''
+    tesseract: '。'
+[p4] replace
+    primary  : '某'
+    tesseract: '菜'
+[p4] replace
+    primary  : '”。'
+    tesseract: '"'
+[p4] insert
+    primary  : ''
+    tesseract: '“'
+[p4] delete
+    primary  : ','
+    tesseract: ''
+[p4] replace
+    primary  : '遗'
+    tesseract: '站'
+[p4] replace
+    primary  : '遗'
+    tesseract: '站'
+[p4] replace
+    primary  : '《'
+    tesseract: '人'
+[p4] replace
+    primary  : '叠加'
+    tesseract: '登如'
+[p4] replace
+    primary  : '递'
+    tesseract: '兹'
+[p4] insert
+    primary  : ''
+    tesseract: '-2-'
+[p5] replace
+    primary  : '某'
+    tesseract: '茶'
+[p5] replace
+    primary  : '('
+    tesseract: 'C'
+[p5] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p5] replace
+    primary  : '”'
+    tesseract: '?'
+[p5] insert
+    primary  : ''
+    tesseract: '和'
+[p5] replace
+    primary  : '衡'
+    tesseract: '衔'
+[p5] replace
+    primary  : ';'
+    tesseract: ','
+[p5] replace
+    primary  : '('
+    tesseract: '《'
+[p5] replace
+    primary  : '力'
+    tesseract: '方'
+[p5] replace
+    primary  : '('
+    tesseract: '《'
+[p5] replace
+    primary  : '('
+    tesseract: '《'
+[p5] replace
+    primary  : '('
+    tesseract: '《'
+[p5] replace
+    primary  : '《'
+    tesseract: '4'
+[p5] insert
+    primary  : ''
+    tesseract: '-3-'
+[p6] replace
+    primary  : '例'
+    tesseract: '负'
+[p6] replace
+    primary  : '书'
+    tesseract: '蔬'
+[p6] insert
+    primary  : ''
+    tesseract: '-4-'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] insert
+    primary  : ''
+    tesseract: '“'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] replace
+    primary  : '('
+    tesseract: '《'
+[p7] insert
+    primary  : ''
+    tesseract: '-5-'
+[p8] insert
+    primary  : ''
+    tesseract: '人'
+[p8] replace
+    primary  : '间'
+    tesseract: '冯'
+[p8] replace
+    primary  : '目'
+    tesseract: '且'
+[p8] replace
+    primary  : '('
+    tesseract: '《'
+[p8] insert
+    primary  : ''
+    tesseract: ','
+[p8] replace
+    primary  : '遗'
+    tesseract: '壮'
+[p8] replace
+    primary  : '('
+    tesseract: '《'
+[p8] insert
+    primary  : ''
+    tesseract: ','
+[p8] insert
+    primary  : ''
+    tesseract: ','
+[p8] insert
+    primary  : ''
+    tesseract: '-6-'
+[p9] replace
+    primary  : '('
+    tesseract: '《'
+[p9] insert
+    primary  : ''
+    tesseract: ','
+[p9] replace
+    primary  : '('
+    tesseract: '《'
+[p9] replace
+    primary  : '捕'
+    tesseract: '搞'
+[p9] insert
+    primary  : ''
+    tesseract: '-7-'
+[p10] replace
+    primary  : '遗'
+    tesseract: '薄'
+[p10] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p10] replace
+    primary  : '('
+    tesseract: '《'
+[p10] insert
+    primary  : ''
+    tesseract: '“'
+[p10] insert
+    primary  : ''
+    tesseract: ','
+[p10] replace
+    primary  : '('
+    tesseract: '《'
+[p10] insert
+    primary  : ''
+    tesseract: ','
+[p10] replace
+    primary  : '('
+    tesseract: '【'
+[p10] insert
+    primary  : ''
+    tesseract: '“'
+[p10] insert
+    primary  : ''
+    tesseract: '-8-'
+[p11] insert
+    primary  : ''
+    tesseract: '“'
+[p11] delete
+    primary  : ';'
+    tesseract: ''
+[p11] insert
+    primary  : ''
+    tesseract: ','
+[p11] insert
+    primary  : ''
+    tesseract: ','
+[p11] replace
+    primary  : '迟'
+    tesseract: '居'
+[p11] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p11] replace
+    primary  : '('
+    tesseract: '《'
+[p11] insert
+    primary  : ''
+    tesseract: ','
+[p11] replace
+    primary  : '('
+    tesseract: '《'
+[p11] replace
+    primary  : '纬'
+    tesseract: '续'
+[p11] insert
+    primary  : ''
+    tesseract: ','
+[p11] replace
+    primary  : '('
+    tesseract: '〈'
+[p11] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p11] insert
+    primary  : ''
+    tesseract: '和'
+[p11] replace
+    primary  : '享'
+    tesseract: '部'
+[p11] insert
+    primary  : ''
+    tesseract: '方应确保在下列信息可获得后,尽快将其连同可获得的“BBNJ”标准化批次标识符'
+[p11] insert
+    primary  : ''
+    tesseract: '-9-'
+[p12] replace
+    primary  : '('
+    tesseract: '《'
+[p12] insert
+    primary  : ''
+    tesseract: ','
+[p12] replace
+    primary  : '('
+    tesseract: '《'
+[p12] insert
+    primary  : ''
+    tesseract: '和'
+[p12] replace
+    primary  : '('
+    tesseract: '《'
+[p12] insert
+    primary  : ''
+    tesseract: ','
+[p12] replace
+    primary  : '('
+    tesseract: '-10-《'
+[p13] insert
+    primary  : ''
+    tesseract: ','
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] insert
+    primary  : ''
+    tesseract: ','
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] insert
+    primary  : ''
+    tesseract: ','
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] insert
+    primary  : ''
+    tesseract: '”'
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] insert
+    primary  : ''
+    tesseract: ','
+[p13] replace
+    primary  : '('
+    tesseract: '《'
+[p13] replace
+    primary  : '遗'
+    tesseract: '焉'
+[p13] insert
+    primary  : ''
+    tesseract: '-1]1-'
+[p14] replace
+    primary  : '('
+    tesseract: '〈'
+[p14] insert
+    primary  : ''
+    tesseract: '人'
+[p14] replace
+    primary  : '('
+    tesseract: '《'
+[p14] insert
+    primary  : ''
+    tesseract: ','
+[p14] replace
+    primary  : '('
+    tesseract: '《'
+[p14] replace
+    primary  : '某'
+    tesseract: '节'
+[p14] replace
+    primary  : '('
+    tesseract: '《'
+[p14] insert
+    primary  : ''
+    tesseract: ','
+[p14] insert
+    primary  : ''
+    tesseract: '-12-'
+[p15] replace
+    primary  : '兹'
+    tesseract: '效'
+[p15] insert
+    primary  : ''
+    tesseract: '和'
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] insert
+    primary  : ''
+    tesseract: '“'
+[p15] replace
+    primary  : '遗'
+    tesseract: '壮'
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] insert
+    primary  : ''
+    tesseract: ','
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] insert
+    primary  : ''
+    tesseract: ','
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] insert
+    primary  : ''
+    tesseract: ','
+[p15] replace
+    primary  : '惠'
+    tesseract: '韦'
+[p15] insert
+    primary  : ''
+    tesseract: '“'
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] replace
+    primary  : '('
+    tesseract: '《'
+[p15] insert
+    primary  : ''
+    tesseract: ','
+[p15] replace
+    primary  : '惠'
+    tesseract: '圳'
+[p15] insert
+    primary  : ''
+    tesseract: '和'
+[p15] insert
+    primary  : ''
+    tesseract: '-13-'
+[p16] replace
+    primary  : '目'
+    tesseract: '且'
+[p16] replace
+    primary  : '('
+    tesseract: '《'
+[p16] replace
+    primary  : '('
+    tesseract: '《'
+[p16] insert
+    primary  : ''
+    tesseract: ','
+[p16] insert
+    primary  : ''
+    tesseract: '-]4-'
+[p17] replace
+    primary  : '攸'
+    tesseract: '侈'
+[p17] insert
+    primary  : ''
+    tesseract: '人'
+[p17] replace
+    primary  : '营'
+    tesseract: '党'
+[p17] insert
+    primary  : ''
+    tesseract: '-14-'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] insert
+    primary  : ''
+    tesseract: '“'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] replace
+    primary  : '用'
+    tesseract: ',几'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] insert
+    primary  : ''
+    tesseract: ','
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] insert
+    primary  : ''
+    tesseract: '“'
+[p18] insert
+    primary  : ''
+    tesseract: '“'
+[p18] insert
+    primary  : ''
+    tesseract: ','
+[p18] insert
+    primary  : ''
+    tesseract: '”'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] insert
+    primary  : ''
+    tesseract: '“'
+[p18] replace
+    primary  : '('
+    tesseract: '《'
+[p18] insert
+    primary  : ''
+    tesseract: '-16-'
+[p19] insert
+    primary  : ''
+    tesseract: '人'
+[p19] replace
+    primary  : '界'
+    tesseract: '署'
+[p19] replace
+    primary  : '攸'
+    tesseract: '依'
+[p19] replace
+    primary  : '('
+    tesseract: '《'
+[p19] insert
+    primary  : ''
+    tesseract: '”'
+[p19] replace
+    primary  : '('
+    tesseract: '《'
+[p19] insert
+    primary  : ''
+    tesseract: ','
+[p19] insert
+    primary  : ''
+    tesseract: '-17-'
+[p20] insert
+    primary  : ''
+    tesseract: ','
+[p20] replace
+    primary  : '攸'
+    tesseract: '依'
+[p20] replace
+    primary  : '('
+    tesseract: '《'
+[p20] replace
+    primary  : '('
+    tesseract: '-18-《'
+[p21] replace
+    primary  : '('
+    tesseract: '《'
+[p21] insert
+    primary  : ''
+    tesseract: '人'
+[p21] replace
+    primary  : '覆'
+    tesseract: '履'
+[p21] insert
+    primary  : ''
+    tesseract: '-19-'
+[p22] replace
+    primary  : '缔'
+    tesseract: '缮'
+[p22] replace
+    primary  : '力'
+    tesseract: '为'
+[p22] replace
+    primary  : '束'
+    tesseract: '东'
+[p22] replace
+    primary  : '向'
+    tesseract: '间'
+[p22] replace
+    primary  : '('
+    tesseract: '《'
+[p22] insert
+    primary  : ''
+    tesseract: '”'
+[p22] insert
+    primary  : ''
+    tesseract: ','
+[p22] replace
+    primary  : '歧'
+    tesseract: '履'
+[p22] insert
+    primary  : ''
+    tesseract: ','
+[p22] replace
+    primary  : '替'
+    tesseract: '蔡'
+[p22] insert
+    primary  : ''
+    tesseract: '-20-'
+[p23] replace
+    primary  : '向'
+    tesseract: '辐'
+[p23] insert
+    primary  : ''
+    tesseract: '人'
+[p23] replace
+    primary  : '某'
+    tesseract: '菜'
+[p23] insert
+    primary  : ''
+    tesseract: '人'
+[p23] replace
+    primary  : '土'
+    tesseract: '士'
+[p23] insert
+    primary  : ''
+    tesseract: '人'
+[p23] insert
+    primary  : ''
+    tesseract: '-21-'
+[p24] replace
+    primary  : '执'
+    tesseract: '热'
+[p24] insert
+    primary  : ''
+    tesseract: '人'
+[p24] insert
+    primary  : ''
+    tesseract: '-22-'
+[p25] insert
+    primary  : ''
+    tesseract: '人'
+[p25] replace
+    primary  : '目'
+    tesseract: '且'
+[p25] insert
+    primary  : ''
+    tesseract: '-23-'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] insert
+    primary  : ''
+    tesseract: '和'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] insert
+    primary  : ''
+    tesseract: '”'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] replace
+    primary  : '('
+    tesseract: '《'
+[p26] insert
+    primary  : ''
+    tesseract: '-24-'
+[p27] insert
+    primary  : ''
+    tesseract: '人'
+[p27] insert
+    primary  : ''
+    tesseract: '人'
+[p27] insert
+    primary  : ''
+    tesseract: '人'
+[p27] insert
+    primary  : ''
+    tesseract: '人'
+[p27] insert
+    primary  : ''
+    tesseract: '人'
+[p27] replace
+    primary  : '('
+    tesseract: '《'
+[p27] insert
+    primary  : ''
+    tesseract: '-25-'
+[p28] replace
+    primary  : '筛'
+    tesseract: '科'
+[p28] replace
+    primary  : ':'
+    tesseract: ';'
+[p28] replace
+    primary  : '筛'
+    tesseract: '第'
+[p28] replace
+    primary  : '缔'
+    tesseract: '缮'
+[p28] insert
+    primary  : ''
+    tesseract: ','
+[p28] replace
+    primary  : '筛'
+    tesseract: '第'
+[p28] insert
+    primary  : ''
+    tesseract: ','
+[p28] insert
+    primary  : ''
+    tesseract: ','
+[p28] insert
+    primary  : ''
+    tesseract: ','
+[p28] replace
+    primary  : '氵'
+    tesseract: ','
+[p28] replace
+    primary  : '骤'
+    tesseract: '又'
+[p28] insert
+    primary  : ''
+    tesseract: '-26-'
+[p29] replace
+    primary  : '筛'
+    tesseract: '第'
+[p29] replace
+    primary  : '筛'
+    tesseract: '得'
+[p29] replace
+    primary  : '('
+    tesseract: '《'
+[p29] insert
+    primary  : ''
+    tesseract: ','
+[p29] replace
+    primary  : '('
+    tesseract: '〈'
+[p29] replace
+    primary  : '向'
+    tesseract: '癌'
+[p29] delete
+    primary  : '.'
+    tesseract: ''
+[p29] replace
+    primary  : '('
+    tesseract: '《'
+[p29] insert
+    primary  : ''
+    tesseract: '”'
+[p29] replace
+    primary  : '替'
+    tesseract: '蔡'
+[p29] insert
+    primary  : ''
+    tesseract: '-27-'
+[p30] replace
+    primary  : '替'
+    tesseract: '蔡'
+[p30] insert
+    primary  : ''
+    tesseract: ','
+[p30] replace
+    primary  : '攸'
+    tesseract: '侈'
+[p30] replace
+    primary  : '('
+    tesseract: '〈'
+[p30] replace
+    primary  : '('
+    tesseract: '《'
+[p30] replace
+    primary  : '('
+    tesseract: '-28-《'
+[p31] replace
+    primary  : '攸'
+    tesseract: '侈'
+[p31] replace
+    primary  : '毗'
+    tesseract: '吡'
+[p31] replace
+    primary  : '别'
+    tesseract: '列'
+[p31] insert
+    primary  : ''
+    tesseract: ','
+[p31] replace
+    primary  : '密'
+    tesseract: '窗'
+[p31] replace
+    primary  : ';'
+    tesseract: ','
+[p31] replace
+    primary  : '替'
+    tesseract: '蔡'
+[p31] insert
+    primary  : ''
+    tesseract: '-29-'
+[p32] replace
+    primary  : '向'
+    tesseract: '和间'
+[p32] insert
+    primary  : ''
+    tesseract: '-30-'
+[p33] replace
+    primary  : '违'
+    tesseract: '速'
+[p33] replace
+    primary  : '('
+    tesseract: '《'
+[p33] replace
+    primary  : '('
+    tesseract: '《'
+[p33] replace
+    primary  : '('
+    tesseract: '【'
+[p33] replace
+    primary  : '('
+    tesseract: '《'
+[p33] insert
+    primary  : ''
+    tesseract: ','
+[p33] replace
+    primary  : '('
+    tesseract: '《'
+[p33] replace
+    primary  : '缔'
+    tesseract: '费'
+[p33] replace
+    primary  : '('
+    tesseract: '《'
+[p33] insert
+    primary  : ''
+    tesseract: '“'
+[p33] insert
+    primary  : ''
+    tesseract: '-31-'
+[p34] replace
+    primary  : '违'
+    tesseract: '速'
+[p34] insert
+    primary  : ''
+    tesseract: ','
+[p34] insert
+    primary  : ''
+    tesseract: ','
+[p34] insert
+    primary  : ''
+    tesseract: ','
+[p34] insert
+    primary  : ''
+    tesseract: ','
+[p34] replace
+    primary  : '潜'
+    tesseract: '洪'
+[p34] replace
+    primary  : '攸'
+    tesseract: '依'
+[p34] replace
+    primary  : '('
+    tesseract: '《'
+[p34] insert
+    primary  : ''
+    tesseract: '“'
+[p34] insert
+    primary  : ''
+    tesseract: ','
+[p34] replace
+    primary  : '('
+    tesseract: '《'
+[p34] replace
+    primary  : '('
+    tesseract: '《'
+[p34] replace
+    primary  : '('
+    tesseract: '-32-《'
+[p35] insert
+    primary  : ''
+    tesseract: '”'
+[p35] replace
+    primary  : '('
+    tesseract: '《'
+[p35] insert
+    primary  : ''
+    tesseract: '“'
+[p35] replace
+    primary  : '('
+    tesseract: '《'
+[p35] insert
+    primary  : ''
+    tesseract: ','
+[p35] insert
+    primary  : ''
+    tesseract: '”'
+[p35] insert
+    primary  : ''
+    tesseract: ','
+[p35] insert
+    primary  : ''
+    tesseract: '-33-'
+[p36] insert
+    primary  : ''
+    tesseract: '”'
+[p36] insert
+    primary  : ''
+    tesseract: '”'
+[p36] insert
+    primary  : ''
+    tesseract: '和'
+[p36] insert
+    primary  : ''
+    tesseract: '”'
+[p36] replace
+    primary  : '方'
+    tesseract: '广'
+[p36] delete
+    primary  : '.'
+    tesseract: ''
+[p36] replace
+    primary  : '.'
+    tesseract: ','
+[p36] insert
+    primary  : ''
+    tesseract: '-34-'
+[p37] insert
+    primary  : ''
+    tesseract: '人'
+[p37] replace
+    primary  : '攸'
+    tesseract: '依'
+[p37] replace
+    primary  : '它'
+    tesseract: '筷'
+[p37] insert
+    primary  : ''
+    tesseract: '人'
+[p37] replace
+    primary  : '屿'
+    tesseract: '此'
+[p37] insert
+    primary  : ''
+    tesseract: '和'
+[p37] insert
+    primary  : ''
+    tesseract: '和'
+[p37] insert
+    primary  : ''
+    tesseract: '-3-'
+[p38] replace
+    primary  : '力'
+    tesseract: '为'
+[p38] replace
+    primary  : '让'
+    tesseract: '计'
+[p38] insert
+    primary  : ''
+    tesseract: '-36-'
+[p39] replace
+    primary  : '('
+    tesseract: '《'
+[p39] insert
+    primary  : ''
+    tesseract: '人'
+[p39] replace
+    primary  : '('
+    tesseract: '《'
+[p39] insert
+    primary  : ''
+    tesseract: ','
+[p39] replace
+    primary  : '('
+    tesseract: '《'
+[p39] insert
+    primary  : ''
+    tesseract: '“'
+[p39] replace
+    primary  : '制'
+    tesseract: ','
+[p39] replace
+    primary  : '('
+    tesseract: '《'
+[p39] replace
+    primary  : '穷'
+    tesseract: '究'
+[p39] replace
+    primary  : '导'
+    tesseract: '时'
+[p39] insert
+    primary  : ''
+    tesseract: '-37-'
+[p40] replace
+    primary  : '让'
+    tesseract: '计'
+[p40] replace
+    primary  : '('
+    tesseract: '《'
+[p40] insert
+    primary  : ''
+    tesseract: '“'
+[p40] replace
+    primary  : ';('
+    tesseract: '《'
+[p40] insert
+    primary  : ''
+    tesseract: '”'
+[p40] replace
+    primary  : '('
+    tesseract: '《'
+[p40] replace
+    primary  : '('
+    tesseract: '《'
+[p40] insert
+    primary  : ''
+    tesseract: ','
+[p40] insert
+    primary  : ''
+    tesseract: ','
+[p40] replace
+    primary  : '('
+    tesseract: '《'
+[p40] insert
+    primary  : ''
+    tesseract: ','
+[p40] replace
+    primary  : '让'
+    tesseract: '计'
+[p40] replace
+    primary  : '予'
+    tesseract: '巴'
+[p40] replace
+    primary  : '琐'
+    tesseract: '珊'
+[p40] replace
+    primary  : '兹'
+    tesseract: '效'
+[p40] insert
+    primary  : ''
+    tesseract: '-38-'
+[p41] replace
+    primary  : '予'
+    tesseract: '子'
+[p41] replace
+    primary  : '兹'
+    tesseract: '效'
+[p41] replace
+    primary  : '迟'
+    tesseract: '巡'
+[p41] replace
+    primary  : '致'
+    tesseract: '臻'
+[p41] replace
+    primary  : '('
+    tesseract: '《'
+[p41] replace
+    primary  : '('
+    tesseract: '《'
+[p41] insert
+    primary  : ''
+    tesseract: '”'
+[p41] replace
+    primary  : '('
+    tesseract: '《'
+[p41] insert
+    primary  : ''
+    tesseract: ','
+[p41] insert
+    primary  : ''
+    tesseract: '-39-'
+[p42] insert
+    primary  : ''
+    tesseract: ','
+[p42] replace
+    primary  : '('
+    tesseract: '《'
+[p42] insert
+    primary  : ''
+    tesseract: ','
+[p42] replace
+    primary  : '另'
+    tesseract: '吨'
+[p42] replace
+    primary  : '攸'
+    tesseract: '依'
+[p42] insert
+    primary  : ''
+    tesseract: '-40-'
+[p43] insert
+    primary  : ''
+    tesseract: '人'
+[p43] replace
+    primary  : '界、'
+    tesseract: '园.'
+[p43] replace
+    primary  : '攸'
+    tesseract: '信'
+[p43] replace
+    primary  : '兹'
+    tesseract: '效'
+[p43] insert
+    primary  : ''
+    tesseract: '和'
+[p43] replace
+    primary  : '豁'
+    tesseract: '苍'
+[p43] insert
+    primary  : ''
+    tesseract: '-4-'
+[p44] replace
+    primary  : '('
+    tesseract: '《'
+[p44] insert
+    primary  : ''
+    tesseract: '“'
+[p44] replace
+    primary  : '大'
+    tesseract: '太'
+[p44] replace
+    primary  : '('
+    tesseract: '《'
+[p44] replace
+    primary  : ';('
+    tesseract: '《'
+[p44] insert
+    primary  : ''
+    tesseract: '人'
+[p44] replace
+    primary  : '缔'
+    tesseract: '缆'
+[p44] replace
+    primary  : '('
+    tesseract: '《'
+[p44] replace
+    primary  : '('
+    tesseract: '《'
+[p44] insert
+    primary  : ''
+    tesseract: '”'
+[p44] replace
+    primary  : '兹'
+    tesseract: '效'
+[p44] replace
+    primary  : '('
+    tesseract: '《'
+[p44] insert
+    primary  : ''
+    tesseract: '-42-'
+[p45] replace
+    primary  : '力'
+    tesseract: '为'
+[p45] insert
+    primary  : ''
+    tesseract: ','
+[p45] insert
+    primary  : ''
+    tesseract: ','
+[p45] replace
+    primary  : '攸'
+    tesseract: '侈'
+[p45] replace
+    primary  : '('
+    tesseract: '《'
+[p45] insert
+    primary  : ''
+    tesseract: ','
+[p45] insert
+    primary  : ''
+    tesseract: '-43-'
+[p46] replace
+    primary  : '兹'
+    tesseract: '效'
+[p46] delete
+    primary  : ';'
+    tesseract: ''
+[p46] insert
+    primary  : ''
+    tesseract: ','
+[p46] insert
+    primary  : ''
+    tesseract: '和'
+[p46] insert
+    primary  : ''
+    tesseract: ','
+[p46] replace
+    primary  : '('
+    tesseract: '《'
+[p46] insert
+    primary  : ''
+    tesseract: '”'
+[p46] insert
+    primary  : ''
+    tesseract: '-44-'
+[p47] replace
+    primary  : '适'
+    tesseract: '到'
+[p47] replace
+    primary  : '○'
+    tesseract: '〇'
+[p47] replace
+    primary  : '让'
+    tesseract: '计'
+[p47] replace
+    primary  : '向'
+    tesseract: '疝'
+[p47] replace
+    primary  : '岛屿'
+    tesseract: '晶同'
+[p47] replace
+    primary  : '旨'
+    tesseract: '则'
+[p47] insert
+    primary  : ''
+    tesseract: '人'
+[p47] replace
+    primary  : '岛屿'
+    tesseract: '晶晤'
+[p47] insert
+    primary  : ''
+    tesseract: '-45-'
+[p48] insert
+    primary  : ''
+    tesseract: '和'
+[p48] replace
+    primary  : '('
+    tesseract: '《'
+[p48] insert
+    primary  : ''
+    tesseract: '“'
+[p48] replace
+    primary  : '('
+    tesseract: '《'
+[p48] replace
+    primary  : '('
+    tesseract: '《'
+[p48] insert
+    primary  : ''
+    tesseract: '-460-'
+[p49] replace
+    primary  : '兹'
+    tesseract: '效'
+[p49] insert
+    primary  : ''
+    tesseract: '人'
+[p49] insert
+    primary  : ''
+    tesseract: '-47-'
+[p50] replace
+    primary  : '适'
+    tesseract: '逢'
+[p50] insert
+    primary  : ''
+    tesseract: '人'
+[p50] replace
+    primary  : '('
+    tesseract: '-48-《'
+[p51] insert
+    primary  : ''
+    tesseract: '”'
+[p51] insert
+    primary  : ''
+    tesseract: ','
+[p51] replace
+    primary  : '('
+    tesseract: '《'
+[p51] insert
+    primary  : ''
+    tesseract: ','
+[p51] replace
+    primary  : '('
+    tesseract: '《'
+[p51] replace
+    primary  : '《'
+    tesseract: '('
+[p51] insert
+    primary  : ''
+    tesseract: '-49-'
+[p52] insert
+    primary  : ''
+    tesseract: '-S0-'
+[p53] replace
+    primary  : '签署'
+    tesseract: '答团'
+[p53] replace
+    primary  : '〇'
+    tesseract: 'O'
+[p53] replace
+    primary  : '九'
+    tesseract: '刀'
+[p53] insert
+    primary  : ''
+    tesseract: 'O'
+[p53] replace
+    primary  : '则'
+    tesseract: '风'
+[p53] replace
+    primary  : '书'
+    tesseract: '蔬'
+[p53] insert
+    primary  : ''
+    tesseract: '-$l-'
+[p54] replace
+    primary  : '书'
+    tesseract: '蔬'
+[p54] replace
+    primary  : '款'
+    tesseract: '堵'
+[p54] replace
+    primary  : '书'
+    tesseract: '蔬'
+[p54] replace
+    primary  : '书'
+    tesseract: '蔬'
+[p54] replace
+    primary  : '意'
+    tesseract: '总'
+[p54] replace
+    primary  : '辞'
+    tesseract: '僚'
+[p54] insert
+    primary  : ''
+    tesseract: '-$2-'
+[p55] replace
+    primary  : '定'
+    tesseract: '足'
+[p55] replace
+    primary  : '('
+    tesseract: '《'
+[p55] insert
+    primary  : ''
+    tesseract: ','
+[p55] replace
+    primary  : '('
+    tesseract: '《'
+[p55] insert
+    primary  : ''
+    tesseract: '-$3-'
+[p56] insert
+    primary  : ''
+    tesseract: '”'
+[p56] replace
+    primary  : '迟'
+    tesseract: '次'
+[p56] insert
+    primary  : ''
+    tesseract: ','
+[p56] insert
+    primary  : ''
+    tesseract: '-54-'
+[p57] insert
+    primary  : ''
+    tesseract: '一、'
+[p57] insert
+    primary  : ''
+    tesseract: '二、'
+[p57] insert
+    primary  : ''
+    tesseract: '”'
+[p57] replace
+    primary  : '累'
+    tesseract: '系'
+[p57] insert
+    primary  : ''
+    tesseract: '-55-'
+[p58] replace
+    primary  : '('
+    tesseract: '《'
+[p58] replace
+    primary  : '.'
+    tesseract: ','
+[p58] replace
+    primary  : '.'
+    tesseract: ','
+[p58] delete
+    primary  : '.'
+    tesseract: ''
+[p58] replace
+    primary  : '('
+    tesseract: '《'
+[p58] replace
+    primary  : '.'
+    tesseract: ','
+[p58] insert
+    primary  : ''
+    tesseract: ','
+[p58] insert
+    primary  : ''
+    tesseract: ','
+[p58] insert
+    primary  : ''
+    tesseract: ','
+[p58] delete
+    primary  : '.'
+    tesseract: ''
+[p58] replace
+    primary  : '('
+    tesseract: '《'
+[p58] replace
+    primary  : '.'
+    tesseract: ','
+[p58] replace
+    primary  : '.'
+    tesseract: ','
+[p58] insert
+    primary  : ''
+    tesseract: ','
+[p58] replace
+    primary  : '、'
+    tesseract: '.'
+[p58] replace
+    primary  : '('
+    tesseract: '-5$6-《'
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] insert
+    primary  : ''
+    tesseract: ','
+[p59] replace
+    primary  : '支'
+    tesseract: '文'
+[p59] insert
+    primary  : ''
+    tesseract: ','
+[p59] insert
+    primary  : ''
+    tesseract: ','
+[p59] delete
+    primary  : '.'
+    tesseract: ''
+[p59] insert
+    primary  : ''
+    tesseract: ','
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] insert
+    primary  : ''
+    tesseract: ','
+[p59] replace
+    primary  : '('
+    tesseract: '《'
+[p59] replace
+    primary  : '('
+    tesseract: '《'
+[p59] replace
+    primary  : '('
+    tesseract: '《'
+[p59] replace
+    primary  : '('
+    tesseract: '《'
+[p59] replace
+    primary  : '.'
+    tesseract: ','
+[p59] insert
+    primary  : ''
+    tesseract: '-$7-'
+[p60] delete
+    primary  : '.'
+    tesseract: ''
+[p60] replace
+    primary  : ':'
+    tesseract: ','
+[p60] replace
+    primary  : '金'
+    tesseract: '爹'
+[p60] replace
+    primary  : '.'
+    tesseract: ','
+[p60] replace
+    primary  : ':'
+    tesseract: ';'
+[p60] replace
+    primary  : '.'
+    tesseract: ','
+[p60] replace
+    primary  : '.'
+    tesseract: ','
+[p60] replace
+    primary  : '.'
+    tesseract: ','
+[p60] insert
+    primary  : ''
+    tesseract: '-S$8-'
