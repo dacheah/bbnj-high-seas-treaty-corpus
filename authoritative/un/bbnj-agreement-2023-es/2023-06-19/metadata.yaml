@@ -44,3 +44,6 @@ provenance_note: 'Authentic Spanish text extracted from the byte-exact official 
   via pdftotext -raw and normalised (capture/clean_lang.py). Complete: Preámbulo + Partes I–XII + Artículos
   1–76 + Anexos I–II. Spot-verified against the official PDF page images. One of six equally authentic
   languages (Art. 76).'
+binding_force: binding
+issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
+administering_authority: null

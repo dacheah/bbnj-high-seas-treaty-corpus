@@ -56,3 +56,6 @@ verification:
   verified_by: Cowork (provenance-corpus-builder)
   verified_date: '2026-07-04'
   note: Verbatim-verified (extraction fidelity) via dual-extractor agreement + visual spot-check.
+binding_force: binding
+issuing_authority: "United Nations Conference on Straddling Fish Stocks and Highly Migratory Fish Stocks"
+administering_authority: null

@@ -70,3 +70,6 @@ corrections:
 - date: '2026-07-11'
   change: 'Fixed two stray single-character OCR errors: a duplicated character in "formulate and share manuals" and a stray radical before "activity" in Article 30(2), both confirmed against the page image.'
   note: text_fidelity upgraded ocr_unverified -> extracted_verified after dual-OCR verbatim verification.
+binding_force: binding
+issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
+administering_authority: null

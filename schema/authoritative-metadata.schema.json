@@ -26,7 +26,9 @@
     "authoritative_status",
     "license",
     "capture_history",
-    "provenance_note"
+    "provenance_note",
+    "binding_force",
+    "issuing_authority"
   ],
   "properties": {
     "corpus_id": {
@@ -208,6 +210,25 @@
     "provenance_note": {
       "type": "string",
       "minLength": 1
+    },
+    "binding_force": {
+      "type": "string",
+      "enum": [
+        "binding",
+        "non_binding"
+      ],
+      "description": "Legal force of the instrument on its own accord: binding or non_binding (recommendatory soft law). Orthogonal to authoritative_status; tier is DERIVED from jurisdiction downstream."
+    },
+    "issuing_authority": {
+      "type": "string",
+      "description": "Body that made/adopted the instrument. Distinct from source_publisher (where the text was obtained)."
+    },
+    "administering_authority": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Body that administers/enforces the instrument where different from the issuer; null if not applicable."
     },
     "verification": {
       "type": "object",

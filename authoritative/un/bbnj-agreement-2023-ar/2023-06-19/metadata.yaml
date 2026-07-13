@@ -63,3 +63,6 @@ corrections:
   change: 'Re-derived the Arabic text from an independent Google Cloud Vision OCR after a dual-engine reconciliation showed the prior EasyOCR text had ~1900 word-level errors - chiefly systematic Arabic-comma drops/mis-reads plus scattered single-letter errors, and a dropped numeral in the Article 4 heading. Google Vision matches the official page images; EasyOCR did not. Structure preserved from the prior clean text; content adopted from Google Vision. text_fidelity upgraded ocr_unverified -> extracted_verified.'
   reference: capture/ar-gvision.txt
   note: Supersedes the prior EasyOCR-derived text; the byte-exact original.pdf is unchanged and remains authoritative.
+binding_force: binding
+issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
+administering_authority: null

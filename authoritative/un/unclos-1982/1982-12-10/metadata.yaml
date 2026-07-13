@@ -70,3 +70,6 @@ verification:
   verified_by: Cowork (provenance-corpus-builder)
   verified_date: '2026-07-04'
   note: Space-drop artifacts fixed; extraction fidelity verified by dual-extractor reconciliation.
+binding_force: binding
+issuing_authority: "Third United Nations Conference on the Law of the Sea"
+administering_authority: null

@@ -73,3 +73,6 @@ corrections:
     and dropped by the existing page-number remover; no such pattern occurs in the body, so removal is lossless.'
   reference: original.pdf
   note: Closes the Russian portion of GAPS.md G-2b; text_fidelity upgraded extracted_unverified -> extracted_verified.
+binding_force: binding
+issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
+administering_authority: null

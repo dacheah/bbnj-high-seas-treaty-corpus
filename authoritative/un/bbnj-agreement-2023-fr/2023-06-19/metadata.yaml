@@ -62,3 +62,6 @@ verification:
   verified_date: '2026-07-11'
   note: The display font renders correct letterforms under wrong code points, so OCR of the rendered glyphs
     is a valid independent check of the decode. Reproducible byte-exact via scripts/pipelines.py (clean_lang "fr").
+binding_force: binding
+issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
+administering_authority: null
