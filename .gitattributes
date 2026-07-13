@@ -1,0 +1,19 @@
+# Byte-exact provenance corpus: the SHA-256 hashes recorded in each metadata.yaml
+# must stay valid after a clone on ANY platform, so Git's line-ending conversion must
+# never alter a hashed artifact. Enforced by scripts/validate_corpus.py (the hash gate).
+
+# Repo default: normalise to LF in the repository and check out LF everywhere (no CRLF).
+* text=auto eol=lf
+
+# Original source artifacts (pdf/html/xml/json/txt/docx/...): pristine, exactly as
+# captured from the official source. Treated as binary so they are never transformed.
+original.*  binary
+
+# Stored authentic text is canonical LF; force LF on checkout and commit so text_sha256
+# holds cross-platform.
+text.txt    text eol=lf
+
+# Belt-and-braces for common binary types wherever they appear in the tree.
+*.pdf   binary
+*.docx  binary
+*.png   binary
