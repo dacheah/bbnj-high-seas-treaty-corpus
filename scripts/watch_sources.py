@@ -54,7 +54,9 @@ from urllib.request import Request, urlopen
 #   3.1  monitor:"manual" declaration distinct from render:"spa"; UA decoupled from this version
 #   3.2  all text writes pin newline="\n" — Windows text mode was emitting CRLF into sources.json,
 #        last_report.md and snapshots, leaving every run "modified" with an empty diff
-MONITOR_VERSION = "3.2"
+#   3.3  json_extract: record-level monitoring for official JSON APIs (eCFR versioner, Federal
+#        Register), stdlib only. Shares _record_state with CSS schema mode so they cannot drift.
+MONITOR_VERSION = "3.3"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -158,6 +160,59 @@ def duplicate_hashes(sources: list) -> list:
     return [(h, names) for h, names in seen.items() if len(names) > 1]
 
 
+def json_path(obj, path: str):
+    """Walk a dotted path through nested dicts/lists. Returns None if any step is missing.
+
+    Deliberately tiny — no jsonpath dependency. Supports 'a.b.c' and numeric list indices
+    ('results.0.title'), which covers every official API in the portfolio.
+    """
+    cur = obj
+    for part in (path or "").split("."):
+        if part == "":
+            continue
+        if isinstance(cur, list):
+            if not part.isdigit() or int(part) >= len(cur):
+                return None
+            cur = cur[int(part)]
+        elif isinstance(cur, dict):
+            if part not in cur:
+                return None
+            cur = cur[part]
+        else:
+            return None
+    return cur
+
+
+def json_extract_records(payload, spec: dict) -> list:
+    """Turn an API payload into comparable records, mirroring the CSS schema shape.
+
+        {"records": "content_versions",
+         "fields": {"citation": "identifier", "title": "name", "date": "amendment_date"}}
+
+    WHY: hashing a whole JSON payload detects that *something* changed. Extracting records lets the
+    report name WHICH section was amended and when — the same gain schema mode gives for HTML. It
+    also drops volatile keys: the Federal Register payload carries public_inspection_pdf_url with a
+    changing timestamp query that would otherwise flag every single run as changed.
+    """
+    rows = json_path(payload, spec.get("records", "")) if spec.get("records") else payload
+    if isinstance(rows, dict):
+        rows = [rows]
+    if not isinstance(rows, list):
+        return []
+    fields = spec.get("fields") or {}
+    out = []
+    for r in rows:
+        rec = {}
+        for name, path in fields.items():
+            v = json_path(r, path)
+            if v is not None:
+                rec[name] = v if isinstance(v, str) else json.dumps(v, sort_keys=True,
+                                                                    ensure_ascii=False)
+        if rec:
+            out.append(rec)
+    return out
+
+
 def _rec_key(rec: dict) -> str:
     for k in ("doc_url", "url", "citation", "title"):
         if rec.get(k):
@@ -223,13 +278,17 @@ def _snap_path(name: str) -> str:
     return os.path.join(SNAP_DIR, slug + ".json")
 
 
-def schema_check(source: dict) -> dict:
-    """Extract via committed CSS schema, hash records AND page, diff, apply the collapse guard."""
-    import asyncio
-    schema = _crawl.load_schema(source["schema"])
-    records, html, _ = asyncio.run(_crawl.crawl_extract(monitored_url(source), schema))
-    h_rec = _crawl.records_hash(records)
-    h_page = content_hash(html) if html else None
+def _record_state(source: dict, records: list, h_page) -> dict:
+    """Shared record-mode bookkeeping: hash, snapshot compare, collapse guard, structured diff.
+
+    Used by BOTH json_check and schema_check so the two modes cannot drift in how they decide
+    baseline / unchanged / changed / schema_suspect.
+    """
+    import hashlib as _h
+    canon = sorted(json.dumps(r, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+                   for r in records)
+    h_rec = "sha256:" + _h.sha256(
+        json.dumps(canon, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
     sp = _snap_path(source["name"])
     prev = json.load(open(sp, encoding="utf-8")).get("records", []) if os.path.isfile(sp) else []
     prev_hash = source.get("last_sha256")
@@ -240,8 +299,6 @@ def schema_check(source: dict) -> dict:
                                  and h_page != source.get("last_page_sha256")),
             "report": None}
     if prev_hash is None or not os.path.isfile(sp):
-        # No comparable previous RECORD set: first run, or a source switching from whole-page
-        # mode (whose last_sha256 is a PAGE hash). Baseline rather than cry "everything is new".
         info["state"] = "baseline"
     elif schema_suspect(len(prev), len(records)):
         info["state"] = "schema_suspect"
@@ -252,6 +309,26 @@ def schema_check(source: dict) -> dict:
         info["state"] = "changed"
         info["report"] = diff_records(prev, records)
     return info
+
+
+def json_check(source: dict) -> dict:
+    """Record-level monitoring for an official JSON API. Stdlib only — no crawl4ai needed."""
+    raw = fetch(monitored_url(source))
+    records = json_extract_records(json.loads(raw), source["json_extract"])
+    return _record_state(source, records, content_hash(raw))
+
+
+def schema_check(source: dict) -> dict:
+    """Extract via committed CSS schema, then share record bookkeeping with json_check.
+
+    The hash here is byte-identical to crawl.common.records_hash (sorted canonical JSON, then
+    sha256 of that list), so existing Deep snapshots and baselines remain valid — asserted in
+    the selftest rather than assumed.
+    """
+    import asyncio
+    schema = _crawl.load_schema(source["schema"])
+    records, html, _ = asyncio.run(_crawl.crawl_extract(monitored_url(source), schema))
+    return _record_state(source, records, content_hash(html) if html else None)
 
 
 # ---- self-test ------------------------------------------------------------------------------
@@ -302,6 +379,49 @@ def selftest() -> int:
     assert encode_url("https://www.law.go.kr/법령/가상자산이용자보호법").isascii()
     assert " " not in encode_url("https://dlp.dubai.gov.ae/legislation ar ref/x.html")
     assert encode_url("https://a.test/%D8%A7").count("%D8") == 1
+    # --- JSON mode ---
+    assert json_path({"a": {"b": [1, 2]}}, "a.b.1") == 2
+    assert json_path({"a": 1}, "a.missing") is None
+    assert json_path({"a": 1}, "") == {"a": 1}
+    # real eCFR versioner shape
+    ecfr = {"content_versions": [
+        {"identifier": "970.407", "name": "§ 970.407 Denial of certification.",
+         "amendment_date": "2026-05-14", "part": "970"},
+        {"identifier": "970.200", "name": "§ 970.200 General.",
+         "amendment_date": "2026-01-21", "part": "970"}],
+        "meta": {"latest_amendment_date": "2026-05-14"}}
+    recs = json_extract_records(ecfr, {"records": "content_versions",
+                                       "fields": {"citation": "identifier", "title": "name",
+                                                  "date": "amendment_date"}})
+    assert len(recs) == 2 and recs[0]["citation"] == "970.407"
+    assert recs[0]["date"] == "2026-05-14"
+    # an amendment to one section must diff as ONE changed record, not "the payload differs"
+    after = json_extract_records(
+        {"content_versions": [dict(ecfr["content_versions"][0], amendment_date="2026-08-01"),
+                              ecfr["content_versions"][1]]},
+        {"records": "content_versions",
+         "fields": {"citation": "identifier", "title": "name", "date": "amendment_date"}})
+    d2 = diff_records(recs, after)
+    assert d2["new"] == [] and d2["disappeared"] == [] and len(d2["changed"]) == 1
+    assert d2["changed"][0]["key"] == "970.407" and "date" in d2["changed"][0]["changes"]
+    # volatile keys are excluded by simply not naming them (Federal Register timestamps)
+    fr = {"results": [{"document_number": "2026-12692", "title": "Stablecoin AML",
+                       "publication_date": "2026-06-24", "html_url": "https://x/y",
+                       "public_inspection_pdf_url": "https://x/z.pdf?1782218717"}]}
+    fr_recs = json_extract_records(fr, {"records": "results",
+                                        "fields": {"citation": "document_number", "title": "title",
+                                                   "date": "publication_date", "doc_url": "html_url"}})
+    assert "public_inspection_pdf_url" not in fr_recs[0], "volatile keys must not enter the record"
+    assert json_extract_records({"results": []}, {"records": "results", "fields": {"a": "b"}}) == []
+    # record hash must match crawl.common.records_hash so existing Deep baselines stay valid
+    import hashlib as _h
+    ref_canon = sorted(json.dumps(r, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+                       for r in recs)
+    ref = "sha256:" + _h.sha256(json.dumps(ref_canon, sort_keys=True, ensure_ascii=False,
+                                           separators=(",", ":")).encode("utf-8")).hexdigest()
+    got = _record_state({"name": "_t_", "last_sha256": None}, recs, None)["h_rec"]
+    assert got == ref, "record hash must stay compatible with crawl.common.records_hash"
+
     # instrumentation verdicts
     assert log_observation("t", "s", True, False, "unchanged")["verdict"] == "false_alarm"
     assert log_observation("t", "s", False, True, "changed")["verdict"] == "real_change"
@@ -351,6 +471,24 @@ def main() -> int:
     hashes, lengths, schema_states, observations = {}, {}, {}, []
     for s in sources:
         name = s["name"]
+        # JSON mode needs no crawl4ai, so it is tried first and works in every corpus.
+        if s.get("json_extract") and not is_manual(s):
+            try:
+                info = json_check(s)
+                schema_states[name] = info
+                observations.append(log_observation(now, name, info["page_changed"],
+                                                    info["records_changed"], info["state"]))
+                if info["state"] != "schema_suspect":
+                    with open(_snap_path(name), "w", encoding="utf-8", newline="\n") as f:
+                        json.dump({"generated": now, "records": info["records"]}, f,
+                                  indent=2, ensure_ascii=False)
+                    s["last_sha256"] = info["h_rec"]
+                    if info["h_page"]:
+                        s["last_page_sha256"] = info["h_page"]
+            except Exception as e:
+                schema_states[name] = {"state": "error", "err": f"{type(e).__name__}: {e}"}
+            s["last_checked"] = now
+            continue
         if s.get("schema") and schema_ok:
             try:
                 info = schema_check(s)
