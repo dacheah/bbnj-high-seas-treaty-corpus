@@ -47,7 +47,12 @@ import sys
 from urllib.parse import quote, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
-MONITOR_VERSION = "3.0"
+# Bump on EVERY behaviour change. 3.0 shipped to five corpora, then gained is_manual() without a
+# bump — so all five reported "3.0" while one differed. A drift detector that isn't updated detects
+# nothing.
+#   3.0  consolidated v1/v2/v3: MANUAL, monitor_url, CONTENT_FLOOR, schema mode, guards
+#   3.1  monitor:"manual" declaration distinct from render:"spa"; UA decoupled from this version
+MONITOR_VERSION = "3.1"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -59,8 +64,11 @@ ALARM_LOG = os.path.join(REPO, "monitoring", "false_alarm_log.jsonl")
 # Identify honestly and give operators a contact route. A bare token is more likely to be
 # refused by a WAF than a descriptive agent — several 403s during the 2026-07-18 audit were
 # plausibly the agent string rather than a real block.
-UA = ("Mozilla/5.0 (compatible; provenance-corpus-monitor/%s; "
-      "+https://github.com/dacheah)" % MONITOR_VERSION)
+# DELIBERATELY NOT derived from MONITOR_VERSION. Embedding the tool version meant every bump
+# changed the request, and a server may return different content to a different agent — so a
+# routine version bump could flag every source as CHANGED. The agent identifies the *client*,
+# which is stable; MONITOR_VERSION identifies the *logic*, which is not.
+UA = "Mozilla/5.0 (compatible; provenance-corpus-monitor/1.0; +https://github.com/dacheah)"
 
 CONTENT_FLOOR = 1000      # stripped-text chars below which a fetch reads as a shell/error page
 SCHEMA_MIN_PREV = 5       # below this, a previous record set is too small to judge a collapse
@@ -101,6 +109,23 @@ def encode_url(u: str) -> str:
     safe = "/%:@&=+$,~()!*';"
     return urlunsplit((p.scheme, netloc, quote(p.path, safe=safe),
                        quote(p.query, safe=safe + "?"), p.fragment))
+
+
+def is_manual(s: dict) -> bool:
+    """A source that cannot be honestly auto-monitored, declared explicitly.
+
+    Two ways to say so, because there are two different reasons:
+      render: "spa"      the page is a JavaScript app; a stdlib GET returns a shell.
+      monitor: "manual"  anything else — a persistent 403, a form-POST search with no stable
+                         GET URL, a login wall, a certificate we will not bypass.
+
+    Either is OVERRIDDEN by monitor_url, which points at something a stdlib fetch can read.
+    Overloading render:"spa" for blocks was misleading: a 403 is not a rendering problem, and
+    the distinction matters when someone later asks why a source is unwatched.
+    """
+    if s.get("monitor_url"):
+        return False
+    return s.get("render") == "spa" or s.get("monitor") == "manual"
 
 
 def monitored_url(s: dict) -> str:
@@ -161,7 +186,7 @@ def classify(sources: list, hashes: dict, lengths: dict | None = None) -> list:
     for s in sources:
         name = s["name"]
         h = hashes.get(name)
-        if s.get("render") == "spa" and not s.get("monitor_url"):
+        if is_manual(s):
             events.append((name, "manual", s.get("last_sha256"), h))
         elif h is None or str(h).startswith("ERROR"):
             events.append((name, "error", s.get("last_sha256"), h))
@@ -251,6 +276,13 @@ def selftest() -> int:
     # monitor_url takes precedence, url is the fallback
     assert monitored_url({"url": "human", "monitor_url": "api"}) == "api"
     assert monitored_url({"url": "human"}) == "human"
+    # both manual declarations work, and monitor_url overrides either
+    assert is_manual({"render": "spa"}) and is_manual({"monitor": "manual"})
+    assert not is_manual({"render": "spa", "monitor_url": "api"})
+    assert not is_manual({"monitor": "manual", "monitor_url": "api"})
+    assert not is_manual({"url": "x"})
+    assert classify([{"name": "m", "url": "x", "monitor": "manual", "last_sha256": None}],
+                    {"m": "sha256:mm"}, {"m": 9000})[0][1] == "manual"
     # broken-selector guard boundaries
     assert schema_suspect(38, 0) and schema_suspect(38, 18)
     assert not schema_suspect(38, 19) and not schema_suspect(38, 36) and not schema_suspect(4, 0)
@@ -334,8 +366,8 @@ def main() -> int:
                 schema_states[name] = {"state": "error", "err": f"{type(e).__name__}: {e}"}
             s["last_checked"] = now
             continue
-        if s.get("render") == "spa" and not s.get("monitor_url"):
-            hashes[name] = None            # do not even pretend to fetch a SPA
+        if is_manual(s):
+            hashes[name] = None            # do not even pretend to fetch it
             s["last_checked"] = now
             continue
         try:
