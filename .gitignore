@@ -7,4 +7,10 @@ capture/pages_zh/
 capture/pages_ar/
 capture/_ar_page.png
 capture/*.png
+# OCR engine variants (Google Vision / Tesseract) — same class as the renders above:
+# regenerable from the stored PDFs, and only useful while comparing extraction quality.
+# Listed explicitly rather than as capture/pages_*/ because capture/pages_txt/ IS tracked.
+capture/pages_ar_gv/
+capture/pages_ar_tess/
+capture/pages_zh_tess/
 hf-dataset/
