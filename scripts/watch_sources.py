@@ -52,7 +52,9 @@ from urllib.request import Request, urlopen
 # nothing.
 #   3.0  consolidated v1/v2/v3: MANUAL, monitor_url, CONTENT_FLOOR, schema mode, guards
 #   3.1  monitor:"manual" declaration distinct from render:"spa"; UA decoupled from this version
-MONITOR_VERSION = "3.1"
+#   3.2  all text writes pin newline="\n" — Windows text mode was emitting CRLF into sources.json,
+#        last_report.md and snapshots, leaving every run "modified" with an empty diff
+MONITOR_VERSION = "3.2"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -356,7 +358,7 @@ def main() -> int:
                 observations.append(log_observation(now, name, info["page_changed"],
                                                     info["records_changed"], info["state"]))
                 if info["state"] != "schema_suspect":
-                    with open(_snap_path(name), "w", encoding="utf-8") as f:
+                    with open(_snap_path(name), "w", encoding="utf-8", newline="\n") as f:
                         json.dump({"generated": now, "records": info["records"]}, f,
                                   indent=2, ensure_ascii=False)
                     s["last_sha256"] = info["h_rec"]
@@ -454,20 +456,25 @@ def main() -> int:
               "are JavaScript apps a stdlib fetch cannot see. **SUSPECT** means too little text to "
               "trust. **SCHEMA SUSPECT** means selectors probably broke. Nothing is ingested "
               "automatically._"]
-    open(REPORT, "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    # newline="\n" on EVERY text write. Without it, Python text mode on Windows emits CRLF, so a
+    # monitor run left sources.json and last_report.md differing from their LF blobs in line
+    # endings only — an empty diff that still shows as modified, on every run, in five corpora.
+    # .gitattributes governs checkout, not what a script writes.
+    with open(REPORT, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lines) + "\n")
 
-    with open(SOURCES, "w", encoding="utf-8") as f:
+    with open(SOURCES, "w", encoding="utf-8", newline="\n") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
         f.write("\n")
     if observations:
-        with open(ALARM_LOG, "a", encoding="utf-8") as f:
+        with open(ALARM_LOG, "a", encoding="utf-8", newline="\n") as f:
             for o in observations:
                 f.write(json.dumps(o, ensure_ascii=False) + "\n")
 
     flag = (counts["changed"] or counts["suspect"] or n_schema_changed or n_schema_susp or dupes)
     out = os.environ.get("GITHUB_OUTPUT")
     if out:
-        with open(out, "a") as f:
+        with open(out, "a", encoding="utf-8", newline="\n") as f:
             f.write(f"changes={'true' if flag else 'false'}\n")
     print(f"[v{MONITOR_VERSION}] checked {len(sources)} sources; "
           f"{counts['changed'] + n_schema_changed} changed, {counts['suspect']} suspect, "

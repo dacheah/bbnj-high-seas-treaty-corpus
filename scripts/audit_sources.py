@@ -266,7 +266,7 @@ def main() -> int:
         for _, name, url, msg in picked:
             lines += [f"- **{name}**", f"    - `{url}`", f"    - {msg}"]
         lines.append("")
-    with open(REPORT, "w", encoding="utf-8") as f:
+    with open(REPORT, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
 
     print(f"\n{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken")
