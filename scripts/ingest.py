@@ -52,6 +52,11 @@ _KEY_ORDER = [
     "language", "authoritative_status", "license", "rights_note",
     "capture_history", "supersedes", "superseded_by", "related_documents",
     "provenance_note",
+    # Added by the 2026-07 metadata-layer migration. binding_force and issuing_authority are
+    # REQUIRED by authoritative-metadata.schema.json; administering_authority is nullable.
+    # They were added to the schema and backfilled into existing records, but this ingester was
+    # not updated at the time — so any NEW record would have failed validation on write.
+    "binding_force", "issuing_authority", "administering_authority",
 ]
 
 
@@ -134,6 +139,12 @@ def ingest_document(manifest: dict, repo_root: Path = REPO_ROOT) -> Path:
         "superseded_by": manifest.get("superseded_by"),
         "related_documents": manifest.get("related_documents", []),
         "provenance_note": manifest["provenance_note"],
+        # Required by the schema since the 2026-07 migration. Deliberately manifest[...] not
+        # .get(): a missing value must fail loudly at ingest rather than silently produce a
+        # record that fails validation afterwards.
+        "binding_force": manifest["binding_force"],
+        "issuing_authority": manifest["issuing_authority"],
+        "administering_authority": manifest.get("administering_authority"),
     }
     if text_sha256:
         meta["text_sha256"] = text_sha256
@@ -143,7 +154,7 @@ def ingest_document(manifest: dict, repo_root: Path = REPO_ROOT) -> Path:
         if manifest.get(opt) is not None:
             meta[opt] = manifest[opt]
 
-    with open(version_dir / "metadata.yaml", "w", encoding="utf-8") as f:
+    with open(version_dir / "metadata.yaml", "w", encoding="utf-8", newline="\n") as f:
         yaml.safe_dump(_ordered(meta), f, sort_keys=False, allow_unicode=True,
                        default_flow_style=False, width=100)
 
