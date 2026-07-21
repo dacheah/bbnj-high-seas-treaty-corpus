@@ -2,6 +2,14 @@ name: watch-sources
 on:
   schedule: [{ cron: "0 6 1 * *" }]   # monthly (Phase 2). Run more often in Phase 1.
   workflow_dispatch:
+
+# Previously absent. The issue step needs issues:write, and the commit step added below needs
+# contents:write; on a repo whose default token is read-only, the old workflow's only visible
+# behaviour would have been a failing github-script call.
+permissions:
+  contents: write   # commit the advanced baseline + report
+  issues: write     # open a triage issue
+
 jobs:
   watch:
     runs-on: ubuntu-latest
@@ -9,13 +17,48 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with: { python-version: "3.11" }
+      - name: Self-test the diff logic (offline)
+        run: python3 scripts/watch_sources.py --selftest
       - id: watch
         run: python3 scripts/watch_sources.py
-      - if: steps.watch.outputs.changes == 'true'
+
+      # THIS STEP DID NOT EXIST. Every run fetched, compared against whatever baseline was last
+      # committed by hand, and then threw the advanced baseline away with the runner. A real
+      # change therefore re-opened an identical issue every month until someone committed
+      # manually — noisy rather than silent, but still wrong, and the repeat issues train you to
+      # ignore exactly the signal this corpus exists to catch.
+      - name: Commit advanced baseline and report
+        run: |
+          git config user.name "corpus-monitor[bot]"
+          git config user.email "corpus-monitor@users.noreply.github.com"
+          git add monitoring/sources.json monitoring/last_report.md
+          git add monitoring/snapshots monitoring/false_alarm_log.jsonl || true
+          if git diff --cached --quiet; then
+            echo "No baseline or report changes to commit."
+          else
+            git commit -m "chore(monitor): advance source baseline"
+            git push
+          fi
+
+      - name: Open triage issue on change or breakage
+        if: steps.watch.outputs.changes == 'true'
         uses: actions/github-script@v9
+        env:
+          BROKEN: ${{ steps.watch.outputs.broken }}
         with:
           script: |
             const fs = require('fs');
-            const body = fs.readFileSync('monitoring/last_report.md','utf8');
-            await github.rest.issues.create({owner: context.repo.owner, repo: context.repo.repo,
-              title: `Source change detected — ${new Date().toISOString().slice(0,10)}`, body});
+            const report = fs.readFileSync('monitoring/last_report.md', 'utf8');
+            const broken = process.env.BROKEN === 'true';
+            const today = new Date().toISOString().slice(0, 10);
+            const foot = broken
+              ? '\n\n_An error means the monitor DID NOT LOOK. Not that nothing changed. A soft 404 on the UN treaty page is how this corpus once missed the BBNJ Agreement entering into force._'
+              : '\n\n_Automation only watches and queues. Nothing is ingested automatically._';
+            await github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: broken
+                ? `MONITOR BROKEN — source(s) not checked — ${today}`
+                : `Source change detected — ${today}`,
+              body: report + foot,
+              labels: broken ? ['monitoring', 'monitor-broken'] : ['monitoring', 'needs-review']
+            });

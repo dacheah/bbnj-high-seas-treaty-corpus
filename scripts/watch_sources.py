@@ -58,7 +58,10 @@ from urllib.request import Request, urlopen
 #        Register), stdlib only. Shares _record_state with CSS schema mode so they cannot drift.
 #   3.4  ignore_patterns: per-source exclusion of volatile page fragments before hashing, for
 #        pages that stamp the current date into the body and would otherwise flag CHANGED daily.
-MONITOR_VERSION = "3.4"
+#   3.5  triage_flags(): errors now raise the alarm. Up to 3.4 the GITHUB_OUTPUT flag was computed
+#        inline and omitted BOTH error terms, so a run where every record-mode source raised went
+#        green and silent. Also: ignore_patterns now reach the record-mode page hash.
+MONITOR_VERSION = "3.5"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -337,7 +340,7 @@ def json_check(source: dict) -> dict:
     """Record-level monitoring for an official JSON API. Stdlib only — no crawl4ai needed."""
     raw = fetch(monitored_url(source))
     records = json_extract_records(json.loads(raw), source["json_extract"])
-    return _record_state(source, records, content_hash(raw))
+    return _record_state(source, records, content_hash(raw, source.get("ignore_patterns")))
 
 
 def schema_check(source: dict) -> dict:
@@ -350,7 +353,35 @@ def schema_check(source: dict) -> dict:
     import asyncio
     schema = _crawl.load_schema(source["schema"])
     records, html, _ = asyncio.run(_crawl.crawl_extract(monitored_url(source), schema))
-    return _record_state(source, records, content_hash(html) if html else None)
+    return _record_state(source, records,
+                         content_hash(html, source.get("ignore_patterns")) if html else None)
+
+
+def triage_flags(counts: dict, n_rec_changed: int, n_rec_susp: int,
+                 n_rec_error: int, dupes) -> tuple:
+    """Return (needs_human, monitor_broken) for one run.
+
+    THE BUG THIS EXISTS TO KILL. Up to v3.4 this was one inline expression in main():
+
+        flag = (counts["changed"] or counts["suspect"]
+                or n_schema_changed or n_schema_susp or dupes)
+
+    Neither error term appears. Page-mode errors sat unused in counts["error"], and record-mode
+    errors were not in counts at all, because counts is built only from page_sources — every
+    schema/json source is excluded from it by construction. So a run in which ALL FIVE schema
+    sources raised (crawl4ai installed but no Playwright browser: precisely this repo's CI state
+    on 2026-08-01) would exit 0, print "0 errors", emit changes=false and open no issue. The live
+    ITLOS Case 34/35 proceedings would have gone unwatched, monthly, indefinitely.
+
+    An error is not a quiet non-event. It means the monitor DID NOT LOOK, which is strictly worse
+    than a change, because a change is at least visible. Silence is the one output a watcher must
+    never produce. Being a pure function is the point — the inline version could not be asserted,
+    which is why the omission survived four versions.
+    """
+    broken = bool(counts.get("error") or n_rec_error or dupes)
+    attention = bool(counts.get("changed") or counts.get("suspect")
+                     or n_rec_changed or n_rec_susp)
+    return (attention or broken), broken
 
 
 # ---- self-test ------------------------------------------------------------------------------
@@ -482,6 +513,23 @@ def selftest() -> int:
     assert log_observation("t", "s", True, False, "unchanged")["verdict"] == "false_alarm"
     assert log_observation("t", "s", False, True, "changed")["verdict"] == "real_change"
     assert log_observation("t", "s", False, False, "unchanged")["verdict"] == "quiet"
+
+    # --- triage_flags: an error must NEVER produce a silent green run (the v3.4 defect) ---
+    quiet = {"changed": 0, "suspect": 0, "manual": 0, "error": 0}
+    assert triage_flags(quiet, 0, 0, 0, []) == (False, False)
+    assert triage_flags(quiet, 0, 0, 5, []) == (True, True), \
+        "record-mode errors MUST raise the flag — five schema sources failing is not a quiet run"
+    assert triage_flags({**quiet, "error": 1}, 0, 0, 0, []) == (True, True), \
+        "page-mode fetch errors MUST raise the flag too"
+    assert triage_flags(quiet, 0, 0, 0, [("sha256:x", ["a", "b"])]) == (True, True), \
+        "two sources sharing a hash means both are fetching the same wrong page"
+    assert triage_flags(quiet, 1, 0, 0, []) == (True, False)
+    assert triage_flags(quiet, 0, 1, 0, []) == (True, False)
+    assert triage_flags({**quiet, "changed": 2}, 0, 0, 0, []) == (True, False)
+    # a declared-manual source is a KNOWN state, not an alarm — it must stay quiet, or the
+    # monthly issue becomes noise and the real signals stop being read.
+    assert triage_flags({**quiet, "manual": 9}, 0, 0, 0, []) == (False, False)
+
     print(f"watch_sources v{MONITOR_VERSION} selftest: OK")
     return 0
 
@@ -589,6 +637,10 @@ def main() -> int:
     dupes = duplicate_hashes(sources)
     n_schema_changed = sum(1 for i in schema_states.values() if i.get("state") == "changed")
     n_schema_susp = sum(1 for i in schema_states.values() if i.get("state") == "schema_suspect")
+    # Record-mode errors are NOT in counts: counts comes from events, which comes from
+    # page_sources, which excludes every schema/json source by construction. Counting them
+    # separately here is what makes them visible to the header, the summary and the flag.
+    n_rec_error = sum(1 for i in schema_states.values() if i.get("state") == "error")
     counts = {k: sum(1 for _, st, _, _ in events if st == k)
               for k in ("changed", "suspect", "manual", "error")}
     lines = [f"# Source monitor report — {now}", "",
@@ -596,7 +648,7 @@ def main() -> int:
              f"{'on' if schema_ok else 'off (whole-page fallback)'}_", "",
              f"{counts['changed'] + n_schema_changed} changed · {counts['suspect']} suspect · "
              f"{n_schema_susp} schema-suspect · {counts['manual']} manual-review · "
-             f"{counts['error']} error · {len(sources)} total", ""]
+             f"{counts['error'] + n_rec_error} error · {len(sources)} total", ""]
     if dupes:
         lines += ["## ⛔ DUPLICATE HASHES", "",
                   "Two sources cannot legitimately share a hash — both are probably fetching the "
@@ -665,15 +717,18 @@ def main() -> int:
             for o in observations:
                 f.write(json.dumps(o, ensure_ascii=False) + "\n")
 
-    flag = (counts["changed"] or counts["suspect"] or n_schema_changed or n_schema_susp or dupes)
+    flag, broken = triage_flags(counts, n_schema_changed, n_schema_susp, n_rec_error, dupes)
     out = os.environ.get("GITHUB_OUTPUT")
     if out:
         with open(out, "a", encoding="utf-8", newline="\n") as f:
             f.write(f"changes={'true' if flag else 'false'}\n")
+            f.write(f"broken={'true' if broken else 'false'}\n")
     print(f"[v{MONITOR_VERSION}] checked {len(sources)} sources; "
           f"{counts['changed'] + n_schema_changed} changed, {counts['suspect']} suspect, "
-          f"{n_schema_susp} schema-suspect, {counts['manual']} manual, {counts['error']} errors"
-          + (f", {len(dupes)} DUPLICATE-HASH group(s)" if dupes else "") + ".")
+          f"{n_schema_susp} schema-suspect, {counts['manual']} manual, "
+          f"{counts['error'] + n_rec_error} errors"
+          + (f", {len(dupes)} DUPLICATE-HASH group(s)" if dupes else "")
+          + ("  ** MONITOR BROKEN — sources were not checked **" if broken else "") + ".")
     return 0
 
 
