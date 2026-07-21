@@ -56,7 +56,9 @@ from urllib.request import Request, urlopen
 #        last_report.md and snapshots, leaving every run "modified" with an empty diff
 #   3.3  json_extract: record-level monitoring for official JSON APIs (eCFR versioner, Federal
 #        Register), stdlib only. Shares _record_state with CSS schema mode so they cannot drift.
-MONITOR_VERSION = "3.3"
+#   3.4  ignore_patterns: per-source exclusion of volatile page fragments before hashing, for
+#        pages that stamp the current date into the body and would otherwise flag CHANGED daily.
+MONITOR_VERSION = "3.4"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -96,8 +98,28 @@ def to_text(raw: str) -> str:
     return re.sub(r"\s+", " ", raw).strip()
 
 
-def content_hash(raw: str) -> str:
-    return "sha256:" + hashlib.sha256(to_text(raw).encode("utf-8")).hexdigest()
+def strip_volatile(text: str, patterns) -> str:
+    """Remove per-source volatile fragments before hashing.
+
+    Some official pages stamp the CURRENT DATE into the body. legislation.gov.uk revised pages
+    carry "…is up to date with all changes known to be in force on or before <today's date>", so
+    the page hash changes every single day and the source flags CHANGED forever — nine such false
+    alarms in one Origin run on 2026-07-20, four UK sources and five Singapore.
+
+    This is a deliberate, per-source, DOCUMENTED exclusion — never a default. Each pattern must be
+    narrow enough that it cannot swallow substantive text, and recorded in the source's _note so a
+    reader can see exactly what is not being watched.
+    """
+    for pat in (patterns or []):
+        text = re.sub(pat, " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def content_hash(raw: str, ignore=None) -> str:
+    """Hash the comparable text. With no ignore patterns this is byte-identical to before, so
+    existing baselines are unaffected for every source that does not declare any."""
+    return "sha256:" + hashlib.sha256(
+        strip_volatile(to_text(raw), ignore).encode("utf-8")).hexdigest()
 
 
 def encode_url(u: str) -> str:
@@ -334,6 +356,40 @@ def schema_check(source: dict) -> dict:
 # ---- self-test ------------------------------------------------------------------------------
 def selftest() -> int:
     assert content_hash("<p>hi</p>") == content_hash("<p>  hi  </p>")
+    # --- ignore_patterns: the real legislation.gov.uk banner, which carries TODAY's date ---
+    BANNER = r"is up to date with all changes known to be in force on or before \d{1,2} \w+ \d{4}"
+    d1 = "<p>Act text. is up to date with all changes known to be in force on or before 21 July 2026</p>"
+    d2 = "<p>Act text. is up to date with all changes known to be in force on or before 22 July 2026</p>"
+    assert content_hash(d1) != content_hash(d2), "without the pattern the date must move the hash"
+    assert content_hash(d1, [BANNER]) == content_hash(d2, [BANNER]), \
+        "with the pattern, a date-only change must NOT move the hash"
+    # a real amendment must still be detected while the banner is ignored
+    d3 = "<p>Act text AMENDED. is up to date with all changes known to be in force on or before 22 July 2026</p>"
+    assert content_hash(d1, [BANNER]) != content_hash(d3, [BANNER]), \
+        "substantive change must still flag with the pattern applied"
+    # no patterns => byte-identical to the previous behaviour, so existing baselines survive
+    assert content_hash(d1) == content_hash(d1, []) == content_hash(d1, None)
+
+    # --- Singapore Statutes Online: the SAME phrase carries today's date in the status line AND
+    # real version dates in the timeline. Stripping the timeline would hide genuine amendments —
+    # a SILENT false negative — so the pattern must be anchored on "Status:".
+    SG = [r"Status:(&nbsp;|\s)*Current version as at \d{1,2} \w{3} \d{4}",
+          r"Last updated \d{1,2} \w{3} \d{4}"]
+    sg_a = ("<p>CDSA 1992 Status: &nbsp; Current version as at 21 Jul 2026 Print "
+            "Timeline Provision Versions 01 May 2026 or find current version as at 01 May 2026 "
+            "Amended. Last updated 20 Jul 2026</p>")
+    sg_b = sg_a.replace("21 Jul 2026", "22 Jul 2026").replace("Last updated 20 Jul 2026",
+                                                              "Last updated 21 Jul 2026")
+    assert content_hash(sg_a) != content_hash(sg_b), "unpatterned, the daily dates must move the hash"
+    assert content_hash(sg_a, SG) == content_hash(sg_b, SG), \
+        "status-line and footer dates must be ignored"
+    # THE CRITICAL ONE: a real amendment moves the TIMELINE version date, which must still flag.
+    sg_amended = sg_a.replace("01 May 2026", "15 Aug 2026")
+    assert content_hash(sg_a, SG) != content_hash(sg_amended, SG), \
+        "timeline version dates MUST survive the strip — otherwise real amendments go unseen"
+    # and the timeline text must literally still be present after stripping
+    assert "01 May 2026" in strip_volatile(to_text(sg_a), SG), \
+        "the anchored pattern must not swallow the timeline"
     # whole-page states, including every guard
     srcs = [{"name": "a", "url": "x", "last_sha256": "sha256:aaa"},
             {"name": "b", "url": "y", "last_sha256": None},
@@ -513,7 +569,7 @@ def main() -> int:
         try:
             raw = fetch(monitored_url(s))
             lengths[name] = len(to_text(raw))
-            hashes[name] = content_hash(raw)
+            hashes[name] = content_hash(raw, s.get("ignore_patterns"))
         except Exception as e:
             hashes[name] = f"ERROR:{type(e).__name__}"
         s["last_checked"] = now
