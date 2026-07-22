@@ -10,4 +10,4 @@ jobs:
       - run: pip install -r scripts/requirements.txt
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils   # pdftotext for extract.py
       - run: python3 scripts/validate_corpus.py   # integrity gate: schema, hashes, two-layer wall
-      - run: python3 scripts/extract.py           # reproducibility gate: text re-derives byte-exact from original.pdf
+      - run: python3 scripts/repro_gate.py        # reproducibility gate: walks authoritative/, applies scripts/repro-policy.json

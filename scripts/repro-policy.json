@@ -1,0 +1,6 @@
+{
+  "_comment": "Reproducibility gate policy for scripts/repro_gate.py. Declares this corpus's adapter and its reproducibility ratchet. See repro_gate.py for the verdict vocabulary.",
+  "adapter": "bbnj",
+  "uncovered_ceiling": 0,
+  "declared_exclusions": {}
+}
