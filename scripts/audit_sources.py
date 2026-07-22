@@ -52,6 +52,25 @@ STOP_BASE = {"the", "and", "for", "with", "from", "list", "page", "new", "offici
              "documents", "current", "latest", "index", "home", "site", "website"}
 
 
+def is_manual(s: dict) -> bool:
+    """Mirror watch_sources.is_manual EXACTLY. A source the MONITOR declares unfetchable — a
+    JavaScript app (render:spa) or one flagged monitor:"manual" — is not a broken URL, it is a
+    KNOWN state the maintainer checks by hand. Without this the audit reports every such source as
+    BROKEN: 4 monitor:manual in Neo and 5 render:spa in Origin all showed as dead on 2026-07-22,
+    burying the genuinely broken ones. A monitor_url overrides — if there is a machine endpoint to
+    watch, the source is not manual."""
+    if s.get("monitor_url"):
+        return False
+    return s.get("render") == "spa" or s.get("monitor") == "manual"
+
+
+def monitored_url(s: dict) -> str:
+    """The URL that is actually WATCHED. For a source with a monitor_url the monitor fetches that
+    (e.g. CLARITY watches a govinfo BILLSTATUS XML), so auditing the human citation page instead —
+    which may 403 a bot — checks the wrong thing and invents a broken source."""
+    return s.get("monitor_url") or s["url"]
+
+
 # ---- pure logic (offline-testable) ----------------------------------------------------------------
 def norm_url(u: str) -> str:
     """Compare URLs ignoring scheme, www, trailing slash and case — differences that never matter."""
@@ -249,6 +268,15 @@ def selftest() -> int:
     d = duplicate_hashes([{"name": "A", "last_sha256": "h1"}, {"name": "B", "last_sha256": "h1"},
                           {"name": "C", "last_sha256": "h2"}])
     assert len(d) == 1 and set(d[0][1]) == {"A", "B"}, d
+    # is_manual / monitored_url mirror the monitor, so declared-unfetchable sources are not "broken"
+    assert is_manual({"url": "x", "render": "spa"}), "render:spa is declared unfetchable"
+    assert is_manual({"url": "x", "monitor": "manual"}), "monitor:manual is declared unfetchable"
+    assert not is_manual({"url": "x"}), "a plain source is auto-fetched"
+    assert not is_manual({"url": "x", "render": "spa", "monitor_url": "y"}), \
+        "a monitor_url overrides render:spa — there is a machine endpoint to watch"
+    assert monitored_url({"url": "cite", "monitor_url": "feed"}) == "feed", \
+        "audit the endpoint that is actually watched, not the citation page"
+    assert monitored_url({"url": "cite"}) == "cite"
     print("audit_sources selftest: OK")
     return 0
 
@@ -264,29 +292,35 @@ def main() -> int:
     sources = data["sources"] if isinstance(data, dict) and "sources" in data else data
     stop = adaptive_stopwords([s["name"] for s in sources])
 
-    rows, counts = [], {"ok": 0, "review": 0, "broken": 0}
+    rows, counts = [], {"ok": 0, "review": 0, "broken": 0, "manual": 0}
     anchored = 0
     for i, s in enumerate(sources, 1):
-        name, url = s["name"], s["url"]
+        name = s["name"]
         expect = s.get("expect_contains")
         if expect:
             anchored += 1
-        try:
-            raw, final, status = fetch(url)
-            title = page_title(raw)
-        except Exception as e:
-            raw, final, status, title = "", url, None, f"{type(e).__name__}: {e}"
-        level, msg = verdict(url, final, status, name, title, stop, raw, expect)
+        if is_manual(s):
+            # Declared unfetchable by the monitor. Not broken — a known manual-check source.
+            level, msg, url = "manual", "declared manual (render:spa or monitor:manual) — checked by hand, not auto-fetched", s["url"]
+        else:
+            url = monitored_url(s)          # audit what is actually WATCHED, not the citation page
+            try:
+                raw, final, status = fetch(url)
+                title = page_title(raw)
+            except Exception as e:
+                raw, final, status, title = "", url, None, f"{type(e).__name__}: {e}"
+            level, msg = verdict(url, final, status, name, title, stop, raw, expect)
         counts[level] += 1
         rows.append((level, name, url, msg))
         print(f"[{level.upper():6}] ({i}/{len(sources)}) {name}\n           {msg}")
-        if delay:
+        if delay and level != "manual":
             time.sleep(delay)
 
     dupes = duplicate_hashes(sources)
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     lines = [f"# Source URL audit — {now}", "",
-             f"{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken", "",
+             f"{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken · "
+             f"{counts['manual']} manual (declared unfetchable)", "",
              "Advisory only — nothing was changed. A REDIRECT is not automatically wrong (sites move "
              "pages legitimately) but must be confirmed to still be the intended target. A title "
              "mismatch means the page may not be what the source claims to watch.", "",
@@ -308,11 +342,12 @@ def main() -> int:
             for n in names:
                 lines.append(f"    - {n}")
         lines.append("")
-    for level in ("broken", "review", "ok"):
+    for level in ("broken", "review", "manual", "ok"):
         picked = [r for r in rows if r[0] == level]
         if not picked:
             continue
-        mark = {"broken": "⛔ BROKEN", "review": "🔶 REVIEW", "ok": "✅ OK"}[level]
+        mark = {"broken": "⛔ BROKEN", "review": "🔶 REVIEW",
+                "manual": "🟠 MANUAL (declared unfetchable — checked by hand)", "ok": "✅ OK"}[level]
         lines += [f"## {mark} ({len(picked)})", ""]
         for _, name, url, msg in picked:
             lines += [f"- **{name}**", f"    - `{url}`", f"    - {msg}"]
@@ -320,7 +355,8 @@ def main() -> int:
     with open(REPORT, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"\n{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken")
+    print(f"\n{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken · "
+          f"{counts['manual']} manual (declared unfetchable)")
     print(f"anchor coverage: {anchored}/{len(sources)} sources declare expect_contains "
           f"(the other {len(sources) - anchored} are plumbing-checked only)")
     if dupes:
