@@ -61,7 +61,9 @@ from urllib.request import Request, urlopen
 #   3.5  triage_flags(): errors now raise the alarm. Up to 3.4 the GITHUB_OUTPUT flag was computed
 #        inline and omitted BOTH error terms, so a run where every record-mode source raised went
 #        green and silent. Also: ignore_patterns now reach the record-mode page hash.
-MONITOR_VERSION = "3.5"
+#   3.6  per-source progress (flushed) + FETCH_TIMEOUT 45->30. The first unattended Neo run looked
+#        hung: the sweep printed only its final summary, so dozens of fetches ran in total silence.
+MONITOR_VERSION = "3.6"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -292,9 +294,16 @@ def log_observation(ts, name, page_changed, records_changed, state) -> dict:
 
 
 # ---- live fetch -----------------------------------------------------------------------------
+# A monitor is a health check, not a browser. 30 s is generous — a source that cannot answer in
+# that time is effectively down for the run, and with dozens of sources a longer wait just turns
+# one slow server into minutes of a frozen-looking sweep (which is exactly what made the first
+# unattended run on 2026-07-22 look hung).
+FETCH_TIMEOUT = 30
+
+
 def fetch(url: str) -> str:
     req = Request(encode_url(url), headers={"User-Agent": UA})
-    with urlopen(req, timeout=45) as r:
+    with urlopen(req, timeout=FETCH_TIMEOUT) as r:
         return r.read().decode("utf-8", errors="replace")
 
 
@@ -573,8 +582,14 @@ def main() -> int:
     schema_ok = _HAVE_CRAWL and _crawl.crawl4ai_status()[0]
 
     hashes, lengths, schema_states, observations = {}, {}, {}, []
-    for s in sources:
+    n_src = len(sources)
+    # Progress, flushed per source. Without it the sweep prints only its final summary, so a run
+    # over dozens of sources shows nothing for minutes and looks hung — it is not, it is fetching.
+    print(f"[v{MONITOR_VERSION}] sweeping {n_src} sources "
+          f"(up to {FETCH_TIMEOUT}s per fetch; declared-manual sources are skipped)", flush=True)
+    for i, s in enumerate(sources, 1):
         name = s["name"]
+        print(f"  [{i:>3}/{n_src}] {name[:66]}", flush=True)
         # JSON mode needs no crawl4ai, so it is tried first and works in every corpus.
         if s.get("json_extract") and not is_manual(s):
             try:
@@ -728,7 +743,7 @@ def main() -> int:
           f"{n_schema_susp} schema-suspect, {counts['manual']} manual, "
           f"{counts['error'] + n_rec_error} errors"
           + (f", {len(dupes)} DUPLICATE-HASH group(s)" if dupes else "")
-          + ("  ** MONITOR BROKEN — sources were not checked **" if broken else "") + ".")
+          + ("  ** MONITOR BROKEN -- sources were not checked **" if broken else "") + ".")
     return 0
 
 
