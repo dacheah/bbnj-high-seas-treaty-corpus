@@ -13,7 +13,7 @@ Or pass --push OWNER/REPO to this script to upload directly.
 
 Reads only the OPEN layers (authoritative text + derived tags). Nothing proprietary is exported.
 """
-import os, json, glob, yaml, argparse, datetime, re
+import os, sys, json, glob, yaml, argparse, datetime, re
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AUTH = os.path.join(REPO, "authoritative")
@@ -179,21 +179,60 @@ def card(docs, provs, repo_id):
     b.append("_Dataset generated from the repository by `scripts/export_hf_dataset.py` on " + today + " — do not edit by hand._")
     return "\n".join(fm) + "\n\n" + "\n".join(b) + "\n"
 
+def missing_structures(metas):
+    """Records that WILL export with zero provisions because their derived structure is absent.
+
+    build_provisions() silently `continue`s past any record with no derived/<cid>/<ver>/structure.json.
+    That is how a freshly-ingested record ships to Hugging Face with full text but NO provisions and
+    no warning — the derived layer having gone stale relative to authoritative/. It has already
+    happened this session to the ITLOS order (Deep) and Compilation 62 (Origin). Returns the list so
+    export can refuse rather than publish an incomplete dataset.
+    """
+    miss = []
+    for (cid, ver), (m, _d) in sorted(metas.items()):
+        # A record with no authentic text has no provisions to build — restricted_withheld and
+        # authoritative_missing legitimately have no structure. Requiring one would false-flag them
+        # (caught testing Origin's restricted FATF record). Only text-bearing records need a structure.
+        if m.get("authoritative_status") in ("authoritative_missing", "restricted_withheld"):
+            continue
+        if not m.get("text_sha256"):
+            continue
+        if not os.path.exists(os.path.join(DER, cid, ver, "structure.json")):
+            miss.append((cid, ver))
+    return miss
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(REPO, "hf-dataset"))
     ap.add_argument("--repo-id", default="dacheah/bbnj-high-seas-treaty-corpus")
     ap.add_argument("--push", metavar="REPO_ID", help="upload to this HF dataset repo (needs huggingface_hub + login)")
+    ap.add_argument("--allow-incomplete", action="store_true",
+                    help="export even if some records have no derived structure (NOT for publishing)")
     args = ap.parse_args()
 
     metas = load_meta()
+
+    # FAIL CLOSED before writing anything. A publish tool must never quietly ship a corpus that is
+    # less complete than it looks. Run build_derived.py and commit its output, then re-export.
+    miss = missing_structures(metas)
+    if miss and not args.allow_incomplete:
+        print("REFUSING to export — %d record(s) have no derived structure and would ship with "
+              "ZERO provisions:" % len(miss))
+        for cid, ver in miss:
+            print("  - %s / %s" % (cid, ver))
+        print("The derived layer is stale. Run:  python3 scripts/build_derived.py   then commit "
+              "derived/ and re-export. (Override with --allow-incomplete for a local preview only.)")
+        return 1
+
     docs, provs = build_documents(metas), build_provisions(metas)
     os.makedirs(os.path.join(args.out, "data"), exist_ok=True)
     write_jsonl(os.path.join(args.out, "data", "documents.jsonl"), docs)
     write_jsonl(os.path.join(args.out, "data", "provisions.jsonl"), provs)
     open(os.path.join(args.out, "README.md"), "w", encoding="utf-8").write(card(docs, provs, args.push or args.repo_id))
     print("Exported %d documents, %d provisions -> %s" % (len(docs), len(provs), args.out))
-    print("Publish:  huggingface-cli upload %s %s . --repo-type dataset" % (args.repo_id, args.out))
+    # HF renamed the CLI: the command is `hf` (huggingface-cli is deprecated).
+    print("Publish:  hf upload %s %s . --repo-type dataset" % (args.repo_id, args.out))
 
     if args.push:
         from huggingface_hub import HfApi
@@ -203,4 +242,4 @@ def main():
         print("Pushed to https://huggingface.co/datasets/%s" % args.push)
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
