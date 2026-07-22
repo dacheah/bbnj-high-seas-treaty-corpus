@@ -114,7 +114,26 @@ def name_matches_title(name: str, title: str, stop: set) -> bool:
     return bool(nt & tt)
 
 
-def verdict(req_url, final_url, status, name, title, stop) -> tuple:
+def missing_anchors(body: str, expect) -> list:
+    """Anchors the RIGHT page must contain, and the ONLY check here that catches a page which
+    resolves cleanly but is the wrong page — the case-register defect that title/redirect checks
+    cannot see. A source opts in by declaring `expect_contains` (a string or list) in sources.json:
+    a stable identifier that must appear on the correct page and would be absent from a plausible
+    wrong one — a case citation, a section number, an instrument's short title.
+
+    Matching strips tags and collapses whitespace, so a phrase broken across markup still matches;
+    it is case-insensitive. Returns the anchors NOT found. Opt-in by design: absent `expect_contains`
+    manufactures no warning, but it also means the source is unanchored — counted, not hidden.
+    """
+    if not expect:
+        return []
+    if isinstance(expect, str):
+        expect = [expect]
+    hay = re.sub(r"\s+", " ", re.sub(r"(?is)<[^>]+>", " ", body or "")).lower()
+    return [a for a in expect if re.sub(r"\s+", " ", str(a)).strip().lower() not in hay]
+
+
+def verdict(req_url, final_url, status, name, title, stop, body="", expect=None) -> tuple:
     """Return (level, message). Levels: ok | review | broken."""
     if status is None:
         return "broken", f"could not be fetched — {title}"
@@ -123,9 +142,17 @@ def verdict(req_url, final_url, status, name, title, stop) -> tuple:
     notes = []
     if redirected(req_url, final_url):
         notes.append(f"REDIRECTS to {final_url}")
+    miss = missing_anchors(body, expect)
+    if miss:
+        # The high-signal case: a declared anchor is gone. Most likely the wrong page, or the page
+        # was restructured. Either way a human must look — this is exactly what the title check
+        # could not tell you.
+        notes.append(f"EXPECTED CONTENT ABSENT: {miss} — page may be wrong, not merely changed")
     if not name_matches_title(name, title, stop):
         notes.append(f"page title '{title}' does not resemble the source name")
-    return ("review", "; ".join(notes)) if notes else ("ok", f"'{title}'")
+    if notes:
+        return "review", "; ".join(notes)
+    return "ok", f"'{title}'" + (" ✓ anchored" if expect else "")
 
 
 def duplicate_hashes(sources: list) -> list:
@@ -205,6 +232,20 @@ def selftest() -> int:
     assert verdict("https://x/a", "https://x/a", 200, "Mining Code", "Mining Code", stop)[0] == "ok"
     assert verdict("https://x/a", "https://x/b", 200, "Mining Code", "Mining Code", stop)[0] == "review"
     assert verdict("https://x/a", "https://x/a", 404, "Mining Code", "Mining Code", stop)[0] == "broken"
+    # content anchors: the resolving-but-wrong-page catch
+    assert missing_anchors("<h1>List of Cases</h1><p>Case No. 34</p>", "Case No. 34") == []
+    assert missing_anchors("<h1>Case No. 34</h1>", ["Case No. 34", "Case No. 35"]) == ["Case No. 35"]
+    # phrase split across tags/whitespace still matches
+    assert missing_anchors("<td>Case</td>\n<td>No.  34</td>", "Case No. 34") == []
+    # THE DEFECT THIS CLOSES: right title, wrong page — an overview page that lost the case list.
+    # Title check passes ('cases' shared) yet the anchor is absent, so the source is flagged.
+    body_overview = "<title>Cases</title><p>An overview of proceedings before the Tribunal.</p>"
+    assert name_matches_title("ITLOS - List of cases", "Cases", stop)          # title still passes
+    assert verdict("https://x/a", "https://x/a", 200, "ITLOS - List of cases", "Cases", stop,
+                   body_overview, ["Case No. 34"])[0] == "review", \
+        "a declared anchor absent from a right-titled page MUST flag — this is the whole point"
+    # opt-in: no anchor declared, no anchor warning
+    assert verdict("https://x/a", "https://x/a", 200, "X", "X", stop, "anything", None)[0] == "ok"
     d = duplicate_hashes([{"name": "A", "last_sha256": "h1"}, {"name": "B", "last_sha256": "h1"},
                           {"name": "C", "last_sha256": "h2"}])
     assert len(d) == 1 and set(d[0][1]) == {"A", "B"}, d
@@ -224,14 +265,18 @@ def main() -> int:
     stop = adaptive_stopwords([s["name"] for s in sources])
 
     rows, counts = [], {"ok": 0, "review": 0, "broken": 0}
+    anchored = 0
     for i, s in enumerate(sources, 1):
         name, url = s["name"], s["url"]
+        expect = s.get("expect_contains")
+        if expect:
+            anchored += 1
         try:
             raw, final, status = fetch(url)
             title = page_title(raw)
         except Exception as e:
             raw, final, status, title = "", url, None, f"{type(e).__name__}: {e}"
-        level, msg = verdict(url, final, status, name, title, stop)
+        level, msg = verdict(url, final, status, name, title, stop, raw, expect)
         counts[level] += 1
         rows.append((level, name, url, msg))
         print(f"[{level.upper():6}] ({i}/{len(sources)}) {name}\n           {msg}")
@@ -246,8 +291,14 @@ def main() -> int:
              "pages legitimately) but must be confirmed to still be the intended target. A title "
              "mismatch means the page may not be what the source claims to watch.", "",
              "**A clean audit means no broken plumbing — not that every source watches the right "
-             "page.** A URL resolving cleanly to a real but wrong page passes this tool; only a "
-             "human reading the page catches that.", ""]
+             "page.** A URL resolving cleanly to a real but wrong page passes this tool UNLESS the "
+             "source declares an `expect_contains` anchor (a stable string the right page must "
+             "carry). Without an anchor, only a human reading the page catches a wrong-page.", "",
+             f"**Anchor coverage: {anchored}/{len(sources)} sources declare an `expect_contains` "
+             f"anchor.** The remaining {len(sources) - anchored} are checked for plumbing only "
+             f"(HTTP status, redirects, title) and would NOT be caught resolving to a wrong page. "
+             f"Adding anchors to those is the durable fix for the resolving-but-wrong-page class "
+             f"(see the source-verification task).", ""]
     if dupes:
         lines += ["## ⛔ DUPLICATE HASHES", "",
                   "Two sources cannot legitimately share a content hash. This almost always means "
@@ -270,6 +321,8 @@ def main() -> int:
         f.write("\n".join(lines) + "\n")
 
     print(f"\n{counts['ok']} ok · {counts['review']} need review · {counts['broken']} broken")
+    print(f"anchor coverage: {anchored}/{len(sources)} sources declare expect_contains "
+          f"(the other {len(sources) - anchored} are plumbing-checked only)")
     if dupes:
         print(f"⛔ {len(dupes)} duplicate hash group(s) — two sources cannot share a hash legitimately")
     print(f"wrote {REPORT}")
