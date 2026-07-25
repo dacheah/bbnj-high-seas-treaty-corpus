@@ -63,7 +63,11 @@ from urllib.request import Request, urlopen
 #        green and silent. Also: ignore_patterns now reach the record-mode page hash.
 #   3.6  per-source progress (flushed) + FETCH_TIMEOUT 45->30. The first unattended Neo run looked
 #        hung: the sweep printed only its final summary, so dozens of fetches ran in total silence.
-MONITOR_VERSION = "3.6"
+#   3.7  binary documents (PDF/DOCX) hashed as BYTES and exempted from CONTENT_FLOOR. A source that
+#        IS the document (EUR-Lex .../TXT/PDF/?uri=CELEX:...) was decoded as UTF-8, tag-stripped to
+#        mojibake, scored under the floor and classified SUSPECT — and SUSPECT is never baselined,
+#        so eight EU regulations had never once been monitored.
+MONITOR_VERSION = "3.7"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -301,10 +305,41 @@ def log_observation(ts, name, page_changed, records_changed, state) -> dict:
 FETCH_TIMEOUT = 30
 
 
-def fetch(url: str) -> str:
+def fetch_raw(url: str):
+    """Return (bytes, content_type). Bytes, not str — a PDF must never be decoded before hashing."""
     req = Request(encode_url(url), headers={"User-Agent": UA})
     with urlopen(req, timeout=FETCH_TIMEOUT) as r:
-        return r.read().decode("utf-8", errors="replace")
+        return r.read(), (r.headers.get("Content-Type") or "")
+
+
+def is_binary_doc(raw: bytes, ctype: str = "") -> bool:
+    """Is this a document to hash as BYTES rather than tag-stripped text?
+
+    Some official sources are the document itself, not a page about it — EUR-Lex serves
+    /legal-content/EN/TXT/PDF/?uri=CELEX:... as a PDF. Decoding that as UTF-8 with replacement and
+    running an HTML tag-stripper over it yields a few dozen characters of mojibake, which falls
+    under CONTENT_FLOOR and is classified SUSPECT. SUSPECT records are never baselined, so on
+    2026-07-22 eight EU regulations had never once been monitored — the monitor was silently blind
+    to them while reporting them as merely "suspect".
+
+    TRADE-OFF, recorded deliberately: hashing the bytes means a publisher who REGENERATES the same
+    PDF (new internal /CreationDate) reads as CHANGED. For a corpus whose authoritative layer stores
+    byte-exact originals that is the correct bias — a changed byte in the official artifact is a
+    real event for a human to triage, not noise to suppress. If a source proves to regenerate on
+    every fetch, point its monitor_url at a stable endpoint or declare it manual.
+    """
+    if raw[:5] == b"%PDF-":
+        return True
+    if raw[:4] == b"PK\x03\x04" and ("openxml" in ctype or "msword" in ctype):
+        return True
+    ct = (ctype.split(";")[0] or "").strip().lower()
+    return ct in ("application/pdf", "application/msword", "application/octet-stream")
+
+
+def fetch(url: str) -> str:
+    """Text fetch, for the HTML path and for json_check."""
+    raw, _ = fetch_raw(url)
+    return raw.decode("utf-8", errors="replace")
 
 
 def _snap_path(name: str) -> str:
@@ -523,6 +558,22 @@ def selftest() -> int:
     assert log_observation("t", "s", False, True, "changed")["verdict"] == "real_change"
     assert log_observation("t", "s", False, False, "unchanged")["verdict"] == "quiet"
 
+    # --- binary documents: hash the bytes, never the tag-stripped decode ---
+    assert is_binary_doc(b"%PDF-1.7\n%\xe2\xe3\xcf\xd3", "application/pdf")
+    assert is_binary_doc(b"%PDF-1.4", ""), "PDF magic alone is enough — servers mislabel content-type"
+    assert is_binary_doc(b"anything", "application/pdf; charset=binary")
+    assert not is_binary_doc(b"<!DOCTYPE html><html>", "text/html; charset=utf-8")
+    assert not is_binary_doc(b'{"results": []}', "application/json")
+    # THE DEFECT THIS CLOSES: a real PDF, decoded and tag-stripped, falls under CONTENT_FLOOR and is
+    # classified SUSPECT — and suspect sources are NEVER baselined, so they are never monitored.
+    pdf = b"%PDF-1.7\n" + bytes(range(32, 127)) * 3
+    assert len(to_text(pdf.decode("utf-8", "replace"))) < CONTENT_FLOOR
+    srcs = [{"name": "pdfsrc", "url": "x", "last_sha256": None}]
+    assert classify(srcs, {"pdfsrc": "sha256:aaa"}, {"pdfsrc": 40})[0][1] == "suspect", \
+        "short text is suspect — which is why a binary doc must not go down the text path"
+    assert classify(srcs, {"pdfsrc": "sha256:aaa"}, {"pdfsrc": CONTENT_FLOOR})[0][1] == "baseline", \
+        "a binary doc, exempted from the floor, must baseline like any other source"
+
     # --- triage_flags: an error must NEVER produce a silent green run (the v3.4 defect) ---
     quiet = {"changed": 0, "suspect": 0, "manual": 0, "error": 0}
     assert triage_flags(quiet, 0, 0, 0, []) == (False, False)
@@ -582,6 +633,7 @@ def main() -> int:
     schema_ok = _HAVE_CRAWL and _crawl.crawl4ai_status()[0]
 
     hashes, lengths, schema_states, observations = {}, {}, {}, []
+    binary_docs = set()   # sources hashed as bytes (PDF/DOCX), exempt from the HTML content floor
     n_src = len(sources)
     # Progress, flushed per source. Without it the sweep prints only its final summary, so a run
     # over dozens of sources shows nothing for minutes and looks hung — it is not, it is fetching.
@@ -630,9 +682,17 @@ def main() -> int:
             s["last_checked"] = now
             continue
         try:
-            raw = fetch(monitored_url(s))
-            lengths[name] = len(to_text(raw))
-            hashes[name] = content_hash(raw, s.get("ignore_patterns"))
+            raw_b, ctype = fetch_raw(monitored_url(s))
+            if is_binary_doc(raw_b, ctype):
+                # Hash the DOCUMENT's bytes. CONTENT_FLOOR is an HTML-shell heuristic and is
+                # meaningless here, so it is bypassed rather than dooming the source to SUSPECT.
+                hashes[name] = "sha256:" + hashlib.sha256(raw_b).hexdigest()
+                lengths[name] = CONTENT_FLOOR
+                binary_docs.add(name)
+            else:
+                raw = raw_b.decode("utf-8", errors="replace")
+                lengths[name] = len(to_text(raw))
+                hashes[name] = content_hash(raw, s.get("ignore_patterns"))
         except Exception as e:
             hashes[name] = f"ERROR:{type(e).__name__}"
         s["last_checked"] = now
@@ -742,6 +802,7 @@ def main() -> int:
           f"{counts['changed'] + n_schema_changed} changed, {counts['suspect']} suspect, "
           f"{n_schema_susp} schema-suspect, {counts['manual']} manual, "
           f"{counts['error'] + n_rec_error} errors"
+          + (f", {len(binary_docs)} binary doc(s) hashed as bytes" if binary_docs else "")
           + (f", {len(dupes)} DUPLICATE-HASH group(s)" if dupes else "")
           + ("  ** MONITOR BROKEN -- sources were not checked **" if broken else "") + ".")
     return 0
