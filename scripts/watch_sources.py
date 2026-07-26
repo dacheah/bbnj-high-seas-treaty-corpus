@@ -493,6 +493,25 @@ def selftest() -> int:
     # and the timeline text must literally still be present after stripping
     assert "01 May 2026" in strip_volatile(to_text(sg_a), SG), \
         "the anchored pattern must not swallow the timeline"
+    # --- Malta legislation.mt: a "latest updates" sidebar listing OTHER laws. Observed changing
+    # between 2026-07-22 and 2026-07-25 while the watched Act was untouched, which is what flagged
+    # src-mt-act-vfaa-2018 as CHANGED. The pattern is anchored on the sidebar heading and stops at
+    # the next section, so the SUBSTANTIVE block below it — Short Title, Status, publication date
+    # and above all the "Emendat minn" amendment list — must survive. Losing that list would be a
+    # silent false negative: an amendment to the Act is exactly what this source exists to catch.
+    MT = [r"L-AĦĦAR AĠĠORNAMENTI.*?FAQs"]
+    mt_tail = (" FAQs Short Title: Virtual Financial Assets Act Status In Force "
+               "Emendat minn eli/act/2025/11")
+    mt_a = "MALTA FAQs L-AĦĦAR AĠĠORNAMENTI Ordni għal Kunsill Legali 113 tal-2026" + mt_tail
+    mt_b = "MALTA FAQs L-AĦĦAR AĠĠORNAMENTI Ordni dwar Nomina Legali 112 tal-2026" + mt_tail
+    assert content_hash(mt_a) != content_hash(mt_b), "unpatterned, the sidebar churn moves the hash"
+    assert content_hash(mt_a, MT) == content_hash(mt_b, MT), "sidebar churn must be ignored"
+    assert "Emendat minn eli/act/2025/11" in strip_volatile(to_text(mt_b), MT), \
+        "the amendment list MUST survive — it is the signal this source exists to catch"
+    mt_amended = mt_b.replace("eli/act/2025/11", "eli/act/2026/07")
+    assert content_hash(mt_b, MT) != content_hash(mt_amended, MT), \
+        "a real amendment MUST still flag with the pattern applied"
+
     # whole-page states, including every guard
     srcs = [{"name": "a", "url": "x", "last_sha256": "sha256:aaa"},
             {"name": "b", "url": "y", "last_sha256": None},
