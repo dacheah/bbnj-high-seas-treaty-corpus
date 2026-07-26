@@ -24,9 +24,12 @@ WHY EACH GUARD EXISTS (every one is a real failure that happened, not a hypothet
   * SCHEMA_SUSPECT — with a CSS schema, a markup change can make selectors match nothing. Real
     listings lose documents one at a time; broken selectors lose all at once. A collapse is
     reported as probable breakage, never as documents being removed.
-  * DUPLICATE HASHES — two sources cannot legitimately share a content hash. In the deep-seabed
-    corpus, 15 CFR 970 and 971 carried identical hashes for weeks because both were fetching the
-    same access-denied page. It sat in the metadata where anyone could have seen it.
+  * DUPLICATE HASHES — two sources sharing a content hash is almost always both fetching the same
+    page. In the deep-seabed corpus, 15 CFR 970 and 971 carried identical hashes for weeks because
+    both were hitting the same access-denied page. It sat in the metadata where anyone could have
+    seen it. The one legitimate case — a UK SI's frozen /made text and its latest-version URL,
+    identical until the first amendment — must be declared MUTUALLY via duplicate_ok_with, so the
+    guard stays loud for everything else instead of being permanently ignored.
   * URL ENCODING — official sources are not all ASCII. Dubai's legislation portal uses Arabic
     paths with spaces; Korea uses Hangul. urllib raises on these, which gets misread as a dead
     source when the source is fine and the client was wrong.
@@ -67,7 +70,10 @@ from urllib.request import Request, urlopen
 #        IS the document (EUR-Lex .../TXT/PDF/?uri=CELEX:...) was decoded as UTF-8, tag-stripped to
 #        mojibake, scored under the floor and classified SUSPECT — and SUSPECT is never baselined,
 #        so eight EU regulations had never once been monitored.
-MONITOR_VERSION = "3.7"
+#   3.8  duplicate_ok_with: a MUTUALLY declared pair may share a hash (legislation.gov.uk serves
+#        /made frozen and /uksi/Y/N latest-version — identical until the first amendment). Without
+#        it that legitimate pair forced "MONITOR BROKEN" every run, forever.
+MONITOR_VERSION = "3.8"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -182,13 +188,35 @@ def schema_suspect(prev_count: int, cur_count: int) -> bool:
 
 
 def duplicate_hashes(sources: list) -> list:
-    """Groups of sources sharing a content hash — impossible unless both fetch the same page."""
+    """Groups of sources sharing a content hash — usually impossible unless both fetch the same page.
+
+    This guard found the eCFR block page (15 CFR 970 and 971 carrying one hash for weeks). But a
+    LEGITIMATE pair exists: legislation.gov.uk serves /uksi/YYYY/N/made (the as-made text, frozen —
+    a change means the publisher issued a correction) and /uksi/YYYY/N (the latest version — a
+    change means the instrument was amended). Until the first amendment those are the same bytes,
+    so the pair is identical BY DESIGN and would otherwise force "MONITOR BROKEN" on every run,
+    forever. A permanently-crying guard is one nobody reads.
+
+    So a source may declare `duplicate_ok_with: [<other source name>, ...]` with a `_note` giving
+    the reason. The declaration must be MUTUAL — one side alone does not suppress the alarm — so a
+    pair cannot be silenced by editing a single source in isolation.
+    """
     seen = {}
     for s in sources:
         h = s.get("last_sha256")
         if h:
             seen.setdefault(h, []).append(s["name"])
-    return [(h, names) for h, names in seen.items() if len(names) > 1]
+    ok = {s["name"]: set(s.get("duplicate_ok_with") or []) for s in sources}
+    out = []
+    for h, names in seen.items():
+        if len(names) < 2:
+            continue
+        declared = all(
+            all(other in ok.get(n, set()) for other in names if other != n)
+            for n in names)
+        if not declared:
+            out.append((h, names))
+    return out
 
 
 def json_path(obj, path: str):
@@ -506,6 +534,19 @@ def selftest() -> int:
     dup = duplicate_hashes([{"name": "A", "last_sha256": "h"}, {"name": "B", "last_sha256": "h"},
                             {"name": "C", "last_sha256": "i"}])
     assert len(dup) == 1 and set(dup[0][1]) == {"A", "B"}
+    # a MUTUALLY declared pair (uk /made vs latest-version) is expected and must not cry wolf
+    ok_pair = [{"name": "A", "last_sha256": "h", "duplicate_ok_with": ["B"]},
+               {"name": "B", "last_sha256": "h", "duplicate_ok_with": ["A"]}]
+    assert duplicate_hashes(ok_pair) == [], "a mutually declared pair must be silent"
+    # ONE-SIDED declaration must NOT suppress it — otherwise editing a single source in isolation
+    # could silence a real 'both fetching the same access-denied page' defect
+    half = [{"name": "A", "last_sha256": "h", "duplicate_ok_with": ["B"]},
+            {"name": "B", "last_sha256": "h"}]
+    assert len(duplicate_hashes(half)) == 1, "a one-sided declaration must still alarm"
+    # a THIRD source joining a declared pair is undeclared: the declaration is not a blanket
+    # amnesty for that hash, so the group must alarm again
+    assert len(duplicate_hashes(ok_pair + [{"name": "C", "last_sha256": "h"}])) == 1, \
+        "an undeclared third source must break the amnesty"
     # non-ASCII URLs must encode, not explode
     assert encode_url("https://www.law.go.kr/법령/가상자산이용자보호법").isascii()
     assert " " not in encode_url("https://dlp.dubai.gov.ae/legislation ar ref/x.html")
