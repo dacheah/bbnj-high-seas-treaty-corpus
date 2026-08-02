@@ -135,6 +135,23 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
   decisions. The monthly scheduled watch (`bbnj-cop1-watch`) + `monitoring/sources.json` track it;
   the final **edited** PrepCom Report (with an official symbol, in six languages) will supersede the
   advance-unedited version as a new dated version.
+- **The final PrepCom Report has now appeared — found by the 2026-08-01 watch.** It is issued under the
+  official symbol **A/AC.296/2026/9**, in all six UN languages (https://docs.un.org/en/a/ac.296/2026/9).
+  This is exactly the superseding version the stored record (`un/prepcom/report-2026-3`, version
+  `2026-04-02`, advance-unedited) was recorded as awaiting. **Open action:** capture the byte-exact
+  English PDF (`capture/prepcom/EXPECTED-PDFS.md`), ingest as a new dated version, link both records via
+  `supersedes` / `superseded_by`, and confirm on capture whether the English text was substantively
+  edited versus the advance version. **The other five languages (ar/zh/fr/ru/es) are an explicit queued
+  follow-up** (`queue/candidates.md`), consistent with every secondary instrument being English-only today.
+- **Monitoring gap closed 2026-08-01:** the art. 12(2) MGR notifications sub-page
+  (https://www.un.org/bbnjagreement/en/mgr-notifications) was covered by no source, which is how
+  Notification 2026-002 / BBNJ-MGR-TEMP-2026-001 (Ireland, 16 July 2026) went unseen by the hash monitor.
+  Added to `monitoring/sources.json` as a 7th source. The notification itself stays **out** of the
+  authoritative layer (information-sharing, not law).
+- **Source baselines — still open.** All sources carry `last_sha256: null`, so the monitor can record
+  baselines but cannot yet *diff*. Baselining must be done by running the monitor itself
+  (`python scripts/watch_sources.py`), which computes hashes with its own `content_hash()` and writes
+  them back; hand-written hashes would not match and would fire false "changed" events.
 - **Residual:** the 6 new records are `extracted_unverified` (clean digital PDFs, spot-checked) and
   English-only for now — a verbatim audit and the other five UN languages are low-priority follow-ups.
 

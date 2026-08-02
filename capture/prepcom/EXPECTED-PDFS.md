@@ -8,6 +8,19 @@ as its own record (`pdftotext -raw` → clean → provenance → validate), same
 |---|---|
 | `prepcom-report-2026-3.pdf` | https://www.un.org/bbnjagreement/sites/default/files/2026-05/20260504BbnjPrepComReportFinal_AdvancedUnedited_0.pdf |
 
+## SUPERSEDING final PrepCom report — A/AC.296/2026/9 (added 2026-08-01)
+The final, edited, official-symbol version of the third-session report; supersedes the advance-unedited
+PDF above. Open the ODS viewer and download the **English** PDF.
+
+| Save as (in capture/prepcom/) | Viewer (click the download/PDF icon) |
+|---|---|
+| `prepcom-report-2026-3-final-en.pdf` | https://docs.un.org/en/a/ac.296/2026/9 |
+
+Ingest plan: new dated version of `un/prepcom/report-2026-3` (version_id = the report's issue date as
+printed on the document), `supersedes: un/prepcom/report-2026-3/2026-04-02`, and `superseded_by` set on
+the advance record. All six UN languages exist at that viewer; the other five are a queued follow-up
+(`queue/candidates.md`) — download only English for this pass.
+
 ## GA resolutions / decision (open the viewer, then download the English PDF)
 | Save as | Viewer (click the download/PDF icon) |
 |---|---|

@@ -24,3 +24,6 @@ Items here await a recorded in/out decision (see design doc 05). Do not ingest b
 | Secretariat seat (Secretariat note) | A/AC.296/2026/8 | Reference; the seat decision is the citable output |
 | Host-country secretariat offers (Belgium, Chile, China) | — | Reference-only (submissions, not law) |
 | Consolidated draft CHM study | — | Reference/operational (governing *rules* only when adopted) |
+| **PrepCom Report — final, official symbol** | **A/AC.296/2026/9** | **In (supersedes)** — this is the edited/translated version the stored advance record awaits. English: ingest on byte-exact capture. |
+| PrepCom Report — other five UN languages (ar/zh/fr/ru/es) | A/AC.296/2026/9 | **Queued follow-up (2026-08-01)** — deliberately deferred, not forgotten: every secondary instrument is English-only today. Ingest as sibling language records. |
+| Art. 12(2) pre-collection notifications (MGR) | Notification 2026-002 / BBNJ-MGR-TEMP-2026-001 | Out (reference) — information-sharing, not law, per the CHM/notifications rule. Surface now monitored (added to `monitoring/sources.json` 2026-08-01). |

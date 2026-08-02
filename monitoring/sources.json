@@ -42,6 +42,13 @@
       "last_sha256": null,
       "note": "Information-sharing / clearing-house related notifications.",
       "expect_contains": "Notifications"
+    },
+    {
+      "name": "UN BBNJ — Notifications under article 12 (MGR)",
+      "url": "https://www.un.org/bbnjagreement/en/mgr-notifications",
+      "last_sha256": null,
+      "note": "Pre-collection notifications under art. 12(2) (marine genetic resources). Information-sharing, NOT law — out of the authoritative layer per the CHM/notifications rule; watched so new items surface for a recorded in/out decision (queue/candidates.md). Added 2026-08-01 after the Aug 2026 watch found Notification 2026-002 / BBNJ-MGR-TEMP-2026-001 on a sub-page no source covered.",
+      "expect_contains": "Pre-collection notification"
     }
   ]
 }
