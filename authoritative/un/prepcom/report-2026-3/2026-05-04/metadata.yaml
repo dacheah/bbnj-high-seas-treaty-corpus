@@ -1,0 +1,79 @@
+corpus_id: un/prepcom/report-2026-3
+version_id: '2026-05-04'
+title: Report of the Preparatory Commission for the Entry into Force of the Agreement under the United Nations Convention
+  on the Law of the Sea on the Conservation and Sustainable Use of Marine Biological Diversity of Areas beyond National
+  Jurisdiction and the Convening of the First Meeting of the Conference of the Parties to the Agreement — Third
+  session (23 March – 2 April 2026)
+short_title: PrepCom Report (3rd session, 2026) — final (A/AC.296/2026/9)
+jurisdiction: international
+document_type: prepcom_document
+official_citation: 'A/AC.296/2026/9 (Distr.: General, 4 May 2026; Original: English)'
+authentic_languages:
+- ar
+- zh
+- en
+- fr
+- ru
+- es
+adoption_date: '2026-04-02'
+source_url: https://docs.un.org/en/A/AC.296/2026/9
+source_publisher: United Nations General Assembly (UN Official Document System)
+source_is_official: true
+retrieval_date: '2026-08-02'
+retrieved_by: Cowork (provenance-corpus-builder); maintainer-supplied byte-exact official UN PDF (ODS)
+original_format: pdf
+original_filename: original.pdf
+content_hash: sha256:7665558f9e784bdac0d367027ac6b815285592e1954ff5e4fde01e9f926ca45a
+original_sha256: sha256:319ab61bbcffbc1fc61361f63468fd5c46f5e011e0f3570534a18d2c1406d047
+text_sha256: sha256:7665558f9e784bdac0d367027ac6b815285592e1954ff5e4fde01e9f926ca45a
+text_fidelity: extracted_verified
+language: en
+authoritative_status: authentic_text
+license: UN-materials-terms
+rights_note: United Nations official document; may be freely reproduced with attribution, no warranty.
+capture_history:
+- date: '2026-08-02'
+  source_url: https://docs.un.org/en/A/AC.296/2026/9
+  original_sha256: sha256:319ab61bbcffbc1fc61361f63468fd5c46f5e011e0f3570534a18d2c1406d047
+  note: Maintainer-supplied byte-exact official UN PDF, downloaded from the ODS viewer. Found by the 2026-08-01
+    source watch.
+supersedes: un/prepcom/report-2026-3/2026-04-02
+superseded_by: null
+related_documents:
+- un/bbnj-agreement-2023
+- un/ga-resolution/A-RES-78-272
+- un/ga-decision/78-560
+provenance_note: 'FINAL, edited, official-symbol issue of the third-session report of the Preparatory Commission:
+  A/AC.296/2026/9. Supersedes the advance, unedited version stored at version 2026-04-02. version_id is the document''s
+  own printed issue date (Distr.: General, 4 May 2026); the ODS job number 26-06383 (E) 180626 indicates processing
+  on 18 June 2026, and the item was surfaced by the 2026-08-01 source watch. adoption_date remains 2026-04-02, the
+  date the Commission adopted the report at its third session. Text derived from the byte-exact official PDF by
+  pdftotext -raw + scripts/pipelines.py clean_report(raw, symbol=''A/AC.296/2026/9''), which drops page furniture
+  only (80 running-head symbol lines, 81 job-number lines, page numbers, barcode) and preserves the first-page masthead,
+  in-text and footnote document references, and the annex list of Commission documents. The editing is substantive
+  in at least one respect: the advance version''s reference to decision ''78/650'' is corrected to ''78/560'' (see
+  corrections). All 51 distinct A/AC.296 document symbols, including 15 CRP entries, are preserved.'
+verification:
+  status: verified
+  method: 'Dual independent extractors (pdftotext -raw and PyMuPDF) agree on the PDF text layer at 99.91% of tokens.
+    Word-multiset check against the extraction: the stored text ADDS no word (0 additions) and the 289 dropped tokens
+    are furniture only — 80 running-head symbols, 81 job numbers, the ''(E)'' language marker and bare page/footnote
+    numerals; no alphabetic content is dropped. Structure confirmed: 308 paragraphs, masthead retained per the corpus''s
+    UN-document convention (cf. clean_un), 51 distinct A/AC.296 symbols and 15 CRP entries preserved, no residual
+    running heads or page numbers.'
+  reference: capture/prepcom/prepcom-report-2026-3-final-en.pdf (sha256:319ab61bbcffbc1fc61361f63468fd5c46f5e011e0f3570534a18d2c1406d047)
+  verified_by: Cowork (provenance-corpus-builder)
+  verified_date: '2026-08-02'
+  note: Reproducible byte-exact from original.pdf via scripts/extract.py (clean_report with the symbol argument).
+corrections:
+- date: '2026-08-02'
+  change: 'Not a correction to this text but a recorded difference from the version it supersedes: the advance,
+    unedited version cited General Assembly decision ''78/650''; this final issue reads ''78/560'', which is the
+    correct decision (and is itself held in this corpus as un/ga-decision/78-560). Other editorial changes include
+    lower-casing ''preparatory commission'' in running prose, a corrected description of the Co-Chair''s role, and
+    shortened cross-references.'
+  reference: https://docs.un.org/en/A/AC.296/2026/9
+  note: Recorded so the difference between the advance and final versions is auditable; both versions are retained.
+binding_force: non_binding
+issuing_authority: BBNJ Preparatory Commission (United Nations)
+administering_authority: null

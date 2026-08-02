@@ -38,6 +38,7 @@ RECIPES = [
  ("un/agreement-partxi-1994/1994-07-28", "pdftotext", lambda r: pipelines.clean_ia(r, "A/RES/48/263", "The General Assembly,")),
  ("un/fish-stocks-agreement-1995/1995-08-04", "pdftotext", lambda r: pipelines.clean_ia(r, "A/CONF.164/37", "AGREEMENT FOR THE IMPLEMENTATION")),
  ("un/prepcom/report-2026-3/2026-04-02", "pdftotext", lambda r: pipelines.clean_report(r)),
+ ("un/prepcom/report-2026-3/2026-05-04", "pdftotext", lambda r: pipelines.clean_report(r, "A/AC.296/2026/9")),
 ]
 OCR_RECORDS = ["un/bbnj-agreement-2023-zh/2023-06-19", "un/bbnj-agreement-2023-ar/2023-06-19"]
 

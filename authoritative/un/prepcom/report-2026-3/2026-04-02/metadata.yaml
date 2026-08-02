@@ -40,13 +40,13 @@ capture_history:
   note: Re-cleaned (capture/prepcom/clean_report.py) to keep in-text document symbols and strip N/80 page
     markers; one space-drop fixed.
 supersedes: null
-superseded_by: null
+superseded_by: un/prepcom/report-2026-3/2026-05-04
 related_documents:
 - un/bbnj-agreement-2023
 provenance_note: Report of the Preparatory Commission adopted at its third session on 2 April 2026, forwarding
   recommendations and draft decisions to COP1 (11–22 January 2027). ADVANCE, UNEDITED VERSION (4 May 2026)
-  — the final edited/translated version will supersede this as a new dated version. Byte-exact official
-  UN PDF; pdftotext -raw + normalisation. text_fidelity=extracted_unverified. The draft decisions it contains
+  — SUPERSEDED on 2026-08-02 by the final, edited, official-symbol issue A/AC.296/2026/9, stored as version 2026-05-04 of this same corpus_id; that issue corrects this version's citation of decision 78/650 to 78/560. Byte-exact official
+  UN PDF; pdftotext -raw + normalisation. text_fidelity=extracted_verified (upgraded 2026-07-04 by the dual-extractor audit recorded under verification). The draft decisions it contains
   (A/AC.296/2026/*) are queued, not ingested, until COP1 adopts them.
 corrections:
 - date: '2026-07-04'

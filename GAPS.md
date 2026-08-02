@@ -3,7 +3,8 @@
 # Fidelity status (updated 2026-07-11)
 
 `text_fidelity` across the 15 authoritative records:
-- **extracted_verified (15):** UNCLOS (1982); the PrepCom Report (3rd session); BBNJ Agreement
+- **extracted_verified (16 records across 15 instruments):** UNCLOS (1982); the PrepCom Report (3rd
+  session — BOTH the advance and the final A/AC.296/2026/9 issues); BBNJ Agreement
   (English, Spanish, **French**, **Russian**, **Chinese**, **Arabic**); GA resolutions 77/321, 78/272, 79/271, 80/107; decision
   78/560; the 1994 Part XI Agreement; the 1995 Fish Stocks Agreement.
   Method (text-layer records with a clean digital text layer): two independent extractors (pdftotext
@@ -27,7 +28,7 @@
   EasyOCR text had ~1900 errors — chiefly systematic Arabic-comma drops/mis-reads plus scattered letter
   errors (and the dropped Art. 4 numeral) — so the text was re-derived from the higher-fidelity Vision
   reading, corroborated by EasyOCR and spot-verified against the page images. See G-2c.
-- **ocr_unverified (0).** All 15 authoritative records are now `extracted_verified`.
+- **ocr_unverified (0).** All 16 authoritative records (15 distinct instruments) are `extracted_verified`.
 
 Provenance principle: gaps are first-class facts. Each is tracked here until closed.
 
@@ -138,11 +139,18 @@ under `un/bbnj-agreement-2023-<lang>`, `version_id: 2023-06-19`, cross-linked to
 - **The final PrepCom Report has now appeared — found by the 2026-08-01 watch.** It is issued under the
   official symbol **A/AC.296/2026/9**, in all six UN languages (https://docs.un.org/en/a/ac.296/2026/9).
   This is exactly the superseding version the stored record (`un/prepcom/report-2026-3`, version
-  `2026-04-02`, advance-unedited) was recorded as awaiting. **Open action:** capture the byte-exact
-  English PDF (`capture/prepcom/EXPECTED-PDFS.md`), ingest as a new dated version, link both records via
-  `supersedes` / `superseded_by`, and confirm on capture whether the English text was substantively
-  edited versus the advance version. **The other five languages (ar/zh/fr/ru/es) are an explicit queued
-  follow-up** (`queue/candidates.md`), consistent with every secondary instrument being English-only today.
+  `2026-04-02`, advance-unedited) was recorded as awaiting. **INGESTED 2026-08-02** as version
+  `2026-05-04` (its printed Distr. date) of the same `corpus_id`; the two records are now linked by
+  `supersedes` / `superseded_by`. Verified `extracted_verified`: two independent extractors agree at
+  99.91%, the cleaning ADDS no word, and the 289 dropped tokens are page furniture only (80 running-head
+  symbols, 81 job numbers, bare numerals) — no alphabetic content lost. **The editing was substantive:**
+  the advance version cited General Assembly decision **78/650**; the final issue corrects this to
+  **78/560** — the decision this corpus itself holds as `un/ga-decision/78-560`. Other changes are
+  editorial (lower-cased "preparatory commission" in prose, a corrected description of the Co-Chair's
+  role, shortened cross-references). Both versions are retained; the advance record's stale
+  `provenance_note` (which still claimed `extracted_unverified`) was corrected in the same pass.
+  **The other five languages (ar/zh/fr/ru/es) remain an explicit queued follow-up**
+  (`queue/candidates.md`), consistent with every secondary instrument being English-only today.
 - **Monitoring gap closed 2026-08-01:** the art. 12(2) MGR notifications sub-page
   (https://www.un.org/bbnjagreement/en/mgr-notifications) was covered by no source, which is how
   Notification 2026-002 / BBNJ-MGR-TEMP-2026-001 (Ireland, 16 July 2026) went unseen by the hash monitor.

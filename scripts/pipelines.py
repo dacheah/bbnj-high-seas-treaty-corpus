@@ -199,12 +199,23 @@ def clean_ia(raw, symbol, startre):
     if cur: paras.append(cur.strip())
     return "\n\n".join(re.sub(r"[ \t]{2,}"," ",p) for p in paras)+"\n"
 
-def clean_report(raw):
+def clean_report(raw, symbol=None):
+    """Clean a Preparatory Commission report.
+
+    `symbol` (optional): the document's official symbol, e.g. "A/AC.296/2026/9". When given, lines
+    that are EXACTLY the symbol are dropped as running-head furniture. In the official-symbol issue
+    each page carries the bare symbol as a running head (prefixed by a form-feed, so .strip() catches
+    it). In-sentence references, footnote citations ("A/AC.296/2026/9.") and the annex list of
+    Commission documents are NOT bare-equal and are therefore preserved, as is the first-page
+    masthead ("United Nations A/AC.296/2026/9"), matching clean_un's treatment of UN mastheads.
+    Default None reproduces the advance-unedited behaviour byte-exactly.
+    """
     lines=[l.rstrip() for l in raw.replace("\r\n","\n").split("\n")]
     keep=[]
     for l in lines:
         s=l.strip()
         if s=="ADVANCE, UNEDITED VERSION": continue
+        if symbol and s==symbol: continue
         if re.match(r"^\d{2}/\d{2}/\d{2}$", s): continue
         if re.match(r"^\*\d{6,7}\*$", s): continue
         if re.match(r"^\d{1,3}$", s): continue
