@@ -1,0 +1,26 @@
+# Build-engine manifest — SHA-256 of every REPRODUCIBILITY-ENGINE file in the Project Origin
+# corpus toolkit (the code that PRODUCES the published corpus). Non-producing tooling is
+# excluded — see ENGINE_EXCLUDE in verify_engine.py — so routine monitoring changes do not move
+# it. Scope covers scripts/ AND schema/: the schemas and the AKN registry determine what the
+# engine emits, so a change there MUST move the fingerprint. Paths are repo-relative.
+# Regenerate with:  python3 verify_engine.py --generate
+# Verify with:      python3 verify_engine.py
+a10d6b6944ec8873d5c5d3f70e7eb94e0c5824a749a9e6c297aac6a5d3160d7f  schema/akn-registry.json
+d4ff229dcb77620e5d7d93485679cf0057fa77606e00a87e9cf798a4c1562fca  schema/authoritative-metadata.schema.json
+b7926c939ba0e2e34b61c5c234a64d776dfb7ecfa7f60c81761395ab25f3b214  schema/derived-metadata.schema.json
+45a4ec01fb4d3e87b7ad0bc26b510bce86f7fbe9ab1f6ac2ce444a4cfc14137b  scripts/akn.py
+1d3412ddd37c9321d3df4b66c89f64756fe6a43600b900c6f7f48c9363a4de8b  scripts/build_derived.py
+8e977398657863558ca0dddbe14d8efe7b57f6bb4f5521230ff3a5cb12d0cced  scripts/build_site.py
+656f551e3eb122f2714df81940bb2bd82bb9a47112d7d9383b1b4ba85496e1c2  scripts/concepts.py
+a966688a4830e25299f94d190349e68dab3bc4d0632ade0040afb8027030d4f5  scripts/export_hf_dataset.py
+46304a6b8fd482ea5518d9a862347096126ab0c9554e9e27cf5f61ec3f91be91  scripts/extract.py
+255844c6a8dd73c0465f9b9983684be6c5c9737ff7fe71fdaa3d2ba8517047ac  scripts/hashing.py
+25d880083524c00da34ff44584441bf161a1e8fcdd6e74b43cd1c1387f259109  scripts/ingest.py
+eada4958361739371954655567f81c8bd4baf237a2e5692c4daf38241de4d07c  scripts/migrate_akn.py
+9468e2d5c10552d9c51d2562feee7b55fcc2510d7442618869de107c8fd29b9e  scripts/migrate_metadata_layer.py
+04c6e3c8f0c205e16278c064988b3853bb10dde7d25f77b2471a1e9de2b49f6a  scripts/pipelines.py
+bc83a67aa029e43a7e26ef1edc6b67afe3afa43788a6203818ec683b8e1e92f4  scripts/repro-policy.json
+7d167fafd3d3ee63405933c816c8f5febd43a03155420835a7faba800dc85e62  scripts/repro_gate.py
+0c3d8b814e39054d26a399db6d5c6782e9437736ca64a3d7df95b8ccc35b71f4  scripts/requirements.txt
+99ca66ac89451953225a96541eff9527d890e9ffa9cb53ac9d304c24ff08fff3  scripts/validate_corpus.py
+22ac9ce52f01a198b12c27fed21b7193ac79e7fd05bc896f0b5f4b684885d058  scripts/verify_engine.py
