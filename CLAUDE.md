@@ -57,3 +57,16 @@ so a missing venv looks like a successful run that quietly did less.
 `authoritative/` stores official files byte-for-byte. Nothing generated — no crawler output, no model
 output — is ever written into it as `text.txt`; `scripts/extract.py` is the sole version-pinned
 extractor, so reproducibility checks stay valid.
+
+LINE ENDINGS — deliberate scope (2026-07-22, task: pin LF on CRLF-risk write sites)
+-----------------------------------------------------------------------------------
+Every script that writes a TRACKED file pins newline="\n". Python text mode translates "\n" to
+"\r\n" on Windows, and .gitattributes governs CHECKOUT, not what a script writes — verified: a
+CRLF working file under `* text=auto eol=lf` is still reported modified, with an empty diff. That
+churn is what made the derived layer permanently "modified" after a rebuild.
+
+DELIBERATELY NOT PINNED (writes nothing tracked, or never re-run):
+  * build_site.py            -> writes site/, which is gitignored (built fresh in CI for Pages).
+                                CRLF there reaches no repository and no consumer.
+  * migrate_metadata_layer.py -> one-shot 2026-07 migration, already run, kept only as a record of
+                                what was executed. If it is ever re-run, pin it first.

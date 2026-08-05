@@ -75,7 +75,7 @@ def build_provisions(metas):
     return rows
 
 def write_jsonl(path, rows):
-    with open(path, "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
@@ -126,7 +126,12 @@ def card(docs, provs, repo_id):
     b.append("")
     b.append("- **Source of truth / build history:** https://github.com/dacheah/bbnj-high-seas-treaty-corpus")
     b.append("- **Human-browsable site:** https://dacheah.github.io/bbnj-high-seas-treaty-corpus/ (enable GitHub Pages)")
-    b.append("- **" + str(len(docs)) + "** instruments (" + str(verified) + " verified against official sources) · **"
+    n_inst = len({d.get("corpus_id") for d in docs})
+    # A corpus_id may hold several dated versions (e.g. the PrepCom report's advance and final
+    # issues), so rows != instruments. State both rather than overstate the instrument count.
+    _versions = ("** instruments · **" + str(len(docs)) + "** document versions ("
+                 if len(docs) != n_inst else "** instruments (")
+    b.append("- **" + str(n_inst) + _versions + str(verified) + " verified against official sources) · **"
              + str(len(provs)) + "** provisions · **" + str(n_tags) + "** neutral concept tags")
     b.append("")
     b.append("## Why this dataset is different")
@@ -229,7 +234,7 @@ def main():
     os.makedirs(os.path.join(args.out, "data"), exist_ok=True)
     write_jsonl(os.path.join(args.out, "data", "documents.jsonl"), docs)
     write_jsonl(os.path.join(args.out, "data", "provisions.jsonl"), provs)
-    open(os.path.join(args.out, "README.md"), "w", encoding="utf-8").write(card(docs, provs, args.push or args.repo_id))
+    open(os.path.join(args.out, "README.md"), "w", encoding="utf-8", newline="\n").write(card(docs, provs, args.push or args.repo_id))
     print("Exported %d documents, %d provisions -> %s" % (len(docs), len(provs), args.out))
     # HF renamed the CLI: the command is `hf` (huggingface-cli is deprecated).
     print("Publish:  hf upload %s %s . --repo-type dataset" % (args.repo_id, args.out))

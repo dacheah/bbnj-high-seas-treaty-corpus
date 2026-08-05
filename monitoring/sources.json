@@ -6,7 +6,7 @@
       "last_sha256": "sha256:6f80e5df665c62f7459281f541eb43b80592b285a344bd3e8488b3ea8eac218a",
       "note": "Authentic-language PDFs of the Agreement (6 UN languages).",
       "expect_contains": "areas beyond national jurisdiction",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN Treaty Collection — XXI.10 status",
@@ -15,7 +15,7 @@
       "_note": "2026-07-18: the previous URL used UPPERCASE /PAGES/, which ASP.NET routed to PageNotFound.aspx - a SOFT 404 returning HTTP 200 with an error page. A hash monitor would have reported it 'unchanged' indefinitely; only the redirect-and-title check caught it. Corrected to lowercase /pages/ for the citable human page, and monitoring now uses the official MTDSG status PDF - a stable URL giving clean change detection as ratifications are deposited. WHAT THIS CONCEALED: the BBNJ Agreement ENTERED INTO FORCE on 17 January 2026 (depositary notification C.N.447.2025.TREATIES-XXI.10). The source meant to surface exactly that could not have done so. VERIFIED 2026-07-18: the corpus is not affected - entry_into_force_date '2026-01-17' is already recorded across the BBNJ language records, captured by a human. The defect cost visibility, not accuracy. 2026-07-22: the lowercase /pages/ fix DID NOT WORK - the audit still saw a redirect to PageNotFound.aspx. The real cause was never the path case: ViewDetails.aspx routes to PageNotFound without a src=TREATY query parameter. Added src=TREATY (the canonical UN Treaty Collection form) and the page resolves. The monitor was unaffected throughout - it fetches monitor_url (the MTDSG PDF), re-verified live 2026-07-22: 'ENTRY INTO FORCE: 17 January 2026', Parties: 90. The human page is JS-rendered, so the audit can only redirect-check it, not content-anchor it (a stdlib fetch sees an empty shell).",
       "last_sha256": "sha256:145c032d26d0b33f38017c18643858393a9943e28ae7b25dbef8610997f58707",
       "note": "Signatures, ratifications, declarations, depositary notifications.",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN BBNJ — GA resolutions and decisions",
@@ -23,7 +23,7 @@
       "last_sha256": "sha256:3ac36c04344eb025b7e0813728be8a342efd28cd500644f94eed135715118f4f",
       "note": "UNGA res. 78/272 (PrepCom) and related.",
       "expect_contains": "resolutions and decisions",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN BBNJ — Preparatory Commission (first session docs)",
@@ -31,7 +31,7 @@
       "last_sha256": "sha256:793cae6e57f753d267212e9dd53fa78285c8de808874f72ce6cd81519558f629",
       "note": "PrepCom working documents and reports.",
       "expect_contains": "First session",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN BBNJ — Preparatory Commission (third session docs)",
@@ -39,7 +39,7 @@
       "last_sha256": "sha256:b10d6e026079701861d9cd7f44633e71709c15245215e3e8d369d486e878aa3c",
       "note": "Live layer through COP1.",
       "expect_contains": "Third session",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN BBNJ — Notifications",
@@ -47,7 +47,7 @@
       "last_sha256": "sha256:e682669c9a928c7803cf62e8c1bb24692d0d2b9c8ae0b8e3639edf96fedd8c30",
       "note": "Information-sharing / clearing-house related notifications.",
       "expect_contains": "Notifications",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     },
     {
       "name": "UN BBNJ — Notifications under article 12 (MGR)",
@@ -55,7 +55,7 @@
       "last_sha256": "sha256:5732a42ee86ff784f4452fa4618fda20b59b41c31e36407aa94a777b117eb06c",
       "note": "Pre-collection notifications under art. 12(2) (marine genetic resources). Information-sharing, NOT law — out of the authoritative layer per the CHM/notifications rule; watched so new items surface for a recorded in/out decision (queue/candidates.md). Added 2026-08-01 after the Aug 2026 watch found Notification 2026-002 / BBNJ-MGR-TEMP-2026-001 on a sub-page no source covered.",
       "expect_contains": "Pre-collection notification",
-      "last_checked": "2026-08-02T01:14:20Z"
+      "last_checked": "2026-08-02T01:24:16Z"
     }
   ]
 }

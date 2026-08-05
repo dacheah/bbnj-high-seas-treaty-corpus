@@ -68,10 +68,31 @@ def keyword_tags(units):
         if hits: tags.append({"unit": u["label"], "concepts": hits}); doc.update(hits)
     return tags, sorted(doc)
 
+# generation_date must move ONLY when a derived artifact actually changes. Stamping TODAY on every
+# record produced a full-corpus diff on every rebuild (date-only churn), so git could not show what
+# really changed. These helpers preserve the prior date when the artifact content is byte-identical.
+def _read_json(p):
+    try:
+        return json.load(open(p, encoding="utf-8")) if os.path.exists(p) else None
+    except Exception:
+        return None
+
+
+def _prior_dates(dmeta_path):
+    if not os.path.exists(dmeta_path):
+        return {}
+    try:
+        old = yaml.safe_load(open(dmeta_path, encoding="utf-8")) or []
+        return {d.get("derived_id"): d.get("generation_date") for d in old if isinstance(d, dict)}
+    except Exception:
+        return {}
+
+
 index = {c: [] for c in VOCAB}
 records = []
-for root, _, files in os.walk(AUTH):
-    if "metadata.yaml" not in files: continue
+# Deterministic order: sort record roots so the concept-index accumulated in this loop is
+# reproducible rather than following os.walk filesystem order (which varies by machine).
+for root in sorted(r for r, _, fs in os.walk(AUTH) if "metadata.yaml" in fs):
     meta = yaml.safe_load(open(os.path.join(root, "metadata.yaml"), encoding="utf-8"))
     tpath = os.path.join(root, "text.txt")
     if not os.path.exists(tpath): continue
@@ -94,23 +115,29 @@ for root, _, files in os.walk(AUTH):
             index.setdefault(c, []).append({"corpus_id": cid, "short_title": sh, "version_id": ver, "unit": t["unit"]})
 
     outdir = os.path.join(DER, cid, ver); os.makedirs(outdir, exist_ok=True)
+    prior = _prior_dates(os.path.join(outdir, "derived-metadata.yaml"))
+    _old_s = _read_json(os.path.join(outdir, "structure.json"))
+    _old_c = _read_json(os.path.join(outdir, "concepts.json"))
     json.dump({"_derived": True, "_disclaimer": DISCLAIMER, "corpus_id": cid, "version_id": ver,
                "title": meta["title"], "document_type": meta.get("document_type"), "adoption_date": meta.get("adoption_date"),
                "unit_type": utype, "unit_count": len(units), "units": units, "citations_detected": detect_citations(body)},
-              open(os.path.join(outdir, "structure.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+              open(os.path.join(outdir, "structure.json"), "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
     json.dump({"_derived": True, "_disclaimer": DISCLAIMER, "corpus_id": cid, "version_id": ver,
                "concept_vocabulary": list(VOCAB), "tagging_method": method,
                "document_concepts": doc_concepts, "tags": tags},
-              open(os.path.join(outdir, "concepts.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+              open(os.path.join(outdir, "concepts.json"), "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
+    _sid, _cid_ = f"{cid}/{ver}/structure", f"{cid}/{ver}/concepts"
+    struct_date = prior[_sid] if (prior.get(_sid) and _old_s == _read_json(os.path.join(outdir, "structure.json"))) else TODAY
+    concept_date = prior[_cid_] if (prior.get(_cid_) and _old_c == _read_json(os.path.join(outdir, "concepts.json"))) else TODAY
     dmeta = [
       {"derived_id": f"{cid}/{ver}/structure", "derived_type": "structure_extraction", "artifact_file": "structure.json",
        "source_corpus_id": cid, "source_version_id": ver, "source_text_sha256": src_hash,
-       "generation_method": "rule_based", "generator": "build_derived.py (structure)", "generation_date": TODAY,
+       "generation_method": "rule_based", "generator": "build_derived.py (structure)", "generation_date": struct_date,
        "review_status": "unreviewed", "reviewed_by": None, "license": "CC-BY-4.0",
        "confidence_note": f"Deterministic parse into {len(units)} {utype} unit(s).", "disclaimer": DISCLAIMER},
       {"derived_id": f"{cid}/{ver}/concepts", "derived_type": "concept_tags", "artifact_file": "concepts.json",
        "source_corpus_id": cid, "source_version_id": ver, "source_text_sha256": src_hash,
-       "generation_method": ("model" if method == "curated" else method), "generator": gen, "generation_date": TODAY,
+       "generation_method": ("model" if method == "curated" else method), "generator": gen, "generation_date": concept_date,
        "review_status": "unreviewed", "reviewed_by": None, "license": "CC-BY-4.0",
        "confidence_note": cnote, "disclaimer": DISCLAIMER},
     ]
@@ -122,17 +149,17 @@ for root, _, files in os.walk(AUTH):
                 dmeta.append({"derived_id": f"{cid}/{ver}/translation-{lang}", "derived_type": "translation",
                     "artifact_file": f"translations/{tf}", "source_corpus_id": cid, "source_version_id": ver,
                     "source_text_sha256": src_hash, "generation_method": "model", "generator": GENERATOR,
-                    "generation_date": TODAY, "review_status": "unreviewed", "reviewed_by": None,
+                    "generation_date": prior.get(f"{cid}/{ver}/translation-{lang}", TODAY), "review_status": "unreviewed", "reviewed_by": None,
                     "license": "CC-BY-4.0",
                     "confidence_note": f"Unofficial machine-draft {lang} translation; not legally operative.",
                     "disclaimer": DISCLAIMER})
-    yaml.safe_dump(dmeta, open(os.path.join(outdir, "derived-metadata.yaml"), "w", encoding="utf-8"),
+    yaml.safe_dump(dmeta, open(os.path.join(outdir, "derived-metadata.yaml"), "w", encoding="utf-8", newline="\n"),
                    sort_keys=False, allow_unicode=True)
     records.append((cid, ver, utype, len(units), len(doc_concepts)))
 
 os.makedirs(DER, exist_ok=True)
 json.dump({"_derived": True, "_disclaimer": DISCLAIMER, "vocabulary": VOCAB, "index": index},
-          open(os.path.join(DER, "concept-index.json"), "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+          open(os.path.join(DER, "concept-index.json"), "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 md = ["# Concept Index (derived, unofficial)", "", f"_{DISCLAIMER}_", "",
       "For each neutral concept, the provisions across the corpus that address it. Concepts describe what a "
       "provision is *about*; they take no position on any doctrine.", ""]
@@ -144,7 +171,7 @@ for c in VOCAB:
     for e in entries: by_inst.setdefault((e["short_title"], e["corpus_id"]), []).append(e["unit"])
     for (sh, cid), us in by_inst.items(): md.append(f"- **{sh}** (`{cid}`): " + "; ".join(us))
     md.append("")
-open(os.path.join(DER, "concept-index.md"), "w", encoding="utf-8").write("\n".join(md) + "\n")
+open(os.path.join(DER, "concept-index.md"), "w", encoding="utf-8", newline="\n").write("\n".join(md) + "\n")
 
 os.makedirs(DOCS, exist_ok=True)
 vmd = ["# Concept Vocabulary", "",
@@ -152,7 +179,7 @@ vmd = ["# Concept Vocabulary", "",
        "is *about*; the vocabulary is doctrine-agnostic. Tagging is derived, unofficial, and traceable to "
        "each authoritative text.", ""]
 for c, d in VOCAB.items(): vmd.append(f"- **`{c}`** — {d}")
-open(os.path.join(DOCS, "concept-vocabulary.md"), "w", encoding="utf-8").write("\n".join(vmd) + "\n")
+open(os.path.join(DOCS, "concept-vocabulary.md"), "w", encoding="utf-8", newline="\n").write("\n".join(vmd) + "\n")
 
 print(f"Rebuilt derived for {len(records)} instrument(s).")
 for c in VOCAB: print(f"  {c:42s} {len(index.get(c, [])):2d}")
