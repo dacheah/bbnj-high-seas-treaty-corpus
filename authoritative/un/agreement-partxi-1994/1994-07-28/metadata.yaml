@@ -59,3 +59,7 @@ verification:
 binding_force: binding
 issuing_authority: "United Nations General Assembly"
 administering_authority: null
+akn_expression_uri: /akn/un/doc/treaty/un-ga/1994-07-28/agreement-partxi-1994/eng
+akn_uri: /akn/un/doc/treaty/un-ga/1994-07-28/agreement-partxi-1994
+akn_uri_basis: akn4un
+akn_uri_note: ''

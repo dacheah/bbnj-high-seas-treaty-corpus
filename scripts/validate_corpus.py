@@ -60,11 +60,68 @@ def _path_identity(record_meta, meta, errors):
                       f"directory name {want_vid!r}")
 
 
-def validate_authoritative(record_meta, schema, errors, warnings):
+def _akn_identity(record_meta, meta, errors, warnings, akn_state):
+    """The recorded AKN identifier must be the one akn.py would mint from this record.
+
+    A hand-edited or stale identifier is worse than none: it still resolves, to something
+    other than this instrument. So this does not merely check the shape — it re-mints from
+    the registry and compares. Drift between the record and the rule that produced it is an
+    error, not a warning.
+
+    Skipped entirely when the corpus has not adopted the AKN layer, so this is additive and
+    does not break a corpus mid-migration.
+    """
+    if "akn_uri_basis" not in meta:
+        return
+    where = record_meta.relative_to(REPO_ROOT)
+    try:
+        import akn as _akn
+    except ImportError:
+        warnings.append(f"[akn] {where}: akn.py not importable — identifiers NOT verified")
+        return
+    if akn_state.get("registry") is None:
+        try:
+            akn_state["registry"] = _akn.load_registry()
+        except Exception as exc:                                  # noqa: BLE001
+            errors.append(f"[akn] registry unreadable, identifiers cannot be verified: {exc}")
+            akn_state["registry"] = False
+    reg = akn_state.get("registry")
+    if not reg:
+        return
+
+    for msg in _akn.check(meta.get("akn_uri"), meta.get("akn_uri_basis"), meta.get("akn_uri_note")):
+        errors.append(f"[akn] {where}: {msg}")
+
+    want_w, want_e, want_b, want_n = _akn.mint(meta, reg)
+    if meta.get("akn_uri") != want_w:
+        errors.append(f"[akn] {where}: akn_uri {meta.get('akn_uri')!r} is not what the registry "
+                      f"mints for this record ({want_w!r}) — regenerate rather than hand-edit")
+    if meta.get("akn_expression_uri") != want_e:
+        errors.append(f"[akn] {where}: akn_expression_uri {meta.get('akn_expression_uri')!r} "
+                      f"does not match the minted {want_e!r}")
+    if meta.get("akn_uri_basis") != want_b:
+        errors.append(f"[akn] {where}: akn_uri_basis {meta.get('akn_uri_basis')!r} does not "
+                      f"match the registry's {want_b!r}")
+    if want_w:
+        akn_state.setdefault("seen", []).append((str(where), want_w, want_e))
+    if want_b == "unmapped":
+        akn_state["unmapped"] = akn_state.get("unmapped", 0) + 1
+
+
+def validate_authoritative(record_meta, schema, errors, warnings, akn_state=None):
     rel = record_meta.relative_to(REPO_ROOT)
     meta = _load_yaml(record_meta)
     vdir = record_meta.parent
+    if not isinstance(meta, dict):
+        # An empty or non-mapping metadata.yaml used to raise AttributeError deep inside the
+        # checks. That still exits non-zero, but it reads as a broken TOOL rather than a broken
+        # RECORD, and the difference matters at 2am. Found by a control case in the AKN
+        # mutation study on 2026-08-05, where a truncated file produced a bare traceback.
+        errors.append(f"[schema] {rel}: metadata.yaml is empty or not a mapping")
+        return
     _path_identity(record_meta, meta, errors)
+    if akn_state is not None:
+        _akn_identity(record_meta, meta, errors, warnings, akn_state)
     errs = sorted(schema.iter_errors(meta), key=lambda e: str(list(e.path)))
     for e in errs:
         loc = "/".join(str(p) for p in e.path) or "(root)"
@@ -120,14 +177,31 @@ def validate_all(subpath=None, allow_empty=False):
     der_schema = _load_schema("derived-metadata.schema.json")
     scope = REPO_ROOT / subpath if subpath else None
     n_auth = n_der = 0
+    akn_state = {"registry": None}
     for m in sorted((REPO_ROOT / "authoritative").rglob("metadata.yaml")):
         if scope and scope not in m.parents and scope != m.parent:
             continue
-        validate_authoritative(m, auth_schema, errors, warnings); n_auth += 1
+        validate_authoritative(m, auth_schema, errors, warnings, akn_state); n_auth += 1
     for m in sorted((REPO_ROOT / "derived").rglob("derived-metadata.yaml")):
         if scope and scope not in m.parents and scope != m.parent:
             continue
         validate_derived(m, der_schema, errors, warnings); n_der += 1
+
+    # Corpus-wide AKN checks — only meaningful once every record has been seen.
+    if akn_state.get("seen"):
+        try:
+            import akn as _akn
+            for msg in _akn.check_collisions(akn_state["seen"]):
+                errors.append(f"[akn] {msg}")
+        except ImportError:
+            pass
+    if akn_state.get("unmapped"):
+        # A gap, not a fault: 'unmapped' means the registry has not caught up, and that is a
+        # backlog you can see rather than a silent default. It warns so the number stays
+        # visible without blocking a build.
+        warnings.append(f"[akn] {akn_state['unmapped']} record(s) have basis 'unmapped' — the "
+                        f"registry does not cover them yet. Distinct from 'none', which is "
+                        f"permanent and expected.")
     if n_auth == 0 and not allow_empty:
         # A gate that reports OK on an empty corpus reports OK on anything. Emptying both layers
         # produced "Checked 0 authoritative record(s)" and "RESULT: OK", exit 0, in all five

@@ -73,3 +73,7 @@ verification:
 binding_force: binding
 issuing_authority: "Third United Nations Conference on the Law of the Sea"
 administering_authority: null
+akn_expression_uri: /akn/un/doc/treaty/un-conf/1982-12-10/unclos-1982/eng
+akn_uri: /akn/un/doc/treaty/un-conf/1982-12-10/unclos-1982
+akn_uri_basis: akn4un
+akn_uri_note: ''

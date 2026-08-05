@@ -47,3 +47,7 @@ provenance_note: 'Authentic Spanish text extracted from the byte-exact official 
 binding_force: binding
 issuing_authority: "Intergovernmental Conference on Marine Biological Diversity of Areas Beyond National Jurisdiction (United Nations)"
 administering_authority: null
+akn_expression_uri: /akn/un/doc/treaty/un-conf/2023-06-19/bbnj-agreement-2023/spa
+akn_uri: /akn/un/doc/treaty/un-conf/2023-06-19/bbnj-agreement-2023
+akn_uri_basis: akn4un
+akn_uri_note: ''

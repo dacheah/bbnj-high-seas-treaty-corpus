@@ -59,3 +59,7 @@ verification:
 binding_force: binding
 issuing_authority: "United Nations Conference on Straddling Fish Stocks and Highly Migratory Fish Stocks"
 administering_authority: null
+akn_expression_uri: /akn/un/doc/treaty/un-conf/1995-08-04/fish-stocks-agreement-1995/eng
+akn_uri: /akn/un/doc/treaty/un-conf/1995-08-04/fish-stocks-agreement-1995
+akn_uri_basis: akn4un
+akn_uri_note: ''

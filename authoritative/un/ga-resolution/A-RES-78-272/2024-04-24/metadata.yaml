@@ -57,3 +57,7 @@ verification:
 binding_force: non_binding
 issuing_authority: "United Nations General Assembly"
 administering_authority: null
+akn_expression_uri: /akn/un/statement/resolution/un-ga/2024-04-24/A-RES-78-272/eng
+akn_uri: /akn/un/statement/resolution/un-ga/2024-04-24/A-RES-78-272
+akn_uri_basis: akn4un
+akn_uri_note: ''

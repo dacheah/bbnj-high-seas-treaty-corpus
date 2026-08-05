@@ -1,0 +1,178 @@
+{
+  "$comment": [
+    "Declared inputs for scripts/akn.py. Nothing about AKN identifier minting is decided at",
+    "runtime: every mapping is here, and an input this file does not cover yields basis",
+    "'unmapped' with a null URI rather than a guess.",
+    "",
+    "TWO SLOTS, TWO DIFFERENT RULES — this is the whole design and it is easy to get wrong:",
+    "",
+    "  country  CONSTRAINED BY SPEC. AKN NC v1.0 requires an ISO 3166 code and says it MUST",
+    "           equal <FRBRcountry>. We may only use codes ISO actually assigns, plus the",
+    "           exceptionally reserved 'un' and 'eu' that the AKN4UN and AKN4EU profiles use.",
+    "           Inventing a code here (ISO does reserve XA-XZ for private use) would produce a",
+    "           URI that validates and resolves for nobody. We do not do it. See akn.py.",
+    "",
+    "  author   FREE BY DESIGN. The convention leaves the author slot to the naming authority.",
+    "           Slugs below beyond AKN4UN's own (un-ga, un-sc) are ours, and that is within the",
+    "           convention rather than a departure from it.",
+    "",
+    "doctype/subtype mappings marked \"local\": true are our reading of the AKN document types,",
+    "not something a published profile mandates. Recorded as such so a reviewer can disagree",
+    "with the mapping without doubting the provenance."
+  ],
+
+  "$lang_note": [
+    "AKN Expression URIs take ISO 639-2 alpha-3 ('eng', 'fra', 'ara'); our records carry",
+    "ISO 639-1 alpha-2. This map is the bridge. It also drives the FRBR fix: a language tag",
+    "trailing version_id or corpus_id ('1972-03-29-fr', 'bbnj-agreement-2023-ar') is stripped",
+    "from the WORK identifier and moved to the EXPRESSION, but ONLY when it matches the",
+    "record's own declared `language`. Without that, every language version of a treaty would",
+    "carry a distinct Work URI — asserting they are different instruments."
+  ],
+  "lang2_to_lang3": {
+    "ar": "ara", "de": "deu", "en": "eng", "es": "spa", "fr": "fra", "id": "ind",
+    "it": "ita", "ja": "jpn", "ko": "kor", "mt": "mlt", "nl": "nld", "pt": "por",
+    "ru": "rus", "th": "tha", "tr": "tur", "vi": "vie", "zh": "zho"
+  },
+
+  "alpha3_to_alpha2": {
+    "ARE": "ae", "ARG": "ar", "AUS": "au", "BHR": "bh", "BMU": "bm", "BRA": "br",
+    "CAN": "ca", "CHE": "ch", "CHN": "cn", "CYM": "ky", "DEU": "de", "ESP": "es",
+    "FRA": "fr", "GBR": "gb", "GIB": "gi", "HKG": "hk", "IDN": "id", "IND": "in",
+    "ITA": "it", "JPN": "jp", "KOR": "kr", "LIE": "li", "LUX": "lu", "MEX": "mx",
+    "MLT": "mt", "MYS": "my", "NGA": "ng", "NLD": "nl", "NZL": "nz", "PHL": "ph",
+    "QAT": "qa", "SGP": "sg", "SLV": "sv", "THA": "th", "TUR": "tr", "USA": "us",
+    "VGB": "vg", "VNM": "vn", "ZAF": "za"
+  },
+
+  "authorities": {
+    "un-ga": {
+      "match": ["United Nations General Assembly", "^UNGA$"],
+      "country": "un",
+      "author": "un-ga",
+      "basis": "akn4un"
+    },
+    "un-sc": {
+      "match": ["United Nations Security Council", "Security Council"],
+      "country": "un",
+      "author": "un-sc",
+      "basis": "akn4un"
+    },
+    "un-copuos": {
+      "match": ["Committee on the Peaceful Uses of Outer Space", "COPUOS"],
+      "country": "un",
+      "author": "un-copuos",
+      "basis": "akn4un"
+    },
+    "un-conference": {
+      "match": [
+        "United Nations Conference",
+        "Conference on the Law of the Sea",
+        "Intergovernmental Conference on Marine Biological Diversity",
+        "Preparatory Commission \\(United Nations\\)",
+        "BBNJ Preparatory Commission"
+      ],
+      "country": "un",
+      "author": "un-conf",
+      "basis": "akn4un",
+      "note": "Treaty-making conferences convened by the UN General Assembly. The country slot is 'un' on the same basis as any other UN organ; 'un-conf' is our author slug."
+    },
+    "eu": {
+      "match": [
+        "European Parliament", "European Commission", "Council of the European Union",
+        "European Union", "^EU$"
+      ],
+      "country": "eu",
+      "author": "eu",
+      "basis": "akn4eu",
+      "note": "'eu' is exceptionally reserved in ISO 3166-1, so the country slot is spec-legal independently of the AKN4EU profile."
+    },
+
+    "isa": {
+      "match": ["International Seabed Authority", "^ISA$"],
+      "basis": "none",
+      "reason": "The International Seabed Authority is an autonomous international organisation established by UNCLOS Part XI, not an organ of the United Nations. It has no ISO 3166 code and no published Akoma Ntoso profile covers it, so no conformant country slot exists. Not minted rather than invented — see the XA-XZ discussion in scripts/akn.py."
+    },
+    "itlos": {
+      "match": ["International Tribunal for the Law of the Sea", "Seabed Disputes Chamber", "^ITLOS$"],
+      "basis": "none",
+      "reason": "ITLOS and its Seabed Disputes Chamber are established by UNCLOS Annex VI as an independent judicial body, not a UN organ. No ISO 3166 code and no published AKN profile applies."
+    },
+    "ats": {
+      "match": ["Antarctic Treaty", "ATCM", "Antarctic Treaty Consultative Meeting", "Antarctic Treaty Secretariat"],
+      "basis": "none",
+      "reason": "The Antarctic Treaty Consultative Meeting and its Secretariat are autonomous treaty bodies with no UN affiliation, no ISO 3166 code, and no published AKN profile."
+    },
+    "ccamlr": {
+      "match": ["CCAMLR", "Conservation of Antarctic Marine Living Resources"],
+      "basis": "none",
+      "reason": "CCAMLR is an autonomous commission established by its own 1980 Convention. No ISO 3166 code and no published AKN profile applies."
+    },
+    "fatf": {
+      "match": ["Financial Action Task Force", "^FATF"],
+      "basis": "none",
+      "reason": "The FATF is an intergovernmental body hosted by the OECD with no ISO 3166 code and no published AKN profile. Its Recommendations are also held under a restricted redistribution posture."
+    }
+  },
+
+  "doctypes": {
+    "treaty":                 {"doctype": "doc", "subtype": "treaty", "local": true},
+    "convention":             {"doctype": "doc", "subtype": "treaty", "local": true},
+    "implementing_agreement": {"doctype": "doc", "subtype": "treaty", "local": true},
+
+    "resolution":    {"doctype": "statement", "subtype": "resolution", "local": true},
+    "ga_resolution": {"doctype": "statement", "subtype": "resolution", "local": true},
+    "decision":      {"doctype": "statement", "subtype": "decision", "local": true},
+
+    "advisory_opinion": {"doctype": "judgment", "subtype": "advisoryOpinion", "local": true},
+    "order":            {"doctype": "judgment", "subtype": "order", "local": true},
+
+    "statute":             {"doctype": "act"},
+    "act":                 {"doctype": "act"},
+    "law":                 {"doctype": "act"},
+    "federal act":         {"doctype": "act"},
+    "national_statute":    {"doctype": "act"},
+    "national_legislation":{"doctype": "act"},
+    "ley":                 {"doctype": "act"},
+    "lei":                 {"doctype": "act"},
+
+    "regulation":             {"doctype": "act", "subtype": "regulation", "local": true},
+    "regulations":            {"doctype": "act", "subtype": "regulation", "local": true},
+    "national_regulation":    {"doctype": "act", "subtype": "regulation", "local": true},
+    "delegated regulation":   {"doctype": "act", "subtype": "regulation", "local": true},
+    "implementing regulation":{"doctype": "act", "subtype": "regulation", "local": true},
+    "ordinance":              {"doctype": "act", "subtype": "ordinance", "local": true},
+    "statutory instrument":   {"doctype": "act", "subtype": "statutoryInstrument", "local": true},
+
+    "soft_law_guideline": {"doctype": "doc", "subtype": "guideline", "local": true},
+    "isa_draft":          {"doctype": "doc", "subtype": "draft", "local": true},
+    "prepcom_document":   {"doctype": "doc", "subtype": "workingDocument", "local": true},
+
+    "$secondary_note": "Subordinate instruments that carry legal force are 'act' with a subtype naming the local form, not 'doc'. The test applied was whether the instrument imposes obligations on its own account (act) or explains, corrects or collects (doc). Each is a judgement and each is marked local:true so a reviewer can disagree with the mapping without doubting the record.",
+
+    "decreto":            {"doctype": "act", "local": true},
+    "decree":             {"doctype": "act", "subtype": "decree", "local": true},
+    "presidential decree":{"doctype": "act", "subtype": "decree", "local": true},
+    "emergency decree":   {"doctype": "act", "subtype": "decree", "local": true},
+    "cabinet decision":   {"doctype": "act", "subtype": "decision", "local": true},
+    "cabinet office order": {"doctype": "act", "subtype": "ordinance", "local": true},
+    "resolução":          {"doctype": "act", "subtype": "regulation", "local": true},
+    "resolucao":          {"doctype": "act", "subtype": "regulation", "local": true},
+    "resolución general": {"doctype": "act", "subtype": "regulation", "local": true},
+    "administrative rule":{"doctype": "act", "subtype": "regulation", "local": true},
+    "rule":               {"doctype": "act", "subtype": "regulation", "local": true},
+    "rules":              {"doctype": "act", "subtype": "regulation", "local": true},
+    "rulebook module":    {"doctype": "act", "subtype": "regulation", "local": true},
+    "federal decree-law": {"doctype": "act", "local": true},
+    "federal law":        {"doctype": "act", "local": true},
+    "amending act":       {"doctype": "act", "subtype": "amending", "local": true},
+
+    "notice":             {"doctype": "doc", "subtype": "notice", "local": true},
+    "circular":           {"doctype": "doc", "subtype": "circular", "local": true},
+    "corrigendum":        {"doctype": "doc", "subtype": "corrigendum", "local": true},
+    "reporting-forms":    {"doctype": "doc", "subtype": "form", "local": true,
+                           "scope_query": "OCC reporting-form instructions and an information-collection notice. These are administrative paperwork rather than law, and arguably fall outside a corpus of legal instruments. Mapped so the identifier layer does not silently adjudicate scope — but the scope-boundary document should decide whether they belong at all."},
+
+    "$unmapped_note": "Anything absent here yields basis 'unmapped' with a null URI — a visible backlog rather than a silent default. Add entries only once each has been deliberately mapped; a guess recorded as a mapping is worse than a gap that shows."
+  }
+}

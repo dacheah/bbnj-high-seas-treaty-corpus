@@ -57,3 +57,7 @@ verification:
 binding_force: non_binding
 issuing_authority: "United Nations General Assembly"
 administering_authority: null
+akn_expression_uri: /akn/un/statement/resolution/un-ga/2025-03-04/A-RES-79-271/eng
+akn_uri: /akn/un/statement/resolution/un-ga/2025-03-04/A-RES-79-271
+akn_uri_basis: akn4un
+akn_uri_note: ''

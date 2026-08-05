@@ -280,6 +280,36 @@
           }
         }
       }
+    },
+    "akn_uri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Akoma Ntoso Naming Convention Work-level identifier, or null where no conformant one exists. Shared by every language version of the instrument — language belongs to the Expression, not the Work. Minted deterministically by scripts/akn.py from schema/akn-registry.json; never hand-written.",
+      "pattern": "^/akn/[a-z]{2}(-[a-z0-9]{1,3})?/[A-Za-z][A-Za-z0-9]*(/[A-Za-z0-9._\\-]+)*/\\d{4}(-\\d{2}-\\d{2})?/[A-Za-z0-9._\\-]+$"
+    },
+    "akn_expression_uri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "AKN Expression identifier: the Work URI plus the ISO 639-2 language. Null where the Work could not be minted, or where the record's language cannot be expressed in ISO 639-2 (which has no script or region subtag)."
+    },
+    "akn_uri_basis": {
+      "type": "string",
+      "enum": [
+        "akn4un",
+        "akn4eu",
+        "iso3166",
+        "none",
+        "unmapped"
+      ],
+      "description": "Why the identifier looks the way it does — or why there isn't one. 'none' means no conformant country code exists for the issuing body (the ISA, ITLOS, the ATS Secretariat, CCAMLR): permanent, and not something to paper over with an ISO user-assigned code. 'unmapped' means the registry does not cover this yet: our backlog, and it should trend to zero. Collapsing the two would hide the actionable one."
+    },
+    "akn_uri_note": {
+      "type": "string",
+      "description": "Required whenever basis is 'none' or 'unmapped': states the reason. An unexplained absence is indistinguishable from an oversight."
     }
   },
   "allOf": [
@@ -298,6 +328,39 @@
           "text_sha256",
           "text_fidelity",
           "language"
+        ]
+      }
+    },
+    {
+      "$comment": "basis 'none'/'unmapped' requires a null akn_uri AND a non-empty note. Enforced here so a record cannot claim a decline while carrying an identifier, even if it bypasses akn.py.",
+      "if": {
+        "properties": {
+          "akn_uri_basis": {
+            "enum": [
+              "none",
+              "unmapped"
+            ]
+          }
+        },
+        "required": [
+          "akn_uri_basis"
+        ]
+      },
+      "then": {
+        "properties": {
+          "akn_uri": {
+            "type": "null"
+          },
+          "akn_expression_uri": {
+            "type": "null"
+          },
+          "akn_uri_note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "akn_uri_note"
         ]
       }
     }
