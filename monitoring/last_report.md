@@ -1,4 +1,4 @@
-# Source monitor report — 2026-08-02T01:24:16Z
+# Source monitor report — 2026-09-01T10:55:46Z
 
 _monitor v3.8 · schema mode off (whole-page fallback)_
 
