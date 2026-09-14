@@ -43,6 +43,7 @@ Automation only WATCHES and queues; the maintainer judges. Nothing is ingested a
 from __future__ import annotations
 import datetime
 import hashlib
+import html
 import json
 import os
 import re
@@ -78,7 +79,19 @@ from urllib.request import Request, urlopen
 #        CHANGED. On 2026-08-01 three unmoved ODS record copies flagged that way and the issue sat
 #        open for six weeks — a false alarm in a corpus whose product is proving nothing changed.
 #        Same digest in a different spelling is now a self-clearing baseline repair, never an alarm.
-MONITOR_VERSION = "3.9"
+#  3.10 (a) to_text() UNESCAPES HTML ENTITIES before collapsing space. Tag-stripping left `&nbsp;` as
+#        six literal characters, so a page that renders identically but encodes one space differently
+#        moved the hash and flagged CHANGED — measured on three variants of one visible sentence, three
+#        different digests. Latent in every source of every corpus, not just the ISA pages it surfaced
+#        on. THIS CHANGES COMPARABLE TEXT GLOBALLY: the first run after this version reports EVERY
+#        source CHANGED unless the baselines are re-derived in the same change. A corpus adopting this
+#        version must re-baseline deliberately, comparing old-vs-new digests per source first so a
+#        genuine pending change is never swallowed by the reset.
+#        (b) There was no --help, and any argument that was not --selftest/--tally fell through to a
+#        LIVE SWEEP: `--help`, a typo, or a hopeful `--dry-run` advanced every source's baseline and
+#        rewrote the report, silently discarding whatever pending signals the sweep was carrying.
+#        Unrecognised arguments now print usage, exit 2, and fetch nothing.
+MONITOR_VERSION = "3.10"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -112,9 +125,19 @@ except Exception:
 
 # ---- pure helpers (offline-testable) --------------------------------------------------------
 def to_text(raw: str) -> str:
-    """Reduce HTML to comparable text: drop scripts/styles/tags, collapse space."""
+    """Reduce HTML to comparable text: drop scripts/styles/tags, unescape entities, collapse space.
+
+    ENTITIES ARE UNESCAPED (v3.10), because tag-stripping alone leaves `&nbsp;` as six literal
+    characters: a page that renders identically but encodes a space differently moved the hash and
+    flagged CHANGED. `&nbsp;` unescapes to U+00A0, which `\\s+` matches, so it collapses to the same
+    single space as a plain one.
+
+    ORDER MATTERS: unescape AFTER tag removal, never before, or escaped markup carried in the body
+    (`&lt;script&gt;`) would be unescaped into something the tag regex then deletes.
+    """
     raw = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", " ", raw)
     raw = re.sub(r"(?s)<[^>]+>", " ", raw)
+    raw = html.unescape(raw)
     return re.sub(r"\s+", " ", raw).strip()
 
 
@@ -738,6 +761,39 @@ def selftest() -> int:
     # monthly issue becomes noise and the real signals stop being read.
     assert triage_flags({**quiet, "manual": 9}, 0, 0, 0, []) == (False, False)
 
+    # --- v3.10 (a): HTML entities must not move the hash (issue #5, cause 1) ---
+    # These are the three variants of ONE visible sentence that produced three different digests.
+    assert content_hash("<p>Area means the seabed.</p>") == \
+        content_hash("<p>Area&nbsp;means the seabed.</p>") == \
+        content_hash("<p>Area means the seabed.&nbsp;</p>"), \
+        "an entity-encoded space must not change the comparable text"
+    assert content_hash("<p>a &amp; b</p>") == content_hash("<p>a & b</p>"), \
+        "&amp; renders as '&' and must hash the same"
+    assert content_hash("<p>it&#39;s</p>") == content_hash("<p>it's</p>"), \
+        "numeric entities for punctuation must hash the same"
+    # ORDER: unescape AFTER tag removal. Escaped markup in the body is TEXT, so it must survive as
+    # literal characters and must not be eaten by the tag regex.
+    assert to_text("<p>&lt;b&gt;hi&lt;/b&gt;</p>") == "<b>hi</b>", \
+        "escaped markup carried in the body is text — unescaping before tag removal would delete it"
+    # and genuine detection must survive the change
+    assert content_hash("<p>Area means the seabed.</p>") != \
+        content_hash("<p>Area means the water.</p>"), \
+        "entity handling must not blunt genuine detection"
+
+    # --- v3.10 (b): an unrecognised argument must NOT fall through to a live sweep ---
+    assert parse_args([]) == ("sweep", [])
+    assert parse_args(["--selftest"]) == ("selftest", [])
+    assert parse_args(["--tally"]) == ("tally", [])
+    assert parse_args(["--help"])[0] == "help" and parse_args(["-h"])[0] == "help"
+    assert parse_args(["--selftest", "--tally"])[0] == "selftest"
+    # THE DEFECT THIS PREVENTS: --help was unrecognised, so it ran a real sweep and advanced every
+    # baseline, silently discarding pending change signals. A typo or a hoped-for --dry-run did the
+    # same, and the run still reported success.
+    for bad in (["--dry-run"], ["--hepl"], ["--update"], ["--verbose"], ["sweep"], ["--help-x"]):
+        mode, unknown = parse_args(bad)
+        assert mode == "error" and unknown == bad, \
+            f"{bad} must be refused as an error, never treated as 'just run it'"
+
     print(f"watch_sources v{MONITOR_VERSION} selftest: OK")
     return 0
 
@@ -768,10 +824,57 @@ def tally() -> int:
 
 
 # ---- run ------------------------------------------------------------------------------------
+USAGE = """usage: watch_sources.py [--selftest | --tally | --help]
+
+  (no argument)  LIVE SWEEP: fetch every source, compare against its baseline, write
+                 monitoring/last_report.md, and ADVANCE the baselines of unchanged and changed
+                 sources. This WRITES STATE. There is no dry run: a sweep is the only way to look,
+                 and looking costs the pending signal.
+  --selftest     offline assertions, no network, writes nothing
+  --tally        print the measured whole-page false-alarm rate from accumulated runs; read-only
+  --help, -h     this text
+
+An unrecognised argument is an ERROR, not a default. Before v3.10 anything that was not --selftest or
+--tally fell through to a LIVE SWEEP, so `--help`, a typo, or a hoped-for `--dry-run` advanced every
+source's baseline and rewrote the report — discarding the change signals it had been carrying and
+reporting it as a normal successful run. To inspect behaviour without sweeping, run --selftest.
+"""
+
+
+def parse_args(args):
+    """Classify argv into a mode. PURE, so the behaviour is testable without running a sweep.
+
+    Returns (mode, unknown) where mode is 'help' | 'selftest' | 'tally' | 'sweep' | 'error'.
+    'error' is the v3.10 addition: an unrecognised argument must not be read as 'just run it'.
+    """
+    if "--help" in args or "-h" in args:
+        return "help", []
+    known = {"--selftest", "--tally"}
+    unknown = [a for a in args if a not in known]
+    if unknown:
+        return "error", unknown
+    if "--selftest" in args:
+        return "selftest", []
+    if "--tally" in args:
+        return "tally", []
+    return "sweep", []
+
+
 def main() -> int:
-    if "--selftest" in sys.argv:
+    mode, unknown = parse_args(sys.argv[1:])
+    if mode == "help":
+        print(USAGE, end="")
+        return 0
+    if mode == "error":
+        sys.stderr.write(
+            "error: unrecognised argument(s): " + " ".join(unknown) + "\n"
+            "refusing to sweep: a sweep WRITES state (it advances every source's baseline and\n"
+            "rewrites the report), so an unknown flag must not be treated as 'just run it'.\n\n")
+        sys.stderr.write(USAGE)
+        return 2
+    if mode == "selftest":
         return selftest()
-    if "--tally" in sys.argv:
+    if mode == "tally":
         return tally()
 
     data = json.load(open(SOURCES, encoding="utf-8"))

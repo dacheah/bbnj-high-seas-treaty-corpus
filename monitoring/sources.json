@@ -28,7 +28,7 @@
     {
       "name": "UN BBNJ — Preparatory Commission (first session docs)",
       "url": "https://www.un.org/bbnjagreement/en/meetings/preparatory-commission/documents/first-session",
-      "last_sha256": "sha256:793cae6e57f753d267212e9dd53fa78285c8de808874f72ce6cd81519558f629",
+      "last_sha256": "sha256:5b8bc8cff12cdff8a38e23293679891d886e418bb88e21836250bb11a4cfc9cd",
       "note": "PrepCom working documents and reports.",
       "expect_contains": "First session",
       "last_checked": "2026-09-01T10:55:46Z"
@@ -44,7 +44,7 @@
     {
       "name": "UN BBNJ — Notifications",
       "url": "https://www.un.org/bbnjagreement/en/notifications",
-      "last_sha256": "sha256:e682669c9a928c7803cf62e8c1bb24692d0d2b9c8ae0b8e3639edf96fedd8c30",
+      "last_sha256": "sha256:edcc27299de051fe67327453bb8506464e5d3a32acf2fae7b11e741afe2843d9",
       "note": "Information-sharing / clearing-house related notifications.",
       "expect_contains": "Notifications",
       "last_checked": "2026-09-01T10:55:46Z"
