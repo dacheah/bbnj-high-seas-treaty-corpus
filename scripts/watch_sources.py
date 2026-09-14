@@ -73,7 +73,12 @@ from urllib.request import Request, urlopen
 #   3.8  duplicate_ok_with: a MUTUALLY declared pair may share a hash (legislation.gov.uk serves
 #        /made frozen and /uksi/Y/N latest-version — identical until the first amendment). Without
 #        it that legitimate pair forced "MONITOR BROKEN" every run, forever.
-MONITOR_VERSION = "3.8"
+#   3.9  norm_digest() + classify() state `reformatted`. Whole-page comparison was a raw string
+#        comparison, so a baseline seeded with bare hex and the identical computed digest reported
+#        CHANGED. On 2026-08-01 three unmoved ODS record copies flagged that way and the issue sat
+#        open for six weeks — a false alarm in a corpus whose product is proving nothing changed.
+#        Same digest in a different spelling is now a self-clearing baseline repair, never an alarm.
+MONITOR_VERSION = "3.9"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
@@ -135,6 +140,32 @@ def content_hash(raw: str, ignore=None) -> str:
     existing baselines are unaffected for every source that does not declare any."""
     return "sha256:" + hashlib.sha256(
         strip_volatile(to_text(raw), ignore).encode("utf-8")).hexdigest()
+
+
+def norm_digest(value) -> str | None:
+    """Canonical comparable form of a stored or computed hash: bare lowercase hex.
+
+    WHY THIS EXISTS. `last_sha256` is a *string* in sources.json, so comparing two of them is a
+    string comparison, not a content comparison — and a baseline entry seeded by hand with bare hex
+    (no `sha256:` prefix) compares unequal to the identical digest computed by content_hash().
+
+    That is exactly what happened on 2026-08-01: three ODS record-copy sources were added by hand on
+    2026-07-25 with un-prefixed hashes, the monitor computed the same digests with the prefix, and
+    the report read:
+
+        was `b137390b89f3...`
+        now `sha256:b137390b89f3...`
+
+    Identical digests, reported as CHANGED, and the resulting issue sat open for six weeks. For a
+    corpus whose product is proving that a text has NOT changed, a false alarm is the most expensive
+    output there is: it costs a maintainer's attention and it teaches them to skim the alerts. A
+    formatting difference must never be able to masquerade as a content change.
+    """
+    if value is None:
+        return None
+    text = str(value).strip().lower()
+    prefix = "sha256:"
+    return text[len(prefix):] if text.startswith(prefix) else text
 
 
 def encode_url(u: str) -> str:
@@ -295,8 +326,33 @@ def diff_records(prev: list, cur: list) -> dict:
             "changed": changed}
 
 
+def advances_baseline(state: str) -> bool:
+    """May this run's computed hash overwrite the stored baseline?
+
+    Only for trustworthy states — never a shell, a SPA, or an error, because those would write a
+    bad hash as the new truth.
+
+    `reformatted` MUST be here. It means the digest is identical and only the stored spelling
+    differed; advancing rewrites the canonical form and clears the state on the same run. Omit it
+    and the non-canonical baseline persists forever, so the note fires every run — which is exactly
+    how a maintenance note becomes noise.
+
+    A pure function on purpose: the inline version of this decision was untestable, and the missing
+    `reformatted` term went unnoticed until the self-heal test caught it.
+    """
+    return state in {"baseline", "unchanged", "changed", "reformatted"}
+
+
 def classify(sources: list, hashes: dict, lengths: dict | None = None) -> list:
-    """Pure whole-page diff logic. States: manual, error, suspect, baseline, changed, unchanged."""
+    """Pure whole-page diff logic.
+
+    States: manual, error, suspect, baseline, changed, reformatted, unchanged.
+
+    `reformatted` is new in v3.9: the stored baseline and the computed hash are the SAME digest in
+    different spelling (bare hex vs `sha256:`-prefixed). That is a baseline-format repair, NOT a
+    source change, and it must not reach the alert path — see norm_digest(). The baseline is
+    rewritten canonically on the same run, so this state is self-clearing.
+    """
     lengths = lengths or {}
     events = []
     for s in sources:
@@ -310,8 +366,10 @@ def classify(sources: list, hashes: dict, lengths: dict | None = None) -> list:
             events.append((name, "suspect", s.get("last_sha256"), h))
         elif s.get("last_sha256") is None:
             events.append((name, "baseline", None, h))
-        elif h != s["last_sha256"]:
+        elif norm_digest(h) != norm_digest(s["last_sha256"]):
             events.append((name, "changed", s["last_sha256"], h))
+        elif h != s["last_sha256"]:
+            events.append((name, "reformatted", s["last_sha256"], h))
         else:
             events.append((name, "unchanged", s["last_sha256"], h))
     return events
@@ -527,6 +585,36 @@ def selftest() -> int:
     got = {n: st for n, st, _, _ in classify(srcs, hh, ll)}
     assert got == {"a": "unchanged", "b": "baseline", "c": "changed", "d": "error",
                    "e": "manual", "f": "unchanged", "g": "suspect"}, got
+
+    # THE 2026-08-01 FALSE ALARM. A hand-seeded baseline with bare hex vs the identical digest
+    # computed with the `sha256:` prefix must be a format repair, never a source change. Without
+    # this, three unmoved ODS record copies reported CHANGED and the issue sat open for six weeks.
+    BARE = "b137390b89f321f3f2f322a9e2d8bdad96f4d5a6e0aa1ecd2886e00de42bbfe2"
+    assert classify([{"name": "ods", "url": "x", "last_sha256": BARE}],
+                    {"ods": "sha256:" + BARE}, {"ods": 5000})[0][1] == "reformatted", \
+        "same digest in a different spelling is NOT a change"
+    assert norm_digest(BARE) == norm_digest("sha256:" + BARE) == norm_digest("SHA256:" + BARE.upper())
+    assert norm_digest(None) is None
+    # ...and the canonical spelling must still be plain `unchanged`.
+    assert classify([{"name": "ods", "url": "x", "last_sha256": "sha256:" + BARE}],
+                    {"ods": "sha256:" + BARE}, {"ods": 5000})[0][1] == "unchanged"
+    # A REAL change must still be caught, including when the baseline is bare hex.
+    REAL = "c" * 64
+    assert classify([{"name": "ods", "url": "x", "last_sha256": BARE}],
+                    {"ods": "sha256:" + REAL}, {"ods": 5000})[0][1] == "changed", \
+        "normalising must not blunt a genuine change"
+    # A format repair must NOT raise the alarm; a real change must.
+    import inspect as _inspect
+    assert "reformatted" not in _inspect.getsource(triage_flags), \
+        "reformatted must stay out of the alert path"
+    # ...and it MUST advance the baseline, or the non-canonical value persists and the note repeats
+    # every run forever. That omission was live in the first version of this very fix.
+    assert advances_baseline("reformatted"), "reformatted must self-heal the baseline"
+    assert advances_baseline("changed") and advances_baseline("unchanged")
+    assert advances_baseline("baseline")
+    assert not advances_baseline("suspect") and not advances_baseline("error")
+    assert not advances_baseline("manual") and not advances_baseline("schema_suspect"), \
+        "a shell, SPA or error must never be written as the new truth"
     # a SPA must never be baselined, even on a first run
     assert classify([{"name": "z", "url": "s", "render": "spa", "last_sha256": None}],
                     {"z": "sha256:zz"}, {"z": 30})[0][1] == "manual"
@@ -763,7 +851,7 @@ def main() -> int:
 
     # Advance baselines ONLY for trustworthy states — never a shell, a SPA, or an error.
     for s in page_sources:
-        if st_of[s["name"]] in {"baseline", "unchanged", "changed"}:
+        if advances_baseline(st_of[s["name"]]):
             h = hashes[s["name"]]
             if h and not str(h).startswith("ERROR"):
                 s["last_sha256"] = h
@@ -815,8 +903,10 @@ def main() -> int:
                              f"{'🟦 baseline set' if st == 'baseline' else '✅ unchanged'} "
                              f"({i.get('cur_count', '?')} records)")
         lines.append("")
-    order = ["changed", "suspect", "manual", "error", "baseline", "unchanged"]
+    order = ["changed", "suspect", "reformatted", "manual", "error", "baseline", "unchanged"]
     mark = {"changed": "🔶 CHANGED", "suspect": "🟥 SUSPECT — content too short (shell/error?)",
+            "reformatted": "🔧 BASELINE REFORMATTED — same digest, non-canonical stored form "
+                           "(no source change; baseline rewritten)",
             "manual": "🟠 MANUAL — JS-rendered source, auto-monitor cannot see the law",
             "error": "⚠️ fetch error", "baseline": "🟦 baseline set", "unchanged": "✅ unchanged"}
     by_state = {k: [] for k in order}
