@@ -1,12 +1,16 @@
-# Source monitor report — 2026-09-01T10:55:46Z
+# Source monitor report — 2026-09-14T23:59:39Z
 
-_monitor v3.8 · schema mode off (whole-page fallback)_
+_monitor v3.10 · schema mode off (whole-page fallback)_
 
-0 changed · 0 suspect · 0 schema-suspect · 0 manual-review · 0 error · 7 total
+1 changed · 0 suspect · 0 schema-suspect · 0 manual-review · 0 error · 7 total
 
-## ✅ unchanged (7)
-- **UN BBNJ — Text of the Agreement**
+## 🔶 CHANGED (1)
 - **UN Treaty Collection — XXI.10 status**
+    - was `sha256:145c032d26d0b33f38017c18643858393a9943e28ae7b25dbef8610997f58707`
+    - now `sha256:d84ebbbe7486d682130b56c9dc8fac5df8f2cebcf78452e4968c3c6b6c55f228`
+
+## ✅ unchanged (6)
+- **UN BBNJ — Text of the Agreement**
 - **UN BBNJ — GA resolutions and decisions**
 - **UN BBNJ — Preparatory Commission (first session docs)**
 - **UN BBNJ — Preparatory Commission (third session docs)**
