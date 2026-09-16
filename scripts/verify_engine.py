@@ -77,6 +77,7 @@ SELF = "verify_engine.py"        # this file can verify itself once it is added 
 # one list serves every corpus in the portfolio.
 ENGINE_EXCLUDE = (
     "scripts/watch_sources.py",
+    "scripts/check_revisions.py",
     "scripts/draft_versions.py",
     "scripts/audit_sources.py",
     "scripts/build_monitoring.py",
