@@ -2,4 +2,5 @@
 # Deliberately minimal and mainstream, for long-term portability.
 PyYAML>=6.0
 jsonschema>=4.0
-pymupdf>=1.24  # extract.py reproducibility checker (PyMuPDF)
+pymupdf==1.28.2  # extract.py reproducibility checker (PyMuPDF). PINNED, deliberately not >=:
+                 # one record (un/unclos-1982) derives its text WITH PyMuP...[truncated]

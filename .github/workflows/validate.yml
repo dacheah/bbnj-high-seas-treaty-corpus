@@ -1,13 +1,81 @@
 name: validate
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # PINNED DELIBERATELY. This was `ubuntu-latest`, which floats: the runner image moved from
+    # Ubuntu 22.04 (Poppler 22.02.0) to 24.04 (24.02.0) without a single commit, silently changing
+    # what "this text re-derives from its original" means for every record at once. 24.04 is the
+    # toolchain this corpus's texts actually re-derive under today (proved by the gate passing on
+    # noble), so the pin records that fact rather than asserting an older one. The assert step below
+    # fails closed if the image ever moves again.
+    runs-on: ubuntu-24.04   # Poppler 24.02.0 — the pinned toolchain for byte-exact PDF extraction
+    permissions:
+      contents: write       # used ONLY by the workflow_dispatch attestation refresh at the end
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with: { python-version: "3.11" }
       - run: pip install -r scripts/requirements.txt
       - run: sudo apt-get update && sudo apt-get install -y poppler-utils   # pdftotext for extract.py
+      - name: Engine identity (no engine file added, modified or removed)
+        # Dormant until now: verify_engine.py existed but no workflow referenced it, so the
+        # extractor could change without any gate noticing (issue #7). Engine files are hashed;
+        # a deliberate change means regenerating scripts/MANIFEST.sha256 in the same commit.
+        run: python3 scripts/verify_engine.py
+      - name: Assert the toolchain is the pinned one (fail closed if the runner moves)
+        run: |
+          python3 - <<'PY'
+          import glob, json, sys
+          sys.path.insert(0, "scripts")
+          import extract as E
+
+          pdft = E.poppler_version()
+          pmu  = E.pymupdf_version()
+          print(f"pdftotext (Poppler) {pdft}  ·  pymupdf {pmu}")
+          print("Pinning the job image fixes Poppler; pymupdf is fixed by scripts/requirements.txt.")
+
+          # (e) PER-RECORD ATTESTATIONS, where they exist (issue #7). Each must name the toolchain
+          # actually running here, or a CI result cannot be read per record. This is the check that
+          # makes a toolchain move name the affected records instead of silently restating them.
+          files = sorted(glob.glob("extraction/**/*.json", recursive=True))
+          bad = []
+          for f in files:
+              try:
+                  d = json.load(open(f, encoding="utf-8"))
+              except Exception:
+                  bad.append((f, "unreadable")); continue
+              tc = (d.get("extractor") or {}).get("toolchain") or ""
+              if tc.startswith("poppler ") and tc != f"poppler {pdft}":
+                  bad.append((d.get("corpus_id", f), tc))
+              elif tc.startswith("pymupdf ") and pmu != "unknown" and tc != f"pymupdf {pmu}":
+                  bad.append((d.get("corpus_id", f), tc))
+          if bad:
+              sys.exit("FAIL: attestation(s) name a toolchain other than this runner's: "
+                       + "; ".join(f"{c} -> {t}" for c, t in bad)
+                       + ". A stale attestation makes that record's reproduction unverifiable. "
+                         "Re-derive the record deliberately and refresh its attestation in the SAME "
+                         "change, or pin the job to the toolchain it was attested under (issue #7).")
+          print(f"OK: {len(files)} per-record attestation(s), all naming this runner's toolchain."
+                if files else
+                "NOTE: no per-record attestations yet — the job pin is the only guard. Run this "
+                "workflow manually to author them (issue #7, option e).")
+          PY
       - run: python3 scripts/validate_corpus.py   # integrity gate: schema, hashes, two-layer wall
       - run: python3 scripts/repro_gate.py        # reproducibility gate: walks authoritative/, applies scripts/repro-policy.json
+      # (e) AUTHOR the attestations, UNDER THE PINNED TOOLCHAIN (issue #7 option e), and commit them.
+      # Deliberately workflow_dispatch-only: authoring is only honest where the pinned toolchain runs,
+      # and a normal push run must not create commits. The assert above keeps them honest on every
+      # other run. Note GitHub suppresses workflow runs caused by the default GITHUB_TOKEN's own
+      # push, so this commit will not re-trigger CI to verify itself — dispatch once more to check.
+      - name: Refresh per-record toolchain attestations
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 scripts/extract.py --attest
+      - name: Commit refreshed attestations
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "corpus-bot"
+          git config user.email "corpus-bot@users.noreply.github.com"
+          git add extraction
+          if git diff --cached --quiet; then echo "no attestation changes"; exit 0; fi
+          git commit -m "chore(attest): refresh per-record toolchain attestations"
+          git push
