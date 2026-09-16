@@ -1,0 +1,15 @@
+{
+  "corpus_id": "un/agreement-partxi-1994",
+  "version_id": "1994-07-28",
+  "extractor": {
+    "tool": "pdftotext",
+    "args": [
+      "-raw",
+      "-enc",
+      "UTF-8"
+    ],
+    "toolchain": "poppler 24.02.0"
+  },
+  "text_sha256": "sha256:1d3effb7221ef4b5b9b8cd310aaee42bf15e789559f3be1649abb3ad2451b350",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}

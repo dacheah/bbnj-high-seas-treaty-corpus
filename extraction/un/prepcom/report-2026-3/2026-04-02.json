@@ -1,0 +1,15 @@
+{
+  "corpus_id": "un/prepcom/report-2026-3",
+  "version_id": "2026-04-02",
+  "extractor": {
+    "tool": "pdftotext",
+    "args": [
+      "-raw",
+      "-enc",
+      "UTF-8"
+    ],
+    "toolchain": "poppler 24.02.0"
+  },
+  "text_sha256": "sha256:68e4943575a6a29c243b9229a290f655a0f1d4de774bb3a1746b769f8b7811e5",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}

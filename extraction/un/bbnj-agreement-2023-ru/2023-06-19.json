@@ -1,0 +1,15 @@
+{
+  "corpus_id": "un/bbnj-agreement-2023-ru",
+  "version_id": "2023-06-19",
+  "extractor": {
+    "tool": "pdftotext",
+    "args": [
+      "-raw",
+      "-enc",
+      "UTF-8"
+    ],
+    "toolchain": "poppler 24.02.0"
+  },
+  "text_sha256": "sha256:9585aa369c0b3dd2511a09cd34a9b1fcf18c314462cd51ae2144a5aa08926f74",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}

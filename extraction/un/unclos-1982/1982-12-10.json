@@ -1,0 +1,11 @@
+{
+  "corpus_id": "un/unclos-1982",
+  "version_id": "1982-12-10",
+  "extractor": {
+    "tool": "pymupdf",
+    "args": [],
+    "toolchain": "pymupdf 1.28.2"
+  },
+  "text_sha256": "sha256:8316d4ae1ab037b22933e3b178f6fea9615d7c9837e891df02e56cd2e7dd75a4",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}

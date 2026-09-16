@@ -1,0 +1,15 @@
+{
+  "corpus_id": "un/ga-decision/78-560",
+  "version_id": "2024-08-13",
+  "extractor": {
+    "tool": "pdftotext",
+    "args": [
+      "-raw",
+      "-enc",
+      "UTF-8"
+    ],
+    "toolchain": "poppler 24.02.0"
+  },
+  "text_sha256": "sha256:b0e2584e1458b305207e02dd679ca214995357dde7f084b908a3d45b704d0a08",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}

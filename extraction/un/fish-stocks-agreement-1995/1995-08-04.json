@@ -1,0 +1,15 @@
+{
+  "corpus_id": "un/fish-stocks-agreement-1995",
+  "version_id": "1995-08-04",
+  "extractor": {
+    "tool": "pdftotext",
+    "args": [
+      "-raw",
+      "-enc",
+      "UTF-8"
+    ],
+    "toolchain": "poppler 24.02.0"
+  },
+  "text_sha256": "sha256:1bee9fee22afaf6ccbf3b1fb3a622f9b6e481431ab17f4b7e9797d122dc56e44",
+  "note": "Toolchain under which this record's text.txt re-derives, proven by scripts/extract.py. Written only where the text reproduced hash-for-hash in the same run, and the hash beside it is the one that re-derivation produced. The byte-exact original.* and its recorded sha256 remain the authoritative anchor; this attests the DERIVATION, not the source."
+}
