@@ -42,12 +42,14 @@ Automation only WATCHES and queues; the maintainer judges. Nothing is ingested a
 """
 from __future__ import annotations
 import datetime
+import difflib
 import hashlib
 import html
 import json
 import os
 import re
 import sys
+import tempfile
 from urllib.parse import quote, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 
@@ -91,13 +93,34 @@ from urllib.request import Request, urlopen
 #        LIVE SWEEP: `--help`, a typo, or a hopeful `--dry-run` advanced every source's baseline and
 #        rewrote the report, silently discarding whatever pending signals the sweep was carrying.
 #        Unrecognised arguments now print usage, exit 2, and fetch nothing.
-MONITOR_VERSION = "3.10"
+#  3.11 a moved PAGE source now keeps both texts, so the flag can be triaged after the fact. Neither
+#        space-law nor bbnj retained a page body, so when the two BBNJ notification sources moved on
+#        2026-10-13 the change could only be explained by reading the live pages — and a page that
+#        REPLACES its content would have been unreadable by the time anyone looked. Every page
+#        source's COMPARABLE TEXT — exactly the string content_hash() hashes — is retained at
+#        monitoring/snapshots/pages/<slug>.txt, and a CHANGED source writes a bounded diff note
+#        (…/<slug>.change-<YYYYMMDD-HHMMSS>.md) against the retained text, BEFORE the baseline
+#        advances. One note per movement, never overwritten: a page amended twice in a day leaves two.
+#        Retention is free while nothing moves: identical bytes are the same git blob, so history
+#        grows only when a page really changes. No text fed to the hash changes, so NO baseline
+#        moves. Token-level, not line-level, because to_text() collapses a page to ONE line and a
+#        line diff of it reports "1 added, 1 removed" and names nothing. The note reaches the triage
+#        issue through last_report.md, which the workflow already embeds in the issue body.
+MONITOR_VERSION = "3.11"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 SOURCES = os.path.join(REPO, "monitoring", "sources.json")
 REPORT = os.path.join(REPO, "monitoring", "last_report.md")
 SNAP_DIR = os.path.join(REPO, "monitoring", "snapshots")
+# Retained page bodies live BESIDE the record snapshots, never among them: _snap_path() is the only
+# way a record snapshot is addressed, nothing globs this directory, and record mode reads
+# `<slug>.json` by name — so a `.txt` in `pages/` cannot be mistaken for record state.
+PAGE_DIR = os.path.join(SNAP_DIR, "pages")
+# A change note must fit where it is read: the triage issue body. Bounded in both directions, and
+# it says so when it truncates.
+CHANGE_NOTE_LINES = 200
+CHANGE_NOTE_CHARS = 8000
 ALARM_LOG = os.path.join(REPO, "monitoring", "false_alarm_log.jsonl")
 
 # Identify honestly and give operators a contact route. A bare token is more likely to be
@@ -451,9 +474,180 @@ def fetch(url: str) -> str:
     return raw.decode("utf-8", errors="replace")
 
 
+def _slug(name: str, limit: int = 60) -> str:
+    """Filesystem-safe key for a source name, shared by record snapshots and retained page bodies."""
+    return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")[:limit] or "src"
+
+
 def _snap_path(name: str) -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")[:60] or "src"
-    return os.path.join(SNAP_DIR, slug + ".json")
+    return os.path.join(SNAP_DIR, _slug(name) + ".json")
+
+
+def _body_path(name: str) -> str:
+    return os.path.join(PAGE_DIR, _slug(name) + ".txt")
+
+
+def comparable_text(raw: str, ignore=None) -> str:
+    """The exact text content_hash() hashes. Retaining THIS string is what makes retention free.
+
+    An unmoved page yields the identical string, write_page_body() rewrites nothing, and git stores
+    the same blob — so history grows only when a page really changes. Retention is tied to the
+    digest by construction rather than by a parallel normalisation that could drift from it.
+    """
+    return strip_volatile(to_text(raw), ignore)
+
+
+def read_page_body(name: str) -> str | None:
+    p = _body_path(name)
+    if not os.path.isfile(p):
+        return None
+    with open(p, encoding="utf-8") as f:
+        return f.read()
+
+
+def write_page_body(name: str, text) -> bool:
+    """Retain a page source's comparable text. Returns True only if the bytes on disk changed.
+
+    Never called for a SUSPECT or ERROR state: a shell or a failed fetch is not a comparator, and
+    overwriting a good retained body with one would destroy the only evidence of the last real text.
+    """
+    if text is None:
+        return False
+    p = _body_path(name)
+    if os.path.isfile(p):
+        with open(p, encoding="utf-8") as f:
+            if f.read() == text:
+                return False
+    os.makedirs(PAGE_DIR, exist_ok=True)
+    with open(p, "w", encoding="utf-8", newline="\n") as f:
+        f.write(text)
+    return True
+
+
+def _cap_words(text: str, cap: int = 600) -> str:
+    """Trim a span to `cap` characters ON A WORD BOUNDARY, and say how many words were dropped.
+
+    A silent cut is worse than no note at all: a reader cannot tell a two-word edit from a passage of
+    two hundred words that happens to end at the same character.
+    """
+    if len(text) <= cap:
+        return text
+    words, kept, used = text.split(), [], 0
+    for w in words:
+        if used + len(w) + 1 > cap:
+            break
+        kept.append(w)
+        used += len(w) + 1
+    return " ".join(kept) + f" …[{len(words) - len(kept)} more word(s)]"
+
+
+def change_summary(old: str, new: str, context: int = 24, max_spans: int = 20) -> dict:
+    """Locate what moved between two texts. PURE, and deliberately WORD-level.
+
+    to_text() collapses whitespace, so a page is ONE line: a line-level diff of it reports "1 added,
+    1 removed" and names no change at all. The comparison is over word tokens, and each span carries
+    the words immediately around it so a reader can recognise the passage without the page.
+    """
+    a, b = (old or "").split(), (new or "").split()
+    spans, added, removed, elided = [], 0, 0, 0
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if tag == "equal":
+            continue
+        added += j2 - j1
+        removed += i2 - i1
+        if len(spans) >= max_spans:
+            elided += 1
+            continue
+        spans.append({"op": tag, "was": " ".join(a[i1:i2]), "now": " ".join(b[j1:j2]),
+                      "before": " ".join(a[max(0, i1 - context):i1]),
+                      "after": " ".join(b[j2:j2 + context])})
+    return {"spans": spans, "added": added, "removed": removed, "elided_spans": elided,
+            "was_words": len(a), "now_words": len(b)}
+
+
+def render_change_note(name: str, old: str | None, new: str, ts: str,
+                       old_digest: str | None = None,
+                       max_lines: int = CHANGE_NOTE_LINES,
+                       max_chars: int = CHANGE_NOTE_CHARS) -> str | None:
+    """A bounded, triageable record of one page source's movement. PURE — no I/O, so it is testable.
+
+    Returns None when old and new are identical: a note for an unmoved page would turn the evidence
+    directory into noise. When there is no retained body (the first sweep after this version) it says
+    so and shows the current text, rather than implying the page did not move.
+    """
+    if old is not None and old == new:
+        return None
+    head = [f"# Page change — {name}", "", f"- seen: {ts}",
+            f"- baseline digest: `{old_digest or 'none'}`"]
+    if old is None:
+        head += ["- **no retained body**: this is the first sweep since page retention was added, so "
+                 "the previous text is not available — only the digest above. The current text is "
+                 "retained from this run onward, and the next movement will carry a diff.", "",
+                 "## current text (first 800 characters)", "", "```", new[:800], "```"]
+        return "\n".join(head) + "\n"
+    s = change_summary(old, new)
+    head += [f"- words: {s['was_words']} → {s['now_words']} "
+             f"({s['added']} added, {s['removed']} removed across "
+             f"{len(s['spans'])} span(s))", ""]
+    body = []
+    for n, sp in enumerate(s["spans"], 1):
+        body += [f"## span {n} — {sp['op']}", "", "```diff",
+                 ("  …" + sp["before"][-400:]) if sp["before"] else "  …"]
+        if sp["was"]:
+            body.append("[-] " + _cap_words(sp["was"]))
+        if sp["now"]:
+            body.append("[+] " + _cap_words(sp["now"]))
+        # The trailing context MUST carry its own marker: unmarked, it renders as a continuation of
+        # the line above and a reader cannot tell added words from unchanged ones.
+        body += [("  …" + sp["after"][:400] + "…") if sp["after"] else "  …", "```", ""]
+    if s["elided_spans"]:
+        body += [f"_{s['elided_spans']} further changed span(s) not shown; {s['added']} words added "
+                 f"and {s['removed']} removed in total. Read the source if the spans above do not "
+                 f"explain it._", ""]
+    note = "\n".join(head + body)
+    lines = note.splitlines()
+    too_long = len(lines) > max_lines
+    if too_long:
+        note = "\n".join(lines[:max(1, max_lines - 4)])   # leave room for the footer below
+    if too_long or len(note) > max_chars:
+        foot = (f"\n\n_Elided: {s['added']} words added, {s['removed']} removed, "
+                f"{s['elided_spans']} further span(s) not shown. Retained text: "
+                f"{os.path.relpath(_body_path(name), REPO)}._\n")
+        note = note[:max(0, max_chars - len(foot))].rstrip() + foot
+    assert len(note) <= max_chars, "a change note must fit the bound it declares"
+    return note
+
+
+def write_change_note(name: str, new: str | None, ts: str,
+                      old_digest: str | None = None) -> str | None:
+    """Write the change note for a moved page source; return its repo-relative path, or None.
+
+    Called BEFORE the baseline advances and BEFORE the retained body is replaced: the text retained
+    by the previous sweep is the other half of the diff, so the order is load-bearing.
+
+    The filename carries the movement's TIMESTAMP, not just its date, and never overwrites: a source
+    that moves twice in a day (a page amended, corrected, then amended again) must leave two notes.
+    One note per movement is the whole point — the note is evidence, and evidence that overwrites
+    itself is not evidence.
+    """
+    if new is None:
+        return None
+    note = render_change_note(name, read_page_body(name), new, ts, old_digest=old_digest)
+    if note is None:
+        return None
+    os.makedirs(PAGE_DIR, exist_ok=True)
+    stamp = re.sub(r"[^0-9]", "", ts)[:14] or "unknown"          # YYYYMMDDHHMMSS, UTC
+    if len(stamp) < 14:
+        stamp = (stamp + "0" * 14)[:14]
+    base = f"{_slug(name)}.change-{stamp[:8]}-{stamp[8:]}"
+    p = os.path.join(PAGE_DIR, base + ".md")
+    n = 1
+    while os.path.exists(p):
+        n += 1
+        p = os.path.join(PAGE_DIR, f"{base}-{n}.md")
+    with open(p, "w", encoding="utf-8", newline="\n") as f:
+        f.write(note)
+    return os.path.relpath(p, REPO)
 
 
 def _record_state(source: dict, records: list, h_page) -> dict:
@@ -794,6 +988,100 @@ def selftest() -> int:
         assert mode == "error" and unknown == bad, \
             f"{bad} must be refused as an error, never treated as 'just run it'"
 
+    # --- v3.11: a moved PAGE source must leave a triageable record, not merely a new hash ---
+    # THE DEFECT THIS CLOSES: a hash difference cannot be triaged after the fact. Neither space-law
+    # nor bbnj retained a page body, so the two BBNJ notification sources that moved on 2026-10-13
+    # could only be explained by re-reading the live pages — and a page that REPLACES its content
+    # would have been unreadable by the time a maintainer looked.
+    page_a = ("The Area and its resources are the common heritage of mankind. "
+              + " ".join(f"w{i}" for i in range(40)) + " End of page.")
+    page_b = page_a.replace("common heritage", "common treasure")
+    # The retained text IS the hashed text, so retention cannot drift from the digest it explains.
+    assert content_hash("<p>Area means the seabed.</p>") == \
+        "sha256:" + hashlib.sha256(
+            comparable_text("<p>Area means the seabed.</p>").encode("utf-8")).hexdigest()
+    pats = [r"updated \d{4}-\d{2}-\d{2}"]
+    assert comparable_text("<p>Text. updated 2026-10-15</p>", pats) == \
+        comparable_text("<p>Text. updated 2026-10-01</p>", pats), \
+        "a declared volatile pattern must be absent from the RETAINED text too, or every sweep " \
+        "would retain a page that differs only in its timestamps"
+    # ONE WORD, not one line: to_text collapses a page to a single line, so a line-level diff of
+    # these two texts would report "1 added, 1 removed" and name nothing at all.
+    assert "\n" not in page_a
+    s1 = change_summary(page_a, page_b)
+    assert len(s1["spans"]) == 1 and s1["spans"][0]["was"] == "heritage" \
+        and s1["spans"][0]["now"] == "treasure", "the moved word must be NAMED, not merely counted"
+    assert s1["added"] == 1 and s1["removed"] == 1
+    assert "common" in s1["spans"][0]["before"] and "mankind" in s1["spans"][0]["after"], \
+        "a span must carry the words around it, or the passage cannot be recognised without the page"
+    n1 = render_change_note("Example source", page_a, page_b, "2026-10-15T00:00:00Z",
+                            old_digest="sha256:aaa")
+    assert n1 and "[-] heritage" in n1 and "[+] treasure" in n1 and "sha256:aaa" in n1
+    # added-only and removed-only must never be rendered as each other
+    n2 = render_change_note("S", page_a, page_a + " A new clause appears.", "2026-10-15T00:00:00Z")
+    assert n2 and "[+]" in n2 and "[-]" not in n2, "an insertion must not read as a removal"
+    n3 = render_change_note("S", page_a, page_a.replace(" End of page.", ""), "2026-10-15T00:00:00Z")
+    assert n3 and "[-]" in n3 and "[+]" not in n3, "a deletion must not read as an addition"
+    # An insertion at the TOP shifts EVERY following word. Only the inserted words may be reported,
+    # or the note claims the whole page changed and tells the maintainer nothing.
+    s4 = change_summary(page_a, "A new opening sentence. " + page_a)
+    assert s4["added"] <= 6 and s4["removed"] == 0, \
+        "a shift must not be reported as a whole-page change"
+    # An unmoved page writes NO note — a note per sweep would turn evidence into noise — and the
+    # first sweep after this version must say what it lacks rather than imply the page did not move.
+    assert render_change_note("S", page_a, page_a, "2026-10-15T00:00:00Z") is None
+    first = render_change_note("S", None, page_a, "2026-10-15T00:00:00Z")
+    assert first and "no retained body" in first and page_a[:80] in first
+    # An oversized change is bounded in BOTH directions and admits the truncation: the note travels
+    # in the triage issue body, so an unbounded one would simply not arrive.
+    big_old = " ".join(f"keep{i} " + " ".join(f"old{i}w{j}" for j in range(100))
+                       for i in range(20))
+    big_new = " ".join(f"keep{i} " + " ".join(f"new{i}w{j}" for j in range(100))
+                       for i in range(20))
+    n5 = render_change_note("S", big_old, big_new, "2026-10-15T00:00:00Z",
+                            max_lines=10, max_chars=800)
+    assert n5 and len(n5) <= 800 and len(n5.splitlines()) <= 10, "the declared bound must hold"
+    assert "Elided" in n5, "a truncated note must say it was truncated"
+    n6 = render_change_note("S", big_old, big_new, "2026-10-15T00:00:00Z")
+    assert n6 and len(n6) <= CHANGE_NOTE_CHARS and len(n6.splitlines()) <= CHANGE_NOTE_LINES
+    assert "more word(s)]" in n6, \
+        "a span cut at the cap must count the words it dropped, or the cut is invisible"
+    # Retention rewrites NOTHING when the bytes are unchanged: identical bytes are one git blob,
+    # which is what keeps an unmoved page free of any history cost at all.
+    global PAGE_DIR
+    saved_dir = PAGE_DIR
+    with tempfile.TemporaryDirectory(prefix="ws-selftest-") as td:
+        PAGE_DIR = os.path.join(td, "pages")
+        try:
+            assert read_page_body("Example source") is None, "an unknown source has no retained body"
+            assert write_page_body("Example source", page_a) is True
+            assert write_page_body("Example source", page_a) is False, \
+                "identical text must rewrite nothing, or every sweep would add a blob"
+            assert read_page_body("Example source") == page_a
+            assert write_page_body("Example source", page_b) is True
+            assert read_page_body("Example source") == page_b
+            # The note is rendered from the text retained by the PREVIOUS sweep, then replaced.
+            p1 = write_change_note("Example source", page_a, "2026-10-16T00:00:00Z")
+            p2 = write_change_note("Example source", page_a, "2026-10-16T00:00:00Z")
+            # Two movements in the SAME SECOND must still leave two notes: a page amended, corrected
+            # and amended again in one day is exactly when a maintainer wants both, and a note that
+            # overwrites its predecessor is not evidence.
+            assert p1 and p2 and p1 != p2, "a later movement must never overwrite an earlier note"
+            assert os.path.basename(p1).startswith("example-source.change-20261016-000000")
+            assert len([f for f in os.listdir(PAGE_DIR) if ".change-" in f]) == 2
+            with open(os.path.join(PAGE_DIR, os.path.basename(p1)), encoding="utf-8") as f:
+                assert "[-] treasure" in f.read(), \
+                    "the note must diff against the RETAINED body, not the incoming one"
+            # A declared-manual source (a SPA) retains nothing: it was never fetched.
+            assert write_page_body("Example source", None) is False
+        finally:
+            PAGE_DIR = saved_dir
+    # Only a state that may advance the baseline may retain. A shell (SUSPECT) or a failed fetch
+    # must never overwrite the last trustworthy text with one that explains nothing.
+    for st in ("suspect", "error", "manual", "schema_suspect"):
+        assert not advances_baseline(st), f"{st} must neither retain nor advance"
+    assert advances_baseline("changed") and advances_baseline("reformatted")
+
     print(f"watch_sources v{MONITOR_VERSION} selftest: OK")
     return 0
 
@@ -826,10 +1114,11 @@ def tally() -> int:
 # ---- run ------------------------------------------------------------------------------------
 USAGE = """usage: watch_sources.py [--selftest | --tally | --help]
 
-  (no argument)  LIVE SWEEP: fetch every source, compare against its baseline, write
-                 monitoring/last_report.md, and ADVANCE the baselines of unchanged and changed
-                 sources. This WRITES STATE. There is no dry run: a sweep is the only way to look,
-                 and looking costs the pending signal.
+  (no argument)  LIVE SWEEP: fetch every source, compare against its baseline, retain each page
+                 source's comparable text under monitoring/snapshots/pages/, write a diff note for
+                 every source that moved, write monitoring/last_report.md, and ADVANCE the baselines
+                 of unchanged and changed sources. This WRITES STATE. There is no dry run: a sweep is
+                 the only way to look, and looking costs the pending signal.
   --selftest     offline assertions, no network, writes nothing
   --tally        print the measured whole-page false-alarm rate from accumulated runs; read-only
   --help, -h     this text
@@ -885,6 +1174,9 @@ def main() -> int:
 
     hashes, lengths, schema_states, observations = {}, {}, {}, []
     binary_docs = set()   # sources hashed as bytes (PDF/DOCX), exempt from the HTML content floor
+    # v3.11: the comparable text of every page source fetched this run, retained AFTER the states are
+    # known, so a shell or a failed fetch can never overwrite the last trustworthy text.
+    page_text, change_notes = {}, {}
     n_src = len(sources)
     # Progress, flushed per source. Without it the sweep prints only its final summary, so a run
     # over dozens of sources shows nothing for minutes and looks hung — it is not, it is fetching.
@@ -943,6 +1235,7 @@ def main() -> int:
             else:
                 raw = raw_b.decode("utf-8", errors="replace")
                 lengths[name] = len(to_text(raw))
+                page_text[name] = comparable_text(raw, s.get("ignore_patterns"))
                 hashes[name] = content_hash(raw, s.get("ignore_patterns"))
         except Exception as e:
             hashes[name] = f"ERROR:{type(e).__name__}"
@@ -953,11 +1246,24 @@ def main() -> int:
     st_of = {n: st for n, st, _, _ in events}
 
     # Advance baselines ONLY for trustworthy states — never a shell, a SPA, or an error.
+    # Order matters inside this loop: a change note is rendered against the text retained by the
+    # PREVIOUS sweep, so the note is written BEFORE the retained body is replaced, and only a state
+    # that may advance the baseline may retain — a shell must never overwrite the last real text.
     for s in page_sources:
-        if advances_baseline(st_of[s["name"]]):
+        st = st_of[s["name"]]
+        if advances_baseline(st):
             h = hashes[s["name"]]
             if h and not str(h).startswith("ERROR"):
+                if st == "changed":
+                    note = write_change_note(s["name"], page_text.get(s["name"]), now,
+                                             old_digest=s.get("last_sha256"))
+                    if note:
+                        change_notes[s["name"]] = note
+                write_page_body(s["name"], page_text.get(s["name"]))
                 s["last_sha256"] = h
+    if change_notes:
+        print(f"  [{len(change_notes)} change note(s) written to "
+              f"{os.path.relpath(PAGE_DIR, REPO)}]", flush=True)
 
     # ---- report
     dupes = duplicate_hashes(sources)
@@ -1024,12 +1330,19 @@ def main() -> int:
             lines.append(f"- **{name}**")
             if state == "changed":
                 lines += [f"    - was `{old}`", f"    - now `{new}`"]
+                note = change_notes.get(name)
+                if note:
+                    lines.append(f"    - diff: `{note}`")
         lines.append("")
     lines += ["_Automation only watches and queues. A flag may be a genuinely new or amended "
               "instrument OR a cosmetic page update — the maintainer triages. **MANUAL** sources "
               "are JavaScript apps a stdlib fetch cannot see. **SUSPECT** means too little text to "
               "trust. **SCHEMA SUSPECT** means selectors probably broke. Nothing is ingested "
-              "automatically._"]
+              "automatically._", "",
+              "_Each page source's comparable text is retained at `monitoring/snapshots/pages/`, and "
+              "a CHANGED source leaves a bounded word-level diff note beside it as "
+              "`…/<slug>.change-<YYYYMMDD-HHMMSS>.md` — one per movement. A flag can therefore be "
+              "triaged after the fact, from a clone, long after the page itself has moved on._"]
     # newline="\n" on EVERY text write. Without it, Python text mode on Windows emits CRLF, so a
     # monitor run left sources.json and last_report.md differing from their LF blobs in line
     # endings only — an empty diff that still shows as modified, on every run, in five corpora.
